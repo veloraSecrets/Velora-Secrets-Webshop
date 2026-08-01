@@ -255,6 +255,8 @@
   .drawer{ position:fixed; top:0; right:0; height:100%; width:min(420px,92vw); background:var(--white); z-index:201; box-shadow:-20px 0 50px rgba(46,29,20,.18); transform:translateX(100%); transition:transform .3s var(--ease); overflow-y:auto; display:flex; flex-direction:column; }
   .drawer.is-open{ transform:translateX(0); }
   .cart-header{ display:flex; justify-content:space-between; align-items:center; padding:20px 22px; border-bottom:1px solid var(--blush); }
+  #cartClose, #aiClose{ width:36px; height:36px; display:flex; align-items:center; justify-content:center; font-size:16px; color:var(--cognac); border-radius:50%; flex-shrink:0; transition:background .15s var(--ease); }
+  #cartClose:hover, #aiClose:hover{ background:var(--blush); }
   .cart-header h2{ font-family:var(--font-display); font-size:19px; }
   .cart-items{ flex:1; padding:8px 22px; overflow-y:auto; }
   .cart-item{ display:grid; grid-template-columns:56px 1fr auto; gap:12px; padding:14px 0; border-bottom:1px solid var(--blush); align-items:center; }
@@ -293,7 +295,8 @@
   .newsletter-popup__card{ position:relative; background:var(--white); border-radius:var(--radius-lg); max-width:440px; width:100%; padding:40px 36px; text-align:center; box-shadow:0 30px 70px rgba(46,29,20,.25); animation:newsletter-popup-in .35s var(--ease) both; }
   .newsletter-popup__card h2{ font-family:var(--font-display); font-weight:450; font-size:clamp(22px,3vw,26px); margin:8px 0 12px; }
   .newsletter-popup__card p{ font-size:13.5px; color:var(--cognac); margin-bottom:20px; }
-  .newsletter-popup__close{ position:absolute; top:14px; right:16px; font-size:14px; color:var(--cognac); }
+  .newsletter-popup__close{ position:absolute; top:8px; right:8px; width:36px; height:36px; display:flex; align-items:center; justify-content:center; font-size:16px; color:var(--cognac); border-radius:50%; transition:background .15s var(--ease); }
+  .newsletter-popup__close:hover{ background:var(--blush); }
   @keyframes newsletter-popup-fade{ from{ opacity:0; } to{ opacity:1; } }
   @keyframes newsletter-popup-in{ from{ opacity:0; transform:translateY(14px) scale(.97); } to{ opacity:1; transform:translateY(0) scale(1); } }
   .newsletter-form__success{ font-size:14px; color:var(--espresso); line-height:1.6; }
