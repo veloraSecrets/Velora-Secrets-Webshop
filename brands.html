@@ -1,0 +1,31 @@
+/* ============================================================
+   assets/analytics-config.js — analytics-configuratie
+   ------------------------------------------------------------
+   Bewust een APART bestand van config.js: dit bevat uitsluitend
+   publieke tracking-ID's (geen geheimen — die horen server-side in
+   omgevingsvariabelen, zie .env.example), specifiek bedoeld om per
+   omgeving (test/staging/productie) makkelijk te wisselen zonder
+   assets/analytics.js zelf aan te raken.
+
+   Alles staat standaard op enabled:false met een lege ID — dit zijn
+   GEEN placeholder-/testwaarden, gewoon nog niet ingevuld. Vul de
+   echte ID's in zodra je de bijbehorende accounts hebt aangemaakt:
+   - Plausible: https://plausible.io  (domain = jouw exacte domeinnaam)
+   - Google Search Console: https://search.google.com/search-console
+     (verificationCode = de meta-tag-methode, niet het hele tag)
+   - Meta Pixel: https://business.facebook.com/events_manager
+   ============================================================ */
+window.VELORA_ANALYTICS_CONFIG = {
+  plausible: {
+    enabled: false,
+    domain: '',
+  },
+  googleSearchConsole: {
+    enabled: false,
+    verificationCode: '',
+  },
+  metaPixel: {
+    enabled: false,
+    pixelId: '',
+  },
+};

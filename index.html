@@ -1,0 +1,91 @@
+/* ============================================================
+   assets/discount.js — kortingscode-module
+   ------------------------------------------------------------
+   Enige bron voor kortingscode-state en -validatie. Bewust los van
+   cart.js: het toepassen van een code raakt nooit de winkelwagen-
+   items zelf, alleen hoe het totaal later wordt berekend (dat
+   gebeurt in cart-page.js, dat beide modules combineert).
+
+   Validatie is nu een simpele lookup in VELORA_CONFIG.discounts.codes
+   (config.js). Wil je dit later vervangen door bv. een serverAPI-
+   aanroep of tijdsgebonden/eenmalige codes? Dan pas je alleen de
+   binnenkant van veloraApplyDiscountCode hieronder aan — de rest
+   van de architectuur (cart-page.js, cart.html) hoeft niet te weten
+   hóe een code gevalideerd wordt, alleen wát het resultaat is.
+
+   Vereist: config.js, vóór dit bestand geladen.
+   ============================================================ */
+(() => {
+  'use strict';
+
+  const { storageKey: DISCOUNT_KEY, codes } = window.VELORA_CONFIG.discounts;
+
+  function getAppliedCode() {
+    return localStorage.getItem(DISCOUNT_KEY) || null;
+  }
+  function setAppliedCode(code) {
+    if (code) localStorage.setItem(DISCOUNT_KEY, code);
+    else localStorage.removeItem(DISCOUNT_KEY);
+  }
+
+  /* Publiek: probeer een code toe te passen. Geeft altijd een
+     resultaatobject terug — nooit een exception — zodat de UI
+     voorspelbaar kan reageren op succes/fout. */
+  window.veloraApplyDiscountCode = function (rawCode) {
+    const code = (rawCode || '').trim().toUpperCase();
+    if (!code) {
+      return { success: false, message: 'Vul een kortingscode in.' };
+    }
+    const definition = codes[code];
+    if (!definition) {
+      return { success: false, message: 'Deze kortingscode is niet geldig.' };
+    }
+    setAppliedCode(code);
+    return { success: true, message: definition.label, code, definition };
+  };
+
+  window.veloraRemoveDiscountCode = function () {
+    setAppliedCode(null);
+  };
+
+  /* Publiek: past een dynamisch gegenereerde kortingscode toe
+     (nieuwsbrief-welkomstkorting óf Rewards-inwisseling — beide
+     gevalideerd via /api/validate-discount-code, zie cart-page.js).
+     Slaat een JSON-encoded object op i.p.v. alleen de code-string,
+     zodat veloraGetAppliedDiscount hieronder het type en bedrag kent
+     zonder in de statische config.js-lijst te hoeven zoeken. */
+  window.veloraApplyDynamicDiscount = function (code, type, value, label) {
+    setAppliedCode(JSON.stringify({ code, type, value, label, dynamic: true }));
+  };
+
+  /* Publiek: huidige toegepaste code + definitie, of null. Herkent
+     zowel een gewone statische code-string (bestaand gedrag,
+     ongewijzigd) als een dynamisch, JSON-encoded object
+     (nieuwsbrief-code) — via een JSON.parse-poging die bij een
+     gewone code-string simpelweg faalt en dan het bestaande pad
+     volgt. */
+  window.veloraGetAppliedDiscount = function () {
+    const stored = getAppliedCode();
+    if (!stored) return null;
+    try {
+      const parsed = JSON.parse(stored);
+      if (parsed && parsed.dynamic) return parsed;
+    } catch (e) {
+      // Geen geldige JSON — dan is het gewoon een statische code-string,
+      // val door naar het bestaande gedrag hieronder.
+    }
+    if (!codes[stored]) return null;
+    return { code: stored, ...codes[stored] };
+  };
+
+  /* Publiek: berekent het kortingsbedrag in euro's op een gegeven
+     subtotaal. Nooit meer dan het subtotaal zelf (voorkomt een
+     negatief totaal bij een vast kortingsbedrag). */
+  window.veloraCalculateDiscountAmount = function (subtotal) {
+    const applied = window.veloraGetAppliedDiscount();
+    if (!applied) return 0;
+    if (applied.type === 'percent') return subtotal * (applied.value / 100);
+    if (applied.type === 'fixed') return Math.min(applied.value, subtotal);
+    return 0;
+  };
+})();

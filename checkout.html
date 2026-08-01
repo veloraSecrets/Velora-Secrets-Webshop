@@ -1,0 +1,228 @@
+/* ============================================================
+   assets/cart-page.js — rendering voor cart.html
+   ------------------------------------------------------------
+   Bevat GEEN eigen winkelwagen- of kortingslogica: alles komt uit
+   window.velora*-functies die cart.js en discount.js al aanbieden.
+   Deze module doet uitsluitend: lezen, op het scherm zetten, en
+   bij interactie de bestaande functies aanroepen.
+   Vereist: products.js, config.js, cart.js, discount.js — alle
+   vóór dit bestand geladen (zie de scripttags in cart.html).
+   ============================================================ */
+(() => {
+  'use strict';
+
+  const fmt = window.veloraFmt;
+  const container = document.getElementById('cartPageContent');
+
+  function render() {
+    const cart = window.veloraGetCart();
+
+    if (!cart.length) {
+      container.innerHTML = `
+        <div class="cart-page__empty">
+          <p>Je winkelwagen is nog leeg.</p>
+          <a href="index.html" class="btn btn--primary">Ontdek producten</a>
+        </div>`;
+      return;
+    }
+
+    const totals = window.veloraGetCartTotals();
+    const discountAmount = window.veloraCalculateDiscountAmount(totals.subtotal);
+    const finalTotal = totals.subtotal - discountAmount;
+    const applied = window.veloraGetAppliedDiscount();
+
+    container.innerHTML = `
+      <table class="cart-page__table">
+        <thead>
+          <tr><th>Product</th><th>Aantal</th><th>Prijs</th><th><span class="visually-hidden">Verwijderen</span></th></tr>
+        </thead>
+        <tbody>
+          ${cart
+            .map(
+              (item) => `
+            <tr>
+              <td class="cart-page__product">
+                <div class="cart-page__product-media"></div>
+                <a href="product.html?id=${item.id}" class="cart-page__product-title">${item.title}</a>
+              </td>
+              <td>
+                <div class="cart-page__qty">
+                  <button type="button" data-qty-decrease="${item.id}" aria-label="Aantal verlagen">−</button>
+                  <input type="number" value="${item.qty}" min="1" data-qty-input="${item.id}" aria-label="Aantal voor ${item.title}">
+                  <button type="button" data-qty-increase="${item.id}" aria-label="Aantal verhogen">+</button>
+                </div>
+              </td>
+              <td><span class="price">${fmt(item.price * item.qty)}</span></td>
+              <td><button type="button" class="cart-page__remove" data-remove="${item.id}">Verwijder</button></td>
+            </tr>`
+            )
+            .join('')}
+        </tbody>
+      </table>
+
+      <div class="cart-page__layout">
+        <div class="cart-page__summary">
+          <p class="cart-page__shipping-note">
+            ${totals.freeShippingRemaining > 0 ? `Nog ${fmt(totals.freeShippingRemaining)} tot gratis verzending` : 'Je verzending is gratis!'}
+          </p>
+          <div class="cart-page__shipping-track">
+            <div class="cart-page__shipping-fill" style="width:${totals.freeShippingPct}%"></div>
+          </div>
+
+          ${
+            applied
+              ? `<div class="discount-applied">
+                  <span>Code <strong>${applied.code}</strong> toegepast</span>
+                  <button type="button" id="removeDiscount">Verwijder</button>
+                </div>`
+              : `<form class="discount-form" id="discountForm">
+                  <label for="discountInput" class="visually-hidden">Kortingscode</label>
+                  <input type="text" id="discountInput" placeholder="Kortingscode">
+                  <button type="submit">Toepassen</button>
+                </form>`
+          }
+          <div id="discountMessage"></div>
+
+          <div class="cart-page__row">
+            <span>Subtotaal</span>
+            <span>${fmt(totals.subtotal)}</span>
+          </div>
+          ${
+            discountAmount > 0
+              ? `<div class="cart-page__row"><span>Korting</span><span>−${fmt(discountAmount)}</span></div>`
+              : ''
+          }
+          <div class="cart-page__row">
+            <span>Verzending</span>
+            <span>${totals.freeShippingRemaining > 0 ? 'Berekend bij afrekenen' : 'Gratis'}</span>
+          </div>
+          <div class="cart-page__row cart-page__row--total">
+            <span>Totaal</span>
+            <span>${fmt(finalTotal)}</span>
+          </div>
+
+          <a class="btn btn--primary cart-page__checkout" href="checkout.html">Afrekenen</a>
+        </div>
+      </div>
+
+      ${buildRecommendationsHTML(cart)}
+    `;
+
+    bindEvents();
+  }
+
+  /* Aanbevolen producten / upsell — data-gegrond op wat er al in de
+     winkelwagen ligt (via de bestaande veloraGetFrequentlyBoughtTogether/
+     veloraGetRelatedProducts, geen eigen aanbevelingslogica), producten
+     die al in de wagen liggen worden uitgesloten. Hergebruikt de ene
+     gedeelde kaart-template (veloraProductCardHTML) — geen duplicatie. */
+  function buildRecommendationsHTML(cart) {
+    const cartIds = new Set(cart.map((i) => i.id));
+    const anchorProduct = window.VELORA_PRODUCTS.find((p) => p.id === cart[0].id);
+    if (!anchorProduct) return '';
+
+    const combined = [
+      ...window.veloraGetFrequentlyBoughtTogether(anchorProduct, 4),
+      ...window.veloraGetRelatedProducts(anchorProduct, 4),
+    ].filter((p) => !cartIds.has(p.id));
+
+    const seen = new Set();
+    const recommendations = combined.filter((p) => (seen.has(p.id) ? false : seen.add(p.id))).slice(0, 4);
+    if (!recommendations.length) return '';
+
+    return `
+      <section class="section cart-page__upsell">
+        <div class="section__header section__header--left">
+          <div><div class="eyebrow">Compleet je bestelling</div><h2>Vaak samen besteld</h2></div>
+        </div>
+        <div class="product-rail__scroller">
+          ${recommendations.map((p) => window.veloraProductCardHTML(p, { showQuickAdd: false })).join('')}
+        </div>
+      </section>
+    `;
+  }
+
+  function bindEvents() {
+    container.querySelectorAll('[data-qty-increase]').forEach((btn) =>
+      btn.addEventListener('click', () => {
+        const id = Number(btn.dataset.qtyIncrease);
+        const cart = window.veloraGetCart();
+        const item = cart.find((i) => i.id === id);
+        if (item) window.veloraUpdateCartItemQty(id, item.qty + 1);
+        render();
+      })
+    );
+    container.querySelectorAll('[data-qty-decrease]').forEach((btn) =>
+      btn.addEventListener('click', () => {
+        const id = Number(btn.dataset.qtyDecrease);
+        const cart = window.veloraGetCart();
+        const item = cart.find((i) => i.id === id);
+        if (item) window.veloraUpdateCartItemQty(id, item.qty - 1);
+        render();
+      })
+    );
+    container.querySelectorAll('[data-qty-input]').forEach((input) =>
+      input.addEventListener('change', () => {
+        const id = Number(input.dataset.qtyInput);
+        const qty = Math.max(1, Number(input.value) || 1);
+        window.veloraUpdateCartItemQty(id, qty);
+        render();
+      })
+    );
+    container.querySelectorAll('[data-remove]').forEach((btn) =>
+      btn.addEventListener('click', () => {
+        window.veloraRemoveFromCart(Number(btn.dataset.remove));
+        render();
+      })
+    );
+
+    const discountForm = document.getElementById('discountForm');
+    discountForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const input = document.getElementById('discountInput');
+      const messageEl = document.getElementById('discountMessage');
+      const result = window.veloraApplyDiscountCode(input.value);
+
+      if (result.success) {
+        render();
+        return;
+      }
+
+      // Niet gevonden in de bestaande, statische lijst (WELKOM10/VELORA5)?
+      // Dan controleren of het een dynamisch gegenereerde nieuwsbrief-
+      // welkomstcode is (WELKOM10-XXXXXX) — volledig aanvullend, raakt
+      // de bestaande synchrone flow hierboven niet aan.
+      const typedCode = input.value.trim().toUpperCase();
+      if (typedCode.startsWith('WELKOM10-') || typedCode.startsWith('REWARDS-')) {
+        try {
+          const res = await fetch('/api/validate-discount-code', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code: typedCode }),
+          });
+          const data = await res.json();
+          if (data.valid) {
+            window.veloraApplyDynamicDiscount(typedCode, data.type, data.value, data.label);
+            render();
+            return;
+          }
+          if (messageEl) messageEl.innerHTML = `<p class="discount-message discount-message--error">${data.error}</p>`;
+          return;
+        } catch (err) {
+          console.error('Kortingscode-validatie mislukt:', err);
+          if (messageEl) messageEl.innerHTML = `<p class="discount-message discount-message--error">Kon de code niet controleren. Is er nog geen backend gekoppeld?</p>`;
+          return;
+        }
+      }
+
+      if (messageEl) messageEl.innerHTML = `<p class="discount-message discount-message--error">${result.message}</p>`;
+    });
+
+    document.getElementById('removeDiscount')?.addEventListener('click', () => {
+      window.veloraRemoveDiscountCode();
+      render();
+    });
+  }
+
+  render();
+})();

@@ -1,0 +1,52 @@
+# ============================================================
+# Velora Secrets — omgevingsvariabelen
+# ------------------------------------------------------------
+# Kopieer dit bestand naar ".env" voor lokaal testen (met bv.
+# `vercel dev`), of zet deze variabelen in het Vercel-dashboard
+# onder Project Settings → Environment Variables voor productie.
+# Vul NOOIT echte sleutels in dit .env.example-bestand zelf in —
+# dat bestand hoort in git te staan, jouw eigen ".env" (met de
+# echte waarden) hoort in .gitignore.
+# ============================================================
+
+# --- Mollie (betalingen) ---------------------------------------------------
+# Haal op via https://my.mollie.com/dashboard/developers/api-keys
+# Begin met een TEST-sleutel (voorvoegsel "test_") om de hele flow te
+# controleren zonder dat er echt geld beweegt. Pas als alles werkt, en je
+# Mollie-account volledig geverifieerd is, gebruik je de "live_"-sleutel.
+MOLLIE_API_KEY=
+
+# --- Resend (transactionele e-mail, bv. orderbevestigingen) ----------------
+# Haal op via https://resend.com/api-keys
+# Om vanaf noreply@velorasecrets.nl te mogen versturen moet het domein
+# velorasecrets.nl geverifieerd zijn in Resend (DNS-records toevoegen —
+# zie https://resend.com/domains). Wordt ook gebruikt voor het
+# contactformulier (api/contact.js).
+RESEND_API_KEY=
+
+# --- Contactformulier (optioneel) -------------------------------------------
+# E-mailadres waar berichten van het contactformulier naartoe gestuurd
+# worden. Laat leeg om de standaardwaarde (support@velorasecrets.nl) te
+# gebruiken — zet 'm alleen als je berichten ergens anders wilt ontvangen.
+CONTACT_RECIPIENT_EMAIL=
+
+# --- Site-URL ----------------------------------------------------------------
+# Je eigen, definitieve domein — gebruikt voor de Mollie redirect-URL na
+# betaling en voor de webhook-URL die Mollie aanroept bij statuswijzigingen.
+# Vercel zet dit automatisch tijdens preview-deploys via VERCEL_URL, maar
+# voor productie moet je hier je echte domein instellen.
+SITE_URL=https://velorasecrets.nl
+
+# --- Shopify Storefront API (backend voor producten/voorraad/bestellingen) --
+# Shopify-admin → Sales channels → "Headless" → Add storefront → Storefront
+# API permissions instellen → access token noteren.
+SHOPIFY_STORE_DOMAIN=
+SHOPIFY_STOREFRONT_ACCESS_TOKEN=
+SHOPIFY_API_VERSION=2026-07
+
+# --- Vercel KV (opslag voor nieuwsbrief-inschrijvingen/kortingscodes) -------
+# Deze twee worden AUTOMATISCH ingevuld door Vercel zodra je in het
+# dashboard een KV-store aanmaakt en aan dit project koppelt — hoef je
+# zelf niet handmatig in te vullen.
+KV_REST_API_URL=
+KV_REST_API_TOKEN=

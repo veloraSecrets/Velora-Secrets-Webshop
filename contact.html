@@ -1,0 +1,134 @@
+/* ============================================================
+   assets/collection-page.js
+   ============================================================ */
+(() => {
+  'use strict';
+
+  const params = new URLSearchParams(window.location.search);
+  const initialCategory = params.get('category');
+  const initialBrand = params.get('brand');
+
+  const grid = document.getElementById('collectionGrid');
+  const emptyState = document.getElementById('emptyState');
+  const countEl = document.getElementById('collectionCount');
+  const titleEl = document.getElementById('collectionTitle');
+  const descEl = document.getElementById('collectionDesc');
+  const breadcrumbEl = document.getElementById('breadcrumbTitle');
+  const categoryFiltersEl = document.getElementById('categoryFilters');
+  const brandFiltersEl = document.getElementById('brandFilters');
+  const sortSelect = document.getElementById('sortSelect');
+
+  const CATEGORY_DESCRIPTIONS = {
+    'Voor Haar': 'Zorgvuldig gekozen voor haar plezier en ontspanning.',
+    'Voor Hem': 'Kwaliteit en comfort, ontworpen met aandacht.',
+    'Voor Koppels': 'Samen ontdekken, samen genieten.',
+    Lingerie: 'Verfijnde stijl die zelfvertrouwen geeft.',
+    BDSM: 'Voor wie durft te verkennen, met vertrouwen.',
+    'Wellness & Massage': 'Ontspanning en verwennerij voor lichaam en geest.',
+  };
+
+  // ---------- Categorie-filters opbouwen uit de echte catalogus ----------
+  const allCategories = [...new Set(window.VELORA_PRODUCTS.map((p) => p.category))];
+  categoryFiltersEl.innerHTML = allCategories
+    .map(
+      (cat) => `
+    <label class="filter-option">
+      <input type="checkbox" data-category-filter="${cat}" ${cat === initialCategory ? 'checked' : ''}>
+      ${cat} <span style="color:var(--cognac); opacity:.6;">(${window.VELORA_PRODUCTS.filter((p) => p.category === cat).length})</span>
+    </label>`
+    )
+    .join('');
+
+  // ---------- Merkfilters opbouwen uit de echte catalogus ----------
+  const allBrands = [...new Set(window.VELORA_PRODUCTS.map((p) => p.vendor))].sort();
+  brandFiltersEl.innerHTML = allBrands
+    .map(
+      (brand) => `
+    <label class="filter-option">
+      <input type="checkbox" data-brand-filter="${brand}" ${brand === initialBrand ? 'checked' : ''}>
+      ${brand} <span style="color:var(--cognac); opacity:.6;">(${window.VELORA_PRODUCTS.filter((p) => p.vendor === brand).length})</span>
+    </label>`
+    )
+    .join('');
+
+  if (initialBrand) {
+    titleEl.textContent = initialBrand;
+    descEl.textContent = `Ontdek alle producten van ${initialBrand} bij Velora Secrets.`;
+    breadcrumbEl.textContent = initialBrand;
+  } else if (initialCategory && CATEGORY_DESCRIPTIONS[initialCategory]) {
+    titleEl.textContent = initialCategory;
+    descEl.textContent = CATEGORY_DESCRIPTIONS[initialCategory];
+    breadcrumbEl.textContent = initialCategory;
+  } else if (initialCategory) {
+    titleEl.textContent = initialCategory;
+    descEl.textContent = `Ontdek onze collectie ${initialCategory}.`;
+    breadcrumbEl.textContent = initialCategory;
+  }
+
+  {
+    const currentLabel = initialBrand || initialCategory || 'Alle producten';
+    const breadcrumbLdScript = document.createElement('script');
+    breadcrumbLdScript.type = 'application/ld+json';
+    breadcrumbLdScript.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://velorasecrets.nl/' },
+        { '@type': 'ListItem', position: 2, name: currentLabel },
+      ],
+    });
+    document.head.appendChild(breadcrumbLdScript);
+  }
+
+  function getActiveFilters() {
+    const categories = [...document.querySelectorAll('[data-category-filter]:checked')].map((c) => c.dataset.categoryFilter);
+    const brands = [...document.querySelectorAll('[data-brand-filter]:checked')].map((c) => c.dataset.brandFilter);
+    const priceRanges = [...document.querySelectorAll('[data-price-filter]:checked')].map((c) => c.dataset.priceFilter.split('-').map(Number));
+    return { categories, brands, priceRanges };
+  }
+
+  function applyFiltersAndSort() {
+    const { categories, brands, priceRanges } = getActiveFilters();
+    let results = window.VELORA_PRODUCTS.filter((p) => {
+      const matchesCategory = categories.length === 0 || categories.includes(p.category);
+      const matchesBrand = brands.length === 0 || brands.includes(p.vendor);
+      const matchesPrice = priceRanges.length === 0 || priceRanges.some(([min, max]) => p.price >= min && p.price <= max);
+      return matchesCategory && matchesBrand && matchesPrice;
+    });
+
+    switch (sortSelect.value) {
+      case 'price-asc':
+        results.sort((a, b) => a.price - b.price);
+        break;
+      case 'price-desc':
+        results.sort((a, b) => b.price - a.price);
+        break;
+      case 'rating':
+        results.sort((a, b) => b.rating - a.rating);
+        break;
+    }
+
+    render(results);
+  }
+
+  function render(products) {
+    countEl.textContent = `${products.length} product${products.length === 1 ? '' : 'en'}`;
+    if (!products.length) {
+      grid.innerHTML = '';
+      emptyState.style.display = 'block';
+      return;
+    }
+    emptyState.style.display = 'none';
+    grid.innerHTML = products.map((p) => window.veloraProductCardHTML(p, { wrapInRailItem: false })).join('');
+    window.veloraSyncWishlistUI?.();
+  }
+
+  document.querySelectorAll('[data-category-filter], [data-brand-filter], [data-price-filter]').forEach((el) => el.addEventListener('change', applyFiltersAndSort));
+  sortSelect.addEventListener('change', applyFiltersAndSort);
+
+  // Mobiele filter-drawer: gedeelde functie uit main.js (ook gebruikt
+  // door search-page.js), geen eigen kopie van deze logica meer hier.
+  window.veloraInitFilterDrawer();
+
+  applyFiltersAndSort();
+})();

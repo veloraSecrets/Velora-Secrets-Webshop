@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Disallow: /cart.html
+Disallow: /checkout.html
+Disallow: /search.html
+Disallow: /login.html
+Disallow: /register.html
+Disallow: /account.html
+Disallow: /orders.html
+Disallow: /addresses.html
+Disallow: /profile.html
+Disallow: /rewards.html
+
+Sitemap: https://velorasecrets.nl/sitemap.xml

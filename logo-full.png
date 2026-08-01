@@ -1,0 +1,39 @@
+/* ============================================================
+   api/validate-discount-code.js — Vercel serverless function
+   ------------------------------------------------------------
+   Valideert een dynamisch gegenereerde nieuwsbrief-kortingscode
+   (WELKOM10-XXXXXX) tegen Vercel KV. Volledig LOS van de bestaande,
+   statische kortingscodes in config.js/discount.js (WELKOM10,
+   VELORA5) — die blijven ongewijzigd en synchroon werken zoals nu.
+   Dit endpoint is een AANVULLING, geen vervanging.
+   ============================================================ */
+const { kvGet, kvSet } = require('./_kv');
+
+module.exports = async function handler(req, res) {
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', 'POST');
+    return res.status(405).json({ error: 'Alleen POST-verzoeken toegestaan.' });
+  }
+
+  const code = (req.body?.code || '').trim().toUpperCase();
+  if (!code) {
+    return res.status(400).json({ valid: false, error: 'Geen kortingscode meegegeven.' });
+  }
+
+  try {
+    const record = await kvGet(`newsletter:code:${code}`);
+    if (!record) {
+      return res.status(200).json({ valid: false, error: 'Deze kortingscode is niet geldig.' });
+    }
+    if (record.used) {
+      return res.status(200).json({ valid: false, error: 'Deze kortingscode is al gebruikt.' });
+    }
+    if (record.discountEuros) {
+      return res.status(200).json({ valid: true, type: 'fixed', value: record.discountEuros, label: `€${record.discountEuros} korting toegepast` });
+    }
+    return res.status(200).json({ valid: true, type: 'percent', value: record.discountPercent, label: `${record.discountPercent}% welkomstkorting toegepast` });
+  } catch (err) {
+    console.error('Kortingscode-validatie mislukt:', err.message);
+    return res.status(502).json({ valid: false, error: 'Kon de kortingscode niet controleren. Probeer het later opnieuw.' });
+  }
+};

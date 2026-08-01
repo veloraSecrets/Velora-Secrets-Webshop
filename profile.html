@@ -1,0 +1,307 @@
+/* ============================================================
+   assets/product-page.js
+   ============================================================ */
+(() => {
+  'use strict';
+
+  const params = new URLSearchParams(window.location.search);
+  const id = Number(params.get('id')) || window.VELORA_PRODUCTS[0].id;
+  const product = window.VELORA_PRODUCTS.find((p) => p.id === id) || window.VELORA_PRODUCTS[0];
+  const detail = window.VELORA_PRODUCT_DETAIL;
+  const fmt = window.veloraFmt;
+
+  const reviewSummary = window.veloraGetReviewSummary(product.id);
+  const productDescription = window.VELORA_DESCRIPTIONS[product.id] || detail.description;
+
+  document.title = `${product.title} — Velora Secrets`;
+  document.getElementById('productPageTitle').textContent = product.title;
+
+  const metaDescEl = document.querySelector('meta[name="description"]');
+  const productDesc = `${product.title} — ${productDescription.slice(0, 120)}… Vanaf ${fmt(product.price)}, discreet geleverd door Velora Secrets.`;
+  if (metaDescEl) metaDescEl.setAttribute('content', productDesc);
+
+  const canonicalUrl = `https://velorasecrets.nl/product.html?id=${product.id}`;
+  const canonicalEl = document.querySelector('link[rel="canonical"]');
+  if (canonicalEl) canonicalEl.setAttribute('href', canonicalUrl);
+
+  const productLdScript = document.createElement('script');
+  productLdScript.type = 'application/ld+json';
+  productLdScript.textContent = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.title,
+    description: productDescription,
+    brand: { '@type': 'Brand', name: product.vendor },
+    aggregateRating: reviewSummary.count
+      ? { '@type': 'AggregateRating', ratingValue: reviewSummary.average.toFixed(1), reviewCount: reviewSummary.count }
+      : undefined,
+    offers: {
+      '@type': 'Offer',
+      url: canonicalUrl,
+      priceCurrency: 'EUR',
+      price: product.price.toFixed(2),
+      availability: window.VELORA_AVAILABILITY[product.id] === false ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock',
+    },
+  });
+  document.head.appendChild(productLdScript);
+
+  document.getElementById('breadcrumbTitle').textContent = product.title;
+  const catLink = document.getElementById('breadcrumbCategory');
+  catLink.textContent = product.category;
+  catLink.href = `collection.html?category=${encodeURIComponent(product.category)}`;
+
+  const breadcrumbLdScript = document.createElement('script');
+  breadcrumbLdScript.type = 'application/ld+json';
+  breadcrumbLdScript.textContent = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://velorasecrets.nl/' },
+      { '@type': 'ListItem', position: 2, name: product.category, item: `https://velorasecrets.nl/collection.html?category=${encodeURIComponent(product.category)}` },
+      { '@type': 'ListItem', position: 3, name: product.title },
+    ],
+  });
+  document.head.appendChild(breadcrumbLdScript);
+
+  const variantDef = window.VELORA_VARIANTS[product.id];
+  const optionHtml = variantDef
+    ? `
+    <div class="product__option">
+      <label class="product__option-label">${variantDef.label} <span class="product__option-selected" data-option-selected="${variantDef.type}">${variantDef.options[0]}</span></label>
+      <div class="product__option-values" data-option-group="${variantDef.type}">
+        ${variantDef.options.map((opt, i) => `<button type="button" class="option-pill ${i === 0 ? 'is-selected' : ''}">${opt}</button>`).join('')}
+      </div>
+    </div>`
+    : '';
+
+  // ---------- Echte, per-product specificaties (i.p.v. steeds identieke generieke tekst) ----------
+  const productTags = window.VELORA_TAGS[product.id] || [];
+  const productAttrs = window.VELORA_ATTRIBUTES[product.id] || {};
+  const isInStock = window.VELORA_AVAILABILITY[product.id] !== false;
+  const productSpecs = [
+    ['Merk', product.vendor],
+    ['Categorie', product.category],
+    ['Subcategorie', window.VELORA_SUBCATEGORY[product.id] || '—'],
+    ...(productTags.length ? [['Kenmerken', productTags.join(', ')]] : []),
+    ['Ervaringsniveau', productAttrs.experience === 'alle' ? 'Geschikt voor iedereen' : productAttrs.experience === 'beginner' ? 'Geschikt voor beginners' : 'Voor gevorderden'],
+    ['Waterbestendig', productAttrs.waterproof ? 'Ja' : 'Nee'],
+    ['Voorraadstatus', isInStock ? 'Op voorraad' : 'Tijdelijk uitverkocht'],
+    ['Levering', 'Discreet verpakt, geen productomschrijving zichtbaar'],
+  ];
+
+  const section = document.getElementById('productSection');
+  section.innerHTML = `
+    <div class="product__gallery">
+      <div class="product__gallery-main"></div>
+      <div class="product__thumbs">
+        ${[0, 1, 2, 3].map((i) => `<button class="product__thumb ${i === 0 ? 'is-active' : ''}" data-thumb></button>`).join('')}
+      </div>
+    </div>
+    <div class="product__info">
+      <div class="product-card__vendor">${product.vendor}</div>
+      <p class="product__title">${product.title}</p>
+      <div class="product__rating">
+        <svg viewBox="0 0 20 20" fill="var(--gold)"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L10 15l-5.6 3.1 1.4-6.3L1 8.5l6.4-.6z"/></svg>
+        <a href="#reviews" style="color:inherit;">${reviewSummary.average.toFixed(1)} · ${reviewSummary.count} reviews</a>
+      </div>
+      <div class="product__price">
+        <span class="price">${fmt(product.price)}</span>
+        ${product.compareAt ? `<span class="price--compare">${fmt(product.compareAt)}</span>` : ''}
+      </div>
+      <p class="product__tax-note">Inclusief btw. Verzendkosten berekend bij het afrekenen.</p>
+      <p class="product__summary">${productDescription}</p>
+
+      ${optionHtml}
+
+      <div class="product__quantity">
+        <label for="Quantity">Aantal</label>
+        <div class="qty-stepper">
+          <button type="button" id="qtyDecrease">−</button>
+          <input type="number" id="Quantity" value="1" min="1">
+          <button type="button" id="qtyIncrease">+</button>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="btn btn--primary product__add-to-cart"
+        data-add-to-cart='${JSON.stringify({ id: product.id, title: product.title, price: product.price })}'
+      >
+        In winkelwagen — ${fmt(product.price)}
+      </button>
+
+      <button type="button" class="product__wishlist-btn" data-wishlist="${product.id}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.6-10-9.2C.6 8 2.3 4.5 6 4c2.2-.3 4.1 1 6 3 1.9-2 3.8-3.3 6-3 3.7.5 5.4 4 4 7.8C19.5 16.4 12 21 12 21Z"/></svg>
+        Verlanglijst
+      </button>
+
+      <button type="button" class="product__ai-advisor-btn" data-ai-advisor="${product.title.replace(/"/g, '&quot;')}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg>
+        Vraag AI om advies
+      </button>
+
+      <div class="product__trust">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/></svg>Discreet verpakt</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5z"/></svg>Veilig betalen</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 7h11v9H2z"/><path d="M13 10h4l4 3v3h-8z"/></svg>Snelle levering</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>30 dagen bedenktijd</div>
+      </div>
+
+      <div class="product__tabs">
+        <div class="product__tab">
+          <button class="product__tab-toggle" data-tab-toggle aria-expanded="true">Beschrijving <span>+</span></button>
+          <div class="product__tab-body">${productDescription}</div>
+        </div>
+        <div class="product__tab">
+          <button class="product__tab-toggle" data-tab-toggle aria-expanded="false">Specificaties <span>+</span></button>
+          <div class="product__tab-body" hidden>
+            <table class="product__specs">
+              ${productSpecs.map(([k, v]) => `<tr><th>${k}</th><td>${v}</td></tr>`).join('')}
+            </table>
+          </div>
+        </div>
+        <div class="product__tab">
+          <button class="product__tab-toggle" data-tab-toggle aria-expanded="false">Verzending &amp; retour <span>+</span></button>
+          <div class="product__tab-body" hidden>
+            <p>Discreet verpakt in neutrale verpakking, zonder logo. Voor 22:00 besteld = morgen in huis. 30 dagen bedenktijd op ongeopende, verzegelde producten.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // main.js bindt tabs/opties/stepper al bij het laden van de pagina, maar
+  // deze content wordt pas ná dat moment ingevoegd — dus hier opnieuw binden.
+  bindDynamicContent();
+
+  function bindDynamicContent() {
+    document.querySelectorAll('[data-tab-toggle]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const body = btn.nextElementSibling;
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        body.hidden = expanded;
+      });
+    });
+    document.querySelectorAll('[data-option-group]').forEach((group) => {
+      group.addEventListener('click', (e) => {
+        const pill = e.target.closest('.option-pill');
+        if (!pill) return;
+        group.querySelectorAll('.option-pill').forEach((p) => p.classList.remove('is-selected'));
+        pill.classList.add('is-selected');
+        const label = document.querySelector(`[data-option-selected="${group.dataset.optionGroup}"]`);
+        if (label) label.textContent = pill.textContent;
+      });
+    });
+    document.getElementById('qtyIncrease')?.addEventListener('click', () => {
+      const input = document.getElementById('Quantity');
+      input.value = Number(input.value) + 1;
+    });
+    document.getElementById('qtyDecrease')?.addEventListener('click', () => {
+      const input = document.getElementById('Quantity');
+      input.value = Math.max(1, Number(input.value) - 1);
+    });
+    document.querySelectorAll('[data-thumb]').forEach((thumb) => {
+      thumb.addEventListener('click', () => {
+        document.querySelectorAll('[data-thumb]').forEach((t) => t.classList.remove('is-active'));
+        thumb.classList.add('is-active');
+      });
+    });
+  }
+
+  // ---------- Gedeelde mini-productkaart, i.p.v. 'm meerdere keren te dupliceren ----------
+  function miniProductCardHTML(p) {
+    return window.veloraProductCardHTML(p, { showQuickAdd: false });
+  }
+
+  function buildRailSection(eyebrow, heading, products, sectionId) {
+    if (!products.length) return null;
+    const el = document.createElement('section');
+    el.className = 'section';
+    if (sectionId) el.id = sectionId;
+    el.innerHTML = `
+      <div class="section__header section__header--left">
+        <div><div class="eyebrow">${eyebrow}</div><h2>${heading}</h2></div>
+      </div>
+      <div class="product-rail__scroller">
+        ${products.map(miniProductCardHTML).join('')}
+      </div>
+    `;
+    return el;
+  }
+
+  // ---------- Reviews (sterren, gemiddelde, foto-placeholder waar van toepassing) ----------
+  function starRow(rating) {
+    return [1, 2, 3, 4, 5]
+      .map(
+        (n) =>
+          `<svg viewBox="0 0 20 20" width="14" height="14" fill="${n <= Math.round(rating) ? 'var(--gold)' : 'var(--blush)'}"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L10 15l-5.6 3.1 1.4-6.3L1 8.5l6.4-.6z"/></svg>`
+      )
+      .join('');
+  }
+  const reviewsSection = document.createElement('section');
+  reviewsSection.className = 'section';
+  reviewsSection.id = 'reviews';
+  reviewsSection.innerHTML = `
+    <div class="section__header section__header--left">
+      <div>
+        <div class="eyebrow">Reviews</div>
+        <h2>Wat klanten zeggen</h2>
+        <div class="review-average">
+          <span class="review-average__score">${reviewSummary.average.toFixed(1)}</span>
+          <span>${starRow(reviewSummary.average)}</span>
+          <span class="review-average__count">gebaseerd op ${reviewSummary.count} beoordelingen</span>
+        </div>
+      </div>
+    </div>
+    ${
+      reviewSummary.reviews.length
+        ? `<div class="reviews__grid">
+            ${reviewSummary.reviews
+              .map(
+                (r) => `
+              <blockquote class="review-card">
+                <div class="review-card__stars">${starRow(r.rating)}</div>
+                ${r.photo ? '<div class="review-card__photo"></div>' : ''}
+                <p>"${r.text}"</p>
+                <div class="review-card__author">${r.author} — ${r.date}</div>
+              </blockquote>`
+              )
+              .join('')}
+          </div>`
+        : `<p style="color:var(--cognac); font-size:13.5px;">Nog geen reviews voor dit product — wees de eerste.</p>`
+    }
+  `;
+
+  // ---------- Alle rail-secties in de gewenste volgorde samenstellen ----------
+  const frequentlyBought = window.veloraGetFrequentlyBoughtTogether(product, 4);
+  const alsoBought = window.veloraGetAlsoBought(product, 4);
+  const related = window.veloraGetRelatedProducts(product, 4);
+  const recentlyViewed = window.veloraGetRecentlyViewed({ excludeId: product.id, limit: 4 });
+
+  const sectionsInOrder = [
+    reviewsSection,
+    buildRailSection('Vaak gecombineerd', 'Vaak samen gekocht', frequentlyBought),
+    buildRailSection('Populair', 'Klanten kochten ook', alsoBought),
+    buildRailSection('Ontdek meer', 'Misschien ook interessant', related),
+  ].filter(Boolean);
+
+  // Sequentieel invoegen: elke sectie na de vorige, i.p.v. herhaaldelijk
+  // 'afterend' op hetzelfde ankerpunt (dat stapelt in omgekeerde volgorde
+  // en is lastig te volgen). Duidelijker én minder foutgevoelig.
+  let insertAfter = document.getElementById('productSection');
+  sectionsInOrder.forEach((section) => {
+    insertAfter.insertAdjacentElement('afterend', section);
+    insertAfter = section;
+  });
+
+  // Recent bekeken helemaal onderaan de pagina, na alle andere rails.
+  const recentSection = buildRailSection('Zojuist bekeken', 'Recent bekeken producten', recentlyViewed);
+  if (recentSection) document.querySelector('main').appendChild(recentSection);
+
+  // Dit bezoek zelf pas ná het opvragen van "recent bekeken" markeren,
+  // anders staat het huidige product er zelf ook nog net in.
+  window.veloraTrackRecentlyViewed(product.id);
+
+  window.veloraSyncWishlistUI?.();
+})();

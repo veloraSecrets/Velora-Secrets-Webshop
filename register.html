@@ -1,0 +1,84 @@
+/* ============================================================
+   assets/profile-page.js — logica voor profile.html
+   ------------------------------------------------------------
+   Vult het formulier met de echte, ingelogde gebruiker (uit
+   veloraRequireAuth — dezelfde bron als account.html, geen eigen
+   kopie). Opslaan doet een echte PUT naar /api/profile (bestaat
+   nog niet). Vereist: auth.js, vóór dit bestand geladen.
+   ============================================================ */
+(() => {
+  'use strict';
+
+  (async () => {
+    const user = await window.veloraRequireAuth();
+    if (!user) return;
+
+    document.getElementById('accountLoading').hidden = true;
+    document.getElementById('accountContent').hidden = false;
+
+    document.getElementById('profileName').value = user.name || '';
+    document.getElementById('profileEmail').value = user.email || '';
+
+    const form = document.getElementById('profileForm');
+    const messageEl = document.getElementById('profileMessage');
+
+    const fields = {
+      profileName: { validate: (v) => v.trim().length >= 2, message: 'Vul je naam in (minimaal 2 tekens).' },
+      profileEmail: { validate: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()), message: 'Vul een geldig e-mailadres in.' },
+      profileNewPassword: { validate: (v) => v.length === 0 || v.length >= 8, message: 'Een nieuw wachtwoord moet minimaal 8 tekens bevatten.' },
+    };
+
+    function showError(id, message) {
+      const input = document.getElementById(id);
+      const errorEl = document.querySelector(`[data-error-for="${id}"]`);
+      input?.classList.toggle('is-invalid', Boolean(message));
+      if (errorEl) errorEl.textContent = message || '';
+    }
+    Object.keys(fields).forEach((id) => {
+      document.getElementById(id)?.addEventListener('input', () => showError(id, ''));
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      messageEl.innerHTML = '';
+
+      let isValid = true;
+      Object.entries(fields).forEach(([id, rule]) => {
+        const input = document.getElementById(id);
+        const valid = rule.validate(input.value);
+        showError(id, valid ? '' : rule.message);
+        if (!valid) isValid = false;
+      });
+      if (!isValid) return;
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Bezig met opslaan…';
+
+      try {
+        const res = await fetch('/api/profile', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'same-origin',
+          body: JSON.stringify({
+            name: document.getElementById('profileName').value.trim(),
+            email: document.getElementById('profileEmail').value.trim(),
+            newPassword: document.getElementById('profileNewPassword').value || undefined,
+          }),
+        });
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          throw new Error(data.error || `Server gaf status ${res.status}`);
+        }
+        messageEl.innerHTML = `<p class="discount-message discount-message--success">Wijzigingen opgeslagen.</p>`;
+        document.getElementById('profileNewPassword').value = '';
+      } catch (err) {
+        console.error('Profiel opslaan mislukt:', err);
+        messageEl.innerHTML = `<p class="discount-message discount-message--error">Kon niet opslaan (${window.veloraEscapeHTML(err.message)}). Is er nog geen backend gekoppeld aan /api/profile?</p>`;
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Wijzigingen opslaan';
+      }
+    });
+  })();
+})();
