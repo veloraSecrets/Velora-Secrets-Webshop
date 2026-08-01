@@ -1,95 +1,65 @@
 /* ============================================================
-   assets/main.js — algemene sitenavigatie
+   assets/login-page.js — logica voor login.html
    ------------------------------------------------------------
-   Na de architectuur-opsplitsing bevat dit bestand uitsluitend
-   nog navigatie-UI die nergens anders specifiek thuishoort:
-   megamenu, mobiel menu, productrail-scrollpijlen. Winkelwagen,
-   wishlist, zoeken en AI-assistent staan in hun eigen module
-   (cart.js / wishlist.js / search.js / ai.js).
-
-   AUDIT-OPMERKING: de eerdere versie van dit bestand bevatte ook
-   bindingen voor tabs/varianten/hoeveelheid/thumbnails op de
-   productpagina — die deden echter nooit iets, omdat main.js
-   laadt vóórdat product-page.js de content invoegt waar ze op
-   moeten binden (dus 0 gevonden elementen). product-page.js bindt
-   die elementen al correct zelf (na het invoegen). Dat dubbele,
-   niet-functionerende stuk code is bij deze opsplitsing verwijderd.
+   Bevat GEEN eigen authenticatielogica: roept uitsluitend
+   window.veloraLogin (auth.js) aan. Vereist: auth.js, vóór dit
+   bestand geladen.
    ============================================================ */
 (() => {
   'use strict';
 
-  /* Publiek: escaped tekst vóór interpolatie in innerHTML. Gebruik dit
-     ALTIJD wanneer user-input (URL-parameters, formuliervelden,
-     getypte tekst) in een innerHTML-template terechtkomt — anders is
-     het een reflected-XSS-risico. Eén gedeelde functie i.p.v. 'm per
-     bestand te herhalen. */
-  window.veloraEscapeHTML = function (str) {
-    const div = document.createElement('div');
-    div.textContent = str == null ? '' : String(str);
-    return div.innerHTML;
+  const form = document.getElementById('loginForm');
+  const errorBanner = document.getElementById('authFormError');
+
+  const fields = {
+    loginEmail: { validate: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()), message: 'Vul een geldig e-mailadres in.' },
+    loginPassword: { validate: (v) => v.length >= 1, message: 'Vul je wachtwoord in.' },
   };
 
-  /* ---------- Megamenu (hover met sluitvertraging) ---------- */
-  document.querySelectorAll('.nav-item').forEach((item) => {
-    const btn = item.querySelector('button');
-    if (!btn) return;
-    let timer;
-    const open = () => {
-      clearTimeout(timer);
-      document.querySelectorAll('.nav-item').forEach((i) => i !== item && i.classList.remove('is-open'));
-      item.classList.add('is-open');
-    };
-    const closeNow = () => { clearTimeout(timer); item.classList.remove('is-open'); };
-    const closeDelayed = () => { timer = setTimeout(closeNow, 180); };
-    item.addEventListener('mouseenter', open);
-    item.addEventListener('mouseleave', closeDelayed);
-    btn.addEventListener('click', () => (item.classList.contains('is-open') ? closeNow() : open()));
+  function showError(id, message) {
+    const input = document.getElementById(id);
+    const errorEl = document.querySelector(`[data-error-for="${id}"]`);
+    input?.classList.toggle('is-invalid', Boolean(message));
+    if (errorEl) errorEl.textContent = message || '';
+  }
+
+  Object.keys(fields).forEach((id) => {
+    document.getElementById(id)?.addEventListener('input', () => showError(id, ''));
   });
 
-  /* ---------- Mobiel menu ---------- */
-  const mobileNav = document.getElementById('mobileNav');
-  const mobileOverlay = document.getElementById('mobileOverlay');
-  document.getElementById('mobileToggle')?.addEventListener('click', () => {
-    mobileNav.classList.add('is-open');
-    mobileOverlay.classList.add('is-open');
-  });
-  document.getElementById('mobileClose')?.addEventListener('click', () => {
-    mobileNav.classList.remove('is-open');
-    mobileOverlay.classList.remove('is-open');
-  });
-  mobileOverlay?.addEventListener('click', () => {
-    mobileNav.classList.remove('is-open');
-    mobileOverlay.classList.remove('is-open');
-  });
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorBanner.hidden = true;
 
-  /* Collectie-/zoekfilter-drawer (mobiel): gedeelde init-functie i.p.v.
-     dat collection-page.js én search-page.js elk hun eigen kopie van
-     deze open/sluit-logica hebben. Wordt aangeroepen door beide
-     pagina's zodra hun filter-elementen op de pagina staan. */
-  window.veloraInitFilterDrawer = function () {
-    const filterDrawer = document.getElementById('collectionFilters');
-    const filterOverlay = document.getElementById('filterOverlay');
-    const filterCloseBtn = document.getElementById('filterClose');
-    if (!filterDrawer) return;
-
-    document.getElementById('filterToggle')?.addEventListener('click', () => {
-      filterDrawer.classList.add('is-open');
-      filterOverlay.style.display = 'block';
-      filterCloseBtn.style.display = 'block';
+    let isValid = true;
+    Object.entries(fields).forEach(([id, rule]) => {
+      const input = document.getElementById(id);
+      const valid = rule.validate(input.value);
+      showError(id, valid ? '' : rule.message);
+      if (!valid) isValid = false;
     });
-    function closeFilterDrawer() {
-      filterDrawer.classList.remove('is-open');
-      filterOverlay.style.display = 'none';
+    if (!isValid) return;
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Bezig met inloggen…';
+
+    const result = await window.veloraLogin({
+      email: document.getElementById('loginEmail').value.trim(),
+      password: document.getElementById('loginPassword').value,
+    });
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Inloggen';
+
+    if (!result.success) {
+      errorBanner.textContent = result.error;
+      errorBanner.hidden = false;
+      errorBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
     }
-    filterCloseBtn?.addEventListener('click', closeFilterDrawer);
-    filterOverlay?.addEventListener('click', closeFilterDrawer);
-  };
 
-  /* ---------- Rail-scroll (bestsellers e.d.) ---------- */
-  document.querySelectorAll('.rail-arrow').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const rail = btn.closest('section')?.querySelector('.product-rail__scroller');
-      rail?.scrollBy({ left: rail.clientWidth * 0.85 * Number(btn.dataset.scroll), behavior: 'smooth' });
-    });
+    const redirectTarget = new URLSearchParams(window.location.search).get('redirect') || window.VELORA_CONFIG.auth.defaultRedirect;
+    window.location.href = redirectTarget;
   });
 })();

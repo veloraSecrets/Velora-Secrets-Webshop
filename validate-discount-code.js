@@ -1,22 +1,32 @@
 /* ============================================================
-   api/newsletter.js — Vercel serverless function
+   api/create-payment.js — Vercel serverless function
    ------------------------------------------------------------
-   Verwerkt nieuwsbrief-aanmeldingen:
-   1. Genereert een echt unieke kortingscode per aanmelding
-      (WELKOM10-XXXXXX), niet de gedeelde statische WELKOM10-code.
-   2. Slaat het e-mailadres + code op in Vercel KV (voor
-      e-mailmarketing én om de code later te kunnen valideren).
-   3. Verstuurt een welkomstmail met de code via Resend — dezelfde,
-      al werkende integratie als de orderbevestigingen.
+   Maakt een echte Mollie-betaling aan. Draait uitsluitend
+   server-side: MOLLIE_API_KEY komt uit een omgevingsvariabele en
+   is nooit zichtbaar voor de browser (in tegenstelling tot een
+   sleutel die in checkout-page.js zou staan).
 
-   Rate limiting: zelfde bewezen best-effort patroon als
-   api/contact.js en api/supplier/sync-products.js.
+   Wordt aangeroepen door checkout-page.js via:
+     POST /api/create-payment
+     body: { amount, description, orderId, customerEmail }
+
+   Vereist: MOLLIE_API_KEY en SITE_URL als omgevingsvariabelen
+   (zie .env.example). Zonder deze variabelen — bijvoorbeeld bij
+   het lokaal openen van de statische bestanden zonder Vercel —
+   bestaat deze endpoint niet en geeft checkout-page.js een
+   duidelijke foutmelding in plaats van stil te falen.
+
+   Rate limiting is BEWUST best-effort (zelfde patroon als
+   api/contact.js): een in-memory Map per IP-adres, alleen geldig
+   binnen dezelfde warme serverless-instance. Voorkomt ongelimiteerd
+   spammen van Mollie-betalingsaanvragen vanaf één IP; voor harde
+   garanties bij hoog volume is een externe store nodig (bewust niet
+   toegevoegd, nieuwe infrastructuur die niet gevraagd is).
    ============================================================ */
-const { Resend } = require('resend');
-const { kvSet, kvGet } = require('./_kv');
+const { createMollieClient } = require('@mollie/api-client');
 
-const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
-const RATE_LIMIT_MAX_REQUESTS = 5;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minuten
+const RATE_LIMIT_MAX_REQUESTS = 10;
 const recentRequestsByIp = new Map();
 
 function isRateLimited(ip) {
@@ -27,11 +37,6 @@ function isRateLimited(ip) {
   return timestamps.length > RATE_LIMIT_MAX_REQUESTS;
 }
 
-function generateUniqueCode() {
-  const suffix = Math.random().toString(36).slice(2, 8).toUpperCase();
-  return `WELKOM10-${suffix}`;
-}
-
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
@@ -40,62 +45,58 @@ module.exports = async function handler(req, res) {
 
   const ip = (req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'onbekend').split(',')[0].trim();
   if (isRateLimited(ip)) {
-    return res.status(429).json({ error: 'Te veel aanmeldingen. Probeer het over enkele minuten opnieuw.' });
+    return res.status(429).json({ error: 'Te veel betaalpogingen. Probeer het over enkele minuten opnieuw.' });
   }
 
-  const email = (req.body?.email || '').trim().toLowerCase();
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return res.status(400).json({ error: 'Vul een geldig e-mailadres in.' });
+  if (!process.env.MOLLIE_API_KEY) {
+    return res.status(500).json({
+      error: 'MOLLIE_API_KEY ontbreekt. Zet deze omgevingsvariabele in het Vercel-dashboard (zie .env.example).',
+    });
   }
 
-  if (!process.env.RESEND_API_KEY) {
-    return res.status(500).json({ error: 'RESEND_API_KEY ontbreekt. Zet deze omgevingsvariabele in Vercel (zie .env.example).' });
+  const { amount, description, orderId, customerEmail, paymentMethodId } = req.body || {};
+
+  if (!amount || !description || !orderId) {
+    return res.status(400).json({ error: 'Ontbrekende velden: amount, description en orderId zijn verplicht.' });
   }
+  if (typeof amount !== 'number' || amount <= 0) {
+    return res.status(400).json({ error: 'amount moet een positief getal zijn.' });
+  }
+
+  /* Onze eigen betaalmethode-ID's (config.js) vertaald naar Mollie's
+     eigen, officiële methode-waarden — alleen voor de methoden waar
+     die 1-op-1 en met zekerheid bekend zijn. Google Pay en Klarna
+     laten we hier BEWUST weg: Google Pay is bij Mollie geen losse
+     top-level methode (loopt via de creditcard-flow), en voor Klarna
+     bestaan meerdere varianten waarvan de exacte huidige waarde niet
+     met zekerheid vaststaat — een verkeerde waarde zou de hele
+     betaalaanvraag laten mislukken, dus dan laten we Mollie's eigen
+     betaalpagina gewoon alle geactiveerde methoden tonen (zoals nu). */
+  const MOLLIE_METHOD_MAP = {
+    ideal: 'ideal',
+    creditcard: 'creditcard',
+    paypal: 'paypal',
+    applepay: 'applepay',
+    bancontact: 'bancontact',
+  };
+  const mollieMethod = MOLLIE_METHOD_MAP[paymentMethodId];
+
+  const siteUrl = process.env.SITE_URL || `https://${req.headers.host}`;
+  const mollieClient = createMollieClient({ apiKey: process.env.MOLLIE_API_KEY });
 
   try {
-    // Al eerder aangemeld? Geef dezelfde code terug i.p.v. een nieuwe te
-    // genereren — voorkomt dat iemand meerdere welkomstkortingen krijgt
-    // door zich herhaaldelijk aan te melden met hetzelfde adres.
-    const existing = await kvGet(`newsletter:email:${email}`);
-    const isNewSubscriber = !existing;
-    const code = existing?.code || generateUniqueCode();
-
-    await kvSet(`newsletter:email:${email}`, {
-      email,
-      code,
-      subscribedAt: existing?.subscribedAt || new Date().toISOString(),
-    });
-    await kvSet(`newsletter:code:${code}`, {
-      email,
-      discountPercent: 10,
-      used: existing?.used || false,
-      createdAt: existing?.subscribedAt || new Date().toISOString(),
+    const payment = await mollieClient.payments.create({
+      amount: { currency: 'EUR', value: amount.toFixed(2) },
+      description,
+      redirectUrl: `${siteUrl}/checkout.html?order=${encodeURIComponent(orderId)}`,
+      webhookUrl: `${siteUrl}/api/webhook`,
+      metadata: { orderId, customerEmail: customerEmail || null },
+      ...(mollieMethod ? { method: mollieMethod } : {}),
     });
 
-    // Alleen bij een ECHT nieuwe aanmelding een welkomstmail versturen —
-    // bij een herhaalde aanmelding met hetzelfde adres krijgt de
-    // bezoeker anders elke keer opnieuw dezelfde mail (spam-achtig).
-    // De code zelf wordt in beide gevallen gewoon teruggegeven aan het
-    // formulier, dus de gebruikerservaring blijft identiek.
-    if (isNewSubscriber) {
-      const resend = new Resend(process.env.RESEND_API_KEY);
-      await resend.emails.send({
-        from: 'Velora Secrets <noreply@velorasecrets.nl>',
-        to: email,
-        subject: 'Welkom bij Velora Secrets — hier is je 10% kortingscode',
-        html: `
-          <p>Welkom bij Velora Secrets!</p>
-          <p>Bedankt voor je aanmelding. Gebruik onderstaande code bij het afrekenen voor 10% korting op je eerste bestelling:</p>
-          <p style="font-size:20px; font-weight:bold; letter-spacing:1px;">${code}</p>
-          <p>Deze code is persoonlijk en uniek voor jouw aanmelding.</p>
-          <p>Met warme groet,<br>Team Velora Secrets</p>
-        `,
-      });
-    }
-
-    return res.status(200).json({ success: true, code });
+    return res.status(200).json({ checkoutUrl: payment.getCheckoutUrl() });
   } catch (err) {
-    console.error('Nieuwsbrief-aanmelding mislukt:', err.message);
-    return res.status(502).json({ error: 'Aanmelding kon niet verwerkt worden. Probeer het later opnieuw.' });
+    console.error('Mollie payment-aanmaak mislukt:', err);
+    return res.status(502).json({ error: 'Kon geen betaling aanmaken bij Mollie. Controleer de API-sleutel en probeer opnieuw.' });
   }
-};
+}

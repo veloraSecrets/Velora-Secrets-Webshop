@@ -1,117 +1,95 @@
 /* ============================================================
-   assets/newsletter.js — nieuwsbrief-module
+   assets/main.js — algemene sitenavigatie
    ------------------------------------------------------------
-   Enige bron voor nieuwsbrief-aanmeldingen. Koppelt ELK formulier
-   met de klasse .newsletter-form (footer én de popup hieronder) aan
-   het echte /api/newsletter.js-backend — geen dubbele fetch-logica
-   per formulier.
+   Na de architectuur-opsplitsing bevat dit bestand uitsluitend
+   nog navigatie-UI die nergens anders specifiek thuishoort:
+   megamenu, mobiel menu, productrail-scrollpijlen. Winkelwagen,
+   wishlist, zoeken en AI-assistent staan in hun eigen module
+   (cart.js / wishlist.js / search.js / ai.js).
+
+   AUDIT-OPMERKING: de eerdere versie van dit bestand bevatte ook
+   bindingen voor tabs/varianten/hoeveelheid/thumbnails op de
+   productpagina — die deden echter nooit iets, omdat main.js
+   laadt vóórdat product-page.js de content invoegt waar ze op
+   moeten binden (dus 0 gevonden elementen). product-page.js bindt
+   die elementen al correct zelf (na het invoegen). Dat dubbele,
+   niet-functionerende stuk code is bij deze opsplitsing verwijderd.
    ============================================================ */
 (() => {
   'use strict';
 
-  async function submitNewsletterSignup(email, form) {
-    const button = form.querySelector('button[type="submit"]');
-    const originalText = button.textContent;
-    button.disabled = true;
-    button.textContent = 'Bezig...';
+  /* Publiek: escaped tekst vóór interpolatie in innerHTML. Gebruik dit
+     ALTIJD wanneer user-input (URL-parameters, formuliervelden,
+     getypte tekst) in een innerHTML-template terechtkomt — anders is
+     het een reflected-XSS-risico. Eén gedeelde functie i.p.v. 'm per
+     bestand te herhalen. */
+  window.veloraEscapeHTML = function (str) {
+    const div = document.createElement('div');
+    div.textContent = str == null ? '' : String(str);
+    return div.innerHTML;
+  };
 
-    try {
-      const res = await fetch('/api/newsletter', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
-      const data = await res.json().catch(() => ({}));
-
-      if (!res.ok || !data.success) {
-        throw new Error(data.error || `Server gaf status ${res.status}`);
-      }
-
-      form.innerHTML = `<p class="newsletter-form__success">Bedankt voor je aanmelding! Je 10%-kortingscode <strong>${data.code}</strong> is naar je inbox gestuurd.</p>`;
-    } catch (err) {
-      console.error('Nieuwsbrief-aanmelding mislukt:', err);
-      button.disabled = false;
-      button.textContent = originalText;
-      let errorEl = form.querySelector('.newsletter-form__error');
-      if (!errorEl) {
-        errorEl = document.createElement('p');
-        errorEl.className = 'newsletter-form__error';
-        form.appendChild(errorEl);
-      }
-      errorEl.textContent = `Aanmelden lukte niet (${err.message}). Is er nog geen backend gekoppeld aan /api/newsletter?`;
-    }
-  }
-
-  document.querySelectorAll('.newsletter-form').forEach((form) => {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const emailInput = form.querySelector('input[type="email"]');
-      if (!emailInput || !emailInput.checkValidity()) {
-        emailInput?.reportValidity();
-        return;
-      }
-      submitNewsletterSignup(emailInput.value.trim(), form);
-    });
+  /* ---------- Megamenu (hover met sluitvertraging) ---------- */
+  document.querySelectorAll('.nav-item').forEach((item) => {
+    const btn = item.querySelector('button');
+    if (!btn) return;
+    let timer;
+    const open = () => {
+      clearTimeout(timer);
+      document.querySelectorAll('.nav-item').forEach((i) => i !== item && i.classList.remove('is-open'));
+      item.classList.add('is-open');
+    };
+    const closeNow = () => { clearTimeout(timer); item.classList.remove('is-open'); };
+    const closeDelayed = () => { timer = setTimeout(closeNow, 180); };
+    item.addEventListener('mouseenter', open);
+    item.addEventListener('mouseleave', closeDelayed);
+    btn.addEventListener('click', () => (item.classList.contains('is-open') ? closeNow() : open()));
   });
 
-  /* ---------- Nieuwsbrief-popup voor nieuwe bezoekers ----------
-     Verschijnt pas NADAT de leeftijdsgate is bevestigd (nooit
-     gelijktijdig) — hetzij bij exit-intent (muis richting de
-     browserbalk), hetzij na een paar seconden als fallback voor
-     mobiel (waar exit-intent niet bestaat). Eenmalig per sessie,
-     permanent te sluiten via het kruisje. */
-  const popup = document.getElementById('newsletterPopup');
-  if (popup) {
-    const POPUP_SHOWN_KEY = 'velora_newsletter_popup_shown';
-    const AGE_VERIFIED_KEY = 'velora_age_verified';
+  /* ---------- Mobiel menu ---------- */
+  const mobileNav = document.getElementById('mobileNav');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  document.getElementById('mobileToggle')?.addEventListener('click', () => {
+    mobileNav.classList.add('is-open');
+    mobileOverlay.classList.add('is-open');
+  });
+  document.getElementById('mobileClose')?.addEventListener('click', () => {
+    mobileNav.classList.remove('is-open');
+    mobileOverlay.classList.remove('is-open');
+  });
+  mobileOverlay?.addEventListener('click', () => {
+    mobileNav.classList.remove('is-open');
+    mobileOverlay.classList.remove('is-open');
+  });
 
-    function popupAlreadyHandled() {
-      try {
-        return !!(sessionStorage.getItem(POPUP_SHOWN_KEY) || localStorage.getItem('velora_newsletter_dismissed'));
-      } catch (e) {
-        return false; // storage niet beschikbaar — dan liever wél tonen dan de kans mislopen
-      }
-    }
+  /* Collectie-/zoekfilter-drawer (mobiel): gedeelde init-functie i.p.v.
+     dat collection-page.js én search-page.js elk hun eigen kopie van
+     deze open/sluit-logica hebben. Wordt aangeroepen door beide
+     pagina's zodra hun filter-elementen op de pagina staan. */
+  window.veloraInitFilterDrawer = function () {
+    const filterDrawer = document.getElementById('collectionFilters');
+    const filterOverlay = document.getElementById('filterOverlay');
+    const filterCloseBtn = document.getElementById('filterClose');
+    if (!filterDrawer) return;
 
-    function showPopupOnce() {
-      if (popupAlreadyHandled() || !popup.hidden) return;
-      popup.hidden = false;
-      try { sessionStorage.setItem(POPUP_SHOWN_KEY, '1'); } catch (e) { /* negeren */ }
-    }
-
-    function schedulePopup() {
-      if (popupAlreadyHandled()) return;
-
-      // Exit-intent: muis beweegt richting de browserbalk (verlaat de pagina bovenaan).
-      const onMouseLeave = (e) => {
-        if (e.clientY <= 0) {
-          showPopupOnce();
-          document.removeEventListener('mouseout', onMouseLeave);
-        }
-      };
-      document.addEventListener('mouseout', onMouseLeave);
-
-      // Fallback voor mobiel/touch (geen exit-intent mogelijk): na 8 seconden.
-      setTimeout(showPopupOnce, 8000);
-    }
-
-    let ageVerified = false;
-    try { ageVerified = localStorage.getItem(AGE_VERIFIED_KEY) === '1'; } catch (e) { /* blijft false */ }
-
-    if (ageVerified) {
-      schedulePopup();
-    } else {
-      // Nog niet bevestigd: wachten op het signaal van age-verification.js
-      // in plaats van de popup gelijktijdig met de leeftijdsgate te tonen.
-      document.addEventListener('velora:age-verified', schedulePopup, { once: true });
-    }
-
-    document.getElementById('newsletterPopupClose')?.addEventListener('click', () => {
-      popup.hidden = true;
-      try { localStorage.setItem('velora_newsletter_dismissed', '1'); } catch (e) { /* negeren */ }
+    document.getElementById('filterToggle')?.addEventListener('click', () => {
+      filterDrawer.classList.add('is-open');
+      filterOverlay.style.display = 'block';
+      filterCloseBtn.style.display = 'block';
     });
-    popup.addEventListener('click', (e) => {
-      if (e.target === popup) popup.hidden = true;
+    function closeFilterDrawer() {
+      filterDrawer.classList.remove('is-open');
+      filterOverlay.style.display = 'none';
+    }
+    filterCloseBtn?.addEventListener('click', closeFilterDrawer);
+    filterOverlay?.addEventListener('click', closeFilterDrawer);
+  };
+
+  /* ---------- Rail-scroll (bestsellers e.d.) ---------- */
+  document.querySelectorAll('.rail-arrow').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const rail = btn.closest('section')?.querySelector('.product-rail__scroller');
+      rail?.scrollBy({ left: rail.clientWidth * 0.85 * Number(btn.dataset.scroll), behavior: 'smooth' });
     });
-  }
+  });
 })();

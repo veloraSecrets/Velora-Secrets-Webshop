@@ -8,7 +8,7 @@ staat: wat werkt, wat er is toegevoegd, en wat nog open staat. 23 pagina's,
 
 ### Webshop-kern
 - 141 producten, 16 merken, volledige catalogus met zoeken/filteren
-- Winkelwagen, wishlist, kortingscodes (statisch én dynamisch, zie Rewards/nieuwsbrief)
+- Winkelwagen, wishlist, kortingscodes (statisch én dynamisch via Rewards)
 - Checkout met Mollie (iDEAL, creditcard, PayPal, Apple Pay, Bancontact e.a.)
 - Orderbevestiging per e-mail via Resend, betaalstatus altijd opnieuw geverifieerd bij Mollie zelf (nooit vertrouwd op de webhook-body)
 - Contactformulier met honeypot + rate limiting, écht werkend via Resend
@@ -22,6 +22,9 @@ Verschijnt nu pas ná leeftijdsbevestiging (nooit gelijktijdig), getriggerd door
 
 ### Velora AI: alleen het icoon standaard
 Het automatische-begroetingsbubbel-mechanisme is volledig verwijderd (niet alleen uitgeschakeld) — JS-logica, HTML op alle 23 pagina's, CSS en de nu-ongebruikte vertaalsleutels. De chat opent voortaan uitsluitend na een klik op het icoon.
+
+### Nieuwsbrief volledig verwijderd
+Op verzoek volledig weggehaald: het formulier (footer + popup), `newsletter.js`, `api/newsletter.js`, alle bijbehorende CSS, en de nieuwsbrief-vermelding in de privacyverklaring (alle 7 talen). Velora Rewards is hierdoor niet geraakt — die gebruikt dezelfde onderliggende kortingscode-opslag (nu neutraal hernoemd van `newsletter:code:` naar `discount:code:`) en blijft volledig functioneel, opnieuw end-to-end getest.
 
 ### Footer & contact geoptimaliseerd
 Van 6 naar 2 e-mailadressen (support@ + info@) — overzichtelijker en professioneler, zowel in de footer als op de contactpagina.

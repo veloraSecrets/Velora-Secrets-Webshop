@@ -242,7 +242,7 @@
 
     <article class="legal-content-card">
       <h2 data-i18n="priv_h_purpose">Waarvoor gebruiken we jouw gegevens</h2>
-      <p data-i18n="priv_p_purpose">Uitsluitend voor het verwerken van bestellingen, klantenservice, en — met jouw toestemming — het versturen van onze nieuwsbrief. We verkopen jouw gegevens nooit aan derden.</p>
+      <p data-i18n="priv_p_purpose">Uitsluitend voor het verwerken van bestellingen en klantenservice. We verkopen jouw gegevens nooit aan derden.</p>
     </article>
 
     <article class="legal-content-card">
@@ -272,17 +272,6 @@
     </article>
   </div>
 </main>
-
-<div class="footer-newsletter">
-  <div class="footer-newsletter__inner">
-    <div><h2>Blijf op de hoogte</h2><p>Ontvang exclusieve aanbiedingen, nieuwe collecties en inspirerende tips rechtstreeks in je inbox.</p></div>
-    <form class="newsletter-form">
-      <label for="newsletterEmail" class="visually-hidden">E-mailadres</label>
-      <input type="email" id="newsletterEmail" name="email" placeholder="jouw@email.nl" autocomplete="email" required>
-      <button type="submit" class="btn btn--primary">Schrijf je in</button>
-    </form>
-  </div>
-</div>
 
 <div class="footer-trust">
   <div class="footer-trust__inner">
@@ -341,21 +330,6 @@
   </div>
 </div>
 
-<!-- Nieuwsbrief-popup (nieuwe bezoekers) -->
-<div class="newsletter-popup" id="newsletterPopup" hidden>
-  <div class="newsletter-popup__card">
-    <button type="button" class="newsletter-popup__close" id="newsletterPopupClose" aria-label="Sluiten">✕</button>
-    <div class="eyebrow">Welkom bij Velora Secrets</div>
-    <h2>Ontvang 10% korting op je eerste bestelling</h2>
-    <p>Schrijf je in voor onze nieuwsbrief en ontvang direct een unieke kortingscode in je inbox.</p>
-    <form class="newsletter-form">
-      <label for="newsletterPopupEmail" class="visually-hidden">E-mailadres</label>
-      <input type="email" id="newsletterPopupEmail" name="email" placeholder="jouw@email.nl" autocomplete="email" required>
-      <button type="submit" class="btn btn--primary">Ontvang mijn 10% korting</button>
-    </form>
-  </div>
-</div>
-
 <!-- AI assistant -->
 <div class="ai-mascot-wrap">
   <button class="ai-trigger" id="aiTrigger" aria-label="Open Velora Assistant">
@@ -408,7 +382,6 @@
 <script src="main.js"></script>
 <script src="analytics-config.js"></script>
 <script src="analytics.js"></script>
-<script src="newsletter.js"></script>
 
 </body>
 </html>

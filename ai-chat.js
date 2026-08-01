@@ -48,7 +48,7 @@ module.exports = async function handler(req, res) {
     const code = generateRewardCode();
 
     await kvSet(`rewards:email:${email}`, { points: currentPoints - pointsRequired });
-    await kvSet(`newsletter:code:${code}`, {
+    await kvSet(`discount:code:${code}`, {
       email,
       discountPercent: null,
       discountEuros,

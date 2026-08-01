@@ -217,15 +217,6 @@
   .review-average__score{ font-family:var(--font-display); font-size:22px; color:var(--espresso); }
   .review-average__count{ font-size:12.5px; color:var(--cognac); }
 
-  /* ---------- Newsletter + footer ---------- */
-  .footer-newsletter{ background:var(--footer-brown); color:var(--cream-2); }
-  .footer-newsletter__inner{ max-width:1400px; margin:0 auto; padding:52px 32px; display:flex; justify-content:space-between; align-items:center; gap:32px; flex-wrap:wrap; }
-  .footer-newsletter h2{ font-family:var(--font-display); font-weight:450; font-size:24px; color:var(--cream); margin-bottom:6px; }
-  .footer-newsletter p{ font-size:14px; color:var(--gold-soft); }
-  .newsletter-form{ display:flex; gap:10px; flex-wrap:wrap; }
-  .newsletter-form input{ min-width:260px; padding:14px 18px; border-radius:999px; border:1px solid rgba(248,241,231,.25); background:rgba(248,241,231,.06); color:var(--cream); }
-  .newsletter-form .btn--primary{ background:var(--gold); color:var(--espresso); }
-
   .footer-trust{ border-top:1px solid rgba(248,241,231,.1); border-bottom:1px solid rgba(248,241,231,.1); background:var(--footer-brown); }
   .footer-trust__inner{ max-width:1400px; margin:0 auto; padding:18px 32px; display:flex; flex-wrap:wrap; gap:16px 32px; justify-content:center; }
   .footer-trust__inner span{ display:flex; align-items:center; gap:8px; font-size:12.5px; color:var(--gold-soft); }
@@ -287,20 +278,6 @@
   .age-gate__actions .btn{ width:100%; justify-content:center; }
   .age-gate__footnote{ font-size:11.5px; color:var(--cognac); margin-top:20px; }
   .age-gate__footnote a{ text-decoration:underline; }
-
-  /* ============================================================
-     Nieuwsbrief-popup
-     ============================================================ */
-  .newsletter-popup{ position:fixed; inset:0; z-index:280; background:rgba(46,29,20,.5); display:flex; align-items:center; justify-content:center; padding:20px; animation:newsletter-popup-fade .25s var(--ease) both; }
-  .newsletter-popup__card{ position:relative; background:var(--white); border-radius:var(--radius-lg); max-width:440px; width:100%; padding:40px 36px; text-align:center; box-shadow:0 30px 70px rgba(46,29,20,.25); animation:newsletter-popup-in .35s var(--ease) both; }
-  .newsletter-popup__card h2{ font-family:var(--font-display); font-weight:450; font-size:clamp(22px,3vw,26px); margin:8px 0 12px; }
-  .newsletter-popup__card p{ font-size:13.5px; color:var(--cognac); margin-bottom:20px; }
-  .newsletter-popup__close{ position:absolute; top:8px; right:8px; width:36px; height:36px; display:flex; align-items:center; justify-content:center; font-size:16px; color:var(--cognac); border-radius:50%; transition:background .15s var(--ease); }
-  .newsletter-popup__close:hover{ background:var(--blush); }
-  @keyframes newsletter-popup-fade{ from{ opacity:0; } to{ opacity:1; } }
-  @keyframes newsletter-popup-in{ from{ opacity:0; transform:translateY(14px) scale(.97); } to{ opacity:1; transform:translateY(0) scale(1); } }
-  .newsletter-form__success{ font-size:14px; color:var(--espresso); line-height:1.6; }
-  .newsletter-form__error{ font-size:12px; color:#8A2E2E; margin-top:8px; }
 
   .ai-trigger{ position:relative; bottom:auto; right:auto; z-index:auto; width:56px; height:56px; border-radius:50%; background:var(--espresso); box-shadow:0 12px 30px rgba(46,29,20,.28); display:flex; align-items:center; justify-content:center; transition:transform .2s var(--ease); animation:ai-mascot-idle 4.5s ease-in-out infinite, ai-mascot-wave 6s ease-in-out infinite; }
   .ai-trigger:hover{ transform:scale(1.06); animation-play-state:paused; }
@@ -368,7 +345,6 @@
     .brand-story__inner{ grid-template-columns:1fr; gap:24px; }
     .reviews__grid{ grid-template-columns:1fr; }
     .footer-main__inner{ grid-template-columns:1fr 1fr; padding:36px 20px; }
-    .footer-newsletter__inner{ flex-direction:column; align-items:flex-start; padding:36px 20px; }
     .ai-panel{ width:100vw; height:100vh; height:100dvh; bottom:0; right:0; border-radius:0; }
     .product{ grid-template-columns:1fr; padding:24px 20px 0; gap:28px; }
     .collection-body{ grid-template-columns:1fr; padding:20px 20px 48px; }
@@ -382,7 +358,7 @@
     .brands-grid{ grid-template-columns:repeat(2,1fr); }
     .homepage-brands-grid{ grid-template-columns:repeat(2,1fr); }
   }
-  @media (max-width:600px){ .footer-main__inner{ grid-template-columns:1fr; } .not-found-page{ padding:40px 20px 56px; } .newsletter-popup__card{ padding:32px 24px; } .rewards-lookup__row{ flex-direction:column; } .rewards-tier{ flex-direction:column; align-items:flex-start; gap:10px; } .age-gate__card{ padding:32px 26px; } }
+  @media (max-width:600px){ .footer-main__inner{ grid-template-columns:1fr; } .not-found-page{ padding:40px 20px 56px; } .rewards-lookup__row{ flex-direction:column; } .rewards-tier{ flex-direction:column; align-items:flex-start; gap:10px; } .age-gate__card{ padding:32px 26px; } }
 
 /* ============================================================
    Productpagina

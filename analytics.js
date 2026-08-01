@@ -57,8 +57,6 @@
       document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
       overlay.remove();
-      // Nu pas mag de nieuwsbrief-popup eventueel verschijnen — zie newsletter.js.
-      document.dispatchEvent(new CustomEvent('velora:age-verified'));
     });
 
     document.getElementById('ageGateDeny').addEventListener('click', () => {

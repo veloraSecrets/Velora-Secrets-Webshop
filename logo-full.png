@@ -21,7 +21,7 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const record = await kvGet(`newsletter:code:${code}`);
+    const record = await kvGet(`discount:code:${code}`);
     if (!record) {
       return res.status(200).json({ valid: false, error: 'Deze kortingscode is niet geldig.' });
     }
