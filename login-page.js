@@ -54,7 +54,7 @@
 <script src="age-verification.js"></script>
 <a href="#main" class="skip-link">Ga direct naar inhoud</a>
 
-<div class="topbar">Discreet verpakt, geen logo op de doos · Voor 22:00 besteld, morgen in huis · Gratis verzending vanaf €50</div>
+<div class="topbar">Discreet verpakt · Veilig betalen · Klantenservice die voor je klaarstaat</div>
 
 <header class="site-header">
   <div class="header__inner">
@@ -228,7 +228,7 @@
   <div class="usp-strip">
     <div class="usp-strip__inner">
       <div class="usp-strip__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/></svg><div><span class="usp-strip__title">Discreet verpakt</span><span class="usp-strip__sub">Neutrale verpakking, geen logo</span></div></div>
-      <div class="usp-strip__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 7h11v9H2z"/><path d="M13 10h4l4 3v3h-8z"/><circle cx="6.5" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg><div><span class="usp-strip__title">Snelle levering</span><span class="usp-strip__sub">Voor 22:00 besteld, morgen in huis</span></div></div>
+      <div class="usp-strip__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 7h11v9H2z"/><path d="M13 10h4l4 3v3h-8z"/><circle cx="6.5" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg><div><span class="usp-strip__title">Klantenservice</span><span class="usp-strip__sub">Staat voor je klaar</span></div></div>
       <div class="usp-strip__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5z"/></svg><div><span class="usp-strip__title">Veilig betalen</span><span class="usp-strip__sub">100% versleuteld</span></div></div>
       <div class="usp-strip__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m12 3 2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 17l-5.6 3.1 1.4-6.3L3 9.5l6.4-.6z"/></svg><div><span class="usp-strip__title">Premium kwaliteit</span><span class="usp-strip__sub">Zorgvuldig geselecteerd</span></div></div>
       <div class="usp-strip__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.6-10-9.2C.6 8 2.3 4.5 6 4c2.2-.3 4.1 1 6 3 1.9-2 3.8-3.3 6-3 3.7.5 5.4 4 4 7.8C19.5 16.4 12 21 12 21Z"/></svg><div><span class="usp-strip__title">Voor hem, haar &amp; koppels</span><span class="usp-strip__sub">Voor ieder verlangen</span></div></div>
@@ -344,6 +344,16 @@
       <h2>Jouw persoonlijke shopping assistent</h2>
       <p>Twijfel je welk product het beste bij je past? Onze assistent helpt je bij het vinden van producten die aansluiten bij jouw wensen, ervaring en voorkeuren.</p>
       <button class="btn btn--primary" id="aiTeaserOpen">Stel je vraag <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </div>
+  </section>
+
+  <!-- Deel jouw ervaring -->
+  <section class="section review-cta">
+    <div class="review-cta__inner">
+      <div class="eyebrow">Deel jouw ervaring</div>
+      <h2>Ben jij één van onze eerste klanten?</h2>
+      <p>Laat een eerlijke beoordeling achter en help andere bezoekers bij hun keuze.</p>
+      <button type="button" class="btn btn--primary" id="writeReviewBtn" disabled title="Reviewsysteem volgt binnenkort">Schrijf een review</button>
     </div>
   </section>
 </main>

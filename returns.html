@@ -74,7 +74,7 @@
 <script src="age-verification.js"></script>
 <a href="#main" class="skip-link">Ga direct naar inhoud</a>
 
-<div class="topbar">Discreet verpakt, geen logo op de doos · Voor 22:00 besteld, morgen in huis · Gratis verzending vanaf €50</div>
+<div class="topbar">Discreet verpakt · Veilig betalen · Klantenservice die voor je klaarstaat</div>
 
 <header class="site-header">
   <div class="header__inner">

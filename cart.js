@@ -37,6 +37,6 @@
       .join('');
   }
 
-  searchInput.addEventListener('input', () => render(searchInput.value));
+  searchInput?.addEventListener('input', () => render(searchInput.value));
   render('');
 })();

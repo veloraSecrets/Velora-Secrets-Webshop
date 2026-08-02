@@ -197,6 +197,12 @@
   .ai-teaser .btn--primary{ background:var(--gold); color:var(--espresso); }
   .ai-teaser .btn--primary:hover{ background:var(--gold-soft); }
 
+  .review-cta{ background:var(--sage); }
+  .review-cta__inner{ max-width:640px; margin:0 auto; padding:56px 32px; text-align:center; }
+  .review-cta__inner h2{ font-family:var(--font-display); font-weight:450; font-size:clamp(24px,3vw,30px); margin:8px 0 12px; }
+  .review-cta__inner p{ font-size:14.5px; color:var(--espresso); margin-bottom:24px; }
+  #writeReviewBtn:disabled{ opacity:.55; cursor:not-allowed; }
+
   .footer-trust{ border-top:1px solid rgba(248,241,231,.1); border-bottom:1px solid rgba(248,241,231,.1); background:var(--footer-brown); }
   .footer-trust__inner{ max-width:1400px; margin:0 auto; padding:18px 32px; display:flex; flex-wrap:wrap; gap:16px 32px; justify-content:center; }
   .footer-trust__inner span{ display:flex; align-items:center; gap:8px; font-size:12.5px; color:var(--gold-soft); }

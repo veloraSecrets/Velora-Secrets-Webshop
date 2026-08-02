@@ -35,6 +35,15 @@ Dode code verwijderd (`veloraT`, een wees-functie van de allang verwijderde AI-b
 Uitgebreide AI-test met 20+ vragen (FAQ's, categorieën, productvragen, edge cases als lege/onzinnige invoer, hoofdletters, leestekens) — alle correct afgehandeld.
 Bevestigd: geen Cloudinary-integratie in dit project (producten gebruiken CSS-gradient-placeholders, geen externe afbeeldingshost).
 
+### Eerlijke content: beloftes en reviews
+Ongegarandeerde leveringsbelofte ("Voor 22:00 besteld, morgen in huis") overal verwijderd (topbar, USP-strip, verzendbeleid × 7 talen, elke productpagina) — vervangen door neutrale, wel waarmaakbare tekst. Nieuwe "Deel jouw ervaring"-sectie op de homepage met een bewust uitgeschakelde "Schrijf een review"-knop (eerlijk: nog geen echt reviewsysteem gekoppeld), klaar om later aan een echt systeem te koppelen.
+
+### Defensieve fix
+`brands-page.js`: ontbrekende null-veiligheid op een event-listener toegevoegd (voorkwam een mogelijke volledige scriptcrash als het zoekveld ooit zou ontbreken).
+
+### Diagnose: gerapporteerde "kapotte" onderdelen bleken aan de broncode-kant correct
+AI-knop "Vraag Velora AI", de merkenpagina, de hero-afbeelding en het logo zijn stuk voor stuk grondig gecontroleerd (HTML-balans, CSS-koppeling, JS-functionaliteit, daadwerkelijke bestandsvaliditeit) en bleken alle vier 100% correct in de broncode. Dit wijst op een verouderde/kapotte deployment, niet op een codefout — zie de eerdere GitHub-uploadproblematiek in dit traject.
+
 ### Footer & contact geoptimaliseerd
 Van 6 naar 2 e-mailadressen (support@ + info@) — overzichtelijker en professioneler, zowel in de footer als op de contactpagina.
 
