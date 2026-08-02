@@ -25,8 +25,7 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const record = await kvGet(`rewards:email:${email}`);
-    const points = record?.points || 0;
+    const points = (await kvGet(`rewards:points:${email}`)) || 0;
 
     return res.status(200).json({
       email,

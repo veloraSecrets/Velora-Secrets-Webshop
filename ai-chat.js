@@ -8,7 +8,7 @@
    hergebruikt kan worden zonder enige wijziging — geen dubbele
    kortingslogica.
    ============================================================ */
-const { kvGet, kvSet } = require('./_kv');
+const { kvSet, kvIncrBy } = require('./_kv');
 
 const REWARD_TIERS = {
   500: 5,
@@ -36,18 +36,25 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: 'Ongeldig aantal punten om in te wisselen. Kies 500 of 1000.' });
   }
 
-  try {
-    const record = await kvGet(`rewards:email:${email}`);
-    const currentPoints = record?.points || 0;
+  const key = `rewards:points:${email}`;
 
-    if (currentPoints < pointsRequired) {
-      return res.status(400).json({ error: `Je hebt niet genoeg punten (${currentPoints}/${pointsRequired}).` });
+  try {
+    /* Atomaire decrement — Redis serialiseert gelijktijdige aanroepen op
+       dezelfde sleutel, dus twee verzoeken kunnen nooit allebei met
+       hetzelfde (verouderde) saldo doorgaan zoals bij lezen-dan-schrijven
+       wél zou kunnen (dubbel-uitgeven-risico). Wordt het saldo negatief,
+       dan draaien we de decrement direct terug — geen punten verloren,
+       geen dubbele inwisseling mogelijk. */
+    const newBalance = await kvIncrBy(key, -pointsRequired);
+
+    if (newBalance < 0) {
+      await kvIncrBy(key, pointsRequired); // terugdraaien
+      return res.status(400).json({ error: `Je hebt niet genoeg punten (${newBalance + pointsRequired}/${pointsRequired}).` });
     }
 
     const discountEuros = REWARD_TIERS[pointsRequired];
     const code = generateRewardCode();
 
-    await kvSet(`rewards:email:${email}`, { points: currentPoints - pointsRequired });
     await kvSet(`discount:code:${code}`, {
       email,
       discountPercent: null,
@@ -56,7 +63,7 @@ module.exports = async function handler(req, res) {
       createdAt: new Date().toISOString(),
     });
 
-    return res.status(200).json({ success: true, code, discountEuros, remainingPoints: currentPoints - pointsRequired });
+    return res.status(200).json({ success: true, code, discountEuros, remainingPoints: newBalance });
   } catch (err) {
     console.error('Rewards-inwisseling mislukt:', err.message);
     return res.status(502).json({ error: 'Inwisselen lukte niet. Probeer het later opnieuw.' });

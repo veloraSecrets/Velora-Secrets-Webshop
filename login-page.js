@@ -202,10 +202,6 @@
   <!-- Hero -->
   <section class="hero">
     <div class="hero__content-in">
-      <div class="hero__rating">
-        <div class="hero__stars">★★★★★</div>
-        <span style="margin-left:-4px">4,8/5 · 12.400+ tevreden klanten</span>
-      </div>
       <div class="eyebrow">Welkom bij Velora Secrets</div>
       <h1 data-i18n="hero_title">Ontdek jouw nieuwe favoriet.</h1>
       <p class="lede" data-i18n="hero_subtitle">Premium seksspeeltjes, lingerie en BDSM voor hem, haar en koppels. Discreet verpakt, snel geleverd en altijd van topkwaliteit.</p>
@@ -270,15 +266,6 @@
       <div><div class="eyebrow">Tijdelijk voordeel</div><h2>Aanbiedingen</h2><p style="margin-top:6px">Nu met korting, op = op.</p></div>
     </div>
     <div class="product-rail__scroller" id="offersRail"></div>
-    <div class="rail-arrows"><button class="rail-arrow" data-scroll="-1" aria-label="Vorige producten">←</button><button class="rail-arrow" data-scroll="1" aria-label="Volgende producten">→</button></div>
-  </section>
-
-  <!-- Meest gekozen -->
-  <section class="section" id="meestgekozen">
-    <div class="section__header section__header--left">
-      <div><div class="eyebrow">Klantfavoriet</div><h2>Meest gekozen</h2><p style="margin-top:6px">De producten met de meeste reviews van onze klanten.</p></div>
-    </div>
-    <div class="product-rail__scroller" id="mostChosenRail"></div>
     <div class="rail-arrows"><button class="rail-arrow" data-scroll="-1" aria-label="Vorige producten">←</button><button class="rail-arrow" data-scroll="1" aria-label="Volgende producten">→</button></div>
   </section>
 
@@ -357,16 +344,6 @@
       <h2>Jouw persoonlijke shopping assistent</h2>
       <p>Twijfel je welk product het beste bij je past? Onze assistent helpt je bij het vinden van producten die aansluiten bij jouw wensen, ervaring en voorkeuren.</p>
       <button class="btn btn--primary" id="aiTeaserOpen">Stel je vraag <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-    </div>
-  </section>
-
-  <!-- Reviews -->
-  <section class="section">
-    <div class="section__header"><div class="eyebrow">Wat klanten zeggen</div><h2>Discretie, kwaliteit en persoonlijke service</h2></div>
-    <div class="reviews__grid">
-      <blockquote class="review-card"><div class="review-card__stars">★★★★★</div><p>"Supersnel geleverd en echt niemand die kon zien wat er in het pakket zat. Precies waar ik naar op zoek was."</p><div class="review-card__author">— Merel V.</div></blockquote>
-      <blockquote class="review-card"><div class="review-card__stars">★★★★★</div><p>"De klantenservice dacht actief mee toen ik twijfelde tussen twee producten. Voelde echt persoonlijk."</p><div class="review-card__author">— Thomas B.</div></blockquote>
-      <blockquote class="review-card"><div class="review-card__stars">★★★★★</div><p>"Kwaliteit overtreft de prijs ruimschoots. Wij bestellen inmiddels al voor de derde keer."</p><div class="review-card__author">— Sanne &amp; Kevin</div></blockquote>
     </div>
   </section>
 </main>
@@ -496,12 +473,10 @@
 
   const ALL = window.VELORA_PRODUCTS;
 
-  /* Bestsellers — AUDIT-FIX: toonde voorheen alle 141 producten
-     ongefilterd (was onschuldig bij 8 producten, nu een echte bug).
-     Nu echt gefilterd op het Bestseller-badge, hoogst beoordeeld eerst. */
+  /* Bestsellers — echt gefilterd op het Bestseller-badge. */
   renderRail(
     'bestsellerRail',
-    ALL.filter((p) => p.badge === 'Bestseller').sort((a, b) => b.reviews - a.reviews).slice(0, 12)
+    ALL.filter((p) => p.badge === 'Bestseller').sort((a, b) => a.id - b.id).slice(0, 12)
   );
 
   /* Aanbiedingen — producten met het Sale-badge (hebben altijd een
@@ -509,15 +484,6 @@
   renderRail(
     'offersRail',
     ALL.filter((p) => p.badge === 'Sale' && p.compareAt).sort((a, b) => (b.compareAt - b.price) - (a.compareAt - a.price)).slice(0, 12)
-  );
-
-  /* Meest gekozen — data-gegrond op het daadwerkelijke reviewaantal
-     (hoe vaker beoordeeld, hoe vaker gekocht) over ALLE producten,
-     bewust los van het Bestseller-badge hierboven — dit is de
-     catalogus-brede top, niet een curated selectie. */
-  renderRail(
-    'mostChosenRail',
-    [...ALL].sort((a, b) => b.reviews - a.reviews).slice(0, 12)
   );
 
   /* Nieuw binnen — Nieuw-badge, meest recent (hoogste ID) eerst. */
@@ -529,7 +495,7 @@
   /* Populair bij koppels */
   renderRail(
     'couplesRail',
-    ALL.filter((p) => p.category === 'Voor Koppels').sort((a, b) => b.rating - a.rating).slice(0, 12)
+    ALL.filter((p) => p.category === 'Voor Koppels').sort((a, b) => a.id - b.id).slice(0, 12)
   );
 
   /* Nieuwe lingeriecollectie */
@@ -538,12 +504,11 @@
     ALL.filter((p) => p.category === 'Lingerie').sort((a, b) => b.id - a.id).slice(0, 12)
   );
 
-  /* Cadeautips — hoog beoordeeld, verspreid over categorieën i.p.v.
-     allemaal uit dezelfde hoek (max. 2 per categorie voor variatie). */
+  /* Cadeautips — verspreid over categorieën i.p.v. allemaal uit
+     dezelfde hoek (max. 2 per categorie voor variatie). */
   (() => {
     const perCategory = {};
-    const picks = ALL.filter((p) => p.rating >= 4.7)
-      .sort((a, b) => b.rating - a.rating)
+    const picks = ALL
       .filter((p) => {
         perCategory[p.category] = (perCategory[p.category] || 0) + 1;
         return perCategory[p.category] <= 2;
@@ -561,8 +526,8 @@
     if (recent.length >= 3) {
       renderRail('recommendedRail', recent);
     } else {
-      document.getElementById('recommendedDesc').textContent = 'Onze hoogst gewaardeerde producten — bekijk een paar producten om hier persoonlijke aanbevelingen te zien.';
-      renderRail('recommendedRail', [...ALL].sort((a, b) => b.rating - a.rating).slice(0, 12));
+      document.getElementById('recommendedDesc').textContent = 'Een greep uit onze collectie — bekijk een paar producten om hier persoonlijke aanbevelingen te zien.';
+      renderRail('recommendedRail', ALL.filter((p) => p.badge === 'Bestseller' || p.badge === 'Nieuw').slice(0, 12));
     }
   })();
 

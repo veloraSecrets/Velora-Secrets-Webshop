@@ -22,10 +22,15 @@
     renderCart();
   }
   window.veloraAddToCart = function (product, qty = 1) {
+    // Validatie: alleen positieve, hele aantallen, met een redelijk
+    // maximum — voorkomt zowel manipulatie via negatieve hoeveelheden
+    // (die het totaalbedrag omlaag zouden trekken) als absurd grote,
+    // onbedoelde aantallen.
+    const safeQty = Math.min(Math.max(Math.round(Number(qty)) || 1, 1), 99);
     const cart = getCart();
     const existing = cart.find((i) => i.id === product.id);
-    if (existing) existing.qty += qty;
-    else cart.push({ ...product, qty });
+    if (existing) existing.qty = Math.min(existing.qty + safeQty, 99);
+    else cart.push({ ...product, qty: safeQty });
     setCart(cart);
     openCart();
   };
@@ -127,10 +132,11 @@
     const cart = getCart();
     const item = cart.find((i) => i.id === id);
     if (!item) return;
-    if (qty <= 0) {
+    const safeQty = Math.round(Number(qty));
+    if (!safeQty || safeQty <= 0) {
       setCart(cart.filter((i) => i.id !== id));
     } else {
-      item.qty = qty;
+      item.qty = Math.min(safeQty, 99);
       setCart(cart);
     }
   };

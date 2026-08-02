@@ -72,7 +72,7 @@ window.VELORA_CONFIG = {
     answers: [
       { kw: ['verzend', 'verzond', 'bezorg', 'levertijd', 'discreet', 'logo'], a: 'Alles wordt verzonden in neutrale verpakking zonder logo. Op je bankafschrift zie je alleen "Velora Secrets". Bekijk het volledige <a href="shipping.html">verzendbeleid</a> voor levertijden en kosten.' },
       { kw: ['retour', 'terugsturen'], a: 'Je hebt 30 dagen bedenktijd. Ongeopende, verzegelde producten kun je gratis retourneren. Alle stappen staan in ons <a href="returns.html">retourbeleid</a>.' },
-      { kw: ['betal', 'ideal'], a: 'Je kunt veilig en versleuteld betalen via iDEAL, creditcard, PayPal, Apple Pay, Google Pay, Bancontact en Klarna.' },
+      { kw: ['betal', 'betaal', 'ideal'], a: 'Je kunt veilig en versleuteld betalen via iDEAL, creditcard, PayPal, Apple Pay, Google Pay, Bancontact en Klarna.' },
       { kw: ['cadeau'], a: 'Leuk! Zoek je iets voor haar, hem of een koppel? Vertel me iets meer, dan denk ik gericht mee.' },
       { kw: ['vergelijk'], a: 'Noem de twee producten die je wilt vergelijken, dan zet ik de belangrijkste verschillen op een rij.' },
       { kw: ['voor haar', 'vrouw'], a: 'Bekijk onze volledige collectie <a href="collection.html?category=Voor+Haar">Voor Haar</a>.' },

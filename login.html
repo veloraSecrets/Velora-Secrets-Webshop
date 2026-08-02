@@ -991,13 +991,6 @@
     return document.documentElement.getAttribute('lang') || 'nl';
   };
 
-  /* Publiek: vertaling opzoeken voor de huidige taal (voor gebruik door
-     bv. ai.js, dat het welkomstbericht in de juiste taal moet tonen). */
-  window.veloraT = function (key) {
-    const lang = window.veloraGetLang();
-    return (DICT[lang] && DICT[lang][key]) || DICT.nl[key] || key;
-  };
-
   /* Publiek: taal wijzigen (aangeroepen door de taalwisselaar-knoppen). */
   window.veloraSetLang = function (lang) {
     if (!SUPPORTED.includes(lang)) return;

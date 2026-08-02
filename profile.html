@@ -10,7 +10,6 @@
   const detail = window.VELORA_PRODUCT_DETAIL;
   const fmt = window.veloraFmt;
 
-  const reviewSummary = window.veloraGetReviewSummary(product.id);
   const productDescription = window.VELORA_DESCRIPTIONS[product.id] || detail.description;
 
   document.title = `${product.title} — Velora Secrets`;
@@ -32,9 +31,6 @@
     name: product.title,
     description: productDescription,
     brand: { '@type': 'Brand', name: product.vendor },
-    aggregateRating: reviewSummary.count
-      ? { '@type': 'AggregateRating', ratingValue: reviewSummary.average.toFixed(1), reviewCount: reviewSummary.count }
-      : undefined,
     offers: {
       '@type': 'Offer',
       url: canonicalUrl,
@@ -100,10 +96,6 @@
     <div class="product__info">
       <div class="product-card__vendor">${product.vendor}</div>
       <p class="product__title">${product.title}</p>
-      <div class="product__rating">
-        <svg viewBox="0 0 20 20" fill="var(--gold)"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L10 15l-5.6 3.1 1.4-6.3L1 8.5l6.4-.6z"/></svg>
-        <a href="#reviews" style="color:inherit;">${reviewSummary.average.toFixed(1)} · ${reviewSummary.count} reviews</a>
-      </div>
       <div class="product__price">
         <span class="price">${fmt(product.price)}</span>
         ${product.compareAt ? `<span class="price--compare">${fmt(product.compareAt)}</span>` : ''}
@@ -230,49 +222,6 @@
     return el;
   }
 
-  // ---------- Reviews (sterren, gemiddelde, foto-placeholder waar van toepassing) ----------
-  function starRow(rating) {
-    return [1, 2, 3, 4, 5]
-      .map(
-        (n) =>
-          `<svg viewBox="0 0 20 20" width="14" height="14" fill="${n <= Math.round(rating) ? 'var(--gold)' : 'var(--blush)'}"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L10 15l-5.6 3.1 1.4-6.3L1 8.5l6.4-.6z"/></svg>`
-      )
-      .join('');
-  }
-  const reviewsSection = document.createElement('section');
-  reviewsSection.className = 'section';
-  reviewsSection.id = 'reviews';
-  reviewsSection.innerHTML = `
-    <div class="section__header section__header--left">
-      <div>
-        <div class="eyebrow">Reviews</div>
-        <h2>Wat klanten zeggen</h2>
-        <div class="review-average">
-          <span class="review-average__score">${reviewSummary.average.toFixed(1)}</span>
-          <span>${starRow(reviewSummary.average)}</span>
-          <span class="review-average__count">gebaseerd op ${reviewSummary.count} beoordelingen</span>
-        </div>
-      </div>
-    </div>
-    ${
-      reviewSummary.reviews.length
-        ? `<div class="reviews__grid">
-            ${reviewSummary.reviews
-              .map(
-                (r) => `
-              <blockquote class="review-card">
-                <div class="review-card__stars">${starRow(r.rating)}</div>
-                ${r.photo ? '<div class="review-card__photo"></div>' : ''}
-                <p>"${r.text}"</p>
-                <div class="review-card__author">${r.author} — ${r.date}</div>
-              </blockquote>`
-              )
-              .join('')}
-          </div>`
-        : `<p style="color:var(--cognac); font-size:13.5px;">Nog geen reviews voor dit product — wees de eerste.</p>`
-    }
-  `;
-
   // ---------- Alle rail-secties in de gewenste volgorde samenstellen ----------
   const frequentlyBought = window.veloraGetFrequentlyBoughtTogether(product, 4);
   const alsoBought = window.veloraGetAlsoBought(product, 4);
@@ -280,7 +229,6 @@
   const recentlyViewed = window.veloraGetRecentlyViewed({ excludeId: product.id, limit: 4 });
 
   const sectionsInOrder = [
-    reviewsSection,
     buildRailSection('Vaak gecombineerd', 'Vaak samen gekocht', frequentlyBought),
     buildRailSection('Populair', 'Klanten kochten ook', alsoBought),
     buildRailSection('Ontdek meer', 'Misschien ook interessant', related),

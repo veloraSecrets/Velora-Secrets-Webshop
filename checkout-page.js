@@ -26,6 +26,15 @@ Het automatische-begroetingsbubbel-mechanisme is volledig verwijderd (niet allee
 ### Nieuwsbrief volledig verwijderd
 Op verzoek volledig weggehaald: het formulier (footer + popup), `newsletter.js`, `api/newsletter.js`, alle bijbehorende CSS, en de nieuwsbrief-vermelding in de privacyverklaring (alle 7 talen). Velora Rewards is hierdoor niet geraakt — die gebruikt dezelfde onderliggende kortingscode-opslag (nu neutraal hernoemd van `newsletter:code:` naar `discount:code:`) en blijft volledig functioneel, opnieuw end-to-end getest.
 
+### Allerlaatste productie-audit: geheugenlekken, ongebruikte bestanden, 5 end-to-end scenario's
+Ongebruikte bestanden: geen gevonden — elk .js-bestand en elke afbeelding wordt daadwerkelijk gebruikt. Geheugenlekken: gecontroleerd op opstapelende event-listeners bij herhaald renderen (winkelwagen, AI-chat) — alle render-functies overschrijven `innerHTML` volledig (oude listeners verdwijnen samen met hun elementen) of gebruiken event-delegatie op documentniveau (precies één keer geregistreerd bij het laden). Geen leaks gevonden.
+Vijf expliciete klantscenario's end-to-end getest met broncode-simulatie: (1) homepage→product→winkelwagen→afrekenen, (2) AI-chat→productadvies→daadwerkelijk toevoegen aan winkelwagen via de AI-productkaart, (3) zoeken→filteren→productpagina, (4) favorieten→alles toevoegen aan winkelwagen, (5) responsive-structuur (breakpoints) bevestigd aanwezig voor de belangrijkste onderdelen. Scenario 5 blijft beperkt tot structurele bevestiging — geen browser beschikbaar voor visuele confirmatie.
+
+### Laatste volledige audit: 4 nieuwe bevindingen gefixt
+Dode code verwijderd (`veloraT`, een wees-functie van de allang verwijderde AI-begroeting). Een Nederlandse-spelling-mismatch gefixt: "betaalmethoden" matchte niet met het AI-trefwoord "betal". Twee echte invoervalidatie-bugs in de winkelwagen gefixt: negatieve hoeveelheden werden zonder controle geaccepteerd (kon het totaalbedrag manipuleren), en een ongeldige (NaN) hoeveelheid werd letterlijk als NaN opgeslagen i.p.v. het item te verwijderen. Beide nu gevalideerd met een ondergrens van 1 en een bovengrens van 99 stuks per product.
+Uitgebreide AI-test met 20+ vragen (FAQ's, categorieën, productvragen, edge cases als lege/onzinnige invoer, hoofdletters, leestekens) — alle correct afgehandeld.
+Bevestigd: geen Cloudinary-integratie in dit project (producten gebruiken CSS-gradient-placeholders, geen externe afbeeldingshost).
+
 ### Footer & contact geoptimaliseerd
 Van 6 naar 2 e-mailadressen (support@ + info@) — overzichtelijker en professioneler, zowel in de footer als op de contactpagina.
 

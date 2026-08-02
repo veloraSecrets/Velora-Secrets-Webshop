@@ -34,4 +34,15 @@ async function kvGet(key) {
   return result?.result ? JSON.parse(result.result) : null;
 }
 
-module.exports = { kvGet, kvSet };
+/* Atomaire increment (Vercel KV is Redis-gebaseerd, INCRBY is atomair op
+   Redis-niveau) — voorkomt het klassieke lost-update-probleem dat een
+   read-then-write (kvGet gevolgd door kvSet) wél zou hebben bij twee
+   gelijktijdige aanroepen voor dezelfde sleutel. Retourneert de nieuwe,
+   correcte totaalwaarde. Gebruik voor gehele getallen (bv. puntensaldi),
+   niet voor JSON-objecten. */
+async function kvIncrBy(key, amount) {
+  const result = await kvRequest(`/incrby/${encodeURIComponent(key)}/${Math.trunc(amount)}`);
+  return Number(result?.result || 0);
+}
+
+module.exports = { kvGet, kvSet, kvIncrBy };

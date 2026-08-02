@@ -158,11 +158,11 @@
        je hieronder een duidelijke foutmelding i.p.v. een stille crash. */
     const submitBtn = form.querySelector('button[type="submit"]');
     const orderId = `VS-${Date.now()}`;
+    const cart = window.veloraGetCart();
     const totals = window.veloraGetCartTotals();
-    const discountAmount = window.veloraCalculateDiscountAmount(totals.subtotal);
+    const appliedDiscount = window.veloraGetAppliedDiscount ? window.veloraGetAppliedDiscount() : null;
     const shipping = shippingMethods.find((m) => m.id === selectedShippingId);
     const shippingCost = totals.freeShippingRemaining > 0 ? shipping?.price || 0 : 0;
-    const finalTotal = totals.subtotal - discountAmount + shippingCost;
     const customerEmail = document.getElementById('ckEmail').value.trim();
 
     submitBtn.disabled = true;
@@ -173,7 +173,13 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          amount: finalTotal,
+          /* Alleen product-ID + hoeveelheid — het te betalen bedrag wordt
+             door de server zelf herberekend uit de echte prijzenlijst
+             (api/_product-prices.json), nooit uit een kant-en-klaar
+             bedrag dat de browser zou kunnen manipuleren. */
+          items: cart.map((item) => ({ id: item.id, qty: item.qty })),
+          discountCode: appliedDiscount?.code || null,
+          shippingCost,
           description: `Bestelling ${orderId} — Velora Secrets`,
           orderId,
           customerEmail,

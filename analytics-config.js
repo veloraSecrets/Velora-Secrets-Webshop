@@ -77,10 +77,6 @@
     return el;
   }
 
-  function starRow(rating) {
-    return `<svg viewBox="0 0 20 20" width="11" height="11" fill="var(--gold)"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L10 15l-5.6 3.1 1.4-6.3L1 8.5l6.4-.6z"/></svg> ${rating}`;
-  }
-
   /* Eén productkaart binnen een chatbericht: koppelt naar de echte
      productpagina en hergebruikt het bestaande data-add-to-cart-
      attribuut, dus geen eigen "voeg toe"-logica hier. */
@@ -90,7 +86,7 @@
         <div class="ai-product-card__media"></div>
         <div class="ai-product-card__info">
           <div class="ai-product-card__title">${p.title}</div>
-          <div class="ai-product-card__meta">${starRow(p.rating)} · ${fmt(p.price)}</div>
+          <div class="ai-product-card__meta">${fmt(p.price)}</div>
         </div>
         <div class="ai-product-card__actions">
           <a href="product.html?id=${p.id}" class="ai-product-card__btn">Bekijk</a>
@@ -132,7 +128,6 @@
 
     const rows = [
       ['Prijs', fmt(a.price), fmt(b.price)],
-      ['Beoordeling', `${a.rating} (${a.reviews} reviews)`, `${b.rating} (${b.reviews} reviews)`],
       ['Categorie', a.category, b.category],
       ['Subcategorie (formaat/type)', window.VELORA_SUBCATEGORY[a.id] || '—', window.VELORA_SUBCATEGORY[b.id] || '—'],
       ['Materiaal', materialA, materialB],
@@ -148,7 +143,6 @@
     function buildProsAndCons(mine, other, myAttrs, otherAttrs) {
       const pros = [];
       if (mine.price < other.price) pros.push(`Voordeliger (${fmt(other.price - mine.price)} goedkoper)`);
-      if (mine.rating > other.rating) pros.push('Hoger beoordeeld door klanten');
       if (myAttrs.waterproof && !otherAttrs.waterproof) pros.push('Wel waterdicht');
       if (myAttrs.noiseLevel === 'stil' && otherAttrs.noiseLevel !== 'stil') pros.push('Stiller in gebruik');
       if (myAttrs.experience === 'beginner' && otherAttrs.experience !== 'beginner') pros.push('Beter geschikt voor beginners');
@@ -284,6 +278,14 @@
   function trySearchIntent(message) {
     const lower = message.toLowerCase();
     const looksLikeProductQuestion = PRODUCT_INTENT_KEYWORDS.some((k) => lower.includes(k));
+
+    // Een bekend FAQ-trefwoord (verzending/retour/leeftijd/categorie/...)
+    // krijgt voorrang boven toevallige productzoek-matches — anders wint
+    // bijvoorbeeld "discrete" (uit "Hoe werkt de discrete verzending?")
+    // altijd van het canned verzendbeleid-antwoord, puur omdat er
+    // producten met "Discrete" in de naam bestaan.
+    const matchesKnownFaq = AI_ANSWERS.some((a) => a.kw.some((k) => lower.includes(k)));
+    if (matchesKnownFaq && !looksLikeProductQuestion) return false;
 
     // Eerst de hele zin proberen (kan al matchen bij een korte, directe vraag)
     let results = window.veloraSearchProducts(message);

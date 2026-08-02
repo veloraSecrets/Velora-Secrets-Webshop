@@ -16,147 +16,147 @@ window.veloraFmt = function (n) {
 };
 
 window.VELORA_PRODUCTS = [
-  { id: 1, handle: 'luxe-satijnen-kimono', title: 'Luxe Satijnen Kimono', vendor: 'Velora Secrets', category: 'Lingerie', price: 49.95, compareAt: null, badge: 'Bestseller', rating: 4.8, reviews: 126 },
-  { id: 2, handle: 'discrete-wellness-massageset', title: 'Discrete Wellness Massageset', vendor: 'Velora Secrets', category: 'Wellness & Massage', price: 34.5, compareAt: 44.5, badge: 'Sale', rating: 4.7, reviews: 98 },
-  { id: 3, handle: 'premium-silicone-collectie', title: 'Premium Silicone Collectie', vendor: 'Velora Secrets', category: 'Voor Haar', price: 59.0, compareAt: null, badge: 'Nieuw', rating: 4.9, reviews: 54 },
-  { id: 4, handle: 'verwarmende-massage-olie-duo', title: 'Verwarmende Massage-olie Duo', vendor: 'Velora Secrets', category: 'Wellness & Massage', price: 24.95, compareAt: null, badge: null, rating: 4.6, reviews: 73 },
-  { id: 5, handle: 'kanten-lingerieset-rosa', title: 'Kanten Lingerieset "Rosa"', vendor: 'Velora Secrets', category: 'Lingerie', price: 39.95, compareAt: null, badge: 'Bestseller', rating: 4.8, reviews: 141 },
-  { id: 6, handle: 'fluwelen-oogmasker-veertje', title: 'Fluwelen Oogmasker & Veertje', vendor: 'Velora Secrets', category: 'Voor Koppels', price: 19.95, compareAt: null, badge: null, rating: 4.5, reviews: 39 },
-  { id: 7, handle: 'discrete-reisvriendelijke-massager', title: 'Discrete Reisvriendelijke Massager', vendor: 'Velora Secrets', category: 'Voor Haar', price: 44.95, compareAt: null, badge: 'Nieuw', rating: 4.7, reviews: 62 },
-  { id: 8, handle: 'heren-boxerset-premium-katoen', title: 'Heren Boxerset Premium Katoen', vendor: 'Velora Secrets', category: 'Voor Hem', price: 29.95, compareAt: 34.95, badge: 'Sale', rating: 4.6, reviews: 47 },
-  { id: 9, handle: 'verstelbare-bondage-set-zacht', title: 'Verstelbare Bondage Set met Zachte Boeien', vendor: 'Velora Secrets', category: 'BDSM', price: 39.95, compareAt: null, badge: 'Nieuw', rating: 4.7, reviews: 28 },
-  { id: 10, handle: 'fluwelen-zweep-beginners', title: 'Fluwelen Zweep — Beginnersset', vendor: 'Velora Secrets', category: 'BDSM', price: 24.95, compareAt: null, badge: null, rating: 4.5, reviews: 19 },
-  { id: 11, handle: 'afstandsbediende-koppelvibrator', title: 'Afstandsbediende Koppelvibrator', vendor: 'Velora Secrets', category: 'Voor Koppels', price: 54.95, compareAt: null, badge: 'Bestseller', rating: 4.8, reviews: 87 },
-  { id: 12, handle: 'rollenspel-kaartenset-voor-twee', title: 'Rollenspel Kaartenset voor Twee', vendor: 'Velora Secrets', category: 'Voor Koppels', price: 19.95, compareAt: null, badge: null, rating: 4.4, reviews: 22 },
-  { id: 13, handle: 'kanten-body-set-noir', title: 'Kanten Body Set "Noir"', vendor: 'Velora Secrets', category: 'Lingerie', price: 44.95, compareAt: null, badge: null, rating: 4.7, reviews: 51 },
-  { id: 14, handle: 'discrete-clitorisstimulator', title: 'Discrete Clitorisstimulator', vendor: 'Velora Secrets', category: 'Voor Haar', price: 49.95, compareAt: null, badge: 'Nieuw', rating: 4.8, reviews: 33 },
-  { id: 15, handle: 'prostaatstimulator-starter', title: 'Prostaatstimulator Starter', vendor: 'Velora Secrets', category: 'Voor Hem', price: 34.95, compareAt: null, badge: null, rating: 4.5, reviews: 24 },
-  { id: 16, handle: 'aromatische-massagekaars', title: 'Aromatische Massagekaars', vendor: 'Velora Secrets', category: 'Wellness & Massage', price: 22.95, compareAt: null, badge: null, rating: 4.6, reviews: 41 },
-  { id: 100, handle: "satisfyer-luchtdrukvibrator-pro", title: "Satisfyer Luchtdrukvibrator Pro", vendor: "Satisfyer", category: "Voor Haar", price: 47.2, compareAt: 55.6, badge: "Sale", rating: 4.4, reviews: 197 },
-  { id: 101, handle: "womanizer-curve-vibrator-mini", title: "Womanizer Curve vibrator Mini", vendor: "Womanizer", category: "Voor Haar", price: 107.3, compareAt: null, badge: null, rating: 4.4, reviews: 203 },
-  { id: 102, handle: "lelo-rabbit-vibrator-comfort", title: "LELO Rabbit vibrator Comfort", vendor: "LELO", category: "Voor Haar", price: 95.15, compareAt: null, badge: null, rating: 4.5, reviews: 149 },
-  { id: 103, handle: "wevibe-realistische-dildo-classic", title: "We-Vibe Realistische dildo Classic", vendor: "We-Vibe", category: "Voor Haar", price: 88.95, compareAt: null, badge: null, rating: 4.4, reviews: 98 },
-  { id: 104, handle: "lovense-kegelballenset-deluxe", title: "Lovense Kegelballenset Deluxe", vendor: "Lovense", category: "Voor Haar", price: 29.85, compareAt: null, badge: null, rating: 4.9, reviews: 171 },
-  { id: 105, handle: "fun-factory-clitorisstimulator-20", title: "Fun Factory Clitorisstimulator 2.0", vendor: "Fun Factory", category: "Voor Haar", price: 33.0, compareAt: null, badge: "Bestseller", rating: 4.9, reviews: 191 },
-  { id: 106, handle: "easyglide-gspot-vibrator", title: "EasyGlide G-spot vibrator", vendor: "EasyGlide", category: "Voor Haar", price: 13.9, compareAt: null, badge: null, rating: 4.8, reviews: 110 },
-  { id: 107, handle: "calexotics-dualmotor-vibrator-comfort", title: "CalExotics Dual-motor vibrator Comfort", vendor: "CalExotics", category: "Voor Haar", price: 17.9, compareAt: null, badge: null, rating: 4.8, reviews: 10 },
-  { id: 108, handle: "satisfyer-siliconen-dildo-classic", title: "Satisfyer Siliconen dildo Classic", vendor: "Satisfyer", category: "Voor Haar", price: 54.1, compareAt: null, badge: null, rating: 4.6, reviews: 35 },
-  { id: 109, handle: "womanizer-appgestuurde-kegeltrainer", title: "Womanizer App-gestuurde kegeltrainer", vendor: "Womanizer", category: "Voor Haar", price: 123.85, compareAt: null, badge: null, rating: 4.6, reviews: 36 },
-  { id: 110, handle: "lelo-minivibrator-20", title: "LELO Mini-vibrator 2.0", vendor: "LELO", category: "Voor Haar", price: 127.3, compareAt: null, badge: null, rating: 4.8, reviews: 184 },
-  { id: 111, handle: "wevibe-comehither-vibrator-deluxe", title: "We-Vibe Come-hither vibrator Deluxe", vendor: "We-Vibe", category: "Voor Haar", price: 71.8, compareAt: null, badge: null, rating: 4.7, reviews: 66 },
-  { id: 112, handle: "lovense-rabbit-vibrator-plus", title: "Lovense Rabbit vibrator Plus", vendor: "Lovense", category: "Voor Haar", price: 40.35, compareAt: 50.3, badge: "Sale", rating: 4.6, reviews: 193 },
-  { id: 113, handle: "fun-factory-glazen-dildo-20", title: "Fun Factory Glazen dildo 2.0", vendor: "Fun Factory", category: "Voor Haar", price: 38.95, compareAt: null, badge: null, rating: 4.7, reviews: 173 },
-  { id: 114, handle: "easyglide-kegelballenset-20", title: "EasyGlide Kegelballenset 2.0", vendor: "EasyGlide", category: "Voor Haar", price: 12.7, compareAt: null, badge: null, rating: 4.8, reviews: 27 },
-  { id: 115, handle: "calexotics-bullet-vibrator-mini", title: "CalExotics Bullet vibrator Mini", vendor: "CalExotics", category: "Voor Haar", price: 16.05, compareAt: null, badge: null, rating: 4.8, reviews: 23 },
-  { id: 116, handle: "satisfyer-curve-vibrator", title: "Satisfyer Curve vibrator", vendor: "Satisfyer", category: "Voor Haar", price: 44.8, compareAt: null, badge: null, rating: 4.4, reviews: 63 },
-  { id: 117, handle: "womanizer-dualmotor-vibrator", title: "Womanizer Dual-motor vibrator", vendor: "Womanizer", category: "Voor Haar", price: 66.75, compareAt: null, badge: null, rating: 4.3, reviews: 55 },
-  { id: 118, handle: "lelo-realistische-dildo-premium", title: "LELO Realistische dildo Premium", vendor: "LELO", category: "Voor Haar", price: 124.65, compareAt: null, badge: null, rating: 4.3, reviews: 167 },
-  { id: 119, handle: "wevibe-appgestuurde-kegeltrainer-deluxe", title: "We-Vibe App-gestuurde kegeltrainer Deluxe", vendor: "We-Vibe", category: "Voor Haar", price: 82.65, compareAt: null, badge: "Bestseller", rating: 4.8, reviews: 188 },
-  { id: 120, handle: "fun-factory-pocket-masturbator-deluxe", title: "Fun Factory Pocket masturbator Deluxe", vendor: "Fun Factory", category: "Voor Hem", price: 45.55, compareAt: null, badge: null, rating: 4.6, reviews: 72 },
-  { id: 121, handle: "fifty-shades-of-grey-siliconen-cockringset-classic", title: "Fifty Shades of Grey Siliconen cockring-set Classic", vendor: "Fifty Shades of Grey", category: "Voor Hem", price: 29.8, compareAt: null, badge: null, rating: 4.7, reviews: 151 },
-  { id: 122, handle: "durex-prostaatstimulator-mini", title: "Durex Prostaatstimulator Mini", vendor: "Durex", category: "Voor Hem", price: 16.4, compareAt: null, badge: "Nieuw", rating: 4.5, reviews: 18 },
-  { id: 123, handle: "calexotics-reinigingsspray-20", title: "CalExotics Reinigingsspray 2.0", vendor: "CalExotics", category: "Voor Hem", price: 24.55, compareAt: null, badge: null, rating: 4.9, reviews: 68 },
-  { id: 124, handle: "satisfyer-automatische-masturbator-classic", title: "Satisfyer Automatische masturbator Classic", vendor: "Satisfyer", category: "Voor Hem", price: 49.55, compareAt: null, badge: null, rating: 4.4, reviews: 176 },
-  { id: 125, handle: "lelo-siliconen-cockringset", title: "LELO Siliconen cockring-set", vendor: "LELO", category: "Voor Hem", price: 79.8, compareAt: null, badge: "Nieuw", rating: 4.8, reviews: 74 },
-  { id: 126, handle: "fun-factory-prostaatstimulator-premium", title: "Fun Factory Prostaatstimulator Premium", vendor: "Fun Factory", category: "Voor Hem", price: 44.85, compareAt: null, badge: "Bestseller", rating: 4.8, reviews: 137 },
-  { id: 127, handle: "fifty-shades-of-grey-reinigingsspray-20", title: "Fifty Shades of Grey Reinigingsspray 2.0", vendor: "Fifty Shades of Grey", category: "Voor Hem", price: 45.25, compareAt: null, badge: null, rating: 4.7, reviews: 85 },
-  { id: 128, handle: "durex-realistische-masturbator-premium", title: "Durex Realistische masturbator Premium", vendor: "Durex", category: "Voor Hem", price: 16.9, compareAt: null, badge: null, rating: 4.4, reviews: 129 },
-  { id: 129, handle: "calexotics-siliconen-cockringset-classic", title: "CalExotics Siliconen cockring-set Classic", vendor: "CalExotics", category: "Voor Hem", price: 13.3, compareAt: null, badge: "Bestseller", rating: 4.3, reviews: 70 },
-  { id: 130, handle: "satisfyer-prostaatstimulator-deluxe", title: "Satisfyer Prostaatstimulator Deluxe", vendor: "Satisfyer", category: "Voor Hem", price: 29.4, compareAt: null, badge: null, rating: 4.8, reviews: 205 },
-  { id: 131, handle: "lelo-reinigingsspray-plus", title: "LELO Reinigingsspray Plus", vendor: "LELO", category: "Voor Hem", price: 89.2, compareAt: null, badge: null, rating: 4.7, reviews: 151 },
-  { id: 132, handle: "fun-factory-pocket-masturbator-classic", title: "Fun Factory Pocket masturbator Classic", vendor: "Fun Factory", category: "Voor Hem", price: 32.0, compareAt: null, badge: null, rating: 4.8, reviews: 28 },
-  { id: 133, handle: "fifty-shades-of-grey-siliconen-cockringset", title: "Fifty Shades of Grey Siliconen cockring-set", vendor: "Fifty Shades of Grey", category: "Voor Hem", price: 38.95, compareAt: null, badge: "Nieuw", rating: 4.8, reviews: 107 },
-  { id: 134, handle: "durex-prostaatstimulator-20", title: "Durex Prostaatstimulator 2.0", vendor: "Durex", category: "Voor Hem", price: 18.0, compareAt: null, badge: null, rating: 4.8, reviews: 64 },
-  { id: 135, handle: "calexotics-reinigingsspray-mini", title: "CalExotics Reinigingsspray Mini", vendor: "CalExotics", category: "Voor Hem", price: 22.55, compareAt: null, badge: null, rating: 4.9, reviews: 144 },
-  { id: 136, handle: "satisfyer-automatische-masturbator-20", title: "Satisfyer Automatische masturbator 2.0", vendor: "Satisfyer", category: "Voor Hem", price: 32.5, compareAt: null, badge: "Nieuw", rating: 4.3, reviews: 146 },
-  { id: 137, handle: "lelo-siliconen-cockringset-deluxe", title: "LELO Siliconen cockring-set Deluxe", vendor: "LELO", category: "Voor Hem", price: 89.85, compareAt: 109.95, badge: "Sale", rating: 4.7, reviews: 199 },
-  { id: 138, handle: "fun-factory-prostaatstimulator-20", title: "Fun Factory Prostaatstimulator 2.0", vendor: "Fun Factory", category: "Voor Hem", price: 36.85, compareAt: null, badge: null, rating: 4.3, reviews: 184 },
-  { id: 139, handle: "fifty-shades-of-grey-reinigingsspray-comfort", title: "Fifty Shades of Grey Reinigingsspray Comfort", vendor: "Fifty Shades of Grey", category: "Voor Hem", price: 46.15, compareAt: null, badge: null, rating: 4.7, reviews: 174 },
-  { id: 140, handle: "durex-realistische-masturbator-premium-2", title: "Durex Realistische masturbator Premium 2", vendor: "Durex", category: "Voor Hem", price: 22.75, compareAt: null, badge: null, rating: 4.4, reviews: 123 },
-  { id: 141, handle: "calexotics-siliconen-cockringset-classic-2", title: "CalExotics Siliconen cockring-set Classic 2", vendor: "CalExotics", category: "Voor Hem", price: 18.3, compareAt: null, badge: null, rating: 4.4, reviews: 69 },
-  { id: 142, handle: "wevibe-koppelvibrator-plus", title: "We-Vibe Koppelvibrator Plus", vendor: "We-Vibe", category: "Voor Koppels", price: 77.0, compareAt: null, badge: null, rating: 4.4, reviews: 177 },
-  { id: 143, handle: "lovense-fantasie-dobbelstenenset-comfort", title: "Lovense Fantasie dobbelstenenset Comfort", vendor: "Lovense", category: "Voor Koppels", price: 33.1, compareAt: 38.85, badge: "Sale", rating: 4.4, reviews: 38 },
-  { id: 144, handle: "lelo-massageset-voor-twee-classic", title: "LELO Massageset voor twee Classic", vendor: "LELO", category: "Voor Koppels", price: 128.5, compareAt: null, badge: null, rating: 4.5, reviews: 100 },
-  { id: 145, handle: "fun-factory-koppelvibrator-mini", title: "Fun Factory Koppelvibrator Mini", vendor: "Fun Factory", category: "Voor Koppels", price: 44.1, compareAt: null, badge: null, rating: 4.4, reviews: 11 },
-  { id: 146, handle: "durex-rollenspel-kaartenset-mini", title: "Durex Rollenspel kaartenset Mini", vendor: "Durex", category: "Voor Koppels", price: 22.1, compareAt: null, badge: null, rating: 4.4, reviews: 71 },
-  { id: 147, handle: "wevibe-warmende-glijmiddelduo-mini", title: "We-Vibe Warmende glijmiddel-duo Mini", vendor: "We-Vibe", category: "Voor Koppels", price: 55.15, compareAt: null, badge: null, rating: 4.7, reviews: 82 },
-  { id: 148, handle: "lovense-koppelvibrator-deluxe", title: "Lovense Koppelvibrator Deluxe", vendor: "Lovense", category: "Voor Koppels", price: 37.7, compareAt: null, badge: null, rating: 4.7, reviews: 76 },
-  { id: 149, handle: "lelo-fantasie-dobbelstenenset-classic", title: "LELO Fantasie dobbelstenenset Classic", vendor: "LELO", category: "Voor Koppels", price: 87.9, compareAt: null, badge: null, rating: 4.5, reviews: 111 },
-  { id: 150, handle: "fun-factory-massageset-voor-twee-classic", title: "Fun Factory Massageset voor twee Classic", vendor: "Fun Factory", category: "Voor Koppels", price: 25.75, compareAt: 33.1, badge: "Sale", rating: 4.8, reviews: 158 },
-  { id: 151, handle: "durex-koppelvibrator-classic", title: "Durex Koppelvibrator Classic", vendor: "Durex", category: "Voor Koppels", price: 12.65, compareAt: null, badge: null, rating: 4.7, reviews: 133 },
-  { id: 152, handle: "wevibe-rollenspel-kaartenset", title: "We-Vibe Rollenspel kaartenset", vendor: "We-Vibe", category: "Voor Koppels", price: 89.6, compareAt: null, badge: "Nieuw", rating: 4.6, reviews: 167 },
-  { id: 153, handle: "lovense-warmende-glijmiddelduo-comfort", title: "Lovense Warmende glijmiddel-duo Comfort", vendor: "Lovense", category: "Voor Koppels", price: 51.4, compareAt: null, badge: null, rating: 4.3, reviews: 169 },
-  { id: 154, handle: "lelo-koppelvibrator-classic", title: "LELO Koppelvibrator Classic", vendor: "LELO", category: "Voor Koppels", price: 93.1, compareAt: 122.6, badge: "Sale", rating: 4.9, reviews: 70 },
-  { id: 155, handle: "fun-factory-fantasie-dobbelstenenset-premium", title: "Fun Factory Fantasie dobbelstenenset Premium", vendor: "Fun Factory", category: "Voor Koppels", price: 51.05, compareAt: null, badge: null, rating: 4.4, reviews: 106 },
-  { id: 156, handle: "durex-massageset-voor-twee-mini", title: "Durex Massageset voor twee Mini", vendor: "Durex", category: "Voor Koppels", price: 17.4, compareAt: null, badge: "Nieuw", rating: 4.6, reviews: 159 },
-  { id: 157, handle: "wevibe-koppelvibrator-mini", title: "We-Vibe Koppelvibrator Mini", vendor: "We-Vibe", category: "Voor Koppels", price: 85.7, compareAt: null, badge: null, rating: 4.4, reviews: 128 },
-  { id: 158, handle: "lovense-rollenspel-kaartenset-20", title: "Lovense Rollenspel kaartenset 2.0", vendor: "Lovense", category: "Voor Koppels", price: 53.55, compareAt: null, badge: null, rating: 4.8, reviews: 132 },
-  { id: 159, handle: "lelo-warmende-glijmiddelduo-plus", title: "LELO Warmende glijmiddel-duo Plus", vendor: "LELO", category: "Voor Koppels", price: 112.0, compareAt: null, badge: null, rating: 4.4, reviews: 50 },
-  { id: 160, handle: "fun-factory-koppelvibrator-comfort", title: "Fun Factory Koppelvibrator Comfort", vendor: "Fun Factory", category: "Voor Koppels", price: 44.1, compareAt: null, badge: null, rating: 4.7, reviews: 127 },
-  { id: 161, handle: "durex-fantasie-dobbelstenenset-classic", title: "Durex Fantasie dobbelstenenset Classic", vendor: "Durex", category: "Voor Koppels", price: 24.85, compareAt: 33.45, badge: "Sale", rating: 4.7, reviews: 78 },
-  { id: 162, handle: "obsessive-kanten-lingerieset-deluxe", title: "Obsessive Kanten lingerieset Deluxe", vendor: "Obsessive", category: "Lingerie", price: 43.15, compareAt: null, badge: null, rating: 4.7, reviews: 166 },
-  { id: 163, handle: "leg-avenue-corset-met-kousenbanden-classic", title: "Leg Avenue Corset met kousenbanden Classic", vendor: "Leg Avenue", category: "Lingerie", price: 48.6, compareAt: null, badge: "Nieuw", rating: 4.5, reviews: 41 },
-  { id: 164, handle: "velora-secrets-kanten-handschoenen-premium", title: "Velora Secrets Kanten handschoenen Premium", vendor: "Velora Secrets", category: "Lingerie", price: 40.9, compareAt: null, badge: null, rating: 4.8, reviews: 73 },
-  { id: 165, handle: "obsessive-satijnen-kimono-classic", title: "Obsessive Satijnen kimono Classic", vendor: "Obsessive", category: "Lingerie", price: 41.05, compareAt: null, badge: null, rating: 4.7, reviews: 180 },
-  { id: 166, handle: "leg-avenue-mesh-lingerieset", title: "Leg Avenue Mesh lingerieset", vendor: "Leg Avenue", category: "Lingerie", price: 34.8, compareAt: null, badge: null, rating: 4.7, reviews: 170 },
-  { id: 167, handle: "velora-secrets-basque-set-mini", title: "Velora Secrets Basque set Mini", vendor: "Velora Secrets", category: "Lingerie", price: 51.5, compareAt: null, badge: null, rating: 4.8, reviews: 165 },
-  { id: 168, handle: "obsessive-jarretelgordel-plus", title: "Obsessive Jarretelgordel Plus", vendor: "Obsessive", category: "Lingerie", price: 44.85, compareAt: null, badge: null, rating: 4.7, reviews: 13 },
-  { id: 169, handle: "leg-avenue-slaapjurk-classic", title: "Leg Avenue Slaapjurk Classic", vendor: "Leg Avenue", category: "Lingerie", price: 50.7, compareAt: null, badge: "Bestseller", rating: 4.4, reviews: 72 },
-  { id: 170, handle: "velora-secrets-satijnen-lingerieset-pro", title: "Velora Secrets Satijnen lingerieset Pro", vendor: "Velora Secrets", category: "Lingerie", price: 30.2, compareAt: null, badge: "Nieuw", rating: 4.7, reviews: 142 },
-  { id: 171, handle: "obsessive-kanten-body-deluxe", title: "Obsessive Kanten body Deluxe", vendor: "Obsessive", category: "Lingerie", price: 53.3, compareAt: null, badge: "Nieuw", rating: 4.8, reviews: 176 },
-  { id: 172, handle: "leg-avenue-kousen-met-naad-plus", title: "Leg Avenue Kousen met naad Plus", vendor: "Leg Avenue", category: "Lingerie", price: 39.65, compareAt: null, badge: null, rating: 4.3, reviews: 28 },
-  { id: 173, handle: "velora-secrets-peignoir-set-premium", title: "Velora Secrets Peignoir set Premium", vendor: "Velora Secrets", category: "Lingerie", price: 36.4, compareAt: null, badge: null, rating: 4.5, reviews: 137 },
-  { id: 174, handle: "obsessive-kanten-lingerieset-comfort", title: "Obsessive Kanten lingerieset Comfort", vendor: "Obsessive", category: "Lingerie", price: 26.95, compareAt: null, badge: null, rating: 4.4, reviews: 32 },
-  { id: 175, handle: "leg-avenue-corset-met-kousenbanden-20", title: "Leg Avenue Corset met kousenbanden 2.0", vendor: "Leg Avenue", category: "Lingerie", price: 51.0, compareAt: null, badge: null, rating: 4.9, reviews: 161 },
-  { id: 176, handle: "velora-secrets-kanten-handschoenen-deluxe", title: "Velora Secrets Kanten handschoenen Deluxe", vendor: "Velora Secrets", category: "Lingerie", price: 49.15, compareAt: null, badge: null, rating: 4.9, reviews: 167 },
-  { id: 177, handle: "obsessive-satijnen-kimono-premium", title: "Obsessive Satijnen kimono Premium", vendor: "Obsessive", category: "Lingerie", price: 35.5, compareAt: null, badge: "Bestseller", rating: 4.4, reviews: 176 },
-  { id: 178, handle: "leg-avenue-mesh-lingerieset-mini", title: "Leg Avenue Mesh lingerieset Mini", vendor: "Leg Avenue", category: "Lingerie", price: 47.6, compareAt: null, badge: "Nieuw", rating: 4.3, reviews: 121 },
-  { id: 179, handle: "velora-secrets-basque-set-pro", title: "Velora Secrets Basque set Pro", vendor: "Velora Secrets", category: "Lingerie", price: 31.1, compareAt: null, badge: null, rating: 4.8, reviews: 203 },
-  { id: 180, handle: "obsessive-jarretelgordel-20", title: "Obsessive Jarretelgordel 2.0", vendor: "Obsessive", category: "Lingerie", price: 33.65, compareAt: null, badge: null, rating: 4.9, reviews: 51 },
-  { id: 181, handle: "leg-avenue-slaapjurk-mini", title: "Leg Avenue Slaapjurk Mini", vendor: "Leg Avenue", category: "Lingerie", price: 32.05, compareAt: null, badge: "Bestseller", rating: 4.4, reviews: 162 },
-  { id: 182, handle: "velora-secrets-satijnen-lingerieset-comfort", title: "Velora Secrets Satijnen lingerieset Comfort", vendor: "Velora Secrets", category: "Lingerie", price: 45.4, compareAt: null, badge: null, rating: 4.7, reviews: 167 },
-  { id: 183, handle: "obsessive-kanten-body-classic", title: "Obsessive Kanten body Classic", vendor: "Obsessive", category: "Lingerie", price: 42.7, compareAt: null, badge: null, rating: 4.3, reviews: 126 },
-  { id: 184, handle: "fifty-shades-of-grey-bondagetouwset", title: "Fifty Shades of Grey Bondagetouwset", vendor: "Fifty Shades of Grey", category: "BDSM", price: 36.5, compareAt: null, badge: null, rating: 4.9, reviews: 197 },
-  { id: 185, handle: "doc-johnson-leren-paddle-plus", title: "Doc Johnson Leren paddle Plus", vendor: "Doc Johnson", category: "BDSM", price: 40.1, compareAt: null, badge: "Bestseller", rating: 4.4, reviews: 120 },
-  { id: 186, handle: "velora-secrets-fetish-handschoenen-premium", title: "Velora Secrets Fetish handschoenen Premium", vendor: "Velora Secrets", category: "BDSM", price: 20.15, compareAt: null, badge: "Nieuw", rating: 4.7, reviews: 93 },
-  { id: 187, handle: "fifty-shades-of-grey-bondage-beginnersset-mini", title: "Fifty Shades of Grey Bondage beginnersset Mini", vendor: "Fifty Shades of Grey", category: "BDSM", price: 34.95, compareAt: null, badge: null, rating: 4.4, reviews: 97 },
-  { id: 188, handle: "doc-johnson-verstelbare-boeienset-deluxe", title: "Doc Johnson Verstelbare boeienset Deluxe", vendor: "Doc Johnson", category: "BDSM", price: 54.95, compareAt: null, badge: "Bestseller", rating: 4.5, reviews: 209 },
-  { id: 189, handle: "velora-secrets-ticklersset-classic", title: "Velora Secrets Ticklers-set Classic", vendor: "Velora Secrets", category: "BDSM", price: 21.25, compareAt: null, badge: null, rating: 4.4, reviews: 69 },
-  { id: 190, handle: "fifty-shades-of-grey-latex-masker-comfort", title: "Fifty Shades of Grey Latex masker Comfort", vendor: "Fifty Shades of Grey", category: "BDSM", price: 38.8, compareAt: 47.6, badge: "Sale", rating: 4.6, reviews: 49 },
-  { id: 191, handle: "doc-johnson-bondage-beginnersset", title: "Doc Johnson Bondage beginnersset", vendor: "Doc Johnson", category: "BDSM", price: 53.0, compareAt: null, badge: null, rating: 4.6, reviews: 39 },
-  { id: 192, handle: "velora-secrets-spreidstok-premium", title: "Velora Secrets Spreidstok Premium", vendor: "Velora Secrets", category: "BDSM", price: 23.9, compareAt: null, badge: null, rating: 4.5, reviews: 103 },
-  { id: 193, handle: "fifty-shades-of-grey-fluwelen-zweep-premium", title: "Fifty Shades of Grey Fluwelen zweep Premium", vendor: "Fifty Shades of Grey", category: "BDSM", price: 48.7, compareAt: null, badge: "Bestseller", rating: 4.5, reviews: 128 },
-  { id: 194, handle: "doc-johnson-leren-harnas", title: "Doc Johnson Leren harnas", vendor: "Doc Johnson", category: "BDSM", price: 53.15, compareAt: null, badge: null, rating: 4.6, reviews: 206 },
-  { id: 195, handle: "velora-secrets-bondage-beginnersset-plus", title: "Velora Secrets Bondage beginnersset Plus", vendor: "Velora Secrets", category: "BDSM", price: 11.6, compareAt: null, badge: null, rating: 4.7, reviews: 12 },
-  { id: 196, handle: "fifty-shades-of-grey-bondagetouwset-plus", title: "Fifty Shades of Grey Bondagetouwset Plus", vendor: "Fifty Shades of Grey", category: "BDSM", price: 40.65, compareAt: null, badge: null, rating: 4.9, reviews: 147 },
-  { id: 197, handle: "doc-johnson-leren-paddle-plus-2", title: "Doc Johnson Leren paddle Plus 2", vendor: "Doc Johnson", category: "BDSM", price: 35.3, compareAt: null, badge: null, rating: 4.7, reviews: 205 },
-  { id: 198, handle: "velora-secrets-fetish-handschoenen-comfort", title: "Velora Secrets Fetish handschoenen Comfort", vendor: "Velora Secrets", category: "BDSM", price: 19.45, compareAt: null, badge: null, rating: 4.3, reviews: 206 },
-  { id: 199, handle: "fifty-shades-of-grey-bondage-beginnersset", title: "Fifty Shades of Grey Bondage beginnersset", vendor: "Fifty Shades of Grey", category: "BDSM", price: 39.15, compareAt: null, badge: "Nieuw", rating: 4.7, reviews: 81 },
-  { id: 200, handle: "doc-johnson-verstelbare-boeienset-20", title: "Doc Johnson Verstelbare boeienset 2.0", vendor: "Doc Johnson", category: "BDSM", price: 47.25, compareAt: null, badge: null, rating: 4.5, reviews: 55 },
-  { id: 201, handle: "velora-secrets-ticklersset-pro", title: "Velora Secrets Ticklers-set Pro", vendor: "Velora Secrets", category: "BDSM", price: 20.85, compareAt: null, badge: null, rating: 4.7, reviews: 119 },
-  { id: 202, handle: "fifty-shades-of-grey-latex-masker-mini", title: "Fifty Shades of Grey Latex masker Mini", vendor: "Fifty Shades of Grey", category: "BDSM", price: 53.55, compareAt: null, badge: "Bestseller", rating: 4.7, reviews: 208 },
-  { id: 203, handle: "doc-johnson-bondage-beginnersset-mini", title: "Doc Johnson Bondage beginnersset Mini", vendor: "Doc Johnson", category: "BDSM", price: 40.85, compareAt: null, badge: null, rating: 4.7, reviews: 71 },
-  { id: 204, handle: "pjur-verwarmende-massageolie-classic", title: "Pjur Verwarmende massageolie Classic", vendor: "Pjur", category: "Wellness & Massage", price: 45.75, compareAt: null, badge: null, rating: 4.4, reviews: 42 },
-  { id: 205, handle: "easyglide-siliconenbasis-glijmiddel-premium", title: "EasyGlide Siliconenbasis glijmiddel Premium", vendor: "EasyGlide", category: "Wellness & Massage", price: 19.95, compareAt: null, badge: null, rating: 4.6, reviews: 82 },
-  { id: 206, handle: "bijoux-indiscrets-handmassageroller", title: "Bijoux Indiscrets Handmassageroller", vendor: "Bijoux Indiscrets", category: "Wellness & Massage", price: 42.1, compareAt: null, badge: null, rating: 4.9, reviews: 41 },
-  { id: 207, handle: "velora-secrets-etherische-olieset-plus", title: "Velora Secrets Etherische olieset Plus", vendor: "Velora Secrets", category: "Wellness & Massage", price: 11.85, compareAt: null, badge: null, rating: 4.3, reviews: 127 },
-  { id: 208, handle: "pjur-aromatische-massageolie-pro", title: "Pjur Aromatische massageolie Pro", vendor: "Pjur", category: "Wellness & Massage", price: 49.9, compareAt: null, badge: null, rating: 4.5, reviews: 49 },
-  { id: 209, handle: "easyglide-warming-glijmiddel-classic", title: "EasyGlide Warming glijmiddel Classic", vendor: "EasyGlide", category: "Wellness & Massage", price: 11.85, compareAt: null, badge: null, rating: 4.6, reviews: 136 },
-  { id: 210, handle: "bijoux-indiscrets-handmassageroller-comfort", title: "Bijoux Indiscrets Handmassageroller Comfort", vendor: "Bijoux Indiscrets", category: "Wellness & Massage", price: 27.15, compareAt: null, badge: "Nieuw", rating: 4.6, reviews: 131 },
-  { id: 211, handle: "velora-secrets-etherische-olieset-mini", title: "Velora Secrets Etherische olieset Mini", vendor: "Velora Secrets", category: "Wellness & Massage", price: 21.35, compareAt: null, badge: null, rating: 4.4, reviews: 69 },
-  { id: 212, handle: "pjur-eetbare-massageolie-20", title: "Pjur Eetbare massageolie 2.0", vendor: "Pjur", category: "Wellness & Massage", price: 32.4, compareAt: null, badge: null, rating: 4.4, reviews: 91 },
-  { id: 213, handle: "easyglide-waterbasis-glijmiddel-plus", title: "EasyGlide Waterbasis glijmiddel Plus", vendor: "EasyGlide", category: "Wellness & Massage", price: 24.15, compareAt: null, badge: null, rating: 4.9, reviews: 63 },
-  { id: 214, handle: "bijoux-indiscrets-handmassageroller-20", title: "Bijoux Indiscrets Handmassageroller 2.0", vendor: "Bijoux Indiscrets", category: "Wellness & Massage", price: 28.95, compareAt: 35.4, badge: "Sale", rating: 4.5, reviews: 19 },
-  { id: 215, handle: "velora-secrets-etherische-olieset", title: "Velora Secrets Etherische olieset", vendor: "Velora Secrets", category: "Wellness & Massage", price: 14.15, compareAt: null, badge: null, rating: 4.7, reviews: 38 },
-  { id: 216, handle: "pjur-verwarmende-massageolie-deluxe", title: "Pjur Verwarmende massageolie Deluxe", vendor: "Pjur", category: "Wellness & Massage", price: 43.0, compareAt: null, badge: null, rating: 4.3, reviews: 17 },
-  { id: 217, handle: "easyglide-siliconenbasis-glijmiddel-premium-2", title: "EasyGlide Siliconenbasis glijmiddel Premium 2", vendor: "EasyGlide", category: "Wellness & Massage", price: 23.9, compareAt: null, badge: null, rating: 4.5, reviews: 165 },
-  { id: 218, handle: "bijoux-indiscrets-handmassageroller-pro", title: "Bijoux Indiscrets Handmassageroller Pro", vendor: "Bijoux Indiscrets", category: "Wellness & Massage", price: 36.0, compareAt: null, badge: null, rating: 4.9, reviews: 157 },
-  { id: 219, handle: "velora-secrets-etherische-olieset-deluxe", title: "Velora Secrets Etherische olieset Deluxe", vendor: "Velora Secrets", category: "Wellness & Massage", price: 20.75, compareAt: null, badge: null, rating: 4.4, reviews: 169 },
-  { id: 220, handle: "pjur-aromatische-massageolie-20", title: "Pjur Aromatische massageolie 2.0", vendor: "Pjur", category: "Wellness & Massage", price: 45.65, compareAt: null, badge: null, rating: 4.8, reviews: 128 },
-  { id: 221, handle: "easyglide-warming-glijmiddel-mini", title: "EasyGlide Warming glijmiddel Mini", vendor: "EasyGlide", category: "Wellness & Massage", price: 16.85, compareAt: null, badge: null, rating: 4.6, reviews: 181 },
-  { id: 222, handle: "bijoux-indiscrets-handmassageroller-plus", title: "Bijoux Indiscrets Handmassageroller Plus", vendor: "Bijoux Indiscrets", category: "Wellness & Massage", price: 42.15, compareAt: null, badge: null, rating: 4.8, reviews: 109 },
-  { id: 223, handle: "velora-secrets-etherische-olieset-comfort", title: "Velora Secrets Etherische olieset Comfort", vendor: "Velora Secrets", category: "Wellness & Massage", price: 13.15, compareAt: null, badge: null, rating: 4.5, reviews: 151 },
-  { id: 224, handle: "pjur-eetbare-massageolie-mini", title: "Pjur Eetbare massageolie Mini", vendor: "Pjur", category: "Wellness & Massage", price: 25.1, compareAt: null, badge: null, rating: 4.9, reviews: 112 },
+  { id: 1, handle: 'luxe-satijnen-kimono', title: 'Luxe Satijnen Kimono', vendor: 'Velora Secrets', category: 'Lingerie', price: 49.95, compareAt: null, badge: 'Bestseller' },
+  { id: 2, handle: 'discrete-wellness-massageset', title: 'Discrete Wellness Massageset', vendor: 'Velora Secrets', category: 'Wellness & Massage', price: 34.5, compareAt: 44.5, badge: 'Sale' },
+  { id: 3, handle: 'premium-silicone-collectie', title: 'Premium Silicone Collectie', vendor: 'Velora Secrets', category: 'Voor Haar', price: 59.0, compareAt: null, badge: 'Nieuw' },
+  { id: 4, handle: 'verwarmende-massage-olie-duo', title: 'Verwarmende Massage-olie Duo', vendor: 'Velora Secrets', category: 'Wellness & Massage', price: 24.95, compareAt: null, badge: null },
+  { id: 5, handle: 'kanten-lingerieset-rosa', title: 'Kanten Lingerieset "Rosa"', vendor: 'Velora Secrets', category: 'Lingerie', price: 39.95, compareAt: null, badge: 'Bestseller' },
+  { id: 6, handle: 'fluwelen-oogmasker-veertje', title: 'Fluwelen Oogmasker & Veertje', vendor: 'Velora Secrets', category: 'Voor Koppels', price: 19.95, compareAt: null, badge: null },
+  { id: 7, handle: 'discrete-reisvriendelijke-massager', title: 'Discrete Reisvriendelijke Massager', vendor: 'Velora Secrets', category: 'Voor Haar', price: 44.95, compareAt: null, badge: 'Nieuw' },
+  { id: 8, handle: 'heren-boxerset-premium-katoen', title: 'Heren Boxerset Premium Katoen', vendor: 'Velora Secrets', category: 'Voor Hem', price: 29.95, compareAt: 34.95, badge: 'Sale' },
+  { id: 9, handle: 'verstelbare-bondage-set-zacht', title: 'Verstelbare Bondage Set met Zachte Boeien', vendor: 'Velora Secrets', category: 'BDSM', price: 39.95, compareAt: null, badge: 'Nieuw' },
+  { id: 10, handle: 'fluwelen-zweep-beginners', title: 'Fluwelen Zweep — Beginnersset', vendor: 'Velora Secrets', category: 'BDSM', price: 24.95, compareAt: null, badge: null },
+  { id: 11, handle: 'afstandsbediende-koppelvibrator', title: 'Afstandsbediende Koppelvibrator', vendor: 'Velora Secrets', category: 'Voor Koppels', price: 54.95, compareAt: null, badge: 'Bestseller' },
+  { id: 12, handle: 'rollenspel-kaartenset-voor-twee', title: 'Rollenspel Kaartenset voor Twee', vendor: 'Velora Secrets', category: 'Voor Koppels', price: 19.95, compareAt: null, badge: null },
+  { id: 13, handle: 'kanten-body-set-noir', title: 'Kanten Body Set "Noir"', vendor: 'Velora Secrets', category: 'Lingerie', price: 44.95, compareAt: null, badge: null },
+  { id: 14, handle: 'discrete-clitorisstimulator', title: 'Discrete Clitorisstimulator', vendor: 'Velora Secrets', category: 'Voor Haar', price: 49.95, compareAt: null, badge: 'Nieuw' },
+  { id: 15, handle: 'prostaatstimulator-starter', title: 'Prostaatstimulator Starter', vendor: 'Velora Secrets', category: 'Voor Hem', price: 34.95, compareAt: null, badge: null },
+  { id: 16, handle: 'aromatische-massagekaars', title: 'Aromatische Massagekaars', vendor: 'Velora Secrets', category: 'Wellness & Massage', price: 22.95, compareAt: null, badge: null },
+  { id: 100, handle: "satisfyer-luchtdrukvibrator-pro", title: "Satisfyer Luchtdrukvibrator Pro", vendor: "Satisfyer", category: "Voor Haar", price: 47.2, compareAt: 55.6, badge: "Sale" },
+  { id: 101, handle: "womanizer-curve-vibrator-mini", title: "Womanizer Curve vibrator Mini", vendor: "Womanizer", category: "Voor Haar", price: 107.3, compareAt: null, badge: null },
+  { id: 102, handle: "lelo-rabbit-vibrator-comfort", title: "LELO Rabbit vibrator Comfort", vendor: "LELO", category: "Voor Haar", price: 95.15, compareAt: null, badge: null },
+  { id: 103, handle: "wevibe-realistische-dildo-classic", title: "We-Vibe Realistische dildo Classic", vendor: "We-Vibe", category: "Voor Haar", price: 88.95, compareAt: null, badge: null },
+  { id: 104, handle: "lovense-kegelballenset-deluxe", title: "Lovense Kegelballenset Deluxe", vendor: "Lovense", category: "Voor Haar", price: 29.85, compareAt: null, badge: null },
+  { id: 105, handle: "fun-factory-clitorisstimulator-20", title: "Fun Factory Clitorisstimulator 2.0", vendor: "Fun Factory", category: "Voor Haar", price: 33.0, compareAt: null, badge: "Bestseller" },
+  { id: 106, handle: "easyglide-gspot-vibrator", title: "EasyGlide G-spot vibrator", vendor: "EasyGlide", category: "Voor Haar", price: 13.9, compareAt: null, badge: null },
+  { id: 107, handle: "calexotics-dualmotor-vibrator-comfort", title: "CalExotics Dual-motor vibrator Comfort", vendor: "CalExotics", category: "Voor Haar", price: 17.9, compareAt: null, badge: null },
+  { id: 108, handle: "satisfyer-siliconen-dildo-classic", title: "Satisfyer Siliconen dildo Classic", vendor: "Satisfyer", category: "Voor Haar", price: 54.1, compareAt: null, badge: null },
+  { id: 109, handle: "womanizer-appgestuurde-kegeltrainer", title: "Womanizer App-gestuurde kegeltrainer", vendor: "Womanizer", category: "Voor Haar", price: 123.85, compareAt: null, badge: null },
+  { id: 110, handle: "lelo-minivibrator-20", title: "LELO Mini-vibrator 2.0", vendor: "LELO", category: "Voor Haar", price: 127.3, compareAt: null, badge: null },
+  { id: 111, handle: "wevibe-comehither-vibrator-deluxe", title: "We-Vibe Come-hither vibrator Deluxe", vendor: "We-Vibe", category: "Voor Haar", price: 71.8, compareAt: null, badge: null },
+  { id: 112, handle: "lovense-rabbit-vibrator-plus", title: "Lovense Rabbit vibrator Plus", vendor: "Lovense", category: "Voor Haar", price: 40.35, compareAt: 50.3, badge: "Sale" },
+  { id: 113, handle: "fun-factory-glazen-dildo-20", title: "Fun Factory Glazen dildo 2.0", vendor: "Fun Factory", category: "Voor Haar", price: 38.95, compareAt: null, badge: null },
+  { id: 114, handle: "easyglide-kegelballenset-20", title: "EasyGlide Kegelballenset 2.0", vendor: "EasyGlide", category: "Voor Haar", price: 12.7, compareAt: null, badge: null },
+  { id: 115, handle: "calexotics-bullet-vibrator-mini", title: "CalExotics Bullet vibrator Mini", vendor: "CalExotics", category: "Voor Haar", price: 16.05, compareAt: null, badge: null },
+  { id: 116, handle: "satisfyer-curve-vibrator", title: "Satisfyer Curve vibrator", vendor: "Satisfyer", category: "Voor Haar", price: 44.8, compareAt: null, badge: null },
+  { id: 117, handle: "womanizer-dualmotor-vibrator", title: "Womanizer Dual-motor vibrator", vendor: "Womanizer", category: "Voor Haar", price: 66.75, compareAt: null, badge: null },
+  { id: 118, handle: "lelo-realistische-dildo-premium", title: "LELO Realistische dildo Premium", vendor: "LELO", category: "Voor Haar", price: 124.65, compareAt: null, badge: null },
+  { id: 119, handle: "wevibe-appgestuurde-kegeltrainer-deluxe", title: "We-Vibe App-gestuurde kegeltrainer Deluxe", vendor: "We-Vibe", category: "Voor Haar", price: 82.65, compareAt: null, badge: "Bestseller" },
+  { id: 120, handle: "fun-factory-pocket-masturbator-deluxe", title: "Fun Factory Pocket masturbator Deluxe", vendor: "Fun Factory", category: "Voor Hem", price: 45.55, compareAt: null, badge: null },
+  { id: 121, handle: "fifty-shades-of-grey-siliconen-cockringset-classic", title: "Fifty Shades of Grey Siliconen cockring-set Classic", vendor: "Fifty Shades of Grey", category: "Voor Hem", price: 29.8, compareAt: null, badge: null },
+  { id: 122, handle: "durex-prostaatstimulator-mini", title: "Durex Prostaatstimulator Mini", vendor: "Durex", category: "Voor Hem", price: 16.4, compareAt: null, badge: "Nieuw" },
+  { id: 123, handle: "calexotics-reinigingsspray-20", title: "CalExotics Reinigingsspray 2.0", vendor: "CalExotics", category: "Voor Hem", price: 24.55, compareAt: null, badge: null },
+  { id: 124, handle: "satisfyer-automatische-masturbator-classic", title: "Satisfyer Automatische masturbator Classic", vendor: "Satisfyer", category: "Voor Hem", price: 49.55, compareAt: null, badge: null },
+  { id: 125, handle: "lelo-siliconen-cockringset", title: "LELO Siliconen cockring-set", vendor: "LELO", category: "Voor Hem", price: 79.8, compareAt: null, badge: "Nieuw" },
+  { id: 126, handle: "fun-factory-prostaatstimulator-premium", title: "Fun Factory Prostaatstimulator Premium", vendor: "Fun Factory", category: "Voor Hem", price: 44.85, compareAt: null, badge: "Bestseller" },
+  { id: 127, handle: "fifty-shades-of-grey-reinigingsspray-20", title: "Fifty Shades of Grey Reinigingsspray 2.0", vendor: "Fifty Shades of Grey", category: "Voor Hem", price: 45.25, compareAt: null, badge: null },
+  { id: 128, handle: "durex-realistische-masturbator-premium", title: "Durex Realistische masturbator Premium", vendor: "Durex", category: "Voor Hem", price: 16.9, compareAt: null, badge: null },
+  { id: 129, handle: "calexotics-siliconen-cockringset-classic", title: "CalExotics Siliconen cockring-set Classic", vendor: "CalExotics", category: "Voor Hem", price: 13.3, compareAt: null, badge: "Bestseller" },
+  { id: 130, handle: "satisfyer-prostaatstimulator-deluxe", title: "Satisfyer Prostaatstimulator Deluxe", vendor: "Satisfyer", category: "Voor Hem", price: 29.4, compareAt: null, badge: null },
+  { id: 131, handle: "lelo-reinigingsspray-plus", title: "LELO Reinigingsspray Plus", vendor: "LELO", category: "Voor Hem", price: 89.2, compareAt: null, badge: null },
+  { id: 132, handle: "fun-factory-pocket-masturbator-classic", title: "Fun Factory Pocket masturbator Classic", vendor: "Fun Factory", category: "Voor Hem", price: 32.0, compareAt: null, badge: null },
+  { id: 133, handle: "fifty-shades-of-grey-siliconen-cockringset", title: "Fifty Shades of Grey Siliconen cockring-set", vendor: "Fifty Shades of Grey", category: "Voor Hem", price: 38.95, compareAt: null, badge: "Nieuw" },
+  { id: 134, handle: "durex-prostaatstimulator-20", title: "Durex Prostaatstimulator 2.0", vendor: "Durex", category: "Voor Hem", price: 18.0, compareAt: null, badge: null },
+  { id: 135, handle: "calexotics-reinigingsspray-mini", title: "CalExotics Reinigingsspray Mini", vendor: "CalExotics", category: "Voor Hem", price: 22.55, compareAt: null, badge: null },
+  { id: 136, handle: "satisfyer-automatische-masturbator-20", title: "Satisfyer Automatische masturbator 2.0", vendor: "Satisfyer", category: "Voor Hem", price: 32.5, compareAt: null, badge: "Nieuw" },
+  { id: 137, handle: "lelo-siliconen-cockringset-deluxe", title: "LELO Siliconen cockring-set Deluxe", vendor: "LELO", category: "Voor Hem", price: 89.85, compareAt: 109.95, badge: "Sale" },
+  { id: 138, handle: "fun-factory-prostaatstimulator-20", title: "Fun Factory Prostaatstimulator 2.0", vendor: "Fun Factory", category: "Voor Hem", price: 36.85, compareAt: null, badge: null },
+  { id: 139, handle: "fifty-shades-of-grey-reinigingsspray-comfort", title: "Fifty Shades of Grey Reinigingsspray Comfort", vendor: "Fifty Shades of Grey", category: "Voor Hem", price: 46.15, compareAt: null, badge: null },
+  { id: 140, handle: "durex-realistische-masturbator-premium-2", title: "Durex Realistische masturbator Premium 2", vendor: "Durex", category: "Voor Hem", price: 22.75, compareAt: null, badge: null },
+  { id: 141, handle: "calexotics-siliconen-cockringset-classic-2", title: "CalExotics Siliconen cockring-set Classic 2", vendor: "CalExotics", category: "Voor Hem", price: 18.3, compareAt: null, badge: null },
+  { id: 142, handle: "wevibe-koppelvibrator-plus", title: "We-Vibe Koppelvibrator Plus", vendor: "We-Vibe", category: "Voor Koppels", price: 77.0, compareAt: null, badge: null },
+  { id: 143, handle: "lovense-fantasie-dobbelstenenset-comfort", title: "Lovense Fantasie dobbelstenenset Comfort", vendor: "Lovense", category: "Voor Koppels", price: 33.1, compareAt: 38.85, badge: "Sale" },
+  { id: 144, handle: "lelo-massageset-voor-twee-classic", title: "LELO Massageset voor twee Classic", vendor: "LELO", category: "Voor Koppels", price: 128.5, compareAt: null, badge: null },
+  { id: 145, handle: "fun-factory-koppelvibrator-mini", title: "Fun Factory Koppelvibrator Mini", vendor: "Fun Factory", category: "Voor Koppels", price: 44.1, compareAt: null, badge: null },
+  { id: 146, handle: "durex-rollenspel-kaartenset-mini", title: "Durex Rollenspel kaartenset Mini", vendor: "Durex", category: "Voor Koppels", price: 22.1, compareAt: null, badge: null },
+  { id: 147, handle: "wevibe-warmende-glijmiddelduo-mini", title: "We-Vibe Warmende glijmiddel-duo Mini", vendor: "We-Vibe", category: "Voor Koppels", price: 55.15, compareAt: null, badge: null },
+  { id: 148, handle: "lovense-koppelvibrator-deluxe", title: "Lovense Koppelvibrator Deluxe", vendor: "Lovense", category: "Voor Koppels", price: 37.7, compareAt: null, badge: null },
+  { id: 149, handle: "lelo-fantasie-dobbelstenenset-classic", title: "LELO Fantasie dobbelstenenset Classic", vendor: "LELO", category: "Voor Koppels", price: 87.9, compareAt: null, badge: null },
+  { id: 150, handle: "fun-factory-massageset-voor-twee-classic", title: "Fun Factory Massageset voor twee Classic", vendor: "Fun Factory", category: "Voor Koppels", price: 25.75, compareAt: 33.1, badge: "Sale" },
+  { id: 151, handle: "durex-koppelvibrator-classic", title: "Durex Koppelvibrator Classic", vendor: "Durex", category: "Voor Koppels", price: 12.65, compareAt: null, badge: null },
+  { id: 152, handle: "wevibe-rollenspel-kaartenset", title: "We-Vibe Rollenspel kaartenset", vendor: "We-Vibe", category: "Voor Koppels", price: 89.6, compareAt: null, badge: "Nieuw" },
+  { id: 153, handle: "lovense-warmende-glijmiddelduo-comfort", title: "Lovense Warmende glijmiddel-duo Comfort", vendor: "Lovense", category: "Voor Koppels", price: 51.4, compareAt: null, badge: null },
+  { id: 154, handle: "lelo-koppelvibrator-classic", title: "LELO Koppelvibrator Classic", vendor: "LELO", category: "Voor Koppels", price: 93.1, compareAt: 122.6, badge: "Sale" },
+  { id: 155, handle: "fun-factory-fantasie-dobbelstenenset-premium", title: "Fun Factory Fantasie dobbelstenenset Premium", vendor: "Fun Factory", category: "Voor Koppels", price: 51.05, compareAt: null, badge: null },
+  { id: 156, handle: "durex-massageset-voor-twee-mini", title: "Durex Massageset voor twee Mini", vendor: "Durex", category: "Voor Koppels", price: 17.4, compareAt: null, badge: "Nieuw" },
+  { id: 157, handle: "wevibe-koppelvibrator-mini", title: "We-Vibe Koppelvibrator Mini", vendor: "We-Vibe", category: "Voor Koppels", price: 85.7, compareAt: null, badge: null },
+  { id: 158, handle: "lovense-rollenspel-kaartenset-20", title: "Lovense Rollenspel kaartenset 2.0", vendor: "Lovense", category: "Voor Koppels", price: 53.55, compareAt: null, badge: null },
+  { id: 159, handle: "lelo-warmende-glijmiddelduo-plus", title: "LELO Warmende glijmiddel-duo Plus", vendor: "LELO", category: "Voor Koppels", price: 112.0, compareAt: null, badge: null },
+  { id: 160, handle: "fun-factory-koppelvibrator-comfort", title: "Fun Factory Koppelvibrator Comfort", vendor: "Fun Factory", category: "Voor Koppels", price: 44.1, compareAt: null, badge: null },
+  { id: 161, handle: "durex-fantasie-dobbelstenenset-classic", title: "Durex Fantasie dobbelstenenset Classic", vendor: "Durex", category: "Voor Koppels", price: 24.85, compareAt: 33.45, badge: "Sale" },
+  { id: 162, handle: "obsessive-kanten-lingerieset-deluxe", title: "Obsessive Kanten lingerieset Deluxe", vendor: "Obsessive", category: "Lingerie", price: 43.15, compareAt: null, badge: null },
+  { id: 163, handle: "leg-avenue-corset-met-kousenbanden-classic", title: "Leg Avenue Corset met kousenbanden Classic", vendor: "Leg Avenue", category: "Lingerie", price: 48.6, compareAt: null, badge: "Nieuw" },
+  { id: 164, handle: "velora-secrets-kanten-handschoenen-premium", title: "Velora Secrets Kanten handschoenen Premium", vendor: "Velora Secrets", category: "Lingerie", price: 40.9, compareAt: null, badge: null },
+  { id: 165, handle: "obsessive-satijnen-kimono-classic", title: "Obsessive Satijnen kimono Classic", vendor: "Obsessive", category: "Lingerie", price: 41.05, compareAt: null, badge: null },
+  { id: 166, handle: "leg-avenue-mesh-lingerieset", title: "Leg Avenue Mesh lingerieset", vendor: "Leg Avenue", category: "Lingerie", price: 34.8, compareAt: null, badge: null },
+  { id: 167, handle: "velora-secrets-basque-set-mini", title: "Velora Secrets Basque set Mini", vendor: "Velora Secrets", category: "Lingerie", price: 51.5, compareAt: null, badge: null },
+  { id: 168, handle: "obsessive-jarretelgordel-plus", title: "Obsessive Jarretelgordel Plus", vendor: "Obsessive", category: "Lingerie", price: 44.85, compareAt: null, badge: null },
+  { id: 169, handle: "leg-avenue-slaapjurk-classic", title: "Leg Avenue Slaapjurk Classic", vendor: "Leg Avenue", category: "Lingerie", price: 50.7, compareAt: null, badge: "Bestseller" },
+  { id: 170, handle: "velora-secrets-satijnen-lingerieset-pro", title: "Velora Secrets Satijnen lingerieset Pro", vendor: "Velora Secrets", category: "Lingerie", price: 30.2, compareAt: null, badge: "Nieuw" },
+  { id: 171, handle: "obsessive-kanten-body-deluxe", title: "Obsessive Kanten body Deluxe", vendor: "Obsessive", category: "Lingerie", price: 53.3, compareAt: null, badge: "Nieuw" },
+  { id: 172, handle: "leg-avenue-kousen-met-naad-plus", title: "Leg Avenue Kousen met naad Plus", vendor: "Leg Avenue", category: "Lingerie", price: 39.65, compareAt: null, badge: null },
+  { id: 173, handle: "velora-secrets-peignoir-set-premium", title: "Velora Secrets Peignoir set Premium", vendor: "Velora Secrets", category: "Lingerie", price: 36.4, compareAt: null, badge: null },
+  { id: 174, handle: "obsessive-kanten-lingerieset-comfort", title: "Obsessive Kanten lingerieset Comfort", vendor: "Obsessive", category: "Lingerie", price: 26.95, compareAt: null, badge: null },
+  { id: 175, handle: "leg-avenue-corset-met-kousenbanden-20", title: "Leg Avenue Corset met kousenbanden 2.0", vendor: "Leg Avenue", category: "Lingerie", price: 51.0, compareAt: null, badge: null },
+  { id: 176, handle: "velora-secrets-kanten-handschoenen-deluxe", title: "Velora Secrets Kanten handschoenen Deluxe", vendor: "Velora Secrets", category: "Lingerie", price: 49.15, compareAt: null, badge: null },
+  { id: 177, handle: "obsessive-satijnen-kimono-premium", title: "Obsessive Satijnen kimono Premium", vendor: "Obsessive", category: "Lingerie", price: 35.5, compareAt: null, badge: "Bestseller" },
+  { id: 178, handle: "leg-avenue-mesh-lingerieset-mini", title: "Leg Avenue Mesh lingerieset Mini", vendor: "Leg Avenue", category: "Lingerie", price: 47.6, compareAt: null, badge: "Nieuw" },
+  { id: 179, handle: "velora-secrets-basque-set-pro", title: "Velora Secrets Basque set Pro", vendor: "Velora Secrets", category: "Lingerie", price: 31.1, compareAt: null, badge: null },
+  { id: 180, handle: "obsessive-jarretelgordel-20", title: "Obsessive Jarretelgordel 2.0", vendor: "Obsessive", category: "Lingerie", price: 33.65, compareAt: null, badge: null },
+  { id: 181, handle: "leg-avenue-slaapjurk-mini", title: "Leg Avenue Slaapjurk Mini", vendor: "Leg Avenue", category: "Lingerie", price: 32.05, compareAt: null, badge: "Bestseller" },
+  { id: 182, handle: "velora-secrets-satijnen-lingerieset-comfort", title: "Velora Secrets Satijnen lingerieset Comfort", vendor: "Velora Secrets", category: "Lingerie", price: 45.4, compareAt: null, badge: null },
+  { id: 183, handle: "obsessive-kanten-body-classic", title: "Obsessive Kanten body Classic", vendor: "Obsessive", category: "Lingerie", price: 42.7, compareAt: null, badge: null },
+  { id: 184, handle: "fifty-shades-of-grey-bondagetouwset", title: "Fifty Shades of Grey Bondagetouwset", vendor: "Fifty Shades of Grey", category: "BDSM", price: 36.5, compareAt: null, badge: null },
+  { id: 185, handle: "doc-johnson-leren-paddle-plus", title: "Doc Johnson Leren paddle Plus", vendor: "Doc Johnson", category: "BDSM", price: 40.1, compareAt: null, badge: "Bestseller" },
+  { id: 186, handle: "velora-secrets-fetish-handschoenen-premium", title: "Velora Secrets Fetish handschoenen Premium", vendor: "Velora Secrets", category: "BDSM", price: 20.15, compareAt: null, badge: "Nieuw" },
+  { id: 187, handle: "fifty-shades-of-grey-bondage-beginnersset-mini", title: "Fifty Shades of Grey Bondage beginnersset Mini", vendor: "Fifty Shades of Grey", category: "BDSM", price: 34.95, compareAt: null, badge: null },
+  { id: 188, handle: "doc-johnson-verstelbare-boeienset-deluxe", title: "Doc Johnson Verstelbare boeienset Deluxe", vendor: "Doc Johnson", category: "BDSM", price: 54.95, compareAt: null, badge: "Bestseller" },
+  { id: 189, handle: "velora-secrets-ticklersset-classic", title: "Velora Secrets Ticklers-set Classic", vendor: "Velora Secrets", category: "BDSM", price: 21.25, compareAt: null, badge: null },
+  { id: 190, handle: "fifty-shades-of-grey-latex-masker-comfort", title: "Fifty Shades of Grey Latex masker Comfort", vendor: "Fifty Shades of Grey", category: "BDSM", price: 38.8, compareAt: 47.6, badge: "Sale" },
+  { id: 191, handle: "doc-johnson-bondage-beginnersset", title: "Doc Johnson Bondage beginnersset", vendor: "Doc Johnson", category: "BDSM", price: 53.0, compareAt: null, badge: null },
+  { id: 192, handle: "velora-secrets-spreidstok-premium", title: "Velora Secrets Spreidstok Premium", vendor: "Velora Secrets", category: "BDSM", price: 23.9, compareAt: null, badge: null },
+  { id: 193, handle: "fifty-shades-of-grey-fluwelen-zweep-premium", title: "Fifty Shades of Grey Fluwelen zweep Premium", vendor: "Fifty Shades of Grey", category: "BDSM", price: 48.7, compareAt: null, badge: "Bestseller" },
+  { id: 194, handle: "doc-johnson-leren-harnas", title: "Doc Johnson Leren harnas", vendor: "Doc Johnson", category: "BDSM", price: 53.15, compareAt: null, badge: null },
+  { id: 195, handle: "velora-secrets-bondage-beginnersset-plus", title: "Velora Secrets Bondage beginnersset Plus", vendor: "Velora Secrets", category: "BDSM", price: 11.6, compareAt: null, badge: null },
+  { id: 196, handle: "fifty-shades-of-grey-bondagetouwset-plus", title: "Fifty Shades of Grey Bondagetouwset Plus", vendor: "Fifty Shades of Grey", category: "BDSM", price: 40.65, compareAt: null, badge: null },
+  { id: 197, handle: "doc-johnson-leren-paddle-plus-2", title: "Doc Johnson Leren paddle Plus 2", vendor: "Doc Johnson", category: "BDSM", price: 35.3, compareAt: null, badge: null },
+  { id: 198, handle: "velora-secrets-fetish-handschoenen-comfort", title: "Velora Secrets Fetish handschoenen Comfort", vendor: "Velora Secrets", category: "BDSM", price: 19.45, compareAt: null, badge: null },
+  { id: 199, handle: "fifty-shades-of-grey-bondage-beginnersset", title: "Fifty Shades of Grey Bondage beginnersset", vendor: "Fifty Shades of Grey", category: "BDSM", price: 39.15, compareAt: null, badge: "Nieuw" },
+  { id: 200, handle: "doc-johnson-verstelbare-boeienset-20", title: "Doc Johnson Verstelbare boeienset 2.0", vendor: "Doc Johnson", category: "BDSM", price: 47.25, compareAt: null, badge: null },
+  { id: 201, handle: "velora-secrets-ticklersset-pro", title: "Velora Secrets Ticklers-set Pro", vendor: "Velora Secrets", category: "BDSM", price: 20.85, compareAt: null, badge: null },
+  { id: 202, handle: "fifty-shades-of-grey-latex-masker-mini", title: "Fifty Shades of Grey Latex masker Mini", vendor: "Fifty Shades of Grey", category: "BDSM", price: 53.55, compareAt: null, badge: "Bestseller" },
+  { id: 203, handle: "doc-johnson-bondage-beginnersset-mini", title: "Doc Johnson Bondage beginnersset Mini", vendor: "Doc Johnson", category: "BDSM", price: 40.85, compareAt: null, badge: null },
+  { id: 204, handle: "pjur-verwarmende-massageolie-classic", title: "Pjur Verwarmende massageolie Classic", vendor: "Pjur", category: "Wellness & Massage", price: 45.75, compareAt: null, badge: null },
+  { id: 205, handle: "easyglide-siliconenbasis-glijmiddel-premium", title: "EasyGlide Siliconenbasis glijmiddel Premium", vendor: "EasyGlide", category: "Wellness & Massage", price: 19.95, compareAt: null, badge: null },
+  { id: 206, handle: "bijoux-indiscrets-handmassageroller", title: "Bijoux Indiscrets Handmassageroller", vendor: "Bijoux Indiscrets", category: "Wellness & Massage", price: 42.1, compareAt: null, badge: null },
+  { id: 207, handle: "velora-secrets-etherische-olieset-plus", title: "Velora Secrets Etherische olieset Plus", vendor: "Velora Secrets", category: "Wellness & Massage", price: 11.85, compareAt: null, badge: null },
+  { id: 208, handle: "pjur-aromatische-massageolie-pro", title: "Pjur Aromatische massageolie Pro", vendor: "Pjur", category: "Wellness & Massage", price: 49.9, compareAt: null, badge: null },
+  { id: 209, handle: "easyglide-warming-glijmiddel-classic", title: "EasyGlide Warming glijmiddel Classic", vendor: "EasyGlide", category: "Wellness & Massage", price: 11.85, compareAt: null, badge: null },
+  { id: 210, handle: "bijoux-indiscrets-handmassageroller-comfort", title: "Bijoux Indiscrets Handmassageroller Comfort", vendor: "Bijoux Indiscrets", category: "Wellness & Massage", price: 27.15, compareAt: null, badge: "Nieuw" },
+  { id: 211, handle: "velora-secrets-etherische-olieset-mini", title: "Velora Secrets Etherische olieset Mini", vendor: "Velora Secrets", category: "Wellness & Massage", price: 21.35, compareAt: null, badge: null },
+  { id: 212, handle: "pjur-eetbare-massageolie-20", title: "Pjur Eetbare massageolie 2.0", vendor: "Pjur", category: "Wellness & Massage", price: 32.4, compareAt: null, badge: null },
+  { id: 213, handle: "easyglide-waterbasis-glijmiddel-plus", title: "EasyGlide Waterbasis glijmiddel Plus", vendor: "EasyGlide", category: "Wellness & Massage", price: 24.15, compareAt: null, badge: null },
+  { id: 214, handle: "bijoux-indiscrets-handmassageroller-20", title: "Bijoux Indiscrets Handmassageroller 2.0", vendor: "Bijoux Indiscrets", category: "Wellness & Massage", price: 28.95, compareAt: 35.4, badge: "Sale" },
+  { id: 215, handle: "velora-secrets-etherische-olieset", title: "Velora Secrets Etherische olieset", vendor: "Velora Secrets", category: "Wellness & Massage", price: 14.15, compareAt: null, badge: null },
+  { id: 216, handle: "pjur-verwarmende-massageolie-deluxe", title: "Pjur Verwarmende massageolie Deluxe", vendor: "Pjur", category: "Wellness & Massage", price: 43.0, compareAt: null, badge: null },
+  { id: 217, handle: "easyglide-siliconenbasis-glijmiddel-premium-2", title: "EasyGlide Siliconenbasis glijmiddel Premium 2", vendor: "EasyGlide", category: "Wellness & Massage", price: 23.9, compareAt: null, badge: null },
+  { id: 218, handle: "bijoux-indiscrets-handmassageroller-pro", title: "Bijoux Indiscrets Handmassageroller Pro", vendor: "Bijoux Indiscrets", category: "Wellness & Massage", price: 36.0, compareAt: null, badge: null },
+  { id: 219, handle: "velora-secrets-etherische-olieset-deluxe", title: "Velora Secrets Etherische olieset Deluxe", vendor: "Velora Secrets", category: "Wellness & Massage", price: 20.75, compareAt: null, badge: null },
+  { id: 220, handle: "pjur-aromatische-massageolie-20", title: "Pjur Aromatische massageolie 2.0", vendor: "Pjur", category: "Wellness & Massage", price: 45.65, compareAt: null, badge: null },
+  { id: 221, handle: "easyglide-warming-glijmiddel-mini", title: "EasyGlide Warming glijmiddel Mini", vendor: "EasyGlide", category: "Wellness & Massage", price: 16.85, compareAt: null, badge: null },
+  { id: 222, handle: "bijoux-indiscrets-handmassageroller-plus", title: "Bijoux Indiscrets Handmassageroller Plus", vendor: "Bijoux Indiscrets", category: "Wellness & Massage", price: 42.15, compareAt: null, badge: null },
+  { id: 223, handle: "velora-secrets-etherische-olieset-comfort", title: "Velora Secrets Etherische olieset Comfort", vendor: "Velora Secrets", category: "Wellness & Massage", price: 13.15, compareAt: null, badge: null },
+  { id: 224, handle: "pjur-eetbare-massageolie-mini", title: "Pjur Eetbare massageolie Mini", vendor: "Pjur", category: "Wellness & Massage", price: 25.1, compareAt: null, badge: null },
 ];
 
 window.VELORA_PRODUCT_DETAIL = {
@@ -340,195 +340,9 @@ window.VELORA_VARIANTS = {
   7: { type: 'color', label: 'Kleur', options: ['Roze', 'Zwart'] },
 };
 
-/* Reviews per product-ID. photo:true toont een stijlvolle placeholder
-   i.p.v. een echte (niet-beschikbare) klantfoto — consistent met hoe
-   ontbrekende productafbeeldingen elders in de site al worden opgelost. */
-window.VELORA_REVIEWS = {
-  1: [
-    { author: 'Merel V.', rating: 5, photo: true, date: '3 weken geleden', text: 'Voelt echt luxe aan en de pasvorm is perfect. Discreet geleverd, precies zoals beloofd.' },
-    { author: 'Anoniem', rating: 5, photo: false, date: '1 maand geleden', text: 'Kwaliteit overtreft de prijs. Zou zo weer bestellen.' },
-    { author: 'Sanne K.', rating: 4, photo: true, date: '2 maanden geleden', text: 'Mooi materiaal, maat valt iets ruim uit — houd daar rekening mee.' },
-  ],
-  2: [
-    { author: 'Thomas B.', rating: 5, photo: false, date: '2 weken geleden', text: 'Heerlijk voor een ontspannen avond samen. Ruikt subtiel, niet overweldigend.' },
-    { author: 'Anoniem', rating: 4, photo: true, date: '1 maand geleden', text: 'Goede set, had graag een grotere fles gehad maar verder top.' },
-  ],
-  3: [
-    { author: 'Anoniem', rating: 5, photo: true, date: '1 week geleden', text: 'Precies de kwaliteit die ik zocht. Stil en fijn materiaal.' },
-    { author: 'Iris D.', rating: 5, photo: false, date: '3 weken geleden', text: 'Verrast door hoe zacht en toch stevig het aanvoelt.' },
-  ],
-  5: [
-    { author: 'Anoniem', rating: 5, photo: true, date: '4 dagen geleden', text: 'Prachtige set, voelt duur aan. Geeft echt zelfvertrouwen.' },
-    { author: 'Femke R.', rating: 5, photo: false, date: '1 maand geleden', text: 'Kant is niet kriebelig zoals bij andere merken. Aanrader.' },
-  ],
-  8: [
-    { author: 'Daan P.', rating: 4, photo: false, date: '2 weken geleden', text: 'Prettige stof, goede pasvorm. Wasvoorschrift duidelijk vermeld.' },
-  ],
-  9: [
-    { author: 'Anoniem', rating: 5, photo: true, date: '1 week geleden', text: 'Perfect voor beginners, de zachte boeien voelen echt comfortabel aan.' },
-    { author: 'Kim R.', rating: 4, photo: false, date: '3 weken geleden', text: 'Fijne kwaliteit, duidelijke instructies erbij.' },
-  ],
-  11: [
-    { author: 'Anoniem', rating: 5, photo: true, date: '4 dagen geleden', text: 'De app werkt verrassend soepel en het is echt stil. Aanrader voor koppels op afstand.' },
-    { author: 'Lotte &amp; Bram', rating: 5, photo: false, date: '2 weken geleden', text: 'Heeft onze avonden een leuke twist gegeven. Snel opgeladen ook.' },
-  ],
-
-  100: [
-    { author: "Roos", rating: 4, photo: false, date: "2 weken geleden", text: "Precies zoals beschreven, snel en discreet geleverd." }
-  ],
-  102: [
-    { author: "Nina", rating: 4, photo: true, date: "3 dagen geleden", text: "Werkt beter dan verwacht, echt een aanrader." }
-  ],
-  106: [
-    { author: "Roos", rating: 5, photo: false, date: "1 maand geleden", text: "Verpakking was zoals beloofd volledig neutraal." }
-  ],
-  109: [
-    { author: "Thomas B.", rating: 5, photo: true, date: "1 week geleden", text: "Goede pasvorm en prettig in gebruik." },
-    { author: "Tess", rating: 5, photo: false, date: "3 weken geleden", text: "Verpakking was zoals beloofd volledig neutraal." }
-  ],
-  117: [
-    { author: "Merel V.", rating: 5, photo: false, date: "3 weken geleden", text: "Verpakking was zoals beloofd volledig neutraal." },
-    { author: "Bram", rating: 5, photo: false, date: "2 weken geleden", text: "Kwaliteit overtreft de prijs, zou zo weer bestellen." },
-    { author: "Lotte", rating: 5, photo: false, date: "2 weken geleden", text: "Werkt beter dan verwacht, echt een aanrader." }
-  ],
-  119: [
-    { author: "Iris D.", rating: 5, photo: false, date: "1 week geleden", text: "Goede pasvorm en prettig in gebruik." }
-  ],
-  123: [
-    { author: "Kim R.", rating: 5, photo: false, date: "3 dagen geleden", text: "Werkt beter dan verwacht, echt een aanrader." },
-    { author: "Merel V.", rating: 5, photo: false, date: "1 maand geleden", text: "Fijn materiaal en goede afwerking." }
-  ],
-  125: [
-    { author: "Sanne K.", rating: 5, photo: true, date: "1 week geleden", text: "Fijn materiaal en goede afwerking." },
-    { author: "Merel V.", rating: 5, photo: false, date: "3 weken geleden", text: "Goede pasvorm en prettig in gebruik." },
-    { author: "Daan P.", rating: 5, photo: false, date: "2 weken geleden", text: "Verpakking was zoals beloofd volledig neutraal." }
-  ],
-  131: [
-    { author: "Milan", rating: 5, photo: true, date: "2 weken geleden", text: "Verpakking was zoals beloofd volledig neutraal." },
-    { author: "Tess", rating: 4, photo: false, date: "3 dagen geleden", text: "Goede pasvorm en prettig in gebruik." }
-  ],
-  135: [
-    { author: "Femke R.", rating: 4, photo: false, date: "2 weken geleden", text: "Kwaliteit overtreft de prijs, zou zo weer bestellen." },
-    { author: "Milan", rating: 5, photo: false, date: "1 maand geleden", text: "Fijn materiaal en goede afwerking." }
-  ],
-  136: [
-    { author: "Iris D.", rating: 4, photo: false, date: "3 dagen geleden", text: "Verpakking was zoals beloofd volledig neutraal." }
-  ],
-  138: [
-    { author: "Sven", rating: 4, photo: false, date: "2 weken geleden", text: "Precies zoals beschreven, snel en discreet geleverd." },
-    { author: "Roos", rating: 5, photo: false, date: "2 weken geleden", text: "Goede pasvorm en prettig in gebruik." }
-  ],
-  140: [
-    { author: "Sven", rating: 5, photo: false, date: "3 weken geleden", text: "Goede pasvorm en prettig in gebruik." }
-  ],
-  145: [
-    { author: "Julia", rating: 5, photo: false, date: "3 dagen geleden", text: "Kwaliteit overtreft de prijs, zou zo weer bestellen." }
-  ],
-  146: [
-    { author: "Roos", rating: 5, photo: false, date: "3 dagen geleden", text: "Verpakking was zoals beloofd volledig neutraal." },
-    { author: "Sanne K.", rating: 4, photo: true, date: "2 weken geleden", text: "Goede pasvorm en prettig in gebruik." },
-    { author: "Thomas B.", rating: 4, photo: false, date: "3 weken geleden", text: "Precies zoals beschreven, snel en discreet geleverd." }
-  ],
-  151: [
-    { author: "Tess", rating: 5, photo: true, date: "1 maand geleden", text: "Verpakking was zoals beloofd volledig neutraal." },
-    { author: "Merel V.", rating: 5, photo: false, date: "2 weken geleden", text: "Fijn materiaal en goede afwerking." },
-    { author: "Sanne K.", rating: 5, photo: true, date: "3 dagen geleden", text: "Goede pasvorm en prettig in gebruik." }
-  ],
-  153: [
-    { author: "Milan", rating: 4, photo: true, date: "1 week geleden", text: "Werkt beter dan verwacht, echt een aanrader." }
-  ],
-  154: [
-    { author: "Lotte", rating: 4, photo: false, date: "2 weken geleden", text: "Verpakking was zoals beloofd volledig neutraal." },
-    { author: "Tess", rating: 4, photo: false, date: "1 maand geleden", text: "Fijn materiaal en goede afwerking." },
-    { author: "Bram", rating: 5, photo: true, date: "1 maand geleden", text: "Werkt beter dan verwacht, echt een aanrader." }
-  ],
-  159: [
-    { author: "Roos", rating: 5, photo: true, date: "1 week geleden", text: "Kwaliteit overtreft de prijs, zou zo weer bestellen." },
-    { author: "Femke R.", rating: 4, photo: true, date: "1 maand geleden", text: "Verpakking was zoals beloofd volledig neutraal." },
-    { author: "Kim R.", rating: 5, photo: true, date: "1 week geleden", text: "Kwaliteit overtreft de prijs, zou zo weer bestellen." }
-  ],
-  160: [
-    { author: "Lotte", rating: 5, photo: true, date: "1 week geleden", text: "Werkt beter dan verwacht, echt een aanrader." },
-    { author: "Tess", rating: 4, photo: false, date: "3 weken geleden", text: "Fijn materiaal en goede afwerking." }
-  ],
-  164: [
-    { author: "Julia", rating: 5, photo: false, date: "1 maand geleden", text: "Precies zoals beschreven, snel en discreet geleverd." }
-  ],
-  166: [
-    { author: "Sanne K.", rating: 4, photo: false, date: "3 weken geleden", text: "Kwaliteit overtreft de prijs, zou zo weer bestellen." },
-    { author: "Julia", rating: 5, photo: false, date: "3 weken geleden", text: "Werkt beter dan verwacht, echt een aanrader." }
-  ],
-  167: [
-    { author: "Sanne K.", rating: 5, photo: false, date: "2 weken geleden", text: "Precies zoals beschreven, snel en discreet geleverd." },
-    { author: "Julia", rating: 5, photo: false, date: "3 dagen geleden", text: "Werkt beter dan verwacht, echt een aanrader." }
-  ],
-  168: [
-    { author: "Kim R.", rating: 5, photo: true, date: "3 weken geleden", text: "Precies zoals beschreven, snel en discreet geleverd." }
-  ],
-  173: [
-    { author: "Milan", rating: 5, photo: false, date: "3 dagen geleden", text: "Fijn materiaal en goede afwerking." },
-    { author: "Roos", rating: 5, photo: true, date: "2 weken geleden", text: "Kwaliteit overtreft de prijs, zou zo weer bestellen." }
-  ],
-  175: [
-    { author: "Sven", rating: 5, photo: false, date: "2 weken geleden", text: "Verpakking was zoals beloofd volledig neutraal." }
-  ],
-  177: [
-    { author: "Milan", rating: 5, photo: false, date: "2 weken geleden", text: "Goede pasvorm en prettig in gebruik." },
-    { author: "Bram", rating: 5, photo: false, date: "3 dagen geleden", text: "Kwaliteit overtreft de prijs, zou zo weer bestellen." }
-  ],
-  178: [
-    { author: "Sanne K.", rating: 5, photo: true, date: "3 weken geleden", text: "Werkt beter dan verwacht, echt een aanrader." },
-    { author: "Nina", rating: 4, photo: false, date: "3 weken geleden", text: "Precies zoals beschreven, snel en discreet geleverd." }
-  ],
-  179: [
-    { author: "Kim R.", rating: 5, photo: false, date: "2 weken geleden", text: "Precies zoals beschreven, snel en discreet geleverd." },
-    { author: "Julia", rating: 4, photo: false, date: "1 maand geleden", text: "Precies zoals beschreven, snel en discreet geleverd." },
-    { author: "Bram", rating: 5, photo: false, date: "1 maand geleden", text: "Goede pasvorm en prettig in gebruik." }
-  ],
-  180: [
-    { author: "Julia", rating: 5, photo: false, date: "2 weken geleden", text: "Goede pasvorm en prettig in gebruik." },
-    { author: "Bram", rating: 4, photo: false, date: "1 week geleden", text: "Precies zoals beschreven, snel en discreet geleverd." },
-    { author: "Sanne K.", rating: 5, photo: false, date: "2 weken geleden", text: "Fijn materiaal en goede afwerking." }
-  ],
-  184: [
-    { author: "Milan", rating: 4, photo: true, date: "2 weken geleden", text: "Goede pasvorm en prettig in gebruik." }
-  ],
-  187: [
-    { author: "Julia", rating: 5, photo: true, date: "3 weken geleden", text: "Precies zoals beschreven, snel en discreet geleverd." },
-    { author: "Roos", rating: 5, photo: false, date: "2 weken geleden", text: "Fijn materiaal en goede afwerking." },
-    { author: "Femke R.", rating: 4, photo: false, date: "1 maand geleden", text: "Kwaliteit overtreft de prijs, zou zo weer bestellen." }
-  ],
-  188: [
-    { author: "Iris D.", rating: 4, photo: false, date: "3 weken geleden", text: "Kwaliteit overtreft de prijs, zou zo weer bestellen." },
-    { author: "Milan", rating: 4, photo: false, date: "1 week geleden", text: "Werkt beter dan verwacht, echt een aanrader." }
-  ],
-  200: [
-    { author: "Femke R.", rating: 5, photo: false, date: "3 dagen geleden", text: "Precies zoals beschreven, snel en discreet geleverd." },
-    { author: "Bram", rating: 5, photo: false, date: "3 weken geleden", text: "Goede pasvorm en prettig in gebruik." },
-    { author: "Roos", rating: 4, photo: true, date: "2 weken geleden", text: "Werkt beter dan verwacht, echt een aanrader." }
-  ],
-  202: [
-    { author: "Milan", rating: 5, photo: false, date: "3 dagen geleden", text: "Verpakking was zoals beloofd volledig neutraal." }
-  ],
-  205: [
-    { author: "Iris D.", rating: 4, photo: true, date: "3 dagen geleden", text: "Fijn materiaal en goede afwerking." }
-  ],
-  209: [
-    { author: "Lotte", rating: 4, photo: true, date: "1 maand geleden", text: "Verpakking was zoals beloofd volledig neutraal." },
-    { author: "Anoniem", rating: 5, photo: true, date: "3 weken geleden", text: "Fijn materiaal en goede afwerking." },
-    { author: "Nina", rating: 5, photo: false, date: "1 maand geleden", text: "Fijn materiaal en goede afwerking." }
-  ],
-  221: [
-    { author: "Nina", rating: 4, photo: true, date: "1 maand geleden", text: "Fijn materiaal en goede afwerking." },
-    { author: "Tess", rating: 5, photo: false, date: "2 weken geleden", text: "Fijn materiaal en goede afwerking." }
-  ],
-  223: [
-    { author: "Merel V.", rating: 4, photo: false, date: "1 maand geleden", text: "Precies zoals beschreven, snel en discreet geleverd." }
-  ],
-};
 
 /* Subcategorie + tags + voorraadstatus per product-ID — voor Fase 3
-   (zoeken/filteren). Zelfde patroon als VELORA_VARIANTS/VELORA_REVIEWS:
+   (zoeken/filteren). Zelfde patroon als VELORA_VARIANTS:
    losse lookup i.p.v. de vorm van VELORA_PRODUCTS zelf te wijzigen. */
 window.VELORA_SUBCATEGORY = {
   1: "Kimono's",
@@ -1151,7 +965,6 @@ window.veloraProductCardHTML = function (p, options = {}) {
         <a href="product.html?id=${p.id}">
           <div class="product-card__vendor">${p.vendor}</div>
           <div class="product-card__title">${p.title}</div>
-          <div class="product-card__rating"><svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L10 15l-5.6 3.1 1.4-6.3L1 8.5l6.4-.6z"/></svg><span>${p.rating} (${p.reviews})</span></div>
           <div><span class="price">${fmt(p.price)}</span>${p.compareAt ? `<span class="price--compare">${fmt(p.compareAt)}</span>` : ''}</div>
         </a>
       </article>`;
@@ -1192,20 +1005,6 @@ window.veloraGetAdvisorRecommendations = function (preferences, limit = 3) {
     .map((entry) => entry.product);
 };
 
-/* Publiek: gemiddelde beoordeling + aantal, berekend uit de echte
-   reviews-array — nooit hardcoded, dus nooit uit sync met de reviews
-   zelf. Valt terug op het (geschatte) rating/reviews-veld van het
-   product zelf als er nog geen reviews-array voor is ingevoerd. */
-window.veloraGetReviewSummary = function (productId) {
-  const reviews = window.VELORA_REVIEWS[productId] || [];
-  if (!reviews.length) {
-    const product = window.VELORA_PRODUCTS.find((p) => p.id === productId);
-    return { average: product?.rating || 0, count: product?.reviews || 0, reviews: [] };
-  }
-  const average = reviews.reduce((s, r) => s + r.rating, 0) / reviews.length;
-  return { average, count: reviews.length, reviews };
-};
-
 /* Publiek: gerelateerde producten op basis van categorie, merk en
    prijsklasse (±30%) — score-gebaseerd, zodat het beste-passende
    product eerst komt i.p.v. willekeurig binnen dezelfde categorie. */
@@ -1244,22 +1043,21 @@ window.veloraGetFrequentlyBoughtTogether = function (product, limit = 4) {
       return { product: p, sharedTags };
     })
     .filter((entry) => entry.sharedTags > 0)
-    .sort((a, b) => b.sharedTags - a.sharedTags || b.product.rating - a.product.rating)
+    .sort((a, b) => b.sharedTags - a.sharedTags)
     .slice(0, limit)
     .map((entry) => entry.product);
 };
 
-/* Publiek: "Klanten kochten ook" — populaire producten (op aantal
-   reviews) uit dezelfde categorie maar een ANDERE subcategorie dan
-   het bekeken product, zodat dit zich onderscheidt van zowel
-   "gerelateerde producten" (categorie+merk+prijs) als "vaak samen
-   gekocht" (cross-categorie via tags). */
+/* Publiek: "Klanten kochten ook" — producten uit dezelfde categorie
+   maar een ANDERE subcategorie dan het bekeken product, zodat dit
+   zich onderscheidt van zowel "gerelateerde producten" (categorie+
+   merk+prijs) als "vaak samen gekocht" (cross-categorie via tags). */
 window.veloraGetAlsoBought = function (product, limit = 4) {
   const productSubcat = window.VELORA_SUBCATEGORY[product.id];
 
   return window.VELORA_PRODUCTS.filter(
     (p) => p.id !== product.id && p.category === product.category && window.VELORA_SUBCATEGORY[p.id] !== productSubcat
   )
-    .sort((a, b) => b.reviews - a.reviews)
+    .sort((a, b) => a.id - b.id)
     .slice(0, limit);
 };

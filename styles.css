@@ -102,9 +102,6 @@
 
   /* ---------- Hero ---------- */
   .hero{ max-width:1400px; margin:0 auto; padding:48px 32px 32px; display:grid; grid-template-columns:.92fr 1.08fr; gap:56px; align-items:center; }
-  .hero__rating{ display:flex; align-items:center; gap:10px; margin-bottom:20px; }
-  .hero__stars svg{ width:14px; height:14px; fill:var(--gold); }
-  .hero__rating span{ font-size:13px; color:var(--cognac); }
   .hero h1{ font-family:var(--font-display); font-weight:450; font-size:clamp(34px,4.4vw,52px); line-height:1.08; margin:16px 0 20px; }
   .hero h1 em{ font-style:italic; color:var(--gold); }
   .hero p.lede{ font-size:16.5px; line-height:1.65; color:var(--cognac); margin-bottom:32px; max-width:460px; }
@@ -174,9 +171,6 @@
   .product-card__media:hover .product-card__quick-add{ opacity:1; transform:translateY(0); }
   .product-card__vendor{ font-size:10.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--cognac); margin-bottom:3px; }
   .product-card__title{ font-size:14px; font-weight:500; margin-bottom:6px; }
-  .product-card__rating{ display:flex; align-items:center; gap:5px; margin-bottom:6px; }
-  .product-card__rating svg{ width:11px; height:11px; fill:var(--gold); }
-  .product-card__rating span{ font-size:11.5px; color:var(--cognac); }
   .price{ font-size:14.5px; font-weight:700; }
   .price--compare{ font-size:12.5px; color:var(--cognac); text-decoration:line-through; font-weight:400; margin-left:6px; }
   .rail-arrows{ display:flex; gap:10px; justify-content:flex-end; margin-top:16px; }
@@ -202,20 +196,6 @@
   .ai-teaser p{ font-size:14.5px; line-height:1.7; color:rgba(248,241,231,.75); margin-bottom:26px; }
   .ai-teaser .btn--primary{ background:var(--gold); color:var(--espresso); }
   .ai-teaser .btn--primary:hover{ background:var(--gold-soft); }
-
-  /* ---------- Reviews ---------- */
-  .reviews__grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-  .review-card{ background:var(--white); border:1px solid var(--blush); border-radius:var(--radius-lg); padding:24px; }
-  .review-card__stars{ display:flex; gap:2px; margin-bottom:12px; }
-  .review-card__stars svg{ width:13px; height:13px; fill:var(--gold); }
-  .review-card p{ font-size:13.5px; line-height:1.6; font-style:italic; margin-bottom:14px; }
-  .review-card__author{ font-size:12.5px; font-weight:600; }
-  .review-card__photo{ width:100%; aspect-ratio:16/10; border-radius:var(--radius-md); margin-bottom:12px; background:
-      radial-gradient(circle at 30% 30%, var(--gold-soft) 0%, transparent 45%),
-      linear-gradient(135deg, var(--blush) 0%, var(--cream-2) 100%); }
-  .review-average{ display:flex; align-items:center; gap:10px; margin-top:10px; flex-wrap:wrap; }
-  .review-average__score{ font-family:var(--font-display); font-size:22px; color:var(--espresso); }
-  .review-average__count{ font-size:12.5px; color:var(--cognac); }
 
   .footer-trust{ border-top:1px solid rgba(248,241,231,.1); border-bottom:1px solid rgba(248,241,231,.1); background:var(--footer-brown); }
   .footer-trust__inner{ max-width:1400px; margin:0 auto; padding:18px 32px; display:flex; flex-wrap:wrap; gap:16px 32px; justify-content:center; }
@@ -343,7 +323,6 @@
     .categories__grid{ grid-template-columns:repeat(2,1fr); }
     .section{ padding:36px 20px; }
     .brand-story__inner{ grid-template-columns:1fr; gap:24px; }
-    .reviews__grid{ grid-template-columns:1fr; }
     .footer-main__inner{ grid-template-columns:1fr 1fr; padding:36px 20px; }
     .ai-panel{ width:100vw; height:100vh; height:100dvh; bottom:0; right:0; border-radius:0; }
     .product{ grid-template-columns:1fr; padding:24px 20px 0; gap:28px; }
@@ -378,9 +357,6 @@
 .product__thumb.is-active{ border-color:var(--gold); opacity:1; }
 
 .product__info h1, .product__title{ font-family:var(--font-display); font-weight:450; font-size:clamp(26px,3vw,32px); margin:6px 0 12px; }
-.product__rating{ display:flex; align-items:center; gap:8px; margin-bottom:16px; }
-.product__rating svg{ width:13px; height:13px; fill:var(--gold); }
-.product__rating span{ font-size:13px; color:var(--cognac); }
 .product__price{ display:flex; align-items:center; gap:10px; margin-bottom:4px; }
 .product__price .price{ font-size:24px; }
 .product__tax-note{ font-size:12px; color:var(--cognac); margin-bottom:22px; }

@@ -218,7 +218,6 @@
         <option value="featured">Aanbevolen</option>
         <option value="price-asc">Prijs: laag naar hoog</option>
         <option value="price-desc">Prijs: hoog naar laag</option>
-        <option value="rating">Best beoordeeld</option>
       </select>
     </div>
   </div>
