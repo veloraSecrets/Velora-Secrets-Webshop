@@ -48,6 +48,38 @@
   .header__left, .header__right{ display:flex; align-items:center; gap:8px; }
   .header__right{ justify-content:flex-end; }
   .icon-btn{ display:flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:50%; transition:background .2s var(--ease); position:relative; }
+
+  /* ============================================================
+     Taalwisselaar
+     ============================================================ */
+  .lang-switcher{ position:relative; }
+  .lang-switcher__toggle:hover{ background:var(--blush); }
+  .lang-switcher__toggle[aria-expanded="true"]{ background:var(--blush); }
+
+  .flag-icon{ display:inline-block; width:20px; height:14px; border-radius:2px; background-size:cover; background-position:center; box-shadow:0 0 0 1px rgba(46,29,20,.08); flex-shrink:0; }
+  .flag-icon--nl{ background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2030%2020%22%3E%3Crect%20width%3D%2230%22%20height%3D%2220%22%20fill%3D%22%2321468B%22/%3E%3Crect%20width%3D%2230%22%20height%3D%2213.33%22%20fill%3D%22%23FFF%22/%3E%3Crect%20width%3D%2230%22%20height%3D%226.67%22%20fill%3D%22%23AE1C28%22/%3E%3C/svg%3E"); }
+  .flag-icon--gb{ background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2030%2020%22%3E%3Crect%20width%3D%2230%22%20height%3D%2220%22%20fill%3D%22%2300247D%22/%3E%3Cpath%20d%3D%22M0%2C0%20L30%2C20%20M30%2C0%20L0%2C20%22%20stroke%3D%22%23FFF%22%20stroke-width%3D%224%22/%3E%3Cpath%20d%3D%22M0%2C0%20L30%2C20%20M30%2C0%20L0%2C20%22%20stroke%3D%22%23CF142B%22%20stroke-width%3D%221.5%22/%3E%3Cpath%20d%3D%22M15%2C0%20V20%20M0%2C10%20H30%22%20stroke%3D%22%23FFF%22%20stroke-width%3D%226%22/%3E%3Cpath%20d%3D%22M15%2C0%20V20%20M0%2C10%20H30%22%20stroke%3D%22%23CF142B%22%20stroke-width%3D%223.5%22/%3E%3C/svg%3E"); }
+  .flag-icon--de{ background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2030%2020%22%3E%3Crect%20width%3D%2230%22%20height%3D%2220%22%20fill%3D%22%23FFCE00%22/%3E%3Crect%20width%3D%2230%22%20height%3D%2213.33%22%20fill%3D%22%23000%22/%3E%3Crect%20width%3D%2230%22%20height%3D%226.67%22%20fill%3D%22%23D00%22/%3E%3C/svg%3E"); }
+  .flag-icon--fr{ background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2030%2020%22%3E%3Crect%20width%3D%2230%22%20height%3D%2220%22%20fill%3D%22%23FFF%22/%3E%3Crect%20width%3D%2210%22%20height%3D%2220%22%20fill%3D%22%23002395%22/%3E%3Crect%20x%3D%2220%22%20width%3D%2210%22%20height%3D%2220%22%20fill%3D%22%23ED2939%22/%3E%3C/svg%3E"); }
+  .flag-icon--es{ background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2030%2020%22%3E%3Crect%20width%3D%2230%22%20height%3D%2220%22%20fill%3D%22%23AA151B%22/%3E%3Crect%20y%3D%225%22%20width%3D%2230%22%20height%3D%2210%22%20fill%3D%22%23F1BF00%22/%3E%3C/svg%3E"); }
+  .flag-icon--pt{ background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2030%2020%22%3E%3Crect%20width%3D%2230%22%20height%3D%2220%22%20fill%3D%22%23FF0000%22/%3E%3Crect%20width%3D%2212%22%20height%3D%2220%22%20fill%3D%22%23006600%22/%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2210%22%20r%3D%223.5%22%20fill%3D%22%23FFCC00%22%20stroke%3D%22%23FFF%22%20stroke-width%3D%220.5%22/%3E%3C/svg%3E"); }
+  .flag-icon--it{ background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2030%2020%22%3E%3Crect%20width%3D%2230%22%20height%3D%2220%22%20fill%3D%22%23FFF%22/%3E%3Crect%20width%3D%2210%22%20height%3D%2220%22%20fill%3D%22%23009246%22/%3E%3Crect%20x%3D%2220%22%20width%3D%2210%22%20height%3D%2220%22%20fill%3D%22%23CE2B37%22/%3E%3C/svg%3E"); }
+  .lang-switcher__menu{
+    position:absolute; top:calc(100% + 10px); right:0; z-index:120;
+    background:var(--white); border:1px solid var(--blush); border-radius:var(--radius-md);
+    box-shadow:0 20px 45px rgba(46,29,20,.16); padding:8px; min-width:190px;
+    display:flex; flex-direction:column; gap:2px;
+    animation:lang-menu-in .18s var(--ease) both;
+  }
+  @keyframes lang-menu-in{ from{ opacity:0; transform:translateY(-6px); } to{ opacity:1; transform:translateY(0); } }
+  .lang-switcher__menu button{
+    display:flex; align-items:center; gap:10px; width:100%; height:40px; padding:0 12px;
+    border-radius:8px; font-size:13.5px; color:var(--espresso); text-align:left;
+    transition:background .15s var(--ease);
+  }
+  .lang-switcher__menu button:hover,
+  .lang-switcher__menu button:focus-visible{ background:var(--blush); }
+  .lang-switcher__menu button.is-active{ background:var(--sage); font-weight:600; }
   .icon-btn:hover{ background:var(--blush); }
   .icon-btn svg{ width:19px; height:19px; stroke:var(--espresso); stroke-width:1.6; fill:none; }
   .logo{ font-family:var(--font-display); font-weight:450; font-size:24px; text-align:center; display:flex; align-items:center; gap:10px; justify-content:center; }
@@ -343,7 +375,7 @@
     .brands-grid{ grid-template-columns:repeat(2,1fr); }
     .homepage-brands-grid{ grid-template-columns:repeat(2,1fr); }
   }
-  @media (max-width:600px){ .footer-main__inner{ grid-template-columns:1fr; } .not-found-page{ padding:40px 20px 56px; } .rewards-lookup__row{ flex-direction:column; } .rewards-tier{ flex-direction:column; align-items:flex-start; gap:10px; } .age-gate__card{ padding:32px 26px; } }
+  @media (max-width:600px){ .footer-main__inner{ grid-template-columns:1fr; } .not-found-page{ padding:40px 20px 56px; } .rewards-lookup__row{ flex-direction:column; } .rewards-tier{ flex-direction:column; align-items:flex-start; gap:10px; } .age-gate__card{ padding:32px 26px; } .lang-switcher__menu{ right:-8px; min-width:180px; } }
 
 /* ============================================================
    Productpagina

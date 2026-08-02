@@ -3,20 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Maak een account aan bij Velora Secrets voor snellere bestellingen en overzicht van je bestelgeschiedenis.">
-<link rel="canonical" href="https://velorasecrets.nl/register.html">
-<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Lees ons retourbeleid — hoe je eenvoudig een bestelling bij Velora Secrets retourneert.">
+<link rel="canonical" href="https://velorasecrets.nl/returns.html">
 <meta name="theme-color" content="#2E1D14">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Velora Secrets">
-<meta property="og:title" content="Registreren — Velora Secrets">
-<meta property="og:description" content="Maak een account aan bij Velora Secrets voor snellere bestellingen en overzicht van je bestelgeschiedenis.">
-<meta property="og:url" content="https://velorasecrets.nl/register.html">
+<meta property="og:title" content="Retourbeleid — Velora Secrets">
+<meta property="og:description" content="Lees ons retourbeleid — hoe je eenvoudig een bestelling bij Velora Secrets retourneert.">
+<meta property="og:url" content="https://velorasecrets.nl/returns.html">
 <meta property="og:locale" content="nl_NL">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Registreren — Velora Secrets">
-<meta name="twitter:description" content="Maak een account aan bij Velora Secrets voor snellere bestellingen en overzicht van je bestelgeschiedenis.">
-<title>Registreren — Velora Secrets</title>
+<meta name="twitter:title" content="Retourbeleid — Velora Secrets">
+<meta name="twitter:description" content="Lees ons retourbeleid — hoe je eenvoudig een bestelling bij Velora Secrets retourneert.">
+<title>Retourbeleid — Velora Secrets</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,560;1,9..144,450&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -64,7 +63,7 @@
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Registreren"
+      "name": "Retourbeleid"
     }
   ]
 }
@@ -92,15 +91,15 @@
     <a href="index.html" class="logo logo--header"><img src="images/logo-mark.png" alt="" width="34" height="34" class="logo-mark"><span class="logo-text">Velora<em>Secrets</em></span></a>
     <div class="header__right">
       <div class="lang-switcher">
-        <button class="icon-btn lang-switcher__toggle" id="langToggle" aria-label="Taal wijzigen" aria-expanded="false"><span id="langFlag">🇳🇱</span></button>
+        <button class="icon-btn lang-switcher__toggle" id="langToggle" aria-label="Taal wijzigen" aria-expanded="false"><span id="langFlag" class="flag-icon flag-icon--nl"></span></button>
         <div class="lang-switcher__menu" id="langMenu" hidden>
-          <button type="button" data-lang="nl">🇳🇱 Nederlands</button>
-          <button type="button" data-lang="en">🇬🇧 English</button>
-          <button type="button" data-lang="de">🇩🇪 Deutsch</button>
-          <button type="button" data-lang="fr">🇫🇷 Français</button>
-          <button type="button" data-lang="es">🇪🇸 Español</button>
-          <button type="button" data-lang="pt">🇵🇹 Português</button>
-          <button type="button" data-lang="it">🇮🇹 Italiano</button>
+          <button type="button" data-lang="nl"><span aria-hidden="true" class="flag-icon flag-icon--nl"></span>Nederlands</button>
+          <button type="button" data-lang="en"><span aria-hidden="true" class="flag-icon flag-icon--gb"></span>English</button>
+          <button type="button" data-lang="de"><span aria-hidden="true" class="flag-icon flag-icon--de"></span>Deutsch</button>
+          <button type="button" data-lang="fr"><span aria-hidden="true" class="flag-icon flag-icon--fr"></span>Français</button>
+          <button type="button" data-lang="es"><span aria-hidden="true" class="flag-icon flag-icon--es"></span>Español</button>
+          <button type="button" data-lang="pt"><span aria-hidden="true" class="flag-icon flag-icon--pt"></span>Português</button>
+          <button type="button" data-lang="it"><span aria-hidden="true" class="flag-icon flag-icon--it"></span>Italiano</button>
         </div>
       </div>
       <a href="login.html" class="icon-btn hide-mobile" id="headerAccountLink" aria-label="Account">
@@ -219,38 +218,59 @@
 </header>
 
 <main id="main">
-  <nav class="breadcrumb" aria-label="Kruimelpad"><a href="index.html">Home</a> / <span>Registreren</span></nav>
-  <section class="auth-page">
-    <div class="auth-page__card">
-      <div class="eyebrow">Welkom bij Velora Secrets</div>
-      <h1>Account aanmaken</h1>
-      <p class="auth-page__intro">Snellere checkout, overzicht van je bestellingen en opgeslagen adressen.</p>
+  <nav class="breadcrumb" aria-label="Kruimelpad"><a href="index.html">Home</a> / <span data-i18n="ret_nav">Retourbeleid</span></nav>
 
-      <div id="authFormError" class="auth-page__error" hidden></div>
-
-      <form id="registerForm" novalidate>
-        <div class="form-row">
-          <label for="registerName">Naam</label>
-          <input type="text" id="registerName" name="name" required autocomplete="name">
-          <span class="form-error" data-error-for="registerName"></span>
-        </div>
-        <div class="form-row">
-          <label for="registerEmail">E-mailadres</label>
-          <input type="email" id="registerEmail" name="email" required autocomplete="email">
-          <span class="form-error" data-error-for="registerEmail"></span>
-        </div>
-        <div class="form-row">
-          <label for="registerPassword">Wachtwoord</label>
-          <input type="password" id="registerPassword" name="password" required autocomplete="new-password" minlength="8">
-          <span class="form-error" data-error-for="registerPassword"></span>
-        </div>
-        <button type="submit" class="btn btn--primary auth-page__submit">Account aanmaken</button>
-        <p class="auth-page__legal-note">Door een account aan te maken ga je akkoord met onze <a href="terms.html">algemene voorwaarden</a> en <a href="privacy.html">privacyverklaring</a>.</p>
-      </form>
-
-      <p class="auth-page__switch">Heb je al een account? <a href="login.html">Log hier in</a></p>
-    </div>
+  <section class="legal-hero">
+    <div class="eyebrow" data-i18n="disc_eyebrow">Juridisch</div>
+    <h1 data-i18n="ret_title">Retourbeleid</h1>
+    <p class="legal-hero__subtitle" data-i18n="ret_subtitle">Niet helemaal tevreden? Op deze pagina lees je precies hoe je een bestelling bij Velora Secrets retourneert.</p>
+    <p class="legal-page__updated" data-i18n="disc_updated">Laatst bijgewerkt: 26 juli 2026</p>
   </section>
+
+  <div class="legal-trust-grid">
+    <div class="legal-trust-card"><span class="legal-trust-card__icon">↩️</span><span data-i18n="ship_trust_returns">30 dagen retour</span></div>
+    <div class="legal-trust-card"><span class="legal-trust-card__icon">💳</span><span data-i18n="ret_trust_refund">Snel terugbetaald</span></div>
+    <div class="legal-trust-card"><span class="legal-trust-card__icon">📦</span><span data-i18n="ship_trust_discreet">Discreet verpakt</span></div>
+    <div class="legal-trust-card"><span class="legal-trust-card__icon">🤝</span><span data-i18n="ret_trust_easy">Eenvoudig proces</span></div>
+  </div>
+
+  <div class="legal-content-grid">
+    <article class="legal-content-card">
+      <h2 data-i18n="ret_h_period">Bedenktijd</h2>
+      <p data-i18n="ret_p_period">Je hebt 30 dagen bedenktijd vanaf ontvangst van je bestelling om deze zonder opgaaf van reden te retourneren.</p>
+    </article>
+
+    <article class="legal-content-card">
+      <h2 data-i18n="ret_h_conditions">Voorwaarden voor retourneren</h2>
+      <p data-i18n="ret_p_conditions">Producten kun je alleen retourneren als ze ongeopend en verzegeld zijn. Om hygiënische redenen kunnen geopende of gebruikte producten helaas niet worden geretourneerd of geruild.</p>
+    </article>
+
+    <article class="legal-content-card">
+      <h2 data-i18n="ret_h_howto">Hoe retourneer je een product</h2>
+      <p data-i18n="ret_p_howto">Neem contact met ons op via het contactformulier of e-mail, onder vermelding van je ordernummer. Wij sturen je vervolgens de retourinstructies en een retouradres toe.</p>
+    </article>
+
+    <article class="legal-content-card">
+      <h2 data-i18n="ret_h_costs">Retourkosten</h2>
+      <p data-i18n="ret_p_costs">De kosten van het retourneren zijn voor eigen rekening, tenzij het product defect of verkeerd geleverd is — dan vergoeden wij de verzendkosten.</p>
+    </article>
+
+    <article class="legal-content-card">
+      <h2 data-i18n="ret_h_refund">Terugbetaling</h2>
+      <p data-i18n="ret_p_refund">Zodra we je retour hebben ontvangen en gecontroleerd, ontvang je binnen 14 dagen het volledige aankoopbedrag terug op de rekening waarmee je hebt betaald.</p>
+    </article>
+
+    <article class="legal-content-card">
+      <h2 data-i18n="ret_h_defective">Defecte of verkeerde producten</h2>
+      <p data-i18n="ret_p_defective">Heb je een defect of verkeerd product ontvangen? Neem dan zo snel mogelijk contact op — we lossen dit kosteloos voor je op, met een vervangend product of volledige terugbetaling.</p>
+    </article>
+
+    <article class="legal-content-card legal-content-card--contact">
+      <h2 data-i18n="disc_h_contact">Contact</h2>
+      <p data-i18n="ret_p_contact">Heb je een vraag over het retourneren van je bestelling? Neem contact met ons op.</p>
+      <a href="mailto:info@velorasecrets.nl" class="legal-content-card__email">📧 info@velorasecrets.nl</a>
+    </article>
+  </div>
 </main>
 
 <div class="footer-trust">
@@ -266,7 +286,7 @@
   <div class="footer-main__inner">
     <div class="footer-brand">
       <span class="logo logo--footer"><img src="images/logo-mark.png" alt="" width="34" height="34" class="logo-mark"><span class="logo-text">Velora<em>Secrets</em></span></span>
-      <p>Premium producten voor meer plezier, ontspanning en intimiteit.</p>
+      <p>Zorgvuldig geselecteerde producten voor intimiteit, verlangen en zelfvertrouwen — ontdekt in alle discretie.</p>
       <ul class="footer-contact">
         <li><a href="contact.html">Contactformulier</a></li>
         <li><a href="mailto:support@velorasecrets.nl">support@velorasecrets.nl</a></li>
@@ -362,6 +382,6 @@
 <script src="main.js"></script>
 <script src="analytics-config.js"></script>
 <script src="analytics.js"></script>
-<script src="register-page.js"></script>
+
 </body>
 </html>

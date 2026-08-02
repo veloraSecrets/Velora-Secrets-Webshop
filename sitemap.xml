@@ -9,12 +9,15 @@
   <url><loc>https://velorasecrets.nl/cookies.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://velorasecrets.nl/shipping.html</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
   <url><loc>https://velorasecrets.nl/disclaimer.html</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://velorasecrets.nl/returns.html</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://velorasecrets.nl/age-policy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=1</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=2</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=3</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=4</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=5</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=6</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://velorasecrets.nl/product.html?id=7</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=8</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=9</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=10</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
@@ -24,6 +27,7 @@
   <url><loc>https://velorasecrets.nl/product.html?id=14</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=15</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=16</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://velorasecrets.nl/product.html?id=100</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=101</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=102</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=103</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
@@ -48,6 +52,7 @@
   <url><loc>https://velorasecrets.nl/product.html?id=122</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=123</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=124</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://velorasecrets.nl/product.html?id=125</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=126</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=127</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=128</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
@@ -77,6 +82,7 @@
   <url><loc>https://velorasecrets.nl/product.html?id=152</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=153</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=154</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://velorasecrets.nl/product.html?id=155</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=156</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=157</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=158</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
@@ -117,6 +123,7 @@
   <url><loc>https://velorasecrets.nl/product.html?id=193</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=194</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=195</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://velorasecrets.nl/product.html?id=196</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=197</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=198</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=199</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
@@ -145,6 +152,4 @@
   <url><loc>https://velorasecrets.nl/product.html?id=222</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=223</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://velorasecrets.nl/product.html?id=224</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://velorasecrets.nl/returns.html</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://velorasecrets.nl/age-policy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>

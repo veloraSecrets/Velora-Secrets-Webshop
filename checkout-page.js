@@ -44,6 +44,21 @@ Ongegarandeerde leveringsbelofte ("Voor 22:00 besteld, morgen in huis") overal v
 ### Diagnose: gerapporteerde "kapotte" onderdelen bleken aan de broncode-kant correct
 AI-knop "Vraag Velora AI", de merkenpagina, de hero-afbeelding en het logo zijn stuk voor stuk grondig gecontroleerd (HTML-balans, CSS-koppeling, JS-functionaliteit, daadwerkelijke bestandsvaliditeit) en bleken alle vier 100% correct in de broncode. Dit wijst op een verouderde/kapotte deployment, niet op een codefout — zie de eerdere GitHub-uploadproblematiek in dit traject.
 
+### Taalmenu: emoji-vlaggen vervangen door SVG
+Emoji-vlaggen (🇳🇱🇬🇧🇩🇪...) renderen op Windows/Chrome vaak niet als plaatje maar als letter-code (NL/GB/DE) — een bekende platformbeperking. Vervangen door echte, zelf getekende SVG-vlaggen (data-URI, geen externe afhankelijkheid), consistent op elk platform. Vaste afmetingen (20×14px) voorkomen layout shift. Decoratieve vlag-iconen voorzien van aria-hidden voor schermlezers.
+
+### Taalmenu volledig herbouwd
+Had voorheen geen enkele eigen CSS (pure browserstandaard = rommelig oogte). Nu een nette dropdown met witruimte, uitlijning, gelijke regelhoogtes, hover-effecten en een duidelijke markering van de actief geselecteerde taal.
+
+### Footertekst herschreven
+Vervangen door een tekst die past bij het merk: stijlvol, volwassen, sensueel zonder plat te worden.
+
+### Favorieten: grondig geverifieerd, geen bug gevonden
+Volledige keten (klikken → opslaan → onthouden na herladen → weer verwijderen) end-to-end bewezen te werken via een echte klik-simulatie op het hartje-icoon zelf.
+
+### Eerlijke content: beloftes en reviews
+Ongegarandeerde leveringsbelofte ("Voor 22:00 besteld, morgen in huis") overal verwijderd. Nieuwe "Deel jouw ervaring"-sectie op de homepage met een bewust uitgeschakelde "Schrijf een review"-knop, klaar om later aan een echt reviewsysteem te koppelen.
+
 ### Footer & contact geoptimaliseerd
 Van 6 naar 2 e-mailadressen (support@ + info@) — overzichtelijker en professioneler, zowel in de footer als op de contactpagina.
 

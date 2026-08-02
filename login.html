@@ -18,7 +18,7 @@
 
   const STORAGE_KEY = 'velora_lang';
   const SUPPORTED = ['nl', 'en', 'de', 'fr', 'es', 'pt', 'it'];
-  const FLAGS = { nl: '🇳🇱', en: '🇬🇧', de: '🇩🇪', fr: '🇫🇷', es: '🇪🇸', pt: '🇵🇹', it: '🇮🇹' };
+  const FLAG_CLASSES = { nl: 'nl', en: 'gb', de: 'de', fr: 'fr', es: 'es', pt: 'pt', it: 'it' };
   const NAMES = { nl: 'Nederlands', en: 'English', de: 'Deutsch', fr: 'Français', es: 'Español', pt: 'Português', it: 'Italiano' };
 
   const DICT = {
@@ -983,7 +983,10 @@
     });
     document.documentElement.setAttribute('lang', lang);
     const flagEl = document.getElementById('langFlag');
-    if (flagEl) flagEl.textContent = FLAGS[lang];
+    if (flagEl) {
+      Object.values(FLAG_CLASSES).forEach((code) => flagEl.classList.remove(`flag-icon--${code}`));
+      flagEl.classList.add(`flag-icon--${FLAG_CLASSES[lang]}`);
+    }
   }
 
   /* Publiek: huidige taalcode. */
@@ -1004,14 +1007,26 @@
   /* ---------- Taalwisselaar-UI ---------- */
   const langToggle = document.getElementById('langToggle');
   const langMenu = document.getElementById('langMenu');
+
+  function markActiveLangButton() {
+    let current = initialLang;
+    try { current = localStorage.getItem(STORAGE_KEY) || initialLang; } catch (e) { /* val terug op initialLang */ }
+    document.querySelectorAll('[data-lang]').forEach((btn) => {
+      btn.classList.toggle('is-active', btn.dataset.lang === current);
+    });
+  }
+  markActiveLangButton();
+
   langToggle?.addEventListener('click', () => {
     const isOpen = !langMenu.hidden;
     langMenu.hidden = isOpen;
     langToggle.setAttribute('aria-expanded', String(!isOpen));
+    if (!isOpen) markActiveLangButton();
   });
   document.querySelectorAll('[data-lang]').forEach((btn) => {
     btn.addEventListener('click', () => {
       window.veloraSetLang(btn.dataset.lang);
+      markActiveLangButton();
       langMenu.hidden = true;
       langToggle?.setAttribute('aria-expanded', 'false');
     });
