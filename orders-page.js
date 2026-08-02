@@ -46,6 +46,13 @@
     btn.addEventListener('click', () => (item.classList.contains('is-open') ? closeNow() : open()));
   });
 
+  /* Klik buiten een open megamenu sluit het — vooral belangrijk op
+     touchscreens (tablet/mobiel), waar mouseleave nooit vuurt. */
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.nav-item')) return;
+    document.querySelectorAll('.nav-item.is-open').forEach((i) => i.classList.remove('is-open'));
+  });
+
   /* ---------- Mobiel menu ---------- */
   const mobileNav = document.getElementById('mobileNav');
   const mobileOverlay = document.getElementById('mobileOverlay');

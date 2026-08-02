@@ -1,66 +1,39 @@
 /* ============================================================
-   assets/register-page.js — logica voor register.html
+   assets/recently-viewed.js — "recent bekeken"-module
    ------------------------------------------------------------
-   Bevat GEEN eigen authenticatielogica: roept uitsluitend
-   window.veloraRegister (auth.js) aan. Vereist: auth.js, vóór dit
-   bestand geladen.
+   Enige bron voor recent-bekeken-state. Onthoudt de laatst bekeken
+   product-ID's in localStorage (meest recent eerst, geen
+   duplicaten), dus blijft behouden tussen pagina's — net als
+   winkelwagen en wishlist.
+   Vereist: config.js (VELORA_CONFIG), vóór dit bestand geladen.
    ============================================================ */
 (() => {
   'use strict';
 
-  const form = document.getElementById('registerForm');
-  const errorBanner = document.getElementById('authFormError');
+  const { storageKey: KEY, maxItems: MAX_ITEMS } = window.VELORA_CONFIG.recentlyViewed;
 
-  const fields = {
-    registerName: { validate: (v) => v.trim().length >= 2, message: 'Vul je naam in (minimaal 2 tekens).' },
-    registerEmail: { validate: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()), message: 'Vul een geldig e-mailadres in.' },
-    registerPassword: { validate: (v) => v.length >= 8, message: 'Je wachtwoord moet minimaal 8 tekens bevatten.' },
-  };
-
-  function showError(id, message) {
-    const input = document.getElementById(id);
-    const errorEl = document.querySelector(`[data-error-for="${id}"]`);
-    input?.classList.toggle('is-invalid', Boolean(message));
-    if (errorEl) errorEl.textContent = message || '';
+  function getIds() {
+    try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+    catch { return []; }
   }
 
-  Object.keys(fields).forEach((id) => {
-    document.getElementById(id)?.addEventListener('input', () => showError(id, ''));
-  });
+  /* Publiek: markeer een product als bekeken. Zet het vooraan, haalt
+     eerdere duplicaten weg, knipt af op het ingestelde maximum. */
+  window.veloraTrackRecentlyViewed = function (productId) {
+    let ids = getIds().filter((id) => id !== productId);
+    ids.unshift(productId);
+    ids = ids.slice(0, MAX_ITEMS);
+    localStorage.setItem(KEY, JSON.stringify(ids));
+  };
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    errorBanner.hidden = true;
-
-    let isValid = true;
-    Object.entries(fields).forEach(([id, rule]) => {
-      const input = document.getElementById(id);
-      const valid = rule.validate(input.value);
-      showError(id, valid ? '' : rule.message);
-      if (!valid) isValid = false;
-    });
-    if (!isValid) return;
-
-    const submitBtn = form.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Bezig met aanmaken…';
-
-    const result = await window.veloraRegister({
-      name: document.getElementById('registerName').value.trim(),
-      email: document.getElementById('registerEmail').value.trim(),
-      password: document.getElementById('registerPassword').value,
-    });
-
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Account aanmaken';
-
-    if (!result.success) {
-      errorBanner.textContent = result.error;
-      errorBanner.hidden = false;
-      errorBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      return;
-    }
-
-    window.location.href = window.VELORA_CONFIG.auth.defaultRedirect;
-  });
+  /* Publiek: geeft de daadwerkelijke productobjecten terug (uit
+     products.js), in bekeken-volgorde, met optionele uitsluiting
+     (bv. het product dat nu net bekeken wordt) en limiet. */
+  window.veloraGetRecentlyViewed = function ({ excludeId, limit = MAX_ITEMS } = {}) {
+    const ids = getIds().filter((id) => id !== excludeId);
+    return ids
+      .map((id) => window.VELORA_PRODUCTS.find((p) => p.id === id))
+      .filter(Boolean)
+      .slice(0, limit);
+  };
 })();

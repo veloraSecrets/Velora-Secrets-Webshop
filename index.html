@@ -1,568 +1,91 @@
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Premium seksspeeltjes, lingerie en BDSM. Discreet verpakt, snel geleverd en altijd van topkwaliteit.">
-<link rel="canonical" href="https://velorasecrets.nl/">
-<meta name="theme-color" content="#2E1D14">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Velora Secrets">
-<meta property="og:title" content="Velora Secrets – Luxe seksshop voor hem, haar & koppels">
-<meta property="og:description" content="Premium seksspeeltjes, lingerie en BDSM. Discreet verpakt, snel geleverd en altijd van topkwaliteit.">
-<meta property="og:url" content="https://velorasecrets.nl/">
-<meta property="og:locale" content="nl_NL">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Velora Secrets – Luxe seksshop voor hem, haar & koppels">
-<meta name="twitter:description" content="Premium seksspeeltjes, lingerie en BDSM. Discreet verpakt, snel geleverd en altijd van topkwaliteit.">
-<title>Velora Secrets – Luxe seksshop voor hem, haar & koppels</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,560;1,9..144,450&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="images/favicon.png">
-<link rel="stylesheet" href="styles.css">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Velora Secrets",
-  "url": "https://velorasecrets.nl/",
-  "logo": "https://velorasecrets.nl/images/logo-full.png",
-  "email": "info@velorasecrets.nl",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "email": "support@velorasecrets.nl",
-    "contactType": "customer service"
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Velora Secrets",
-  "url": "https://velorasecrets.nl/",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://velorasecrets.nl/search.html?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
-</head>
-<body>
-<script src="age-verification.js"></script>
-<a href="#main" class="skip-link">Ga direct naar inhoud</a>
+/* ============================================================
+   assets/discount.js — kortingscode-module
+   ------------------------------------------------------------
+   Enige bron voor kortingscode-state en -validatie. Bewust los van
+   cart.js: het toepassen van een code raakt nooit de winkelwagen-
+   items zelf, alleen hoe het totaal later wordt berekend (dat
+   gebeurt in cart-page.js, dat beide modules combineert).
 
-<div class="topbar">Discreet verpakt · Veilig betalen · Klantenservice die voor je klaarstaat</div>
+   Validatie is nu een simpele lookup in VELORA_CONFIG.discounts.codes
+   (config.js). Wil je dit later vervangen door bv. een serverAPI-
+   aanroep of tijdsgebonden/eenmalige codes? Dan pas je alleen de
+   binnenkant van veloraApplyDiscountCode hieronder aan — de rest
+   van de architectuur (cart-page.js, cart.html) hoeft niet te weten
+   hóe een code gevalideerd wordt, alleen wát het resultaat is.
 
-<header class="site-header">
-  <div class="header__inner">
-    <div class="header__left">
-      <button class="icon-btn mobile-toggle" id="mobileToggle" aria-label="Menu">
-        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
-      <button class="icon-btn hide-mobile" id="searchToggle" aria-label="Zoeken">
-        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      </button>
-      <button class="icon-btn hide-mobile" aria-label="Verlanglijst">
-        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.6-10-9.2C.6 8 2.3 4.5 6 4c2.2-.3 4.1 1 6 3 1.9-2 3.8-3.3 6-3 3.7.5 5.4 4 4 7.8C19.5 16.4 12 21 12 21Z"/></svg>
-      </button>
-    </div>
-    <a href="index.html" class="logo logo--header"><img src="images/logo-mark.png" alt="" width="34" height="34" class="logo-mark"><span class="logo-text">Velora<em>Secrets</em></span></a>
-    <div class="header__right">
-      <div class="lang-switcher">
-        <button class="icon-btn lang-switcher__toggle" id="langToggle" aria-label="Taal wijzigen" aria-expanded="false"><span id="langFlag" class="flag-icon flag-icon--nl"></span></button>
-        <div class="lang-switcher__menu" id="langMenu" hidden>
-          <button type="button" data-lang="nl"><span aria-hidden="true" class="flag-icon flag-icon--nl"></span>Nederlands</button>
-          <button type="button" data-lang="en"><span aria-hidden="true" class="flag-icon flag-icon--gb"></span>English</button>
-          <button type="button" data-lang="de"><span aria-hidden="true" class="flag-icon flag-icon--de"></span>Deutsch</button>
-          <button type="button" data-lang="fr"><span aria-hidden="true" class="flag-icon flag-icon--fr"></span>Français</button>
-          <button type="button" data-lang="es"><span aria-hidden="true" class="flag-icon flag-icon--es"></span>Español</button>
-          <button type="button" data-lang="pt"><span aria-hidden="true" class="flag-icon flag-icon--pt"></span>Português</button>
-          <button type="button" data-lang="it"><span aria-hidden="true" class="flag-icon flag-icon--it"></span>Italiano</button>
-        </div>
-      </div>
-      <a href="login.html" class="icon-btn hide-mobile" id="headerAccountLink" aria-label="Account">
-        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 5-6 8-6s6.5 2 8 6"/></svg>
-      </a>
-      <button class="icon-btn" id="cartToggle" aria-label="Winkelwagen">
-        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6"><path d="M4 6h2l1.5 10.5A2 2 0 0 0 9.5 18h7a2 2 0 0 0 2-1.7L20 8H7"/><circle cx="10" cy="21" r="1"/><circle cx="17" cy="21" r="1"/></svg>
-        <span class="cart-count" id="cartCount" hidden>0</span>
-      </button>
-    </div>
-  </div>
-
-  <nav class="primary-nav" aria-label="Hoofdmenu">
-    <div class="primary-nav__inner" id="mainNav">
-      <div class="nav-item">
-        <button aria-expanded="false"><span data-i18n="nav_voorhaar">Voor Haar</span> <svg viewBox="0 0 10 6"><path d="m1 1 4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.6"/></svg></button>
-        <div class="mega">
-          <div class="mega__inner">
-            <div class="mega__columns">
-              <div class="mega__col"><div class="mega__col-title">Vibrators</div><ul><li><a href="collection.html?category=Voor+Haar">Luchtdrukvibrators</a></li><li><a href="collection.html?category=Voor+Haar">Clitoris vibrators</a></li><li><a href="collection.html?category=Voor+Haar">G-spot vibrators</a></li><li><a href="collection.html?category=Voor+Haar">Rabbit vibrators</a></li><li><a href="collection.html?category=Voor+Haar">Bullet vibrators</a></li><li><a href="collection.html?category=Voor+Haar">Alle vibrators →</a></li></ul></div>
-              <div class="mega__col"><div class="mega__col-title">Dildo's</div><ul><li><a href="collection.html?category=Voor+Haar">Realistisch</a></li><li><a href="collection.html?category=Voor+Haar">Glas</a></li><li><a href="collection.html?category=Voor+Haar">Strap-on</a></li><li><a href="collection.html?category=Voor+Haar">Dubbele dildo's</a></li><li><a href="collection.html?category=Voor+Haar">Alle dildo's →</a></li></ul></div>
-              <div class="mega__col"><div class="mega__col-title">Verzorging &amp; hygiëne</div><ul><li><a href="collection.html?category=Voor+Haar">Glijmiddel</a></li><li><a href="collection.html?category=Voor+Haar">Reinigers</a></li><li><a href="collection.html?category=Voor+Haar">Intieme verzorging</a></li></ul></div>
-              <div class="mega__col"><div class="mega__col-title">Meer voor haar</div><ul><li><a href="collection.html?category=Voor+Haar">Kegelballen</a></li><li><a href="collection.html?category=Voor+Haar">Clitorisstimulatoren</a></li><li><a href="collection.html?category=Voor+Haar">Cadeausets</a></li></ul></div>
-            </div>
-            <div class="mega__promo"><div class="mega__promo-content"><span>Nieuw deze week</span></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="nav-item">
-        <button aria-expanded="false"><span data-i18n="nav_voorhem">Voor Hem</span> <svg viewBox="0 0 10 6"><path d="m1 1 4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.6"/></svg></button>
-        <div class="mega">
-          <div class="mega__inner">
-            <div class="mega__columns">
-              <div class="mega__col"><div class="mega__col-title">Masturbators</div><ul><li><a href="collection.html?category=Voor+Hem">Pocket toys</a></li><li><a href="collection.html?category=Voor+Hem">Automatisch</a></li><li><a href="collection.html?category=Voor+Hem">Realistisch</a></li><li><a href="collection.html?category=Voor+Hem">Alle masturbators →</a></li></ul></div>
-              <div class="mega__col"><div class="mega__col-title">Cockringen</div><ul><li><a href="collection.html?category=Voor+Hem">Vibrerend</a></li><li><a href="collection.html?category=Voor+Hem">Siliconen</a></li><li><a href="collection.html?category=Voor+Hem">Sets</a></li></ul></div>
-              <div class="mega__col"><div class="mega__col-title">Prostaat &amp; anaal</div><ul><li><a href="collection.html?category=Voor+Hem">Prostaatstimulatoren</a></li><li><a href="collection.html?category=Voor+Hem">Anaalplugs</a></li><li><a href="collection.html?category=Voor+Hem">Beginnersets</a></li></ul></div>
-              <div class="mega__col"><div class="mega__col-title">Meer voor hem</div><ul><li><a href="collection.html?category=Voor+Hem">Verzorging</a></li><li><a href="collection.html?category=Voor+Hem">Vergrotingspompen</a></li><li><a href="collection.html?category=Voor+Hem">Cadeausets</a></li></ul></div>
-            </div>
-            <div class="mega__promo"><div class="mega__promo-content"><span>Bestsellers</span></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="nav-item">
-        <button aria-expanded="false"><span data-i18n="nav_voorkoppels">Voor Koppels</span> <svg viewBox="0 0 10 6"><path d="m1 1 4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.6"/></svg></button>
-        <div class="mega">
-          <div class="mega__inner">
-            <div class="mega__columns">
-              <div class="mega__col"><div class="mega__col-title">Samen spelen</div><ul><li><a href="collection.html?category=Voor+Koppels">Koppelvibrators</a></li><li><a href="collection.html?category=Voor+Koppels">Afstandsbediende toys</a></li><li><a href="collection.html?category=Voor+Koppels">Speeltjes voor twee</a></li><li><a href="collection.html?category=Voor+Koppels">Alles voor koppels →</a></li></ul></div>
-              <div class="mega__col"><div class="mega__col-title">Rollenspel</div><ul><li><a href="collection.html?category=Voor+Koppels">Kostuums</a></li><li><a href="collection.html?category=Voor+Koppels">Accessoires</a></li><li><a href="collection.html?category=Voor+Koppels">Kaartspellen</a></li></ul></div>
-              <div class="mega__col"><div class="mega__col-title">Ontspanning samen</div><ul><li><a href="collection.html?category=Voor+Koppels">Massageolie voor twee</a></li><li><a href="collection.html?category=Voor+Koppels">Badproducten</a></li></ul></div>
-              <div class="mega__col"><div class="mega__col-title">Beginnersgids</div><ul><li><a href="collection.html?category=Voor+Koppels">Eerste keer samen</a></li><li><a href="collection.html?category=Voor+Koppels">Communicatietips</a></li></ul></div>
-            </div>
-            <div class="mega__promo"><div class="mega__promo-content"><span>Cadeautips voor twee</span></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="nav-item">
-        <button aria-expanded="false"><span data-i18n="nav_lingerie">Lingerie</span> <svg viewBox="0 0 10 6"><path d="m1 1 4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.6"/></svg></button>
-        <div class="mega">
-          <div class="mega__inner">
-            <div class="mega__columns">
-              <div class="mega__col"><div class="mega__col-title">Sets</div><ul><li><a href="collection.html?category=Lingerie">Kant</a></li><li><a href="collection.html?category=Lingerie">Mesh</a></li><li><a href="collection.html?category=Lingerie">Satijn</a></li><li><a href="collection.html?category=Lingerie">Alle sets →</a></li></ul></div>
-              <div class="mega__col"><div class="mega__col-title">Body's &amp; corsets</div><ul><li><a href="collection.html?category=Lingerie">Body's</a></li><li><a href="collection.html?category=Lingerie">Corsetten</a></li><li><a href="collection.html?category=Lingerie">Basques</a></li></ul></div>
-              <div class="mega__col"><div class="mega__col-title">Kousen &amp; accessoires</div><ul><li><a href="collection.html?category=Lingerie">Jarretels</a></li><li><a href="collection.html?category=Lingerie">Kousen</a></li><li><a href="collection.html?category=Lingerie">Handschoenen</a></li></ul></div>
-              <div class="mega__col"><div class="mega__col-title">Nachtkleding</div><ul><li><a href="collection.html?category=Lingerie">Kimono's</a></li><li><a href="collection.html?category=Lingerie">Slaapjurken</a></li><li><a href="collection.html?category=Lingerie">Peignoirs</a></li></ul></div>
-            </div>
-            <div class="mega__promo"><div class="mega__promo-content"><span>Nieuwe collectie</span></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="nav-item">
-        <button aria-expanded="false"><span data-i18n="nav_bdsm">BDSM</span> <svg viewBox="0 0 10 6"><path d="m1 1 4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.6"/></svg></button>
-        <div class="mega">
-          <div class="mega__inner">
-            <div class="mega__columns">
-              <div class="mega__col"><div class="mega__col-title">Bondage</div><ul><li><a href="collection.html?category=BDSM">Boeien &amp; touwen</a></li><li><a href="collection.html?category=BDSM">Bondagesets</a></li><li><a href="collection.html?category=BDSM">Spreiders</a></li><li><a href="collection.html?category=BDSM">Alle bondage →</a></li></ul></div>
-              <div class="mega__col"><div class="mega__col-title">Impact play</div><ul><li><a href="collection.html?category=BDSM">Zwepen</a></li><li><a href="collection.html?category=BDSM">Paddles</a></li><li><a href="collection.html?category=BDSM">Ticklers</a></li></ul></div>
-              <div class="mega__col"><div class="mega__col-title">Fetish wear</div><ul><li><a href="collection.html?category=BDSM">Latex</a></li><li><a href="collection.html?category=BDSM">Leer</a></li><li><a href="collection.html?category=BDSM">Maskers</a></li></ul></div>
-              <div class="mega__col"><div class="mega__col-title">Beginnersgids</div><ul><li><a href="collection.html?category=BDSM">Starterssets</a></li><li><a href="collection.html?category=BDSM">Veiligheid &amp; grenzen</a></li></ul></div>
-            </div>
-            <div class="mega__promo"><div class="mega__promo-content"><span>Voor beginners</span></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="nav-item">
-        <button aria-expanded="false"><span data-i18n="nav_wellness">Wellness &amp; Massage</span> <svg viewBox="0 0 10 6"><path d="m1 1 4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.6"/></svg></button>
-        <div class="mega">
-          <div class="mega__inner">
-            <div class="mega__columns">
-              <div class="mega__col"><div class="mega__col-title">Massageolie</div><ul><li><a href="collection.html?category=Wellness+%26+Massage">Verwarmend</a></li><li><a href="collection.html?category=Wellness+%26+Massage">Aromatisch</a></li><li><a href="collection.html?category=Wellness+%26+Massage">Eetbaar</a></li><li><a href="collection.html?category=Wellness+%26+Massage">Alle massageolie →</a></li></ul></div>
-              <div class="mega__col"><div class="mega__col-title">Massagetools</div><ul><li><a href="collection.html?category=Wellness+%26+Massage">Handmassage</a></li><li><a href="collection.html?category=Wellness+%26+Massage">Stenen</a></li></ul></div>
-              <div class="mega__col"><div class="mega__col-title">Ontspanningsrituelen</div><ul><li><a href="collection.html?category=Wellness+%26+Massage">Badproducten</a></li><li><a href="collection.html?category=Wellness+%26+Massage">Kaarsen</a></li></ul></div>
-              <div class="mega__col"><div class="mega__col-title">Geur &amp; sfeer</div><ul><li><a href="collection.html?category=Wellness+%26+Massage">Geurkaarsen</a></li><li><a href="collection.html?category=Wellness+%26+Massage">Etherische oliën</a></li></ul></div>
-            </div>
-            <div class="mega__promo"><div class="mega__promo-content"><span>Seizoensactie: -20%</span></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="nav-item"><a href="brands.html" data-i18n="nav_merken">Merken</a></div>
-      <div class="nav-item nav-item--sale"><a href="collection.html" data-i18n="nav_sale">Sale</a></div>
-    </div>
-  </nav>
-
-  <div class="search-panel" id="searchPanel">
-    <div class="search-panel__inner">
-      <input type="search" data-i18n-placeholder="search_placeholder" placeholder="Waar ben je naar op zoek?" aria-label="Zoeken">
-      <div class="search-suggestions">
-        <button class="search-chip">Vibrator</button>
-        <button class="search-chip">Lingerie</button>
-        <button class="search-chip">Cadeau</button>
-        <button class="search-chip">Massage olie</button>
-        <button class="search-chip">Bondage</button>
-      </div>
-    </div>
-  </div>
-</header>
-
-<main id="main">
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero__content-in">
-      <div class="eyebrow">Welkom bij Velora Secrets</div>
-      <h1 data-i18n="hero_title">Ontdek jouw nieuwe favoriet.</h1>
-      <p class="lede" data-i18n="hero_subtitle">Premium seksspeeltjes, lingerie en BDSM voor hem, haar en koppels. Discreet verpakt, snel geleverd en altijd van topkwaliteit.</p>
-      <div class="hero__ctas">
-        <a href="#bestsellers" class="btn btn--primary" data-i18n="hero_cta_shop">Shop nu</a>
-        <button type="button" class="btn btn--ghost" id="heroAskAi" data-i18n="hero_cta_ai">Vraag Velora AI</button>
-      </div>
-      <div class="hero__trust">
-        <div class="hero__trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/></svg><span data-i18n="trust_discreet">Discreet verpakt</span></div>
-        <div class="hero__trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5z"/></svg><span data-i18n="trust_payment">Veilig betalen</span></div>
-        <div class="hero__trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg><span data-i18n="trust_shipping">Snelle levering</span></div>
-        <div class="hero__trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M9 10a3 3 0 1 1 4 2.8c-.6.3-1 .9-1 1.5v.2M12 17h.01"/></svg><span data-i18n="trust_ai">AI advies</span></div>
-      </div>
-    </div>
-    <div class="hero__visual">
-      <div class="ribbon-fold"></div>
-      <div class="hero__visual-caption">
-        <div class="hero__visual-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5z"/></svg>Privacy gegarandeerd</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- USP strip -->
-  <div class="usp-strip">
-    <div class="usp-strip__inner">
-      <div class="usp-strip__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/></svg><div><span class="usp-strip__title">Discreet verpakt</span><span class="usp-strip__sub">Neutrale verpakking, geen logo</span></div></div>
-      <div class="usp-strip__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 7h11v9H2z"/><path d="M13 10h4l4 3v3h-8z"/><circle cx="6.5" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg><div><span class="usp-strip__title">Klantenservice</span><span class="usp-strip__sub">Staat voor je klaar</span></div></div>
-      <div class="usp-strip__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5z"/></svg><div><span class="usp-strip__title">Veilig betalen</span><span class="usp-strip__sub">100% versleuteld</span></div></div>
-      <div class="usp-strip__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m12 3 2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 17l-5.6 3.1 1.4-6.3L3 9.5l6.4-.6z"/></svg><div><span class="usp-strip__title">Premium kwaliteit</span><span class="usp-strip__sub">Zorgvuldig geselecteerd</span></div></div>
-      <div class="usp-strip__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.6-10-9.2C.6 8 2.3 4.5 6 4c2.2-.3 4.1 1 6 3 1.9-2 3.8-3.3 6-3 3.7.5 5.4 4 4 7.8C19.5 16.4 12 21 12 21Z"/></svg><div><span class="usp-strip__title">Voor hem, haar &amp; koppels</span><span class="usp-strip__sub">Voor ieder verlangen</span></div></div>
-      <div class="usp-strip__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="9" width="18" height="11" rx="1"/><path d="M3 9V6a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v3M12 5v15"/></svg><div><span class="usp-strip__title">Luxe cadeau-ideeën</span><span class="usp-strip__sub">Verras iemand bijzonders</span></div></div>
-    </div>
-  </div>
-
-  <!-- Categories -->
-  <section class="section" id="categorieen">
-    <div class="section__header"><div class="eyebrow">Categorieën</div><h2>Vind snel wat bij je past</h2></div>
-    <div class="categories__grid">
-      <a href="collection.html?category=Voor+Haar" class="category-tile"><div class="category-tile__overlay"></div><div class="category-tile__content"><span class="category-tile__title">Voor Haar</span><span class="category-tile__desc">Zorgvuldig gekozen voor haar plezier</span><span class="category-tile__cta">Bekijk collectie →</span></div></a>
-      <a href="collection.html?category=Voor+Hem" class="category-tile"><div class="category-tile__overlay"></div><div class="category-tile__content"><span class="category-tile__title">Voor Hem</span><span class="category-tile__desc">Kwaliteit en comfort</span><span class="category-tile__cta">Bekijk collectie →</span></div></a>
-      <a href="collection.html?category=Voor+Koppels" class="category-tile"><div class="category-tile__overlay"></div><div class="category-tile__content"><span class="category-tile__title">Voor Koppels</span><span class="category-tile__desc">Samen ontdekken</span><span class="category-tile__cta">Bekijk collectie →</span></div></a>
-      <a href="collection.html?category=Lingerie" class="category-tile"><div class="category-tile__overlay"></div><div class="category-tile__content"><span class="category-tile__title">Lingerie</span><span class="category-tile__desc">Verfijnde stijl</span><span class="category-tile__cta">Bekijk collectie →</span></div></a>
-      <a href="collection.html?category=BDSM" class="category-tile"><div class="category-tile__overlay"></div><div class="category-tile__content"><span class="category-tile__title">BDSM</span><span class="category-tile__desc">Verkennen met vertrouwen</span><span class="category-tile__cta">Bekijk collectie →</span></div></a>
-      <a href="collection.html?category=Wellness+%26+Massage" class="category-tile"><div class="category-tile__overlay"></div><div class="category-tile__content"><span class="category-tile__title">Wellness &amp; Massage</span><span class="category-tile__desc">Ontspanning voor lichaam en geest</span><span class="category-tile__cta">Bekijk collectie →</span></div></a>
-      <a href="collection.html?category=Nieuw" class="category-tile"><div class="category-tile__overlay"></div><div class="category-tile__content"><span class="category-tile__title">Nieuw</span><span class="category-tile__desc">Vers binnen</span><span class="category-tile__cta">Bekijk collectie →</span></div></a>
-      <a href="collection.html?category=Bestsellers" class="category-tile"><div class="category-tile__overlay"></div><div class="category-tile__content"><span class="category-tile__title">Bestsellers</span><span class="category-tile__desc">Favorieten van klanten</span><span class="category-tile__cta">Bekijk collectie →</span></div></a>
-    </div>
-  </section>
-
-  <!-- Bestsellers -->
-  <section class="section" id="bestsellers">
-    <div class="section__header section__header--left">
-      <div><div class="eyebrow">Populair</div><h2>Favorieten van onze klanten</h2><p style="margin-top:6px">Ontdek de producten waar onze klanten steeds opnieuw voor kiezen.</p></div>
-    </div>
-    <div class="product-rail__scroller" id="bestsellerRail"></div>
-    <div class="rail-arrows"><button class="rail-arrow" data-scroll="-1" aria-label="Vorige producten">←</button><button class="rail-arrow" data-scroll="1" aria-label="Volgende producten">→</button></div>
-  </section>
-
-  <!-- Aanbiedingen -->
-  <section class="section" id="aanbiedingen">
-    <div class="section__header section__header--left">
-      <div><div class="eyebrow">Tijdelijk voordeel</div><h2>Aanbiedingen</h2><p style="margin-top:6px">Nu met korting, op = op.</p></div>
-    </div>
-    <div class="product-rail__scroller" id="offersRail"></div>
-    <div class="rail-arrows"><button class="rail-arrow" data-scroll="-1" aria-label="Vorige producten">←</button><button class="rail-arrow" data-scroll="1" aria-label="Volgende producten">→</button></div>
-  </section>
-
-  <!-- Nieuw binnen -->
-  <section class="section" id="nieuwbinnen">
-    <div class="section__header section__header--left">
-      <div><div class="eyebrow">Vers binnen</div><h2>Nieuw binnen</h2><p style="margin-top:6px">De nieuwste toevoegingen aan onze collectie.</p></div>
-    </div>
-    <div class="product-rail__scroller" id="newArrivalsRail"></div>
-    <div class="rail-arrows"><button class="rail-arrow" data-scroll="-1" aria-label="Vorige producten">←</button><button class="rail-arrow" data-scroll="1" aria-label="Volgende producten">→</button></div>
-  </section>
-
-  <!-- Aanbevolen voor jou -->
-  <section class="section" id="aanbevolen">
-    <div class="section__header section__header--left">
-      <div><div class="eyebrow">Voor jou</div><h2 id="recommendedTitle">Aanbevolen voor jou</h2><p style="margin-top:6px" id="recommendedDesc">Gebaseerd op wat je eerder bekeken hebt.</p></div>
-    </div>
-    <div class="product-rail__scroller" id="recommendedRail"></div>
-    <div class="rail-arrows"><button class="rail-arrow" data-scroll="-1" aria-label="Vorige producten">←</button><button class="rail-arrow" data-scroll="1" aria-label="Volgende producten">→</button></div>
-  </section>
-
-  <!-- Populair bij koppels -->
-  <section class="section" id="populairkoppels">
-    <div class="section__header section__header--left">
-      <div><div class="eyebrow">Samen genieten</div><h2>Populair bij koppels</h2><p style="margin-top:6px">De favorieten van koppels die samen ontdekken.</p></div>
-    </div>
-    <div class="product-rail__scroller" id="couplesRail"></div>
-    <div class="rail-arrows"><button class="rail-arrow" data-scroll="-1" aria-label="Vorige producten">←</button><button class="rail-arrow" data-scroll="1" aria-label="Volgende producten">→</button></div>
-  </section>
-
-  <!-- Nieuwe lingeriecollectie -->
-  <section class="section" id="lingeriecollectie">
-    <div class="section__header section__header--left">
-      <div><div class="eyebrow">Collectie</div><h2>Nieuwe lingeriecollectie</h2><p style="margin-top:6px">Verfijnde stijl, zorgvuldig samengesteld.</p></div>
-    </div>
-    <div class="product-rail__scroller" id="lingerieRail"></div>
-    <div class="rail-arrows"><button class="rail-arrow" data-scroll="-1" aria-label="Vorige producten">←</button><button class="rail-arrow" data-scroll="1" aria-label="Volgende producten">→</button></div>
-  </section>
-
-  <!-- Cadeautips -->
-  <section class="section" id="cadeautips">
-    <div class="section__header section__header--left">
-      <div><div class="eyebrow">Verras iemand</div><h2>Cadeautips</h2><p style="margin-top:6px">Hoog gewaardeerd, uit al onze categorieën.</p></div>
-    </div>
-    <div class="product-rail__scroller" id="giftRail"></div>
-    <div class="rail-arrows"><button class="rail-arrow" data-scroll="-1" aria-label="Vorige producten">←</button><button class="rail-arrow" data-scroll="1" aria-label="Volgende producten">→</button></div>
-  </section>
-
-  <!-- Shop op merk -->
-  <section class="section" id="shopopmerk">
-    <div class="section__header">
-      <div class="eyebrow">Merken</div><h2>Shop op merk</h2>
-    </div>
-    <div class="homepage-brands-grid" id="homepageBrandsGrid"></div>
-    <div style="text-align:center; margin-top:24px;"><a href="brands.html" class="btn btn--ghost">Bekijk alle merken</a></div>
-  </section>
-
-  <!-- Brand story -->
-  <section class="section">
-    <div class="brand-story__inner">
-      <div class="brand-story__media"></div>
-      <div class="brand-story__content">
-        <div class="eyebrow">Over Velora Secrets</div>
-        <h2>Meer dan een webshop</h2>
-        <p>Bij Velora Secrets geloven we dat intimiteit, ontspanning en zelfvertrouwen hand in hand gaan. Daarom selecteren wij uitsluitend hoogwaardige producten die bijdragen aan een veilige, comfortabele en plezierige ervaring.</p>
-        <p>Met een zorgvuldig samengesteld assortiment, discrete verzending en uitstekende service maken wij online winkelen eenvoudig én vertrouwd.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- AI teaser -->
-  <section class="ai-teaser">
-    <div class="ai-teaser__inner">
-      <div class="ai-teaser__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg></div>
-      <div class="eyebrow">Persoonlijk advies</div>
-      <h2>Jouw persoonlijke shopping assistent</h2>
-      <p>Twijfel je welk product het beste bij je past? Onze assistent helpt je bij het vinden van producten die aansluiten bij jouw wensen, ervaring en voorkeuren.</p>
-      <button class="btn btn--primary" id="aiTeaserOpen">Stel je vraag <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-    </div>
-  </section>
-
-  <!-- Deel jouw ervaring -->
-  <section class="section review-cta">
-    <div class="review-cta__inner">
-      <div class="eyebrow">Deel jouw ervaring</div>
-      <h2>Ben jij één van onze eerste klanten?</h2>
-      <p>Laat een eerlijke beoordeling achter en help andere bezoekers bij hun keuze.</p>
-      <button type="button" class="btn btn--primary" id="writeReviewBtn" disabled title="Reviewsysteem volgt binnenkort">Schrijf een review</button>
-    </div>
-  </section>
-</main>
-
-<div class="footer-trust">
-  <div class="footer-trust__inner">
-    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/></svg>Discrete verzending</span>
-    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5z"/></svg>Veilig betalen</span>
-    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 7h11v9H2z"/><path d="M13 10h4l4 3v3h-8z"/></svg>Snelle levering</span>
-    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 5-6 8-6s6.5 2 8 6"/></svg>Persoonlijke klantenservice</span>
-  </div>
-</div>
-
-<footer class="site-footer">
-  <div class="footer-main__inner">
-    <div class="footer-brand">
-      <span class="logo logo--footer"><img src="images/logo-mark.png" alt="" width="34" height="34" class="logo-mark"><span class="logo-text">Velora<em>Secrets</em></span></span>
-      <p>Zorgvuldig geselecteerde producten voor intimiteit, verlangen en zelfvertrouwen — ontdekt in alle discretie.</p>
-      <ul class="footer-contact">
-        <li><a href="contact.html">Contactformulier</a></li>
-        <li><a href="mailto:support@velorasecrets.nl">support@velorasecrets.nl</a></li>
-        <li><a href="mailto:info@velorasecrets.nl">info@velorasecrets.nl</a></li>
-      </ul>
-    </div>
-    <div class="footer-col"><h3>Shop</h3><ul><li><a href="collection.html?category=Voor+Haar">Voor Haar</a></li><li><a href="collection.html?category=Voor+Hem">Voor Hem</a></li><li><a href="collection.html?category=Voor+Koppels">Voor Koppels</a></li><li><a href="collection.html?category=Lingerie">Lingerie</a></li><li><a href="collection.html">Sale</a></li></ul></div>
-    <div class="footer-col"><h3>Klantenservice</h3><ul><li><a href="contact.html">Contact</a></li><li><a href="shipping.html">Verzending &amp; Retourneren</a></li></ul></div>
-    <div class="footer-col"><h3>Over Velora Secrets</h3><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Algemene voorwaarden</a></li><li><a href="cookies.html">Cookiebeleid</a></li><li><a href="disclaimer.html">Disclaimer</a></li><li><a href="returns.html">Retourbeleid</a></li><li><a href="age-policy.html">18+ Leeftijdsbeleid</a></li></ul></div>
-  </div>
-  <div class="footer-payments">
-    <span class="footer-payments__label">Veilig betalen met</span>
-    <div class="footer-payments__row">
-      <span class="payment-badge">iDEAL</span><span class="payment-badge">PayPal</span><span class="payment-badge">Visa</span><span class="payment-badge">Mastercard</span><span class="payment-badge">American Express</span><span class="payment-badge">Maestro</span><span class="payment-badge">Apple Pay</span><span class="payment-badge">Google Pay</span><span class="payment-badge">Bancontact</span><span class="payment-badge">Klarna</span>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-bottom__inner"><span>© 2026 Velora Secrets · KVK 42121511 · BTW NL005510912B02 · 18+</span><span>Alle rechten voorbehouden</span></div>
-  </div>
-</footer>
-
-<!-- Mobile nav -->
-<div class="mobile-nav-overlay" id="mobileOverlay"></div>
-<div class="mobile-nav" id="mobileNav">
-  <div class="mobile-nav__header"><span class="logo logo--mobile"><img src="images/logo-mark.png" alt="" width="34" height="34" class="logo-mark"><span class="logo-text">Velora<em>Secrets</em></span></span><button id="mobileClose" aria-label="Sluiten">✕</button></div>
-  <ul>
-    <li><a href="collection.html?category=Voor+Haar">Voor Haar</a></li><li><a href="collection.html?category=Voor+Hem">Voor Hem</a></li><li><a href="collection.html?category=Voor+Koppels">Voor Koppels</a></li>
-    <li><a href="collection.html?category=Lingerie">Lingerie</a></li><li><a href="collection.html?category=BDSM">BDSM</a></li><li><a href="collection.html?category=Wellness+%26+Massage">Wellness &amp; Massage</a></li><li><a href="collection.html">Sale</a></li>
-  </ul>
-</div>
-
-<!-- Cart drawer -->
-<div class="drawer-overlay" id="cartOverlay"></div>
-<div class="drawer" id="cartDrawer">
-  <div class="cart-header"><h2>Winkelwagen</h2><button id="cartClose" aria-label="Sluiten">✕</button></div>
-  <div class="cart-items" id="cartItems"><div class="cart-empty">Je winkelwagen is nog leeg.</div></div>
-  <div class="cart-footer">
-    <div class="cart-shipping" id="cartShippingText">Nog €50,00 tot gratis verzending<div class="cart-shipping-track"><div class="cart-shipping-fill" id="cartShippingFill" style="width:0%"></div></div></div>
-    <div class="cart-subtotal"><span>Subtotaal</span><span id="cartSubtotal">€0,00</span></div>
-    <a class="btn btn--primary cart-drawer__checkout" href="checkout.html">Afrekenen</a>
-  </div>
-</div>
-
-<!-- AI assistant -->
-<div class="ai-mascot-wrap">
-  <button class="ai-trigger" id="aiTrigger" aria-label="Open Velora Assistant">
-    <svg class="ai-trigger__robot" viewBox="0 0 48 48" aria-hidden="true">
-      <!-- Antenne -->
-      <circle cx="24" cy="6" r="2.2" fill="var(--gold)"/>
-      <line x1="24" y1="8" x2="24" y2="12" stroke="var(--gold)" stroke-width="1.6"/>
-      <!-- Hoofd -->
-      <rect x="12" y="12" width="24" height="18" rx="7" fill="var(--white)"/>
-      <circle cx="19" cy="21" r="2.3" fill="var(--espresso)"/>
-      <circle cx="29" cy="21" r="2.3" fill="var(--espresso)"/>
-      <path d="M19 26.5c1.6 1.4 8.4 1.4 10 0" stroke="var(--espresso)" stroke-width="1.4" stroke-linecap="round" fill="none"/>
-      <!-- Lijfje / VS-shirt -->
-      <rect x="10" y="30" width="28" height="14" rx="5" fill="var(--gold)"/>
-      <text x="24" y="40" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="800" fill="var(--white)">VS</text>
-    </svg>
-  </button>
-</div>
-<div class="ai-panel" id="aiPanel">
-  <div class="ai-panel__header">
-    <div class="ai-panel__header-info">
-      <img src="images/logo-mark.png" alt="" width="34" height="34" class="ai-panel__logo">
-      <div><div class="ai-panel__header-name">Velora Assistant</div><div class="ai-panel__header-status">Meestal binnen enkele seconden online</div></div>
-    </div>
-    <button id="aiClose" aria-label="Sluiten">✕</button>
-  </div>
-  <div class="ai-messages" id="aiMessages">
-    <div class="ai-message ai-message--bot">Hoi, ik ben je Velora Assistant — jouw persoonlijke shopping-adviseur. Waar kan ik je mee helpen?</div>
-    <div class="ai-chips">
-      <button class="ai-chip" data-start-advisor>Persoonlijk productadvies</button>
-      <button class="ai-chip" data-start-advisor>Zoek je iets voor jezelf of als cadeau?</button>
-      <button class="ai-chip">Hoe werkt de discrete verzending?</button>
-      <button class="ai-chip" data-start-compare>Help me twee producten vergelijken</button>
-    </div>
-  </div>
-  <form class="ai-composer" id="aiComposer">
-    <input type="text" placeholder="Typ je vraag..." id="aiInput" autocomplete="off">
-    <button type="submit" aria-label="Verstuur bericht"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-  </form>
-</div>
-
-<script src="products.js"></script>
-<script src="config.js"></script>
-<script src="i18n.js"></script>
-<script src="cart.js"></script>
-<script src="wishlist.js"></script>
-<script src="auth.js"></script>
-<script src="recently-viewed.js"></script>
-<script src="search.js"></script>
-<script src="ai.js"></script>
-<script>
+   Vereist: config.js, vóór dit bestand geladen.
+   ============================================================ */
 (() => {
   'use strict';
 
-  /* Eén werkelijk gedeelde kaart-template — leeft nu in products.js
-     (window.veloraProductCardHTML) i.p.v. hier apart gedupliceerd. */
-  function productCardHTML(p) {
-    return window.veloraProductCardHTML(p);
+  const { storageKey: DISCOUNT_KEY, codes } = window.VELORA_CONFIG.discounts;
+
+  function getAppliedCode() {
+    return localStorage.getItem(DISCOUNT_KEY) || null;
+  }
+  function setAppliedCode(code) {
+    if (code) localStorage.setItem(DISCOUNT_KEY, code);
+    else localStorage.removeItem(DISCOUNT_KEY);
   }
 
-  function renderRail(elementId, products) {
-    const el = document.getElementById(elementId);
-    if (!el) return;
-    el.innerHTML = products.map(productCardHTML).join('');
-  }
-
-  const ALL = window.VELORA_PRODUCTS;
-
-  /* Bestsellers — echt gefilterd op het Bestseller-badge. */
-  renderRail(
-    'bestsellerRail',
-    ALL.filter((p) => p.badge === 'Bestseller').sort((a, b) => a.id - b.id).slice(0, 12)
-  );
-
-  /* Aanbiedingen — producten met het Sale-badge (hebben altijd een
-     compareAt-prijs, dus daadwerkelijk in prijs verlaagd). */
-  renderRail(
-    'offersRail',
-    ALL.filter((p) => p.badge === 'Sale' && p.compareAt).sort((a, b) => (b.compareAt - b.price) - (a.compareAt - a.price)).slice(0, 12)
-  );
-
-  /* Nieuw binnen — Nieuw-badge, meest recent (hoogste ID) eerst. */
-  renderRail(
-    'newArrivalsRail',
-    ALL.filter((p) => p.badge === 'Nieuw').sort((a, b) => b.id - a.id).slice(0, 12)
-  );
-
-  /* Populair bij koppels */
-  renderRail(
-    'couplesRail',
-    ALL.filter((p) => p.category === 'Voor Koppels').sort((a, b) => a.id - b.id).slice(0, 12)
-  );
-
-  /* Nieuwe lingeriecollectie */
-  renderRail(
-    'lingerieRail',
-    ALL.filter((p) => p.category === 'Lingerie').sort((a, b) => b.id - a.id).slice(0, 12)
-  );
-
-  /* Cadeautips — verspreid over categorieën i.p.v. allemaal uit
-     dezelfde hoek (max. 2 per categorie voor variatie). */
-  (() => {
-    const perCategory = {};
-    const picks = ALL
-      .filter((p) => {
-        perCategory[p.category] = (perCategory[p.category] || 0) + 1;
-        return perCategory[p.category] <= 2;
-      })
-      .slice(0, 12);
-    renderRail('giftRail', picks);
-  })();
-
-  /* Aanbevolen voor jou — eerlijk gegrond: gebaseerd op écht recent
-     bekeken producten (recently-viewed.js) als die er zijn, anders
-     een duidelijk gelabelde fallback i.p.v. te doen alsof het
-     gepersonaliseerd is. */
-  (() => {
-    const recent = window.veloraGetRecentlyViewed ? window.veloraGetRecentlyViewed({ limit: 12 }) : [];
-    if (recent.length >= 3) {
-      renderRail('recommendedRail', recent);
-    } else {
-      document.getElementById('recommendedDesc').textContent = 'Een greep uit onze collectie — bekijk een paar producten om hier persoonlijke aanbevelingen te zien.';
-      renderRail('recommendedRail', ALL.filter((p) => p.badge === 'Bestseller' || p.badge === 'Nieuw').slice(0, 12));
+  /* Publiek: probeer een code toe te passen. Geeft altijd een
+     resultaatobject terug — nooit een exception — zodat de UI
+     voorspelbaar kan reageren op succes/fout. */
+  window.veloraApplyDiscountCode = function (rawCode) {
+    const code = (rawCode || '').trim().toUpperCase();
+    if (!code) {
+      return { success: false, message: 'Vul een kortingscode in.' };
     }
-  })();
+    const definition = codes[code];
+    if (!definition) {
+      return { success: false, message: 'Deze kortingscode is niet geldig.' };
+    }
+    setAppliedCode(code);
+    return { success: true, message: definition.label, code, definition };
+  };
 
-  /* Shop op merk — 8 uitgelichte merken met live productaantal. */
-  (() => {
-    const grid = document.getElementById('homepageBrandsGrid');
-    if (!grid) return;
-    const featured = window.VELORA_BRANDS.slice(0, 8);
-    grid.innerHTML = featured
-      .map(
-        (b) => `
-      <a href="collection.html?brand=${encodeURIComponent(b.name)}" class="homepage-brand-tile">
-        <span class="homepage-brand-tile__mark">${b.name.charAt(0)}</span>
-        <span class="homepage-brand-tile__name">${b.name}</span>
-      </a>`
-      )
-      .join('');
-  })();
+  window.veloraRemoveDiscountCode = function () {
+    setAppliedCode(null);
+  };
 
-  window.veloraSyncWishlistUI?.();
+  /* Publiek: past een dynamisch gegenereerde kortingscode toe
+     (nieuwsbrief-welkomstkorting óf Rewards-inwisseling — beide
+     gevalideerd via /api/validate-discount-code, zie cart-page.js).
+     Slaat een JSON-encoded object op i.p.v. alleen de code-string,
+     zodat veloraGetAppliedDiscount hieronder het type en bedrag kent
+     zonder in de statische config.js-lijst te hoeven zoeken. */
+  window.veloraApplyDynamicDiscount = function (code, type, value, label) {
+    setAppliedCode(JSON.stringify({ code, type, value, label, dynamic: true }));
+  };
+
+  /* Publiek: huidige toegepaste code + definitie, of null. Herkent
+     zowel een gewone statische code-string (bestaand gedrag,
+     ongewijzigd) als een dynamisch, JSON-encoded object
+     (nieuwsbrief-code) — via een JSON.parse-poging die bij een
+     gewone code-string simpelweg faalt en dan het bestaande pad
+     volgt. */
+  window.veloraGetAppliedDiscount = function () {
+    const stored = getAppliedCode();
+    if (!stored) return null;
+    try {
+      const parsed = JSON.parse(stored);
+      if (parsed && parsed.dynamic) return parsed;
+    } catch (e) {
+      // Geen geldige JSON — dan is het gewoon een statische code-string,
+      // val door naar het bestaande gedrag hieronder.
+    }
+    if (!codes[stored]) return null;
+    return { code: stored, ...codes[stored] };
+  };
+
+  /* Publiek: berekent het kortingsbedrag in euro's op een gegeven
+     subtotaal. Nooit meer dan het subtotaal zelf (voorkomt een
+     negatief totaal bij een vast kortingsbedrag). */
+  window.veloraCalculateDiscountAmount = function (subtotal) {
+    const applied = window.veloraGetAppliedDiscount();
+    if (!applied) return 0;
+    if (applied.type === 'percent') return subtotal * (applied.value / 100);
+    if (applied.type === 'fixed') return Math.min(applied.value, subtotal);
+    return 0;
+  };
 })();
-</script>
-<script src="main.js"></script>
-<script src="analytics-config.js"></script>
-<script src="analytics.js"></script>
-</body>
-</html>
-

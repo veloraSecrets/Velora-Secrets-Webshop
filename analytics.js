@@ -3,7 +3,8 @@
    ------------------------------------------------------------
    Blokkeert de VOLLEDIGE site (scroll uitgeschakeld, overlay dekt
    alles) totdat de bezoeker bevestigt 18+ te zijn. Moet als EERSTE
-   script in de <head> laden (vóór alle overige content-scripts),
+   regel na de openende <body>-tag staan (NIET in <head> — dit
+   script gebruikt document.body, dat in <head> nog niet bestaat),
    zodat de gate er al staat vóórdat de rest van de pagina zichtbaar
    wordt — geen flits van onbedekte inhoud.
 
@@ -52,14 +53,28 @@
     `;
     document.body.appendChild(overlay);
 
-    document.getElementById('ageGateConfirm').addEventListener('click', () => {
+    const confirmBtn = document.getElementById('ageGateConfirm');
+    const denyBtn = document.getElementById('ageGateDeny');
+
+    // Focus-trap: Tab/Shift+Tab blijven binnen de twee knoppen van de
+    // gate, zodat een toetsenbordgebruiker niet naar verborgen
+    // elementen achter de overlay kan tabben zonder te bevestigen.
+    overlay.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab') return;
+      e.preventDefault();
+      if (document.activeElement === confirmBtn) denyBtn.focus();
+      else confirmBtn.focus();
+    });
+    confirmBtn.focus();
+
+    confirmBtn.addEventListener('click', () => {
       try { localStorage.setItem(STORAGE_KEY, '1'); } catch (e) { /* negeren, sessie werkt dan zonder onthouden */ }
       document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
       overlay.remove();
     });
 
-    document.getElementById('ageGateDeny').addEventListener('click', () => {
+    denyBtn.addEventListener('click', () => {
       window.location.href = 'https://www.rijksoverheid.nl/';
     });
   }

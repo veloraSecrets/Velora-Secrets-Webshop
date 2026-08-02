@@ -71,6 +71,12 @@
     display:flex; flex-direction:column; gap:2px;
     animation:lang-menu-in .18s var(--ease) both;
   }
+  /* Zelfde specificiteit (0-1-0) als het ingebouwde [hidden]{display:none},
+     dus wint anders altijd de laatst-geladen auteur-regel hierboven —
+     ongeacht of het hidden-attribuut aanwezig is. Deze regel heeft een
+     hogere specificiteit (0-2-0) en herstelt dat het attribuut voorrang
+     krijgt zodra het aanwezig is. */
+  .lang-switcher__menu[hidden]{ display:none; }
   @keyframes lang-menu-in{ from{ opacity:0; transform:translateY(-6px); } to{ opacity:1; transform:translateY(0); } }
   .lang-switcher__menu button{
     display:flex; align-items:center; gap:10px; width:100%; height:40px; padding:0 12px;
@@ -229,11 +235,13 @@
   .ai-teaser .btn--primary{ background:var(--gold); color:var(--espresso); }
   .ai-teaser .btn--primary:hover{ background:var(--gold-soft); }
 
-  .review-cta{ background:var(--sage); }
-  .review-cta__inner{ max-width:640px; margin:0 auto; padding:56px 32px; text-align:center; }
-  .review-cta__inner h2{ font-family:var(--font-display); font-weight:450; font-size:clamp(24px,3vw,30px); margin:8px 0 12px; }
-  .review-cta__inner p{ font-size:14.5px; color:var(--espresso); margin-bottom:24px; }
+  .review-cta{ background:var(--espresso); }
+  .review-cta__inner{ max-width:640px; margin:0 auto; padding:80px 32px; text-align:center; }
+  .review-cta__inner .eyebrow{ color:var(--gold-soft); }
+  .review-cta__inner h2{ font-family:var(--font-display); font-weight:450; font-size:clamp(26px,3.2vw,32px); margin:10px 0 14px; color:var(--white); }
+  .review-cta__inner p{ font-size:14.5px; line-height:1.6; color:#C9C2BC; margin-bottom:32px; }
   #writeReviewBtn:disabled{ opacity:.55; cursor:not-allowed; }
+  .review-cta .btn--primary{ background:var(--gold); color:var(--espresso); }
 
   .footer-trust{ border-top:1px solid rgba(248,241,231,.1); border-bottom:1px solid rgba(248,241,231,.1); background:var(--footer-brown); }
   .footer-trust__inner{ max-width:1400px; margin:0 auto; padding:18px 32px; display:flex; flex-wrap:wrap; gap:16px 32px; justify-content:center; }

@@ -47,6 +47,14 @@ AI-knop "Vraag Velora AI", de merkenpagina, de hero-afbeelding en het logo zijn 
 ### Taalmenu: emoji-vlaggen vervangen door SVG
 Emoji-vlaggen (🇳🇱🇬🇧🇩🇪...) renderen op Windows/Chrome vaak niet als plaatje maar als letter-code (NL/GB/DE) — een bekende platformbeperking. Vervangen door echte, zelf getekende SVG-vlaggen (data-URI, geen externe afhankelijkheid), consistent op elk platform. Vaste afmetingen (20×14px) voorkomen layout shift. Decoratieve vlag-iconen voorzien van aria-hidden voor schermlezers.
 
+### QA-ronde: 3 echte bugs gevonden en gefixt
+1. Megamenu bleef op touchscreens (tablet/mobiel) vast open staan na tikken buiten het menu — geen "klik buiten sluit" voor niet-hover-apparaten. Gefixt.
+2. Leeftijdsgate had geen focus-trap: een toetsenbordgebruiker kon met Tab voorbij de gate naar verborgen elementen erachter komen, zonder ooit te bevestigen. Gefixt.
+3. Misleidend commentaar in age-verification.js beweerde dat het script in `<head>` moest laden — feitelijk onjuist en potentieel gevaarlijk voor toekomstig onderhoud (zou een echte crash veroorzaken). Gecorrigeerd.
+
+### Review-sectie: luxe donkere stijl
+Achtergrond van lichtgroen (`--sage`) naar `--espresso` (donkerzwart), witte titel, lichtgrijze tekst, knopkleur aangepast naar goud voor voldoende contrast (zelfde patroon als de bestaande AI-sectie).
+
 ### Taalmenu volledig herbouwd
 Had voorheen geen enkele eigen CSS (pure browserstandaard = rommelig oogte). Nu een nette dropdown met witruimte, uitlijning, gelijke regelhoogtes, hover-effecten en een duidelijke markering van de actief geselecteerde taal.
 
