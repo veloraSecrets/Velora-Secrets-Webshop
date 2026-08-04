@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>Beheerpaneel — Velora Secrets</title>
+<meta name="robots" content="noindex">
+<style>
+  body { font-family: -apple-system, 'Segoe UI', sans-serif; background: #F4EDE4; margin: 0; padding: 32px; color: #262220; }
+  h1 { font-family: Georgia, serif; }
+  .store-banner { background: #2B2A28; color: #fff; padding: 12px 20px; border-radius: 6px; margin-bottom: 24px; font-size: 14px; }
+  .store-banner strong { color: #E2A385; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 32px; }
+  .card { background: #fff; border-radius: 8px; padding: 20px; border: 1px solid #E7DFD5; }
+  .card h3 { margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: #6B6560; }
+  .card p { margin: 0; font-size: 15px; }
+  .ok { color: #2E7D4F; } .fail { color: #C4472E; }
+  button { background: #2B2A28; color: #fff; border: none; padding: 10px 18px; border-radius: 999px; cursor: pointer; margin-right: 8px; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid #E7DFD5; font-size: 13px; }
+  th { background: #F4EDE4; text-transform: uppercase; font-size: 11px; }
+  #loginBox { max-width: 360px; margin: 80px auto; background: #fff; padding: 32px; border-radius: 8px; }
+  #loginBox input { width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #E7DFD5; border-radius: 6px; }
+  .test-banner { background: #E8641F; color: #fff; padding: 12px 20px; border-radius: 6px; margin-bottom: 16px; font-size: 14px; font-weight: 600; }
+  .e2e-steps { background: #fff; border-radius: 8px; padding: 16px 20px; margin-top: 16px; }
+  .e2e-steps div { padding: 6px 0; font-size: 13.5px; border-bottom: 1px solid #F4EDE4; }
+  .e2e-steps div:last-child { border-bottom: none; }
+  .db-banner { background: #fff; border: 1px solid #E7DFD5; padding: 10px 20px; border-radius: 6px; margin-bottom: 16px; font-size: 13px; color: #6B6560; }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-bottom: 32px; }
+  .stat-card { background: #fff; border-radius: 8px; padding: 16px; text-align: center; border: 1px solid #E7DFD5; }
+  .stat-card .num { font-size: 26px; font-weight: 700; font-family: Georgia, serif; }
+  .stat-card .label { font-size: 11px; text-transform: uppercase; color: #6B6560; letter-spacing: .04em; margin-top: 4px; }
+  .status-badge { padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; text-transform: uppercase; }
+  .status-received { background: #E7DFD5; color: #262220; }
+  .status-paid { background: #C9D6C6; color: #1B4332; }
+  .status-sent_to_supplier, .status-processing { background: #FDE8CE; color: #8A5A00; }
+  .status-shipped { background: #CFE3F5; color: #0B4C7C; }
+  .status-delivered { background: #2E7D4F; color: #fff; }
+  .status-returned { background: #E7C7C0; color: #8A2E1F; }
+  .status-cancelled { background: #262220; color: #fff; }
+  section.panel-section { margin-bottom: 36px; }
+  section.panel-section h2 { font-size: 16px; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+
+<div id="loginBox">
+  <h1 style="font-size:20px;">Beheerpaneel</h1>
+  <input type="password" id="secretInput" placeholder="Admin-wachtwoord">
+  <button id="loginBtn" style="width:100%;">Inloggen</button>
+  <p id="loginError" style="color:#C4472E;font-size:13px;"></p>
+</div>
+
+<div id="dashboard" hidden>
+  <h1>Velora Secrets — Beheerpaneel</h1>
+  <div id="testBanner" class="test-banner" hidden>⚠️ TESTMODUS actief — alle data hieronder is nep. Zet TEST_MODE nooit aan in de Production-omgeving.</div>
+  <div class="store-banner">Actieve winkel: <strong id="activeStoreLabel">–</strong></div>
+  <div class="db-banner">Database: <strong id="dbSourceLabel">–</strong></div>
+
+  <section class="panel-section">
+    <h2>Orders per levenscyclusstatus</h2>
+    <div class="stats-grid" id="orderStatsGrid"></div>
+  </section>
+
+  <div class="grid">
+    <div class="card"><h3>Laatste productsync</h3><p id="lastProductSync">–</p></div>
+    <div class="card"><h3>Laatste voorraadsync</h3><p id="lastInventorySync">–</p></div>
+    <div class="card"><h3>Laatste Track&amp;Trace-sync</h3><p id="lastTrackingSync">–</p></div>
+    <div class="card"><h3>Leveranciers</h3><p id="supplierStatus">–</p></div>
+  </div>
+
+  <div style="margin-bottom:24px;">
+    <button data-job="products">Producten nu synchroniseren</button>
+    <button data-job="inventory">Voorraad nu synchroniseren</button>
+    <button data-job="tracking">Track&amp;Trace nu ophalen</button>
+    <button id="e2eTestBtn" style="background:#E8641F;">Volledige end-to-end-test uitvoeren</button>
+  </div>
+  <div id="e2eResults" class="e2e-steps" hidden></div>
+
+  <section class="panel-section">
+    <h2>Ordermonitoring (recentste 20)</h2>
+    <table>
+      <thead><tr><th>Order</th><th>Klant-e-mail</th><th>Status</th><th>Bedrag</th><th>Aangemaakt</th></tr></thead>
+      <tbody id="ordersBody"></tbody>
+    </table>
+  </section>
+
+  <section class="panel-section">
+    <h2>Synchronisatiegeschiedenis / foutmeldingen</h2>
+    <table>
+      <thead><tr><th>Tijd</th><th>Type</th><th>Leverancier</th><th>Status</th><th>Details</th></tr></thead>
+      <tbody id="logsBody"></tbody>
+    </table>
+  </section>
+
+  <section class="panel-section">
+    <h2>Auditlog (handmatige acties)</h2>
+    <table>
+      <thead><tr><th>Tijd</th><th>Actor</th><th>Actie</th><th>Entiteit</th></tr></thead>
+      <tbody id="auditBody"></tbody>
+    </table>
+  </section>
+</div>
+
+<script>
+(function () {
+  var secret = null;
+
+  document.getElementById('loginBtn').addEventListener('click', function () {
+    secret = document.getElementById('secretInput').value;
+    loadStatus();
+  });
+
+  function loadStatus() {
+    fetch('/api/admin/status', { headers: { 'x-admin-secret': secret } })
+      .then(function (r) {
+        if (!r.ok) throw new Error('Onjuist wachtwoord of paneel nog niet geconfigureerd.');
+        return r.json();
+      })
+      .then(function (data) {
+        document.getElementById('loginBox').hidden = true;
+        document.getElementById('dashboard').hidden = false;
+        render(data);
+      })
+      .catch(function (err) {
+        document.getElementById('loginError').textContent = err.message;
+      });
+  }
+
+  var STATUS_LABELS = {
+    received: 'Ontvangen', paid: 'Betaald', sent_to_supplier: 'Naar leverancier',
+    processing: 'In verwerking', shipped: 'Verzonden', delivered: 'Afgeleverd',
+    returned: 'Retour', cancelled: 'Geannuleerd'
+  };
+
+  function statusBadge(status) {
+    return '<span class="status-badge status-' + status + '">' + (STATUS_LABELS[status] || status) + '</span>';
+  }
+
+  function render(data) {
+    document.getElementById('activeStoreLabel').textContent = data.activeStore || 'Nog niet geconfigureerd';
+    document.getElementById('dbSourceLabel').textContent = data.dbSource || '–';
+    document.getElementById('testBanner').hidden = !data.testMode;
+    document.getElementById('lastProductSync').textContent = data.status.lastProductSync || 'Nog niet uitgevoerd';
+    document.getElementById('lastInventorySync').textContent = data.status.lastInventorySync || 'Nog niet uitgevoerd';
+    document.getElementById('lastTrackingSync').textContent = data.status.lastTrackingSync || 'Nog niet uitgevoerd';
+    document.getElementById('supplierStatus').innerHTML = data.suppliers.map(function (s) {
+      return s.name + ': <span class="' + (s.configured ? 'ok">Gekoppeld' : 'fail">Nog niet gekoppeld') + '</span>';
+    }).join('<br>');
+
+    var statsGrid = document.getElementById('orderStatsGrid');
+    statsGrid.innerHTML = Object.keys(data.orderStats || {}).map(function (status) {
+      return '<div class="stat-card"><div class="num">' + data.orderStats[status] + '</div>' +
+        '<div class="label">' + (STATUS_LABELS[status] || status) + '</div></div>';
+    }).join('');
+
+    var ordersBody = document.getElementById('ordersBody');
+    ordersBody.innerHTML = (data.recentOrders || []).map(function (o) {
+      return '<tr><td>' + (o.order_number || o.shopify_order_id) + '</td>' +
+        '<td>' + (o.email || '–') + '</td>' +
+        '<td>' + statusBadge(o.status) + '</td>' +
+        '<td>' + (o.total_amount != null ? '€ ' + Number(o.total_amount).toFixed(2) : '–') + '</td>' +
+        '<td>' + new Date(o.created_at).toLocaleString('nl-NL') + '</td></tr>';
+    }).join('') || '<tr><td colspan="5">Nog geen orders.</td></tr>';
+
+    var auditBody = document.getElementById('auditBody');
+    auditBody.innerHTML = (data.auditLogs || []).map(function (a) {
+      return '<tr><td>' + new Date(a.created_at).toLocaleString('nl-NL') + '</td><td>' + a.actor + '</td>' +
+        '<td>' + a.action + '</td><td>' + (a.entity_type || '–') + (a.entity_id ? ' (' + a.entity_id + ')' : '') + '</td></tr>';
+    }).join('') || '<tr><td colspan="4">Nog geen auditlogs.</td></tr>';
+
+    var tbody = document.getElementById('logsBody');
+    tbody.innerHTML = data.logs.map(function (l) {
+      return '<tr><td>' + new Date(l.timestamp).toLocaleString('nl-NL') + '</td><td>' + l.type + '</td>' +
+        '<td>' + (l.supplier || '–') + '</td>' +
+        '<td class="' + (l.ok ? 'ok">OK' : 'fail">Fout') + '</td>' +
+        '<td>' + (l.error || l.count || '') + '</td></tr>';
+    }).join('') || '<tr><td colspan="5">Nog geen logs.</td></tr>';
+  }
+
+  document.querySelectorAll('button[data-job]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      btn.disabled = true;
+      fetch('/api/admin/trigger-sync', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-admin-secret': secret },
+        body: JSON.stringify({ job: btn.dataset.job })
+      })
+        .then(function (r) { return r.json(); })
+        .then(function () { loadStatus(); })
+        .finally(function () { btn.disabled = false; });
+    });
+  });
+  document.getElementById('e2eTestBtn').addEventListener('click', function () {
+    var btn = this;
+    btn.disabled = true;
+    var resultsEl = document.getElementById('e2eResults');
+    resultsEl.hidden = false;
+    resultsEl.innerHTML = '<div>Bezig met testen...</div>';
+    fetch('/api/test/run-e2e', { method: 'POST', headers: { 'x-admin-secret': secret } })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        resultsEl.innerHTML = (data.steps || []).map(function (s) {
+          return '<div>' + (s.ok ? '✅' : '❌') + ' ' + s.step + (s.error ? ' — ' + s.error : ' (' + s.durationMs + 'ms)') + '</div>';
+        }).join('') || '<div>Geen stappen uitgevoerd — ' + (data.error || 'onbekende fout') + '</div>';
+      })
+      .finally(function () { btn.disabled = false; loadStatus(); });
+  });
+})();
+</script>
+</body>
+</html>

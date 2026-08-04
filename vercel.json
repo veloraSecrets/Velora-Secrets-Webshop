@@ -1,34 +1,7 @@
 {
-  "cleanUrls": false,
-  "trailingSlash": false,
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(), camera=()" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://plausible.io https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.facebook.com; connect-src 'self' https://plausible.io; frame-ancestors 'self'; base-uri 'self'; form-action 'self'" }
-      ]
-    },
-    {
-      "source": "/(.*).(js|css)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
-      ]
-    },
-    {
-      "source": "/images/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
-      ]
-    },
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "no-store" }
-      ]
-    }
+  "crons": [
+    { "path": "/api/sync/products", "schedule": "0 6,14 * * *" },
+    { "path": "/api/sync/inventory", "schedule": "0 */2 * * *" },
+    { "path": "/api/sync/tracking", "schedule": "0 * * * *" }
   ]
 }

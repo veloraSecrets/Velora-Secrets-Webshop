@@ -1,100 +1,71 @@
-/* ============================================================
-   assets/contact-page.js — logica voor contact.html
-   ------------------------------------------------------------
-   Bevat GEEN eigen mail-/spamlogica: dat zit allemaal server-side
-   in api/contact.js. Deze module doet uitsluitend cliëntzijdige
-   validatie (snelle feedback vóór het versturen) en roept daarna
-   het echte endpoint aan.
-   ============================================================ */
-(() => {
-  'use strict';
+# Velora Secrets — Deployment naar Vercel
 
-  const form = document.getElementById('contactForm');
-  if (!form) return;
+Deze site is een statische HTML/CSS/JS-site met een paar Vercel serverless
+API-routes (`api/`). Dit document beschrijft hoe je 'm live zet.
 
-  // Tijdstempel voor de server-side timing-check tegen bots — gezet
-  // zodra de pagina (en dus dit script) laadt.
-  const loadedAtInput = document.getElementById('contactFormLoadedAt');
-  if (loadedAtInput) loadedAtInput.value = String(Date.now());
+## 1. Repository voorbereiden
+1. Maak een nieuwe, lege GitHub-repository aan (of gebruik een bestaande).
+2. Upload alle bestanden uit deze map, met de mapstructuur intact:
+   - alle `.html`-bestanden in de root
+   - `css/`, `js/`, `api/`
+   - `package.json`, `.env.example`
+3. **Let op vertaling**: als je bestanden via de GitHub-website upload/bewerkt,
+   zet Chrome's "Deze pagina vertalen" UIT voordat je dat doet. Eerder in dit
+   project zorgde die functie ervoor dat bestandsnamen en code-inhoud werden
+   vertaald (bijv. `package.json` → `pakket.json`), wat de deployment brak.
 
-  const fields = {
-    contactName: { validate: (v) => v.trim().length >= 2, message: 'Vul je naam in (minimaal 2 tekens).' },
-    contactEmail: { validate: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()), message: 'Vul een geldig e-mailadres in.' },
-    contactMessage: { validate: (v) => v.trim().length >= 10, message: 'Je bericht mag iets uitgebreider (minimaal 10 tekens).' },
-  };
+## 2. Vercel-project aanmaken
+1. Ga naar [vercel.com](https://vercel.com) → **New Project** → koppel de
+   GitHub-repository.
+2. Framework preset: **Other** (het is geen Next.js/React-project).
+3. Build command: leeg laten (geen build-stap nodig voor de statische bestanden).
+4. Output directory: `.` (root).
 
-  function showError(id, message) {
-    const input = document.getElementById(id);
-    const errorEl = document.querySelector(`[data-error-for="${id}"]`);
-    input?.classList.toggle('is-invalid', Boolean(message));
-    if (errorEl) errorEl.textContent = message || '';
-  }
+## 3. Environment variables instellen
+Ga naar **Project → Settings → Environment Variables** en zet:
 
-  const errorBanner = document.getElementById('contactFormError');
+| Variabele | Waar je 'm vandaan haalt |
+|---|---|
+| `MOLLIE_API_KEY` | [mollie.com/dashboard](https://my.mollie.com/dashboard/developers/api-keys) — gebruik eerst de **test**-sleutel, pas later de live-sleutel |
+| `RESEND_API_KEY` | [resend.com/api-keys](https://resend.com/api-keys) |
+| `RESEND_AUDIENCE_ID` | Resend → Audiences → jouw lijst |
+| `SITE_URL` | de uiteindelijke domeinnaam, bijv. `https://velorasecrets.nl` |
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (errorBanner) errorBanner.hidden = true;
+Zie `.env.example` voor de volledige lijst.
 
-    let isValid = true;
-    Object.entries(fields).forEach(([id, rule]) => {
-      const input = document.getElementById(id);
-      const valid = rule.validate(input.value);
-      showError(id, valid ? '' : rule.message);
-      if (!valid) isValid = false;
-    });
-    if (!isValid) return;
+## 4. Dependencies
+`package.json` bevat `@mollie/api-client` en `resend`. Vercel installeert deze
+automatisch bij deployment — lokaal testen kan met `npm install`.
 
-    const submitBtn = form.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Bezig met versturen…';
+## 5. De TODO's in de API-routes afmaken
+De volgende bestanden bevatten uitgecommentarieerde voorbeeldcode die je moet
+activeren zodra de sleutels hierboven zijn ingesteld:
+- `api/create-payment.js` — Mollie-betaling aanmaken
+- `api/webhook.js` — Mollie-statusupdate verwerken
+- `api/newsletter.js` — nieuwsbrief-aanmelding via Resend
+- `api/contact.js` — contactformulier-e-mail via Resend
 
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: document.getElementById('contactName').value,
-          email: document.getElementById('contactEmail').value,
-          topic: document.getElementById('contactTopic').value,
-          message: document.getElementById('contactMessage').value,
-          website: document.getElementById('contactWebsite')?.value || '',
-          formLoadedAt: loadedAtInput?.value,
-        }),
-      });
+Elke TODO staat duidelijk gemarkeerd in de code, met een voorbeeldimplementatie
+in commentaar erboven.
 
-      const data = await response.json().catch(() => ({}));
+## 6. Domein koppelen
+1. **Project → Settings → Domains** → voeg `velorasecrets.nl` toe.
+2. Volg Vercel's instructies om de DNS-records bij je domeinregistrar aan te passen.
+3. **Let op**: als het domein eerder naar een ander project wees (bijv. een
+   oud Lovable-project), zorg dat de oude DNS-records volledig zijn verwijderd
+   voordat je de nieuwe instelt, anders kan de site tijdelijk niet bereikbaar zijn.
 
-      if (!response.ok) {
-        // Serverside veldfouten (zeldzaam, want al client-side gecheckt) tonen
-        // we per veld; alle andere fouten als banner boven het formulier.
-        if (data.fieldErrors) {
-          Object.entries(data.fieldErrors).forEach(([field, msg]) => {
-            const idMap = { name: 'contactName', email: 'contactEmail', message: 'contactMessage' };
-            if (idMap[field]) showError(idMap[field], msg);
-          });
-        }
-        throw new Error(data.error || `Er ging iets mis (status ${response.status}).`);
-      }
+## 7. Na livegang: testen
+Loop de volledige klantreis één keer door op de live URL:
+1. Product bekijken → toevoegen aan winkelwagen
+2. Winkelwagen → aantal aanpassen, verwijderen
+3. Afrekenen → test-betaling met Mollie's testkaartgegevens (niet je eigen kaart)
+4. Bevestig dat de webhook de bestelling correct bijwerkt
+5. Nieuwsbrief- en contactformulier daadwerkelijk versturen en de ontvangen
+   e-mail controleren
 
-      document.getElementById('contactSuccess').hidden = false;
-      document.querySelector('.contact-page__fields').hidden = true;
-      form.reset();
-    } catch (err) {
-      console.error('Contactformulier versturen mislukt:', err);
-      if (errorBanner) {
-        errorBanner.textContent = err.message;
-        errorBanner.hidden = false;
-        errorBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Bericht versturen';
-    }
-  });
-
-  // Foutmelding meteen wegnemen zodra iemand opnieuw begint te typen
-  Object.keys(fields).forEach((id) => {
-    document.getElementById(id)?.addEventListener('input', () => showError(id, ''));
-  });
-})();
+## Belangrijke beperking
+Dit document is door Claude opgesteld zonder toegang tot je daadwerkelijke
+Vercel-account of GitHub-repository — ik kan dus niet zelf verifiëren dat de
+deployment slaagt. Loop bovenstaande stappen zelf door en meld het als je
+tegen een foutmelding aanloopt, dan help ik die gericht oplossen.

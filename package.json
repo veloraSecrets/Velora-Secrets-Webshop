@@ -1,13 +1,13 @@
 {
-  "name": "velora-secrets-webshop",
+  "name": "velora-secrets",
   "version": "1.0.0",
   "private": true,
-  "description": "Velora Secrets — statische webshop met Vercel serverless functions voor Mollie-betalingen en Resend-e-mails.",
-  "engines": {
-    "node": "22.x"
+  "description": "Velora Secrets — webshop (statische site + Vercel serverless API-routes)",
+  "scripts": {
+    "dev": "vercel dev",
+    "generate:catalog": "node scripts/generate-catalog.js"
   },
   "dependencies": {
-    "@mollie/api-client": "^3.7.0",
-    "resend": "^3.4.0"
+    "pg": "^8.11.0"
   }
 }

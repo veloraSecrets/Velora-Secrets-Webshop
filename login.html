@@ -1,1040 +1,285 @@
-/* ============================================================
-   i18n.js — meertalige infrastructuur (interface-teksten)
-   ------------------------------------------------------------
-   Vertaalt UITSLUITEND interface-teksten (navigatie, knoppen,
-   vertrouwensiconen, AI-berichten, hero) — NIET de 141 producten,
-   productbeschrijvingen of juridische pagina's. Die blijven bewust
-   Nederlands totdat de leverancierskoppeling actief is en er een
-   verantwoorde manier is om ze foutloos te vertalen (zie
-   SUPPLIER-INTEGRATION.md).
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inloggen — Velora Secrets</title>
+<meta name="description" content="Log in op jouw Velora Secrets account.">
+<link rel="canonical" href="https://velorasecrets.nl/login.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Inloggen — Velora Secrets">
+<meta property="og:description" content="Log in op jouw Velora Secrets account.">
+<meta property="og:url" content="https://velorasecrets.nl/login.html">
+<meta property="og:image" content="https://velorasecrets.nl/og-image.jpg">
+<meta property="og:site_name" content="Velora Secrets">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://velorasecrets.nl/og-image.jpg">
+<meta name="twitter:title" content="Inloggen — Velora Secrets">
+<meta name="twitter:description" content="Log in op jouw Velora Secrets account.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+<script src="js/age-verification.js"></script>
+<a href="#main" class="skip-link">Ga direct naar de inhoud</a>
+<header class="site-header">
+  <div class="header-row">
+    <a href="index.html" class="logo">
+      <img src="logo-full.png" alt="Velora Secrets — voor hem, haar en koppels" class="logo-full-img" width="169" height="136">
+      <img src="logo-icon.png" alt="Velora Secrets" class="logo-icon-img" width="88" height="91">
+    </a>
 
-   Werking: elementen met een data-i18n="sleutel"-attribuut krijgen
-   hun textContent overschreven met de vertaling. Taal wordt bepaald
-   uit (in volgorde): een eerder gekozen taal (localStorage), anders
-   de browsertaal (navigator.language), anders Nederlands.
-   ============================================================ */
-(() => {
-  'use strict';
+    <nav aria-label="Hoofdmenu">
+      <ul class="main-nav">
+        <li>
+          <a href="shop.html?cat=voor-haar" aria-haspopup="true" aria-expanded="false">Voor Haar</a>
+          <div class="mega-menu">
+            <div class="mega-col"><h4>Vibrators</h4><ul>
+              <li><a href="shop.html?cat=voor-haar&amp;sub=rabbit-vibrators">Rabbit Vibrators</a></li>
+              <li><a href="shop.html?cat=voor-haar&amp;sub=wand-massagers">Wand Massagers</a></li>
+              <li><a href="shop.html?cat=voor-haar&amp;sub=bullet-vibrators">Bullet Vibrators</a></li>
+              <li><a href="shop.html?cat=voor-haar&amp;sub=luchtdruk-vibrators">Luchtdruk Vibrators</a></li>
+              <li><a href="shop.html?cat=voor-haar&amp;sub=g-spot-vibrators">G-spot Vibrators</a></li>
+            </ul></div>
+            <div class="mega-col"><h4>Speeltjes</h4><ul>
+              <li><a href="shop.html?cat=voor-haar&amp;sub=dildos">Dildo's</a></li>
+              <li><a href="shop.html?cat=voor-haar&amp;sub=butt-plugs">Butt Plugs</a></li>
+              <li><a href="shop.html?cat=voor-haar&amp;sub=anaal-speelgoed">Anaal Speelgoed</a></li>
+              <li><a href="shop.html?cat=voor-haar&amp;sub=koppelsvibrators">Koppelsvibrators</a></li>
+              <li><a href="shop.html?cat=voor-haar&amp;sub=dubbele-penetratie">Dubbele Penetratie</a></li>
+            </ul></div>
+            <div class="mega-col"><h4>Wellness</h4><ul>
+              <li><a href="shop.html?cat=voor-haar&amp;sub=glijmiddel">Glijmiddel</a></li>
+              <li><a href="shop.html?cat=voor-haar&amp;sub=massageolie">Massageolie</a></li>
+              <li><a href="shop.html?cat=voor-haar&amp;sub=kegel-en-training">Kegel &amp; Training</a></li>
+              <li><a href="shop.html?cat=voor-haar&amp;sub=cadeaus-voor-haar">Cadeaus voor haar</a></li>
+            </ul></div>
+            <div class="mega-feature">
+              <span class="eyebrow">Nieuw deze week</span>
+              <a class="tile fill f1" href="shop.html?cat=voor-haar" style="align-items:flex-end;display:flex;padding:12px;">Bekijk collectie</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="shop.html?cat=voor-hem" aria-haspopup="true" aria-expanded="false">Voor Hem</a>
+          <div class="mega-menu">
+            <div class="mega-col"><h4>Stimulatie</h4><ul>
+              <li><a href="shop.html?cat=voor-hem&amp;sub=masturbators">Masturbators</a></li>
+              <li><a href="shop.html?cat=voor-hem&amp;sub=penisringen">Penisringen</a></li>
+              <li><a href="shop.html?cat=voor-hem&amp;sub=cock-sleeves">Cock Sleeves</a></li>
+              <li><a href="shop.html?cat=voor-hem&amp;sub=prostaatstimulatoren">Prostaatstimulatoren</a></li>
+            </ul></div>
+            <div class="mega-col"><h4>BDSM &amp; Bondage</h4><ul>
+              <li><a href="shop.html?cat=voor-hem&amp;sub=blinddoeken">Blinddoeken</a></li>
+              <li><a href="shop.html?cat=voor-hem&amp;sub=handboeien">Handboeien</a></li>
+              <li><a href="shop.html?cat=voor-hem&amp;sub=zweepjes">Zweepjes</a></li>
+              <li><a href="shop.html?cat=voor-hem&amp;sub=koppelsspeelgoed">Koppelsspeelgoed</a></li>
+            </ul></div>
+            <div class="mega-col"><h4>Verzorging</h4><ul>
+              <li><a href="shop.html?cat=voor-hem&amp;sub=glijmiddel-voor-hem">Glijmiddel voor hem</a></li>
+              <li><a href="shop.html?cat=voor-hem&amp;sub=massageproducten">Massageproducten</a></li>
+              <li><a href="shop.html?cat=voor-hem&amp;sub=cadeaus-voor-hem">Cadeaus voor hem</a></li>
+            </ul></div>
+            <div class="mega-feature">
+              <span class="eyebrow">Bestsellers</span>
+              <a class="tile fill f2" href="shop.html?cat=voor-hem" style="align-items:flex-end;display:flex;padding:12px;">Bekijk collectie</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="shop.html?cat=voor-koppels" aria-haspopup="true" aria-expanded="false">Voor Koppels</a>
+          <div class="mega-menu">
+            <div class="mega-col"><h4>Samen genieten</h4><ul>
+              <li><a href="shop.html?cat=voor-koppels&amp;sub=koppelsvibrators">Koppelsvibrators</a></li>
+              <li><a href="shop.html?cat=voor-koppels&amp;sub=remote-controlled">Remote controlled</a></li>
+              <li><a href="shop.html?cat=voor-koppels&amp;sub=verrassingspakketten">Verrassingspakketten</a></li>
+            </ul></div>
+            <div class="mega-col"><h4>Sensatie</h4><ul>
+              <li><a href="shop.html?cat=voor-koppels&amp;sub=massagekaarsen">Massagekaarsen</a></li>
+              <li><a href="shop.html?cat=voor-koppels&amp;sub=rollenspel-sets">Rollenspel Sets</a></li>
+              <li><a href="shop.html?cat=voor-koppels&amp;sub=seks-dobbelstenen">Seks Dobbelstenen</a></li>
+            </ul></div>
+            <div class="mega-col"><h4>Intiem</h4><ul>
+              <li><a href="shop.html?cat=voor-koppels&amp;sub=glijmiddel-samen">Glijmiddel samen</a></li>
+              <li><a href="shop.html?cat=voor-koppels&amp;sub=koppelsbondage">Koppelsbondage</a></li>
+              <li><a href="shop.html?cat=voor-koppels&amp;sub=cadeausets-koppels">Cadeausets Koppels</a></li>
+            </ul></div>
+            <div class="mega-feature">
+              <span class="eyebrow">Populaire sets</span>
+              <a class="tile fill f3" href="shop.html?cat=voor-koppels" style="align-items:flex-end;display:flex;padding:12px;">Bekijk collectie</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="shop.html?cat=lingerie-bdsm" aria-haspopup="true" aria-expanded="false">Lingerie &amp; BDSM</a>
+          <div class="mega-menu">
+            <div class="mega-col"><h4>Lingerie</h4><ul>
+              <li><a href="shop.html?cat=lingerie-bdsm&amp;sub=kanten-sets">Kanten Sets</a></li>
+              <li><a href="shop.html?cat=lingerie-bdsm&amp;sub=babydolls">Babydolls</a></li>
+              <li><a href="shop.html?cat=lingerie-bdsm&amp;sub=bodysuits">Bodysuits</a></li>
+              <li><a href="shop.html?cat=lingerie-bdsm&amp;sub=plus-size-lingerie">Plus Size Lingerie</a></li>
+            </ul></div>
+            <div class="mega-col"><h4>BDSM</h4><ul>
+              <li><a href="shop.html?cat=lingerie-bdsm&amp;sub=handboeien">Handboeien</a></li>
+              <li><a href="shop.html?cat=lingerie-bdsm&amp;sub=zweepjes-en-floggers">Zweepjes &amp; Floggers</a></li>
+              <li><a href="shop.html?cat=lingerie-bdsm&amp;sub=halsband-en-riem">Halsband &amp; Riem</a></li>
+              <li><a href="shop.html?cat=lingerie-bdsm&amp;sub=beginner-sets">Beginner Sets</a></li>
+            </ul></div>
+            <div class="mega-col"><h4>Accessoires</h4><ul>
+              <li><a href="shop.html?cat=lingerie-bdsm&amp;sub=maskers">Maskers</a></li>
+              <li><a href="shop.html?cat=lingerie-bdsm&amp;sub=veren-en-teasers">Veren &amp; Teasers</a></li>
+              <li><a href="shop.html?cat=lingerie-bdsm&amp;sub=rollenspel-kostuums">Rollenspel Kostuums</a></li>
+            </ul></div>
+            <div class="mega-feature">
+              <span class="eyebrow">Luxe collectie</span>
+              <a class="tile fill f4" href="shop.html?cat=lingerie-bdsm" style="align-items:flex-end;display:flex;padding:12px;">Bekijk collectie</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="wellness-massage.html">Wellness &amp; Massage</a></li>
+        <li><a href="shop.html?filter=sale" class="sale-link">Sale</a></li>
+      </ul>
+    </nav>
 
-  const STORAGE_KEY = 'velora_lang';
-  const SUPPORTED = ['nl', 'en', 'de', 'fr', 'es', 'pt', 'it'];
-  const FLAG_CLASSES = { nl: 'nl', en: 'gb', de: 'de', fr: 'fr', es: 'es', pt: 'pt', it: 'it' };
-  const NAMES = { nl: 'Nederlands', en: 'English', de: 'Deutsch', fr: 'Français', es: 'Español', pt: 'Português', it: 'Italiano' };
+    <div class="header-icons">
+      <button aria-label="Zoeken" id="searchToggleBtn">🔍</button>
+      <button aria-label="Account">👤</button>
+      <button aria-label="Verlanglijst" class="wishlist-btn">♡<span class="cart-count wishlist-count">0</span></button>
+      <button aria-label="Winkelwagen">🛍<span class="cart-count">0</span></button>
+      <button class="menu-toggle" aria-label="Menu">☰</button>
+    </div>
+    <div class="search-panel" id="searchPanel" hidden>
+      <div class="search-panel-inner">
+        <input type="search" id="searchInput" placeholder="Zoek in de collectie..." aria-label="Zoek producten">
+        <button type="button" id="searchCloseBtn" aria-label="Zoeken sluiten">✕</button>
+      </div>
+      <div id="searchResults" class="search-results"></div>
+    </div>
 
-  const DICT = {
-    nl: {
-      nav_voorhaar: 'Voor Haar', nav_voorhem: 'Voor Hem', nav_voorkoppels: 'Voor Koppels',
-      nav_lingerie: 'Lingerie', nav_bdsm: 'BDSM', nav_wellness: 'Wellness & Massage',
-      nav_merken: 'Merken', nav_sale: 'Sale',
-      search_placeholder: 'Waar ben je naar op zoek?',
-      hero_title: 'Ontdek jouw nieuwe favoriet.',
-      hero_subtitle: 'Premium seksspeeltjes, lingerie en BDSM voor hem, haar en koppels. Discreet verpakt, snel geleverd en altijd van topkwaliteit.',
-      hero_cta_shop: 'Shop nu',
-      hero_cta_ai: 'Vraag Velora AI',
-      trust_discreet: 'Discreet verpakt', trust_payment: 'Veilig betalen',
-      trust_shipping: 'Snelle levering', trust_ai: 'AI advies',
-      btn_add_to_cart: 'In winkelwagen', btn_view: 'Bekijk',
-      account: 'Account', wishlist: 'Verlanglijst', cart: 'Winkelwagen',
-      disc_nav: 'Disclaimer', disc_eyebrow: 'Juridisch', disc_title: 'Disclaimer',
-      disc_subtitle: 'Op deze pagina lees je belangrijke informatie over het gebruik van de website van Velora Secrets, onze aansprakelijkheid en de rechten rondom de inhoud van deze website.',
-      disc_updated: 'Laatst bijgewerkt: 26 juli 2026',
-      disc_trust_transparent: 'Transparante informatie', disc_trust_legal: 'Wettelijke informatie',
-      disc_trust_safe: 'Veilig gebruik', disc_trust_ip: 'Intellectueel eigendom',
-      disc_h_usage: 'Gebruik van de website',
-      disc_p_usage: 'Deze website en de inhoud ervan zijn bedoeld om je te informeren over en te laten winkelen in het assortiment van Velora Secrets. Door deze website te gebruiken, ga je akkoord met deze disclaimer. Velora Secrets besteedt uiterste zorg aan de juistheid, volledigheid en actualiteit van alle informatie op deze website, maar kan dit niet in alle gevallen garanderen.',
-      disc_h_liability: 'Aansprakelijkheid',
-      disc_p_liability: 'Velora Secrets is niet aansprakelijk voor schade die voortvloeit uit het gebruik van deze website, uit onjuistheden of onvolledigheden in de aangeboden informatie, of uit de tijdelijke onmogelijkheid om de website te raadplegen — tenzij deze schade het gevolg is van opzet of grove nalatigheid van Velora Secrets.',
-      disc_h_ip: 'Intellectueel eigendom',
-      disc_p_ip: 'Alle teksten, beeldmerken, logo\'s en overige content op deze website zijn eigendom van Velora Secrets of haar licentiegevers en worden beschermd door het auteursrecht en andere intellectuele eigendomsrechten. Niets van deze website mag worden verveelvoudigd of openbaar gemaakt zonder voorafgaande schriftelijke toestemming van Velora Secrets.',
-      disc_h_links: 'Externe links',
-      disc_p_links: 'Deze website kan links bevatten naar websites van derden. Velora Secrets heeft geen invloed op en is niet verantwoordelijk voor de inhoud, het privacybeleid of de beschikbaarheid van deze externe websites.',
-      disc_h_changes: 'Wijzigingen',
-      disc_p_changes: 'Velora Secrets behoudt zich het recht voor om de inhoud van deze website en van deze disclaimer op elk moment te wijzigen, zonder voorafgaande kennisgeving. De meest actuele versie is altijd op deze pagina te vinden.',
-      disc_h_contact: 'Contact',
-      disc_p_contact: 'Heb je een vraag over deze disclaimer? Neem contact met ons op.',
-      cook_nav: "Cookiebeleid",
-      cook_title: "Cookiebeleid",
-      cook_subtitle: "Op deze pagina lees je welke cookies Velora Secrets gebruikt en hoe je deze zelf kunt beheren.",
-      cook_trust_functional: "Functionele cookies",
-      cook_trust_privacy: "Privacyvriendelijk",
-      cook_trust_control: "Zelf te beheren",
-      cook_h_functional: "Functionele cookies",
-      cook_p_functional: "Deze cookies zijn noodzakelijk voor het functioneren van de winkelwagen, wishlist en jouw voorkeuren, en worden altijd geplaatst.",
-      cook_h_analytics: "Analytische cookies",
-      cook_p_analytics: "We gebruiken (indien geactiveerd) privacyvriendelijke analytische cookies om te begrijpen hoe bezoekers onze site gebruiken, zodat we deze kunnen verbeteren.",
-      cook_h_manage: "Cookies beheren",
-      cook_p_manage: "Je kunt cookies op elk moment verwijderen of blokkeren via de instellingen van je browser.",
-      cook_p_contact: "Heb je een vraag over ons cookiebeleid? Neem contact met ons op.",
-      priv_nav: "Privacyverklaring",
-      priv_title: "Privacyverklaring",
-      priv_subtitle: "Op deze pagina lees je hoe Velora Secrets zorgvuldig en discreet omgaat met jouw persoonsgegevens.",
-      priv_trust_secure: "Veilig bewaard",
-      priv_trust_transparent: "Transparant beleid",
-      priv_trust_noshare: "Nooit gedeeld",
-      priv_trust_gdpr: "AVG-conform",
-      priv_h_data: "Welke gegevens verzamelen we",
-      priv_p_data: "Naam, adres, e-mailadres en betaalgegevens die nodig zijn om je bestelling te verwerken en te bezorgen. Bij een bezoek aan onze site verzamelen we daarnaast technische gegevens zoals je apparaattype en algemene locatie (land/regio).",
-      priv_h_purpose: "Waarvoor gebruiken we jouw gegevens",
-      priv_p_purpose: "Uitsluitend voor het verwerken van bestellingen en klantenservice. We verkopen jouw gegevens nooit aan derden.",
-      priv_h_shipping: "Discrete verzending",
-      priv_p_shipping: "Op pakketten en facturen staat nergens een productomschrijving. Op je bankafschrift zie je alleen \"Velora Secrets\".",
-      priv_h_retention: "Bewaartermijn",
-      priv_p_retention: "We bewaren jouw gegevens niet langer dan wettelijk verplicht of noodzakelijk voor het doel waarvoor ze zijn verzameld.",
-      priv_h_rights: "Jouw rechten",
-      priv_p_rights: "Je hebt het recht om je gegevens in te zien, te corrigeren of te laten verwijderen.",
-      priv_h_security: "Beveiliging",
-      priv_p_security: "We nemen passende technische en organisatorische maatregelen om jouw gegevens te beschermen tegen verlies of onrechtmatige toegang.",
-      priv_p_contact: "Heb je een vraag over deze privacyverklaring? Neem contact met ons op.",
-      ship_nav: "Verzending & Retourneren",
-      ship_title: "Verzending & Retourneren",
-      ship_subtitle: "Op deze pagina lees je alles over verzending, levering, betaling en retourneren bij Velora Secrets.",
-      ship_trust_discreet: "Discreet verpakt",
-      ship_trust_returns: "30 dagen retour",
-      ship_h_costs: "Verzendkosten en levertijd",
-      ship_p_costs: "Bestellingen vanaf €50 worden gratis verzonden. Daaronder gelden verzendkosten die je bij het afrekenen ziet, vóórdat je betaalt.",
-      ship_h_methods: "Verzendmethoden",
-      ship_p_methods: "Je kunt kiezen tussen standaardverzending en expresverzending. Alle pakketten worden discreet verpakt, in neutrale verpakking zonder logo of productomschrijving.",
-      ship_h_payment: "Betaalvoorwaarden",
-      ship_p_payment: "Je bestelling wordt pas verwerkt en verzonden na ontvangst van je volledige betaling. Wij accepteren iDEAL, creditcard, PayPal, Apple Pay, Google Pay, Bancontact en Klarna (indien beschikbaar). Alle betalingen verlopen via een beveiligde, versleutelde verbinding.",
-      ship_h_delivery: "Leveringsvoorwaarden",
-      ship_p_delivery: "Wij leveren binnen Nederland en België. Het risico van beschadiging of verlies gaat over op jou op het moment van aflevering. Is een bezorgpoging niet gelukt, dan ontvang je een bericht van de vervoerder met een nieuwe afspraak of afhaalpunt.",
-      ship_h_returns: "Retourneren",
-      ship_p_returns: "Je hebt 30 dagen bedenktijd. Ongeopende, verzegelde producten kun je kosteloos retourneren — zie onze algemene voorwaarden voor de volledige voorwaarden van het herroepingsrecht.",
-      ship_terms_link: "algemene voorwaarden",
-      ship_p_contact: "Heb je een vraag over je verzending? Neem contact met ons op.",
-      terms_nav: "Algemene voorwaarden",
-      terms_title: "Algemene voorwaarden",
-      terms_subtitle: "Op deze pagina lees je de voorwaarden die gelden voor elke bestelling die je plaatst bij Velora Secrets.",
-      terms_trust_clear: "Heldere afspraken",
-      terms_h_orders: "Bestellingen",
-      terms_p_orders: "Een overeenkomst komt tot stand zodra je bestelling is bevestigd per e-mail. Wij behouden ons het recht voor om bestellingen te weigeren, bijvoorbeeld bij vermoeden van fraude.",
-      terms_h_pricing: "Prijzen en betaling",
-      terms_p_pricing: "Alle prijzen zijn inclusief btw en exclusief eventuele verzendkosten, die apart worden vermeld bij het afrekenen. Betaling gebeurt veilig en versleuteld via de aangeboden betaalmethoden.",
-      terms_h_delivery: "Levering",
-      terms_p_delivery: "Wij streven ernaar bestellingen zo snel mogelijk te leveren, discreet verpakt in neutrale verpakking zonder logo of productomschrijving. Levertijden zijn indicatief.",
-      terms_h_returns: "Herroepingsrecht en retourneren",
-      terms_p_returns: "Je hebt 30 dagen bedenktijd vanaf ontvangst van je bestelling. Ongeopende, verzegelde producten kun je binnen deze termijn kosteloos retourneren. Om hygiënische redenen kunnen geopende of gebruikte producten niet worden geretourneerd.",
-      terms_h_warranty: "Garantie",
-      terms_p_warranty: "Op al onze producten geldt de wettelijke garantie.",
-      terms_h_complaints: "Klachten",
-      terms_p_complaints: "Klachten over de uitvoering van de overeenkomst kun je bij ons melden. Wij reageren binnen 24 uur.",
-      terms_p_contact: "Heb je een vraag over deze algemene voorwaarden? Neem contact met ons op.",
+  </div>
+</header>
 
+<div id="main" class="auth-wrap">
+  <div class="auth-card">
+    <h1 style="font-family:var(--font-display);font-size:24px;margin:0 0 6px;text-align:center;">Welkom terug</h1>
+    <p>Log in op jouw Velora Secrets account</p>
+    <form id="loginForm">
+      <div class="field">
+        <label for="loginEmail">E-mailadres</label>
+        <input type="email" id="loginEmail" placeholder="jouw@email.nl" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="loginPassword">Wachtwoord</label>
+        <input type="password" id="loginPassword" required autocomplete="current-password">
+      </div>
+      <div class="field-row">
+        <label style="font-size:13px;display:flex;align-items:center;gap:6px;"><input type="checkbox" style="width:auto;"> Onthoud mij</label>
+        <a href="#">Vergeten?</a>
+      </div>
+      <button type="submit" class="btn btn-dark">Inloggen</button>
+    </form>
+    <p class="auth-switch">Nog geen account? <a href="registreren.html">Registreer hier</a></p>
+  </div>
+</div>
 
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="logo-mark" style="background:transparent;border-color:var(--gold);">VS</span>
+      <p>Jouw discreet adres voor premium intiem welzijn. Elk product geselecteerd op kwaliteit, veiligheid en sensatie.</p>
+      <form class="footer-form" id="footerNewsletterForm">
+        <label class="sr-only" for="footerEmail">E-mailadres</label>
+        <input type="email" id="footerEmail" placeholder="info@velorasecrets.nl" required>
+        <button type="submit" class="btn btn-gold btn-pill-sm">Aanmelden</button>
+      </form>
+      <div class="footer-social">
+        <a href="https://instagram.com/velorasecrets" aria-label="Volg Velora Secrets op Instagram" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="12" cy="12" r="4.3" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://tiktok.com/@velorasecrets" aria-label="Volg Velora Secrets op TikTok" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M16.5 3c.4 2.2 1.9 3.9 4.5 4.1v3c-1.6.1-3-.4-4.5-1.4v6.6c0 3.6-2.9 5.7-6 5.7-2.7 0-5.5-1.7-5.5-5.2 0-3.3 2.7-5.3 5.6-5.2.3 0 .6 0 .9.1v3.1a2.6 2.6 0 0 0-.9-.2c-1.4 0-2.6 1-2.6 2.4 0 1.5 1.2 2.4 2.6 2.4 1.5 0 2.8-1 2.8-3.2V3h3.1z" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://facebook.com/velorasecrets" aria-label="Volg Velora Secrets op Facebook" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M14.5 21v-7.5h2.5l.4-3H14.5V8.4c0-.9.2-1.5 1.5-1.5h1.6V4.3C17.3 4.2 16.3 4 15.2 4c-2.3 0-3.9 1.4-3.9 4v2.5H8.7v3h2.6V21h3.2z" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Collectie</h4>
+      <ul>
+        <li><a href="shop.html?cat=voor-haar">Voor Haar</a></li>
+        <li><a href="shop.html?cat=voor-hem">Voor Hem</a></li>
+        <li><a href="shop.html?cat=voor-koppels">Voor Koppels</a></li>
+        <li><a href="shop.html?cat=lingerie-bdsm">Lingerie &amp; BDSM</a></li>
+        <li><a href="wellness-massage.html">Wellness &amp; Massage</a></li>
+        <li><a href="shop.html?filter=sale">Sale</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Klantenservice</h4>
+      <ul>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">Hulp &amp; FAQ</a></li>
+        <li><a href="verzending.html">Verzending &amp; Bezorging</a></li>
+        <li><a href="retourneren.html">Retourneren</a></li>
+        <li><a href="mailto:support@velorasecrets.nl">support@velorasecrets.nl</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Informatie</h4>
+      <ul>
+        <li><a href="over-ons.html">Over Velora Secrets</a></li>
+        <li><a href="privacybeleid.html">Privacybeleid</a></li>
+        <li><a href="voorwaarden.html">Algemene Voorwaarden</a></li>
+        <li><a href="cookiebeleid.html">Cookiebeleid</a></li>
+        <li><a href="zakelijk.html">Zakelijk &amp; B2B</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <small>© 2026 Velora Secrets — KvK: 42121511 — Btw: NL005510912B02 — Alleen voor personen van 18 jaar en ouder.</small>
+    <div class="payment-icons">
+      <span>iDEAL</span><span>Visa</span><span>Mastercard</span><span>PayPal</span><span>Apple Pay</span><span>Bancontact</span>
+    </div>
+  </div>
+</footer>
 
-      age_nav: "18+ Leeftijdsbeleid",
-      age_title: "18+ Leeftijdsbeleid",
-      age_subtitle: "Velora Secrets verkoopt producten die uitsluitend bedoeld zijn voor volwassenen. Op deze pagina lees je ons beleid rondom leeftijdsverificatie.",
-      age_trust_18plus: "Uitsluitend 18+",
-      age_trust_verify: "Zorgvuldige controle",
-      age_h_minimum: "Minimumleeftijd",
-      age_p_minimum: "De producten op deze website zijn uitsluitend bestemd voor personen van 18 jaar en ouder. Door deze website te bezoeken en/of een bestelling te plaatsen, verklaar je dat je ten minste 18 jaar oud bent.",
-      age_h_verification: "Leeftijdsverificatie",
-      age_p_verification: "Velora Secrets behoudt zich het recht voor om bij twijfel om een leeftijdsbevestiging te vragen, bijvoorbeeld bij levering. Wij nemen dit serieus en werken samen met vervoerders die hier zorgvuldig mee omgaan.",
-      age_h_responsibility: "Verantwoordelijkheid van de besteller",
-      age_p_responsibility: "Als je een bestelling plaatst namens of voor een minderjarige, of toestaat dat een minderjarige toegang heeft tot de bestelde producten, ben je daar zelf verantwoordelijk voor. Velora Secrets aanvaardt bestellingen alleen van meerderjarige klanten.",
-      age_h_delivery: "Levering en ontvangst",
-      age_p_delivery: "Pakketten worden altijd discreet en neutraal verpakt afgeleverd. Wij adviseren om bestellingen persoonlijk in ontvangst te nemen, zeker als er minderjarigen in huis zijn.",
-      age_p_contact: "Heb je een vraag over ons leeftijdsbeleid? Neem contact met ons op.",
-      ret_nav: "Retourbeleid",
-      ret_title: "Retourbeleid",
-      ret_subtitle: "Niet helemaal tevreden? Op deze pagina lees je precies hoe je een bestelling bij Velora Secrets retourneert.",
-      ret_trust_refund: "Snel terugbetaald",
-      ret_trust_easy: "Eenvoudig proces",
-      ret_h_period: "Bedenktijd",
-      ret_p_period: "Je hebt 30 dagen bedenktijd vanaf ontvangst van je bestelling om deze zonder opgaaf van reden te retourneren.",
-      ret_h_conditions: "Voorwaarden voor retourneren",
-      ret_p_conditions: "Producten kun je alleen retourneren als ze ongeopend en verzegeld zijn. Om hygiënische redenen kunnen geopende of gebruikte producten helaas niet worden geretourneerd of geruild.",
-      ret_h_howto: "Hoe retourneer je een product",
-      ret_p_howto: "Neem contact met ons op via het contactformulier of e-mail, onder vermelding van je ordernummer. Wij sturen je vervolgens de retourinstructies en een retouradres toe.",
-      ret_h_costs: "Retourkosten",
-      ret_p_costs: "De kosten van het retourneren zijn voor eigen rekening, tenzij het product defect of verkeerd geleverd is — dan vergoeden wij de verzendkosten.",
-      ret_h_refund: "Terugbetaling",
-      ret_p_refund: "Zodra we je retour hebben ontvangen en gecontroleerd, ontvang je binnen 14 dagen het volledige aankoopbedrag terug op de rekening waarmee je hebt betaald.",
-      ret_h_defective: "Defecte of verkeerde producten",
-      ret_p_defective: "Heb je een defect of verkeerd product ontvangen? Neem dan zo snel mogelijk contact op — we lossen dit kosteloos voor je op, met een vervangend product of volledige terugbetaling.",
-      ret_p_contact: "Heb je een vraag over het retourneren van je bestelling? Neem contact met ons op.",
-
-    },
-    en: {
-      nav_voorhaar: 'For Her', nav_voorhem: 'For Him', nav_voorkoppels: 'For Couples',
-      nav_lingerie: 'Lingerie', nav_bdsm: 'BDSM', nav_wellness: 'Wellness & Massage',
-      nav_merken: 'Brands', nav_sale: 'Sale',
-      search_placeholder: 'What are you looking for?',
-      hero_title: 'Discover your new favourite.',
-      hero_subtitle: 'Premium toys, lingerie and BDSM for him, her and couples. Discreetly packaged, fast delivery, always top quality.',
-      hero_cta_shop: 'Shop now',
-      hero_cta_ai: 'Ask Velora AI',
-      trust_discreet: 'Discreet packaging', trust_payment: 'Secure payment',
-      trust_shipping: 'Fast delivery', trust_ai: 'AI advice',
-      btn_add_to_cart: 'Add to cart', btn_view: 'View',
-      account: 'Account', wishlist: 'Wishlist', cart: 'Cart',
-      disc_nav: 'Disclaimer', disc_eyebrow: 'Legal', disc_title: 'Disclaimer',
-      disc_subtitle: 'This page contains important information about the use of the Velora Secrets website, our liability and the rights surrounding the content of this website.',
-      disc_updated: 'Last updated: 26 July 2026',
-      disc_trust_transparent: 'Transparent information', disc_trust_legal: 'Legal information',
-      disc_trust_safe: 'Safe use', disc_trust_ip: 'Intellectual property',
-      disc_h_usage: 'Use of the website',
-      disc_p_usage: 'This website and its content are intended to inform you about, and let you shop in, the Velora Secrets range. By using this website, you agree to this disclaimer. Velora Secrets takes the utmost care with the accuracy, completeness and topicality of all information on this website, but cannot guarantee this in every case.',
-      disc_h_liability: 'Liability',
-      disc_p_liability: 'Velora Secrets is not liable for damage arising from the use of this website, from inaccuracies or omissions in the information provided, or from the temporary unavailability of the website — unless such damage is the result of intent or gross negligence on the part of Velora Secrets.',
-      disc_h_ip: 'Intellectual property',
-      disc_p_ip: 'All texts, trademarks, logos and other content on this website are the property of Velora Secrets or its licensors and are protected by copyright and other intellectual property rights. Nothing from this website may be reproduced or published without the prior written consent of Velora Secrets.',
-      disc_h_links: 'External links',
-      disc_p_links: 'This website may contain links to third-party websites. Velora Secrets has no influence over, and is not responsible for, the content, privacy policy or availability of these external websites.',
-      disc_h_changes: 'Changes',
-      disc_p_changes: 'Velora Secrets reserves the right to change the content of this website and of this disclaimer at any time, without prior notice. The most current version can always be found on this page.',
-      disc_h_contact: 'Contact',
-      disc_p_contact: 'Do you have a question about this disclaimer? Get in touch with us.',
-      cook_nav: "Cookie Policy",
-      cook_title: "Cookie Policy",
-      cook_subtitle: "This page explains which cookies Velora Secrets uses and how you can manage them yourself.",
-      cook_trust_functional: "Functional cookies",
-      cook_trust_privacy: "Privacy-friendly",
-      cook_trust_control: "Manage it yourself",
-      cook_h_functional: "Functional cookies",
-      cook_p_functional: "These cookies are necessary for the functioning of the cart, wishlist and your preferences, and are always placed.",
-      cook_h_analytics: "Analytics cookies",
-      cook_p_analytics: "When enabled, we use privacy-friendly analytics cookies to understand how visitors use our site so we can improve it.",
-      cook_h_manage: "Managing cookies",
-      cook_p_manage: "You can delete or block cookies at any time via your browser settings.",
-      cook_p_contact: "Do you have a question about our cookie policy? Get in touch with us.",
-      priv_nav: "Privacy Policy",
-      priv_title: "Privacy Policy",
-      priv_subtitle: "This page explains how Velora Secrets handles your personal data carefully and discreetly.",
-      priv_trust_secure: "Securely stored",
-      priv_trust_transparent: "Transparent policy",
-      priv_trust_noshare: "Never shared",
-      priv_trust_gdpr: "GDPR compliant",
-      priv_h_data: "What data we collect",
-      priv_p_data: "Name, address, email address and payment details needed to process and deliver your order. When you visit our site, we also collect technical data such as your device type and general location (country/region).",
-      priv_h_purpose: "What we use your data for",
-      priv_p_purpose: "Exclusively for processing orders and customer service. We never sell your data to third parties.",
-      priv_h_shipping: "Discreet shipping",
-      priv_p_shipping: "Packages and invoices never show a product description. Your bank statement will only show \"Velora Secrets\".",
-      priv_h_retention: "Retention period",
-      priv_p_retention: "We do not retain your data longer than legally required or necessary for the purpose for which it was collected.",
-      priv_h_rights: "Your rights",
-      priv_p_rights: "You have the right to view, correct or have your data deleted.",
-      priv_h_security: "Security",
-      priv_p_security: "We take appropriate technical and organisational measures to protect your data against loss or unauthorised access.",
-      priv_p_contact: "Do you have a question about this privacy policy? Get in touch with us.",
-      ship_nav: "Shipping & Returns",
-      ship_title: "Shipping & Returns",
-      ship_subtitle: "This page contains everything about shipping, delivery, payment and returns at Velora Secrets.",
-      ship_trust_discreet: "Discreet packaging",
-      ship_trust_returns: "30-day returns",
-      ship_h_costs: "Shipping costs and delivery time",
-      ship_p_costs: "Orders from €50 ship for free. Below that, shipping costs apply, shown at checkout before you pay.",
-      ship_h_methods: "Shipping methods",
-      ship_p_methods: "You can choose between standard and express shipping. All parcels are discreetly packaged, in plain packaging without logo or product description.",
-      ship_h_payment: "Payment terms",
-      ship_p_payment: "Your order is only processed and shipped after full payment has been received. We accept iDEAL, credit card, PayPal, Apple Pay, Google Pay, Bancontact and Klarna (where available). All payments run through a secure, encrypted connection.",
-      ship_h_delivery: "Delivery terms",
-      ship_p_delivery: "We deliver within the Netherlands and Belgium. The risk of damage or loss transfers to you upon delivery. If a delivery attempt fails, you will receive a message from the carrier with a new appointment or pickup point.",
-      ship_h_returns: "Returns",
-      ship_p_returns: "You have a 30-day cooling-off period. Unopened, sealed products can be returned free of charge — see our terms and conditions for the full withdrawal-right conditions.",
-      ship_terms_link: "terms and conditions",
-      ship_p_contact: "Do you have a question about your shipment? Get in touch with us.",
-      terms_nav: "Terms and Conditions",
-      terms_title: "Terms and Conditions",
-      terms_subtitle: "This page contains the terms that apply to every order you place with Velora Secrets.",
-      terms_trust_clear: "Clear agreements",
-      terms_h_orders: "Orders",
-      terms_p_orders: "An agreement is formed as soon as your order is confirmed by email. We reserve the right to refuse orders, for example in case of suspected fraud.",
-      terms_h_pricing: "Prices and payment",
-      terms_p_pricing: "All prices include VAT and exclude any shipping costs, which are shown separately at checkout. Payment is made securely and encrypted via the offered payment methods.",
-      terms_h_delivery: "Delivery",
-      terms_p_delivery: "We strive to deliver orders as quickly as possible, discreetly packaged in plain packaging without logo or product description. Delivery times are indicative.",
-      terms_h_returns: "Right of withdrawal and returns",
-      terms_p_returns: "You have a 30-day cooling-off period from receipt of your order. Unopened, sealed products can be returned free of charge within this period. For hygiene reasons, opened or used products cannot be returned.",
-      terms_h_warranty: "Warranty",
-      terms_p_warranty: "All our products carry the statutory warranty.",
-      terms_h_complaints: "Complaints",
-      terms_p_complaints: "You can report complaints about the performance of the agreement to us. We respond within 24 hours.",
-      terms_p_contact: "Do you have a question about these terms and conditions? Get in touch with us.",
-
-
-
-      age_nav: "Age Policy (18+)",
-      age_title: "Age Policy (18+)",
-      age_subtitle: "Velora Secrets sells products intended exclusively for adults. This page explains our age verification policy.",
-      age_trust_18plus: "18+ only",
-      age_trust_verify: "Careful verification",
-      age_h_minimum: "Minimum age",
-      age_p_minimum: "The products on this website are intended exclusively for persons aged 18 and over. By visiting this website and/or placing an order, you declare that you are at least 18 years old.",
-      age_h_verification: "Age verification",
-      age_p_verification: "Velora Secrets reserves the right to request age confirmation if in doubt, for example upon delivery. We take this seriously and work with carriers who handle this carefully.",
-      age_h_responsibility: "Responsibility of the orderer",
-      age_p_responsibility: "If you place an order on behalf of, or for, a minor, or allow a minor access to the ordered products, you are responsible for this yourself. Velora Secrets only accepts orders from adult customers.",
-      age_h_delivery: "Delivery and receipt",
-      age_p_delivery: "Parcels are always delivered discreetly and in plain packaging. We advise receiving orders in person, especially if minors are present in the household.",
-      age_p_contact: "Do you have a question about our age policy? Get in touch with us.",
-      ret_nav: "Return Policy",
-      ret_title: "Return Policy",
-      ret_subtitle: "Not entirely satisfied? This page explains exactly how to return an order to Velora Secrets.",
-      ret_trust_refund: "Fast refunds",
-      ret_trust_easy: "Simple process",
-      ret_h_period: "Cooling-off period",
-      ret_p_period: "You have a 30-day cooling-off period from receipt of your order to return it without giving a reason.",
-      ret_h_conditions: "Conditions for returns",
-      ret_p_conditions: "Products can only be returned if unopened and sealed. For hygiene reasons, opened or used products unfortunately cannot be returned or exchanged.",
-      ret_h_howto: "How to return a product",
-      ret_p_howto: "Contact us via the contact form or email, stating your order number. We will then send you the return instructions and a return address.",
-      ret_h_costs: "Return costs",
-      ret_p_costs: "Return shipping costs are at your own expense, unless the product is defective or incorrectly delivered — in which case we reimburse the shipping costs.",
-      ret_h_refund: "Refund",
-      ret_p_refund: "Once we have received and inspected your return, you will receive the full purchase amount back within 14 days, to the account you paid with.",
-      ret_h_defective: "Defective or incorrect products",
-      ret_p_defective: "Did you receive a defective or incorrect product? Contact us as soon as possible — we will resolve this free of charge, with a replacement product or a full refund.",
-      ret_p_contact: "Do you have a question about returning your order? Get in touch with us.",
-
-    },
-    de: {
-      nav_voorhaar: 'Für Sie', nav_voorhem: 'Für Ihn', nav_voorkoppels: 'Für Paare',
-      nav_lingerie: 'Dessous', nav_bdsm: 'BDSM', nav_wellness: 'Wellness & Massage',
-      nav_merken: 'Marken', nav_sale: 'Sale',
-      search_placeholder: 'Wonach suchst du?',
-      hero_title: 'Entdecke deinen neuen Favoriten.',
-      hero_subtitle: 'Premium-Toys, Dessous und BDSM für ihn, sie und Paare. Diskret verpackt, schnell geliefert, immer erstklassige Qualität.',
-      hero_cta_shop: 'Jetzt shoppen',
-      hero_cta_ai: 'Velora AI fragen',
-      trust_discreet: 'Diskrete Verpackung', trust_payment: 'Sichere Zahlung',
-      trust_shipping: 'Schnelle Lieferung', trust_ai: 'KI-Beratung',
-      btn_add_to_cart: 'In den Warenkorb', btn_view: 'Ansehen',
-      account: 'Konto', wishlist: 'Wunschliste', cart: 'Warenkorb',
-      disc_nav: 'Haftungsausschluss', disc_eyebrow: 'Rechtliches', disc_title: 'Haftungsausschluss',
-      disc_subtitle: 'Auf dieser Seite findest du wichtige Informationen über die Nutzung der Website von Velora Secrets, unsere Haftung und die Rechte rund um den Inhalt dieser Website.',
-      disc_updated: 'Zuletzt aktualisiert: 26. Juli 2026',
-      disc_trust_transparent: 'Transparente Informationen', disc_trust_legal: 'Rechtliche Informationen',
-      disc_trust_safe: 'Sichere Nutzung', disc_trust_ip: 'Geistiges Eigentum',
-      disc_h_usage: 'Nutzung der Website',
-      disc_p_usage: 'Diese Website und ihr Inhalt sollen dich über das Sortiment von Velora Secrets informieren und dir dort das Einkaufen ermöglichen. Durch die Nutzung dieser Website stimmst du diesem Haftungsausschluss zu. Velora Secrets legt größten Wert auf die Richtigkeit, Vollständigkeit und Aktualität aller Informationen auf dieser Website, kann dies jedoch nicht in jedem Fall garantieren.',
-      disc_h_liability: 'Haftung',
-      disc_p_liability: 'Velora Secrets haftet nicht für Schäden, die aus der Nutzung dieser Website, aus Ungenauigkeiten oder Unvollständigkeiten der bereitgestellten Informationen oder aus der vorübergehenden Nichtverfügbarkeit der Website entstehen — es sei denn, dieser Schaden ist auf Vorsatz oder grobe Fahrlässigkeit von Velora Secrets zurückzuführen.',
-      disc_h_ip: 'Geistiges Eigentum',
-      disc_p_ip: 'Alle Texte, Marken, Logos und sonstigen Inhalte auf dieser Website sind Eigentum von Velora Secrets oder ihrer Lizenzgeber und werden durch das Urheberrecht und andere Rechte des geistigen Eigentums geschützt. Nichts von dieser Website darf ohne vorherige schriftliche Zustimmung von Velora Secrets vervielfältigt oder veröffentlicht werden.',
-      disc_h_links: 'Externe Links',
-      disc_p_links: 'Diese Website kann Links zu Websites Dritter enthalten. Velora Secrets hat keinen Einfluss auf und übernimmt keine Verantwortung für den Inhalt, die Datenschutzrichtlinien oder die Verfügbarkeit dieser externen Websites.',
-      disc_h_changes: 'Änderungen',
-      disc_p_changes: 'Velora Secrets behält sich das Recht vor, den Inhalt dieser Website und dieses Haftungsausschlusses jederzeit ohne vorherige Ankündigung zu ändern. Die jeweils aktuelle Version findest du immer auf dieser Seite.',
-      disc_h_contact: 'Kontakt',
-      disc_p_contact: 'Hast du eine Frage zu diesem Haftungsausschluss? Nimm Kontakt mit uns auf.',
-      cook_nav: "Cookie-Richtlinie",
-      cook_title: "Cookie-Richtlinie",
-      cook_subtitle: "Auf dieser Seite erfährst du, welche Cookies Velora Secrets verwendet und wie du sie selbst verwalten kannst.",
-      cook_trust_functional: "Funktionale Cookies",
-      cook_trust_privacy: "Datenschutzfreundlich",
-      cook_trust_control: "Selbst verwaltbar",
-      cook_h_functional: "Funktionale Cookies",
-      cook_p_functional: "Diese Cookies sind für die Funktion des Warenkorbs, der Wunschliste und deiner Einstellungen notwendig und werden immer gesetzt.",
-      cook_h_analytics: "Analyse-Cookies",
-      cook_p_analytics: "Sofern aktiviert, verwenden wir datenschutzfreundliche Analyse-Cookies, um zu verstehen, wie Besucher unsere Website nutzen, damit wir sie verbessern können.",
-      cook_h_manage: "Cookies verwalten",
-      cook_p_manage: "Du kannst Cookies jederzeit über die Einstellungen deines Browsers löschen oder blockieren.",
-      cook_p_contact: "Hast du eine Frage zu unserer Cookie-Richtlinie? Nimm Kontakt mit uns auf.",
-      priv_nav: "Datenschutzerklärung",
-      priv_title: "Datenschutzerklärung",
-      priv_subtitle: "Auf dieser Seite erfährst du, wie Velora Secrets sorgfältig und diskret mit deinen personenbezogenen Daten umgeht.",
-      priv_trust_secure: "Sicher gespeichert",
-      priv_trust_transparent: "Transparente Richtlinie",
-      priv_trust_noshare: "Nie weitergegeben",
-      priv_trust_gdpr: "DSGVO-konform",
-      priv_h_data: "Welche Daten wir sammeln",
-      priv_p_data: "Name, Adresse, E-Mail-Adresse und Zahlungsdaten, die zur Bearbeitung und Lieferung deiner Bestellung nötig sind. Beim Besuch unserer Website erfassen wir außerdem technische Daten wie deinen Gerätetyp und deinen ungefähren Standort (Land/Region).",
-      priv_h_purpose: "Wofür wir deine Daten verwenden",
-      priv_p_purpose: "Ausschließlich zur Bearbeitung von Bestellungen und für den Kundenservice. Wir verkaufen deine Daten niemals an Dritte.",
-      priv_h_shipping: "Diskreter Versand",
-      priv_p_shipping: "Auf Paketen und Rechnungen steht nirgends eine Produktbeschreibung. Auf deinem Kontoauszug siehst du nur \"Velora Secrets\".",
-      priv_h_retention: "Aufbewahrungsfrist",
-      priv_p_retention: "Wir bewahren deine Daten nicht länger auf, als gesetzlich vorgeschrieben oder für den Zweck, für den sie erhoben wurden, erforderlich ist.",
-      priv_h_rights: "Deine Rechte",
-      priv_p_rights: "Du hast das Recht, deine Daten einzusehen, zu berichtigen oder löschen zu lassen.",
-      priv_h_security: "Sicherheit",
-      priv_p_security: "Wir treffen angemessene technische und organisatorische Maßnahmen, um deine Daten vor Verlust oder unbefugtem Zugriff zu schützen.",
-      priv_p_contact: "Hast du eine Frage zu dieser Datenschutzerklärung? Nimm Kontakt mit uns auf.",
-      ship_nav: "Versand & Rücksendung",
-      ship_title: "Versand & Rücksendung",
-      ship_subtitle: "Auf dieser Seite findest du alles über Versand, Lieferung, Zahlung und Rücksendungen bei Velora Secrets.",
-      ship_trust_discreet: "Diskret verpackt",
-      ship_trust_returns: "30 Tage Rückgabe",
-      ship_h_costs: "Versandkosten und Lieferzeit",
-      ship_p_costs: "Bestellungen ab 50 € werden kostenlos versendet. Darunter fallen Versandkosten an, die dir vor der Zahlung an der Kasse angezeigt werden.",
-      ship_h_methods: "Versandarten",
-      ship_p_methods: "Du kannst zwischen Standard- und Expressversand wählen. Alle Pakete werden diskret verpackt, in neutraler Verpackung ohne Logo oder Produktbeschreibung.",
-      ship_h_payment: "Zahlungsbedingungen",
-      ship_p_payment: "Deine Bestellung wird erst nach vollständigem Zahlungseingang bearbeitet und versandt. Wir akzeptieren iDEAL, Kreditkarte, PayPal, Apple Pay, Google Pay, Bancontact und Klarna (soweit verfügbar). Alle Zahlungen erfolgen über eine sichere, verschlüsselte Verbindung.",
-      ship_h_delivery: "Lieferbedingungen",
-      ship_p_delivery: "Wir liefern innerhalb der Niederlande und Belgiens. Das Risiko von Beschädigung oder Verlust geht mit der Lieferung auf dich über. Ist ein Zustellversuch fehlgeschlagen, erhältst du vom Zusteller eine Nachricht mit einem neuen Termin oder einer Abholstelle.",
-      ship_h_returns: "Rücksendung",
-      ship_p_returns: "Du hast eine Widerrufsfrist von 30 Tagen. Ungeöffnete, versiegelte Produkte kannst du kostenlos zurücksenden — die vollständigen Bedingungen des Widerrufsrechts findest du in unseren allgemeinen Geschäftsbedingungen.",
-      ship_terms_link: "allgemeinen Geschäftsbedingungen",
-      ship_p_contact: "Hast du eine Frage zu deiner Lieferung? Nimm Kontakt mit uns auf.",
-      terms_nav: "Allgemeine Geschäftsbedingungen",
-      terms_title: "Allgemeine Geschäftsbedingungen",
-      terms_subtitle: "Auf dieser Seite findest du die Bedingungen, die für jede Bestellung bei Velora Secrets gelten.",
-      terms_trust_clear: "Klare Vereinbarungen",
-      terms_h_orders: "Bestellungen",
-      terms_p_orders: "Ein Vertrag kommt zustande, sobald deine Bestellung per E-Mail bestätigt wurde. Wir behalten uns das Recht vor, Bestellungen abzulehnen, zum Beispiel bei Betrugsverdacht.",
-      terms_h_pricing: "Preise und Zahlung",
-      terms_p_pricing: "Alle Preise verstehen sich inklusive MwSt. und exklusive eventueller Versandkosten, die separat an der Kasse angezeigt werden. Die Zahlung erfolgt sicher und verschlüsselt über die angebotenen Zahlungsmethoden.",
-      terms_h_delivery: "Lieferung",
-      terms_p_delivery: "Wir bemühen uns, Bestellungen so schnell wie möglich zu liefern, diskret verpackt in neutraler Verpackung ohne Logo oder Produktbeschreibung. Lieferzeiten sind unverbindlich.",
-      terms_h_returns: "Widerrufsrecht und Rücksendung",
-      terms_p_returns: "Du hast eine Widerrufsfrist von 30 Tagen ab Erhalt deiner Bestellung. Ungeöffnete, versiegelte Produkte kannst du innerhalb dieser Frist kostenlos zurücksenden. Aus hygienischen Gründen können geöffnete oder benutzte Produkte nicht zurückgenommen werden.",
-      terms_h_warranty: "Garantie",
-      terms_p_warranty: "Auf alle unsere Produkte gilt die gesetzliche Gewährleistung.",
-      terms_h_complaints: "Beschwerden",
-      terms_p_complaints: "Beschwerden über die Vertragserfüllung kannst du bei uns melden. Wir antworten innerhalb von 24 Stunden.",
-      terms_p_contact: "Hast du eine Frage zu diesen allgemeinen Geschäftsbedingungen? Nimm Kontakt mit uns auf.",
-
-
-
-      age_nav: "Altersrichtlinie (18+)",
-      age_title: "Altersrichtlinie (18+)",
-      age_subtitle: "Velora Secrets verkauft Produkte, die ausschließlich für Erwachsene bestimmt sind. Auf dieser Seite erfährst du unsere Richtlinie zur Altersverifizierung.",
-      age_trust_18plus: "Nur ab 18",
-      age_trust_verify: "Sorgfältige Prüfung",
-      age_h_minimum: "Mindestalter",
-      age_p_minimum: "Die Produkte auf dieser Website sind ausschließlich für Personen ab 18 Jahren bestimmt. Durch den Besuch dieser Website und/oder die Aufgabe einer Bestellung erklärst du, mindestens 18 Jahre alt zu sein.",
-      age_h_verification: "Altersverifizierung",
-      age_p_verification: "Velora Secrets behält sich das Recht vor, im Zweifelsfall eine Altersbestätigung anzufordern, zum Beispiel bei der Lieferung. Wir nehmen dies ernst und arbeiten mit Zustellern zusammen, die sorgfältig damit umgehen.",
-      age_h_responsibility: "Verantwortung des Bestellers",
-      age_p_responsibility: "Wenn du eine Bestellung im Namen oder für eine minderjährige Person aufgibst oder einer minderjährigen Person Zugang zu den bestellten Produkten ermöglichst, bist du dafür selbst verantwortlich. Velora Secrets nimmt nur Bestellungen von volljährigen Kunden an.",
-      age_h_delivery: "Lieferung und Empfang",
-      age_p_delivery: "Pakete werden immer diskret und in neutraler Verpackung geliefert. Wir empfehlen, Bestellungen persönlich entgegenzunehmen, insbesondere wenn Minderjährige im Haushalt leben.",
-      age_p_contact: "Hast du eine Frage zu unserer Altersrichtlinie? Nimm Kontakt mit uns auf.",
-      ret_nav: "Rückgaberichtlinie",
-      ret_title: "Rückgaberichtlinie",
-      ret_subtitle: "Nicht ganz zufrieden? Auf dieser Seite erfährst du genau, wie du eine Bestellung bei Velora Secrets zurückgibst.",
-      ret_trust_refund: "Schnelle Rückerstattung",
-      ret_trust_easy: "Einfacher Ablauf",
-      ret_h_period: "Widerrufsfrist",
-      ret_p_period: "Du hast eine Widerrufsfrist von 30 Tagen ab Erhalt deiner Bestellung, um sie ohne Angabe von Gründen zurückzugeben.",
-      ret_h_conditions: "Bedingungen für Rücksendungen",
-      ret_p_conditions: "Produkte können nur zurückgegeben werden, wenn sie ungeöffnet und versiegelt sind. Aus hygienischen Gründen können geöffnete oder benutzte Produkte leider nicht zurückgenommen oder umgetauscht werden.",
-      ret_h_howto: "So gibst du ein Produkt zurück",
-      ret_p_howto: "Kontaktiere uns über das Kontaktformular oder per E-Mail unter Angabe deiner Bestellnummer. Wir senden dir dann die Rücksendeanweisungen und eine Rücksendeadresse zu.",
-      ret_h_costs: "Rücksendekosten",
-      ret_p_costs: "Die Kosten der Rücksendung gehen zu deinen Lasten, es sei denn, das Produkt ist defekt oder falsch geliefert worden — in diesem Fall erstatten wir die Versandkosten.",
-      ret_h_refund: "Rückerstattung",
-      ret_p_refund: "Sobald wir deine Rücksendung erhalten und geprüft haben, erhältst du innerhalb von 14 Tagen den vollständigen Kaufbetrag auf das Konto zurück, mit dem du bezahlt hast.",
-      ret_h_defective: "Defekte oder falsche Produkte",
-      ret_p_defective: "Hast du ein defektes oder falsches Produkt erhalten? Kontaktiere uns so schnell wie möglich — wir lösen dies kostenlos für dich, mit einem Ersatzprodukt oder einer vollständigen Rückerstattung.",
-      ret_p_contact: "Hast du eine Frage zur Rückgabe deiner Bestellung? Nimm Kontakt mit uns auf.",
-
-    },
-    fr: {
-      nav_voorhaar: 'Pour Elle', nav_voorhem: 'Pour Lui', nav_voorkoppels: 'Pour Couples',
-      nav_lingerie: 'Lingerie', nav_bdsm: 'BDSM', nav_wellness: 'Bien-être & Massage',
-      nav_merken: 'Marques', nav_sale: 'Soldes',
-      search_placeholder: 'Que recherchez-vous ?',
-      hero_title: 'Découvrez votre nouveau favori.',
-      hero_subtitle: 'Jouets premium, lingerie et BDSM pour lui, elle et les couples. Emballage discret, livraison rapide, toujours haut de gamme.',
-      hero_cta_shop: 'Acheter',
-      hero_cta_ai: 'Demander à Velora AI',
-      trust_discreet: 'Emballage discret', trust_payment: 'Paiement sécurisé',
-      trust_shipping: 'Livraison rapide', trust_ai: 'Conseil IA',
-      btn_add_to_cart: 'Ajouter au panier', btn_view: 'Voir',
-      account: 'Compte', wishlist: 'Favoris', cart: 'Panier',
-      disc_nav: 'Mentions légales', disc_eyebrow: 'Juridique', disc_title: 'Mentions légales',
-      disc_subtitle: 'Cette page contient des informations importantes sur l\'utilisation du site de Velora Secrets, notre responsabilité et les droits relatifs au contenu de ce site.',
-      disc_updated: 'Dernière mise à jour : 26 juillet 2026',
-      disc_trust_transparent: 'Informations transparentes', disc_trust_legal: 'Informations légales',
-      disc_trust_safe: 'Utilisation sécurisée', disc_trust_ip: 'Propriété intellectuelle',
-      disc_h_usage: 'Utilisation du site',
-      disc_p_usage: 'Ce site et son contenu ont pour but de vous informer sur l\'assortiment de Velora Secrets et de vous permettre d\'y faire vos achats. En utilisant ce site, vous acceptez les présentes mentions légales. Velora Secrets apporte le plus grand soin à l\'exactitude, à l\'exhaustivité et à l\'actualité de toutes les informations présentes sur ce site, sans toutefois pouvoir le garantir dans tous les cas.',
-      disc_h_liability: 'Responsabilité',
-      disc_p_liability: 'Velora Secrets n\'est pas responsable des dommages résultant de l\'utilisation de ce site, d\'inexactitudes ou d\'omissions dans les informations fournies, ou de l\'indisponibilité temporaire du site — sauf si ce dommage résulte d\'une faute intentionnelle ou d\'une négligence grave de Velora Secrets.',
-      disc_h_ip: 'Propriété intellectuelle',
-      disc_p_ip: 'Tous les textes, marques, logos et autres contenus de ce site sont la propriété de Velora Secrets ou de ses concédants de licence et sont protégés par le droit d\'auteur et d\'autres droits de propriété intellectuelle. Rien de ce site ne peut être reproduit ou publié sans l\'autorisation écrite préalable de Velora Secrets.',
-      disc_h_links: 'Liens externes',
-      disc_p_links: 'Ce site peut contenir des liens vers des sites de tiers. Velora Secrets n\'a aucune influence sur le contenu, la politique de confidentialité ou la disponibilité de ces sites externes et n\'en est pas responsable.',
-      disc_h_changes: 'Modifications',
-      disc_p_changes: 'Velora Secrets se réserve le droit de modifier à tout moment le contenu de ce site et des présentes mentions légales, sans préavis. La version la plus récente est toujours disponible sur cette page.',
-      disc_h_contact: 'Contact',
-      disc_p_contact: 'Une question concernant ces mentions légales ? Contactez-nous.',
-      cook_nav: "Politique de cookies",
-      cook_title: "Politique de cookies",
-      cook_subtitle: "Cette page explique quels cookies Velora Secrets utilise et comment vous pouvez les gérer vous-même.",
-      cook_trust_functional: "Cookies fonctionnels",
-      cook_trust_privacy: "Respectueux de la vie privée",
-      cook_trust_control: "Gestion autonome",
-      cook_h_functional: "Cookies fonctionnels",
-      cook_p_functional: "Ces cookies sont nécessaires au fonctionnement du panier, de la liste de souhaits et de vos préférences, et sont toujours déposés.",
-      cook_h_analytics: "Cookies analytiques",
-      cook_p_analytics: "Lorsqu'ils sont activés, nous utilisons des cookies analytiques respectueux de la vie privée afin de comprendre comment les visiteurs utilisent notre site pour pouvoir l'améliorer.",
-      cook_h_manage: "Gérer les cookies",
-      cook_p_manage: "Vous pouvez supprimer ou bloquer les cookies à tout moment via les paramètres de votre navigateur.",
-      cook_p_contact: "Une question sur notre politique de cookies ? Contactez-nous.",
-      priv_nav: "Politique de confidentialité",
-      priv_title: "Politique de confidentialité",
-      priv_subtitle: "Cette page explique comment Velora Secrets traite vos données personnelles avec soin et discrétion.",
-      priv_trust_secure: "Stockage sécurisé",
-      priv_trust_transparent: "Politique transparente",
-      priv_trust_noshare: "Jamais partagées",
-      priv_trust_gdpr: "Conforme RGPD",
-      priv_h_data: "Quelles données nous collectons",
-      priv_p_data: "Nom, adresse, adresse e-mail et données de paiement nécessaires pour traiter et livrer votre commande. Lors de votre visite sur notre site, nous collectons également des données techniques telles que le type d'appareil et la localisation générale (pays/région).",
-      priv_h_purpose: "À quoi servent vos données",
-      priv_p_purpose: "Uniquement pour le traitement des commandes et le service client. Nous ne vendons jamais vos données à des tiers.",
-      priv_h_shipping: "Livraison discrète",
-      priv_p_shipping: "Aucune description de produit n'apparaît sur les colis ou les factures. Sur votre relevé bancaire, vous ne verrez que \"Velora Secrets\".",
-      priv_h_retention: "Durée de conservation",
-      priv_p_retention: "Nous ne conservons pas vos données plus longtemps que légalement requis ou nécessaire pour la finalité pour laquelle elles ont été collectées.",
-      priv_h_rights: "Vos droits",
-      priv_p_rights: "Vous avez le droit de consulter, de corriger ou de faire supprimer vos données.",
-      priv_h_security: "Sécurité",
-      priv_p_security: "Nous prenons des mesures techniques et organisationnelles appropriées pour protéger vos données contre la perte ou l'accès non autorisé.",
-      priv_p_contact: "Une question sur cette politique de confidentialité ? Contactez-nous.",
-      ship_nav: "Livraison & Retours",
-      ship_title: "Livraison & Retours",
-      ship_subtitle: "Cette page contient toutes les informations sur la livraison, l'expédition, le paiement et les retours chez Velora Secrets.",
-      ship_trust_discreet: "Emballage discret",
-      ship_trust_returns: "Retour sous 30 jours",
-      ship_h_costs: "Frais de port et délai de livraison",
-      ship_p_costs: "Les commandes à partir de 50 € sont livrées gratuitement. En dessous, des frais de port s'appliquent, affichés lors du paiement avant de régler.",
-      ship_h_methods: "Modes d'expédition",
-      ship_p_methods: "Vous pouvez choisir entre l'expédition standard et express. Tous les colis sont emballés discrètement, dans un emballage neutre sans logo ni description du produit.",
-      ship_h_payment: "Conditions de paiement",
-      ship_p_payment: "Votre commande n'est traitée et expédiée qu'après réception du paiement intégral. Nous acceptons iDEAL, carte bancaire, PayPal, Apple Pay, Google Pay, Bancontact et Klarna (si disponible). Tous les paiements passent par une connexion sécurisée et chiffrée.",
-      ship_h_delivery: "Conditions de livraison",
-      ship_p_delivery: "Nous livrons aux Pays-Bas et en Belgique. Le risque de dommage ou de perte vous est transféré au moment de la livraison. Si une tentative de livraison échoue, le transporteur vous enverra un message avec un nouveau rendez-vous ou un point de retrait.",
-      ship_h_returns: "Retours",
-      ship_p_returns: "Vous disposez d'un délai de rétractation de 30 jours. Les produits non ouverts et scellés peuvent être retournés gratuitement — consultez nos conditions générales pour les conditions complètes du droit de rétractation.",
-      ship_terms_link: "conditions générales",
-      ship_p_contact: "Une question sur votre livraison ? Contactez-nous.",
-      terms_nav: "Conditions générales",
-      terms_title: "Conditions générales",
-      terms_subtitle: "Cette page contient les conditions applicables à chaque commande passée chez Velora Secrets.",
-      terms_trust_clear: "Accords clairs",
-      terms_h_orders: "Commandes",
-      terms_p_orders: "Un contrat est conclu dès que votre commande est confirmée par e-mail. Nous nous réservons le droit de refuser des commandes, par exemple en cas de suspicion de fraude.",
-      terms_h_pricing: "Prix et paiement",
-      terms_p_pricing: "Tous les prix sont TTC et hors éventuels frais de port, indiqués séparément lors du paiement. Le paiement s'effectue de manière sécurisée et chiffrée via les moyens de paiement proposés.",
-      terms_h_delivery: "Livraison",
-      terms_p_delivery: "Nous nous efforçons de livrer les commandes aussi rapidement que possible, emballées discrètement dans un emballage neutre sans logo ni description du produit. Les délais de livraison sont indicatifs.",
-      terms_h_returns: "Droit de rétractation et retours",
-      terms_p_returns: "Vous disposez d'un délai de rétractation de 30 jours à compter de la réception de votre commande. Les produits non ouverts et scellés peuvent être retournés gratuitement dans ce délai. Pour des raisons d'hygiène, les produits ouverts ou utilisés ne peuvent pas être retournés.",
-      terms_h_warranty: "Garantie",
-      terms_p_warranty: "Tous nos produits bénéficient de la garantie légale.",
-      terms_h_complaints: "Réclamations",
-      terms_p_complaints: "Vous pouvez nous signaler toute réclamation concernant l'exécution du contrat. Nous répondons sous 24 heures.",
-      terms_p_contact: "Une question sur ces conditions générales ? Contactez-nous.",
-
-
-
-      age_nav: "Politique d'âge (18+)",
-      age_title: "Politique d'âge (18+)",
-      age_subtitle: "Velora Secrets vend des produits destinés exclusivement aux adultes. Cette page explique notre politique de vérification de l'âge.",
-      age_trust_18plus: "18 ans et plus uniquement",
-      age_trust_verify: "Vérification rigoureuse",
-      age_h_minimum: "Âge minimum",
-      age_p_minimum: "Les produits de ce site sont destinés exclusivement aux personnes âgées de 18 ans et plus. En visitant ce site et/ou en passant une commande, vous déclarez avoir au moins 18 ans.",
-      age_h_verification: "Vérification de l'âge",
-      age_p_verification: "Velora Secrets se réserve le droit de demander une confirmation d'âge en cas de doute, par exemple lors de la livraison. Nous prenons cela au sérieux et travaillons avec des transporteurs qui gèrent cela avec soin.",
-      age_h_responsibility: "Responsabilité du commanditaire",
-      age_p_responsibility: "Si vous passez une commande au nom ou pour le compte d'un mineur, ou si vous permettez à un mineur d'accéder aux produits commandés, vous en êtes seul responsable. Velora Secrets n'accepte les commandes que de clients majeurs.",
-      age_h_delivery: "Livraison et réception",
-      age_p_delivery: "Les colis sont toujours livrés discrètement et dans un emballage neutre. Nous conseillons de réceptionner les commandes en personne, surtout en présence de mineurs au domicile.",
-      age_p_contact: "Une question sur notre politique d'âge ? Contactez-nous.",
-      ret_nav: "Politique de retour",
-      ret_title: "Politique de retour",
-      ret_subtitle: "Pas entièrement satisfait ? Cette page explique exactement comment retourner une commande à Velora Secrets.",
-      ret_trust_refund: "Remboursement rapide",
-      ret_trust_easy: "Procédure simple",
-      ret_h_period: "Délai de rétractation",
-      ret_p_period: "Vous disposez d'un délai de rétractation de 30 jours à compter de la réception de votre commande pour la retourner sans avoir à justifier de motif.",
-      ret_h_conditions: "Conditions de retour",
-      ret_p_conditions: "Les produits ne peuvent être retournés que s'ils sont non ouverts et scellés. Pour des raisons d'hygiène, les produits ouverts ou utilisés ne peuvent malheureusement pas être retournés ou échangés.",
-      ret_h_howto: "Comment retourner un produit",
-      ret_p_howto: "Contactez-nous via le formulaire de contact ou par e-mail, en indiquant votre numéro de commande. Nous vous enverrons ensuite les instructions de retour et une adresse de retour.",
-      ret_h_costs: "Frais de retour",
-      ret_p_costs: "Les frais de retour sont à votre charge, sauf si le produit est défectueux ou livré par erreur — auquel cas nous remboursons les frais d'expédition.",
-      ret_h_refund: "Remboursement",
-      ret_p_refund: "Dès réception et vérification de votre retour, vous serez remboursé du montant total de l'achat sous 14 jours, sur le compte utilisé pour le paiement.",
-      ret_h_defective: "Produits défectueux ou incorrects",
-      ret_p_defective: "Avez-vous reçu un produit défectueux ou incorrect ? Contactez-nous dès que possible — nous résoudrons cela gratuitement, avec un produit de remplacement ou un remboursement intégral.",
-      ret_p_contact: "Une question sur le retour de votre commande ? Contactez-nous.",
-
-    },
-    es: {
-      nav_voorhaar: 'Para Ella', nav_voorhem: 'Para Él', nav_voorkoppels: 'Para Parejas',
-      nav_lingerie: 'Lencería', nav_bdsm: 'BDSM', nav_wellness: 'Bienestar y Masaje',
-      nav_merken: 'Marcas', nav_sale: 'Rebajas',
-      search_placeholder: '¿Qué estás buscando?',
-      hero_title: 'Descubre tu nuevo favorito.',
-      hero_subtitle: 'Juguetes premium, lencería y BDSM para él, ella y parejas. Envío discreto, rápido y siempre de máxima calidad.',
-      hero_cta_shop: 'Comprar ahora',
-      hero_cta_ai: 'Preguntar a Velora AI',
-      trust_discreet: 'Envío discreto', trust_payment: 'Pago seguro',
-      trust_shipping: 'Envío rápido', trust_ai: 'Consejo IA',
-      btn_add_to_cart: 'Añadir al carrito', btn_view: 'Ver',
-      account: 'Cuenta', wishlist: 'Favoritos', cart: 'Carrito',
-      disc_nav: 'Aviso legal', disc_eyebrow: 'Legal', disc_title: 'Aviso legal',
-      disc_subtitle: 'En esta página encontrarás información importante sobre el uso del sitio web de Velora Secrets, nuestra responsabilidad y los derechos relativos al contenido de este sitio web.',
-      disc_updated: 'Última actualización: 26 de julio de 2026',
-      disc_trust_transparent: 'Información transparente', disc_trust_legal: 'Información legal',
-      disc_trust_safe: 'Uso seguro', disc_trust_ip: 'Propiedad intelectual',
-      disc_h_usage: 'Uso del sitio web',
-      disc_p_usage: 'Este sitio web y su contenido tienen como objetivo informarte sobre el catálogo de Velora Secrets y permitirte comprar en él. Al utilizar este sitio web, aceptas este aviso legal. Velora Secrets pone el máximo cuidado en la exactitud, integridad y actualidad de toda la información de este sitio web, aunque no puede garantizarlo en todos los casos.',
-      disc_h_liability: 'Responsabilidad',
-      disc_p_liability: 'Velora Secrets no es responsable de los daños derivados del uso de este sitio web, de inexactitudes u omisiones en la información proporcionada, ni de la imposibilidad temporal de acceder al sitio web, salvo que dicho daño sea consecuencia de dolo o negligencia grave por parte de Velora Secrets.',
-      disc_h_ip: 'Propiedad intelectual',
-      disc_p_ip: 'Todos los textos, marcas, logotipos y demás contenidos de este sitio web son propiedad de Velora Secrets o de sus licenciantes y están protegidos por derechos de autor y otros derechos de propiedad intelectual. Nada de este sitio web puede reproducirse o publicarse sin el consentimiento previo por escrito de Velora Secrets.',
-      disc_h_links: 'Enlaces externos',
-      disc_p_links: 'Este sitio web puede contener enlaces a sitios web de terceros. Velora Secrets no tiene ninguna influencia sobre el contenido, la política de privacidad o la disponibilidad de estos sitios externos, ni es responsable de ellos.',
-      disc_h_changes: 'Modificaciones',
-      disc_p_changes: 'Velora Secrets se reserva el derecho de modificar en cualquier momento el contenido de este sitio web y de este aviso legal, sin previo aviso. La versión más actual siempre está disponible en esta página.',
-      disc_h_contact: 'Contacto',
-      disc_p_contact: '¿Tienes alguna pregunta sobre este aviso legal? Ponte en contacto con nosotros.',
-      cook_nav: "Política de cookies",
-      cook_title: "Política de cookies",
-      cook_subtitle: "En esta página explicamos qué cookies utiliza Velora Secrets y cómo puedes gestionarlas tú mismo.",
-      cook_trust_functional: "Cookies funcionales",
-      cook_trust_privacy: "Respetuosas con la privacidad",
-      cook_trust_control: "Gestión propia",
-      cook_h_functional: "Cookies funcionales",
-      cook_p_functional: "Estas cookies son necesarias para el funcionamiento del carrito, la lista de deseos y tus preferencias, y siempre se colocan.",
-      cook_h_analytics: "Cookies analíticas",
-      cook_p_analytics: "Cuando están activadas, utilizamos cookies analíticas respetuosas con la privacidad para entender cómo utilizan los visitantes nuestro sitio y poder mejorarlo.",
-      cook_h_manage: "Gestionar cookies",
-      cook_p_manage: "Puedes eliminar o bloquear las cookies en cualquier momento a través de la configuración de tu navegador.",
-      cook_p_contact: "¿Tienes alguna pregunta sobre nuestra política de cookies? Ponte en contacto con nosotros.",
-      priv_nav: "Política de privacidad",
-      priv_title: "Política de privacidad",
-      priv_subtitle: "En esta página explicamos cómo Velora Secrets trata tus datos personales con cuidado y discreción.",
-      priv_trust_secure: "Almacenamiento seguro",
-      priv_trust_transparent: "Política transparente",
-      priv_trust_noshare: "Nunca compartidos",
-      priv_trust_gdpr: "Conforme al RGPD",
-      priv_h_data: "Qué datos recopilamos",
-      priv_p_data: "Nombre, dirección, correo electrónico y datos de pago necesarios para procesar y entregar tu pedido. Al visitar nuestro sitio, también recopilamos datos técnicos como el tipo de dispositivo y la ubicación general (país/región).",
-      priv_h_purpose: "Para qué usamos tus datos",
-      priv_p_purpose: "Únicamente para procesar pedidos y atención al cliente. Nunca vendemos tus datos a terceros.",
-      priv_h_shipping: "Envío discreto",
-      priv_p_shipping: "En los paquetes y facturas nunca aparece una descripción del producto. En tu extracto bancario solo verás \"Velora Secrets\".",
-      priv_h_retention: "Plazo de conservación",
-      priv_p_retention: "No conservamos tus datos más tiempo del legalmente exigido o necesario para la finalidad para la que fueron recopilados.",
-      priv_h_rights: "Tus derechos",
-      priv_p_rights: "Tienes derecho a consultar, corregir o solicitar la eliminación de tus datos.",
-      priv_h_security: "Seguridad",
-      priv_p_security: "Adoptamos medidas técnicas y organizativas adecuadas para proteger tus datos frente a pérdidas o accesos no autorizados.",
-      priv_p_contact: "¿Tienes alguna pregunta sobre esta política de privacidad? Ponte en contacto con nosotros.",
-      ship_nav: "Envíos y devoluciones",
-      ship_title: "Envíos y devoluciones",
-      ship_subtitle: "En esta página encontrarás toda la información sobre envío, entrega, pago y devoluciones en Velora Secrets.",
-      ship_trust_discreet: "Envío discreto",
-      ship_trust_returns: "Devolución en 30 días",
-      ship_h_costs: "Gastos de envío y plazo de entrega",
-      ship_p_costs: "Los pedidos a partir de 50 € se envían gratis. Por debajo de ese importe se aplican gastos de envío, que verás al finalizar la compra antes de pagar.",
-      ship_h_methods: "Métodos de envío",
-      ship_p_methods: "Puedes elegir entre envío estándar y envío exprés. Todos los paquetes se envían de forma discreta, en un embalaje neutro sin logotipo ni descripción del producto.",
-      ship_h_payment: "Condiciones de pago",
-      ship_p_payment: "Tu pedido solo se procesa y se envía tras recibir el pago completo. Aceptamos iDEAL, tarjeta de crédito, PayPal, Apple Pay, Google Pay, Bancontact y Klarna (si está disponible). Todos los pagos se realizan mediante una conexión segura y cifrada.",
-      ship_h_delivery: "Condiciones de entrega",
-      ship_p_delivery: "Entregamos en los Países Bajos y Bélgica. El riesgo de daño o pérdida se transfiere a ti en el momento de la entrega. Si un intento de entrega falla, recibirás un mensaje del transportista con una nueva cita o un punto de recogida.",
-      ship_h_returns: "Devoluciones",
-      ship_p_returns: "Dispones de un plazo de desistimiento de 30 días. Los productos sin abrir y precintados pueden devolverse de forma gratuita — consulta nuestros términos y condiciones para conocer las condiciones completas del derecho de desistimiento.",
-      ship_terms_link: "términos y condiciones",
-      ship_p_contact: "¿Tienes alguna pregunta sobre tu envío? Ponte en contacto con nosotros.",
-      terms_nav: "Términos y condiciones",
-      terms_title: "Términos y condiciones",
-      terms_subtitle: "En esta página encontrarás las condiciones aplicables a cada pedido que realices en Velora Secrets.",
-      terms_trust_clear: "Acuerdos claros",
-      terms_h_orders: "Pedidos",
-      terms_p_orders: "El contrato se formaliza en cuanto tu pedido se confirma por correo electrónico. Nos reservamos el derecho de rechazar pedidos, por ejemplo en caso de sospecha de fraude.",
-      terms_h_pricing: "Precios y pago",
-      terms_p_pricing: "Todos los precios incluyen IVA y excluyen los posibles gastos de envío, que se muestran por separado al finalizar la compra. El pago se realiza de forma segura y cifrada a través de los métodos de pago ofrecidos.",
-      terms_h_delivery: "Entrega",
-      terms_p_delivery: "Nos esforzamos por entregar los pedidos lo antes posible, con embalaje discreto y neutro, sin logotipo ni descripción del producto. Los plazos de entrega son orientativos.",
-      terms_h_returns: "Derecho de desistimiento y devoluciones",
-      terms_p_returns: "Dispones de un plazo de desistimiento de 30 días desde la recepción de tu pedido. Los productos sin abrir y precintados pueden devolverse gratuitamente dentro de este plazo. Por razones de higiene, los productos abiertos o usados no pueden devolverse.",
-      terms_h_warranty: "Garantía",
-      terms_p_warranty: "Todos nuestros productos cuentan con la garantía legal.",
-      terms_h_complaints: "Reclamaciones",
-      terms_p_complaints: "Puedes comunicarnos cualquier reclamación sobre el cumplimiento del contrato. Respondemos en un plazo de 24 horas.",
-      terms_p_contact: "¿Tienes alguna pregunta sobre estos términos y condiciones? Ponte en contacto con nosotros.",
-
-
-
-      age_nav: "Política de edad (18+)",
-      age_title: "Política de edad (18+)",
-      age_subtitle: "Velora Secrets vende productos destinados exclusivamente a adultos. En esta página explicamos nuestra política de verificación de edad.",
-      age_trust_18plus: "Solo mayores de 18",
-      age_trust_verify: "Verificación cuidadosa",
-      age_h_minimum: "Edad mínima",
-      age_p_minimum: "Los productos de este sitio web están destinados exclusivamente a personas mayores de 18 años. Al visitar este sitio web y/o realizar un pedido, declaras tener al menos 18 años.",
-      age_h_verification: "Verificación de edad",
-      age_p_verification: "Velora Secrets se reserva el derecho de solicitar confirmación de edad en caso de duda, por ejemplo en la entrega. Nos tomamos esto en serio y trabajamos con transportistas que gestionan esto con cuidado.",
-      age_h_responsibility: "Responsabilidad del comprador",
-      age_p_responsibility: "Si realizas un pedido en nombre de, o para, un menor, o permites que un menor acceda a los productos pedidos, eres tú quien asume la responsabilidad. Velora Secrets solo acepta pedidos de clientes mayores de edad.",
-      age_h_delivery: "Entrega y recepción",
-      age_p_delivery: "Los paquetes siempre se entregan de forma discreta y en embalaje neutro. Recomendamos recibir los pedidos en persona, especialmente si hay menores en el hogar.",
-      age_p_contact: "¿Tienes alguna pregunta sobre nuestra política de edad? Ponte en contacto con nosotros.",
-      ret_nav: "Política de devoluciones",
-      ret_title: "Política de devoluciones",
-      ret_subtitle: "¿No estás completamente satisfecho? En esta página explicamos exactamente cómo devolver un pedido a Velora Secrets.",
-      ret_trust_refund: "Reembolso rápido",
-      ret_trust_easy: "Proceso sencillo",
-      ret_h_period: "Plazo de desistimiento",
-      ret_p_period: "Dispones de un plazo de desistimiento de 30 días desde la recepción de tu pedido para devolverlo sin necesidad de justificar el motivo.",
-      ret_h_conditions: "Condiciones para devoluciones",
-      ret_p_conditions: "Los productos solo pueden devolverse si están sin abrir y precintados. Por razones de higiene, los productos abiertos o usados lamentablemente no pueden devolverse ni cambiarse.",
-      ret_h_howto: "Cómo devolver un producto",
-      ret_p_howto: "Ponte en contacto con nosotros a través del formulario de contacto o por correo electrónico, indicando tu número de pedido. Te enviaremos las instrucciones de devolución y una dirección de retorno.",
-      ret_h_costs: "Costes de devolución",
-      ret_p_costs: "Los costes de devolución corren por tu cuenta, salvo que el producto esté defectuoso o se haya entregado incorrectamente, en cuyo caso reembolsamos los gastos de envío.",
-      ret_h_refund: "Reembolso",
-      ret_p_refund: "Una vez que recibamos y revisemos tu devolución, recibirás el importe total de la compra en un plazo de 14 días, en la cuenta con la que pagaste.",
-      ret_h_defective: "Productos defectuosos o incorrectos",
-      ret_p_defective: "¿Has recibido un producto defectuoso o incorrecto? Ponte en contacto con nosotros lo antes posible — lo solucionaremos sin coste, con un producto de sustitución o un reembolso completo.",
-      ret_p_contact: "¿Tienes alguna pregunta sobre la devolución de tu pedido? Ponte en contacto con nosotros.",
-
-    },
-    pt: {
-      nav_voorhaar: 'Para Ela', nav_voorhem: 'Para Ele', nav_voorkoppels: 'Para Casais',
-      nav_lingerie: 'Lingerie', nav_bdsm: 'BDSM', nav_wellness: 'Bem-estar e Massagem',
-      nav_merken: 'Marcas', nav_sale: 'Saldos',
-      search_placeholder: 'O que está a procurar?',
-      hero_title: 'Descubra o seu novo favorito.',
-      hero_subtitle: 'Brinquedos premium, lingerie e BDSM para ele, ela e casais. Embalagem discreta, entrega rápida, sempre com qualidade superior.',
-      hero_cta_shop: 'Comprar agora',
-      hero_cta_ai: 'Perguntar à Velora AI',
-      trust_discreet: 'Embalagem discreta', trust_payment: 'Pagamento seguro',
-      trust_shipping: 'Entrega rápida', trust_ai: 'Conselho de IA',
-      btn_add_to_cart: 'Adicionar ao carrinho', btn_view: 'Ver',
-      account: 'Conta', wishlist: 'Favoritos', cart: 'Carrinho',
-      disc_nav: 'Aviso legal', disc_eyebrow: 'Legal', disc_title: 'Aviso legal',
-      disc_subtitle: 'Nesta página encontras informações importantes sobre a utilização do website da Velora Secrets, a nossa responsabilidade e os direitos relativos ao conteúdo deste website.',
-      disc_updated: 'Última atualização: 26 de julho de 2026',
-      disc_trust_transparent: 'Informação transparente', disc_trust_legal: 'Informação legal',
-      disc_trust_safe: 'Utilização segura', disc_trust_ip: 'Propriedade intelectual',
-      disc_h_usage: 'Utilização do website',
-      disc_p_usage: 'Este website e o seu conteúdo destinam-se a informar-te sobre a gama da Velora Secrets e a permitir-te comprar nela. Ao utilizares este website, aceitas este aviso legal. A Velora Secrets tem o maior cuidado com a exatidão, integridade e atualidade de todas as informações neste website, mas não pode garanti-lo em todos os casos.',
-      disc_h_liability: 'Responsabilidade',
-      disc_p_liability: 'A Velora Secrets não é responsável por danos decorrentes da utilização deste website, de imprecisões ou omissões nas informações fornecidas, ou da indisponibilidade temporária do website — exceto se esse dano resultar de dolo ou negligência grave da Velora Secrets.',
-      disc_h_ip: 'Propriedade intelectual',
-      disc_p_ip: 'Todos os textos, marcas, logótipos e demais conteúdos deste website são propriedade da Velora Secrets ou dos seus licenciadores e estão protegidos por direitos de autor e outros direitos de propriedade intelectual. Nada deste website pode ser reproduzido ou publicado sem o consentimento prévio por escrito da Velora Secrets.',
-      disc_h_links: 'Ligações externas',
-      disc_p_links: 'Este website pode conter ligações para websites de terceiros. A Velora Secrets não tem qualquer influência sobre o conteúdo, a política de privacidade ou a disponibilidade destes websites externos, nem é responsável por eles.',
-      disc_h_changes: 'Alterações',
-      disc_p_changes: 'A Velora Secrets reserva-se o direito de alterar, a qualquer momento e sem aviso prévio, o conteúdo deste website e deste aviso legal. A versão mais atual está sempre disponível nesta página.',
-      disc_h_contact: 'Contacto',
-      disc_p_contact: 'Tens alguma questão sobre este aviso legal? Entra em contacto connosco.',
-      cook_nav: "Política de cookies",
-      cook_title: "Política de cookies",
-      cook_subtitle: "Nesta página explicamos que cookies a Velora Secrets utiliza e como podes geri-los tu próprio.",
-      cook_trust_functional: "Cookies funcionais",
-      cook_trust_privacy: "Respeitador da privacidade",
-      cook_trust_control: "Gestão própria",
-      cook_h_functional: "Cookies funcionais",
-      cook_p_functional: "Estes cookies são necessários para o funcionamento do carrinho, da lista de desejos e das tuas preferências, e são sempre colocados.",
-      cook_h_analytics: "Cookies analíticos",
-      cook_p_analytics: "Quando ativados, utilizamos cookies analíticos respeitadores da privacidade para perceber como os visitantes utilizam o nosso site, para o podermos melhorar.",
-      cook_h_manage: "Gerir cookies",
-      cook_p_manage: "Podes eliminar ou bloquear cookies a qualquer momento através das definições do teu navegador.",
-      cook_p_contact: "Tens alguma questão sobre a nossa política de cookies? Entra em contacto connosco.",
-      priv_nav: "Política de privacidade",
-      priv_title: "Política de privacidade",
-      priv_subtitle: "Nesta página explicamos como a Velora Secrets trata os teus dados pessoais com cuidado e discrição.",
-      priv_trust_secure: "Armazenamento seguro",
-      priv_trust_transparent: "Política transparente",
-      priv_trust_noshare: "Nunca partilhados",
-      priv_trust_gdpr: "Conforme o RGPD",
-      priv_h_data: "Que dados recolhemos",
-      priv_p_data: "Nome, morada, endereço de e-mail e dados de pagamento necessários para processar e entregar a tua encomenda. Ao visitares o nosso site, também recolhemos dados técnicos como o tipo de dispositivo e a localização geral (país/região).",
-      priv_h_purpose: "Para que usamos os teus dados",
-      priv_p_purpose: "Exclusivamente para processar encomendas e apoio ao cliente. Nunca vendemos os teus dados a terceiros.",
-      priv_h_shipping: "Envio discreto",
-      priv_p_shipping: "Nas embalagens e faturas nunca aparece qualquer descrição do produto. No teu extrato bancário verás apenas \"Velora Secrets\".",
-      priv_h_retention: "Prazo de conservação",
-      priv_p_retention: "Não conservamos os teus dados por mais tempo do que o legalmente exigido ou necessário para a finalidade para a qual foram recolhidos.",
-      priv_h_rights: "Os teus direitos",
-      priv_p_rights: "Tens o direito de consultar, corrigir ou solicitar a eliminação dos teus dados.",
-      priv_h_security: "Segurança",
-      priv_p_security: "Adotamos medidas técnicas e organizativas adequadas para proteger os teus dados contra perda ou acesso não autorizado.",
-      priv_p_contact: "Tens alguma questão sobre esta política de privacidade? Entra em contacto connosco.",
-      ship_nav: "Envio e Devoluções",
-      ship_title: "Envio e Devoluções",
-      ship_subtitle: "Nesta página encontras tudo sobre envio, entrega, pagamento e devoluções na Velora Secrets.",
-      ship_trust_discreet: "Embalagem discreta",
-      ship_trust_returns: "Devolução em 30 dias",
-      ship_h_costs: "Custos de envio e prazo de entrega",
-      ship_p_costs: "Encomendas a partir de 50 € têm envio gratuito. Abaixo disso aplicam-se custos de envio, apresentados no checkout antes de pagares.",
-      ship_h_methods: "Métodos de envio",
-      ship_p_methods: "Podes escolher entre envio normal e envio expresso. Todas as encomendas são embaladas discretamente, em embalagem neutra sem logótipo nem descrição do produto.",
-      ship_h_payment: "Condições de pagamento",
-      ship_p_payment: "A tua encomenda só é processada e enviada após a receção do pagamento integral. Aceitamos iDEAL, cartão de crédito, PayPal, Apple Pay, Google Pay, Bancontact e Klarna (quando disponível). Todos os pagamentos são feitos através de uma ligação segura e encriptada.",
-      ship_h_delivery: "Condições de entrega",
-      ship_p_delivery: "Entregamos nos Países Baixos e na Bélgica. O risco de dano ou perda transfere-se para ti no momento da entrega. Se uma tentativa de entrega falhar, receberás uma mensagem da transportadora com uma nova data ou ponto de recolha.",
-      ship_h_returns: "Devoluções",
-      ship_p_returns: "Tens um prazo de reflexão de 30 dias. Produtos por abrir e selados podem ser devolvidos gratuitamente — consulta os nossos termos e condições para as condições completas do direito de resolução.",
-      ship_terms_link: "termos e condições",
-      ship_p_contact: "Tens alguma questão sobre a tua entrega? Entra em contacto connosco.",
-      terms_nav: "Termos e Condições",
-      terms_title: "Termos e Condições",
-      terms_subtitle: "Nesta página encontras as condições aplicáveis a cada encomenda que fizeres na Velora Secrets.",
-      terms_trust_clear: "Acordos claros",
-      terms_h_orders: "Encomendas",
-      terms_p_orders: "O contrato forma-se assim que a tua encomenda é confirmada por e-mail. Reservamo-nos o direito de recusar encomendas, por exemplo em caso de suspeita de fraude.",
-      terms_h_pricing: "Preços e pagamento",
-      terms_p_pricing: "Todos os preços incluem IVA e excluem eventuais custos de envio, apresentados separadamente no checkout. O pagamento é feito de forma segura e encriptada através dos métodos de pagamento disponibilizados.",
-      terms_h_delivery: "Entrega",
-      terms_p_delivery: "Esforçamo-nos por entregar as encomendas o mais rapidamente possível, embaladas discretamente em embalagem neutra sem logótipo nem descrição do produto. Os prazos de entrega são indicativos.",
-      terms_h_returns: "Direito de resolução e devoluções",
-      terms_p_returns: "Tens um prazo de reflexão de 30 dias a partir da receção da tua encomenda. Produtos por abrir e selados podem ser devolvidos gratuitamente dentro deste prazo. Por motivos de higiene, produtos abertos ou usados não podem ser devolvidos.",
-      terms_h_warranty: "Garantia",
-      terms_p_warranty: "Todos os nossos produtos têm garantia legal.",
-      terms_h_complaints: "Reclamações",
-      terms_p_complaints: "Podes comunicar-nos qualquer reclamação sobre a execução do contrato. Respondemos no prazo de 24 horas.",
-      terms_p_contact: "Tens alguma questão sobre estes termos e condições? Entra em contacto connosco.",
-
-
-
-      age_nav: "Política de idade (18+)",
-      age_title: "Política de idade (18+)",
-      age_subtitle: "A Velora Secrets vende produtos destinados exclusivamente a adultos. Nesta página explicamos a nossa política de verificação de idade.",
-      age_trust_18plus: "Apenas 18+",
-      age_trust_verify: "Verificação cuidadosa",
-      age_h_minimum: "Idade mínima",
-      age_p_minimum: "Os produtos deste website destinam-se exclusivamente a pessoas com 18 anos ou mais. Ao visitares este website e/ou fazeres uma encomenda, declaras ter pelo menos 18 anos.",
-      age_h_verification: "Verificação de idade",
-      age_p_verification: "A Velora Secrets reserva-se o direito de solicitar confirmação de idade em caso de dúvida, por exemplo na entrega. Levamos isto a sério e trabalhamos com transportadoras que tratam este assunto com cuidado.",
-      age_h_responsibility: "Responsabilidade do comprador",
-      age_p_responsibility: "Se fizeres uma encomenda em nome de, ou para, um menor, ou permitires que um menor tenha acesso aos produtos encomendados, és tu o responsável. A Velora Secrets só aceita encomendas de clientes maiores de idade.",
-      age_h_delivery: "Entrega e receção",
-      age_p_delivery: "As encomendas são sempre entregues de forma discreta e em embalagem neutra. Aconselhamos receber as encomendas pessoalmente, especialmente se houver menores em casa.",
-      age_p_contact: "Tens alguma questão sobre a nossa política de idade? Entra em contacto connosco.",
-      ret_nav: "Política de devoluções",
-      ret_title: "Política de devoluções",
-      ret_subtitle: "Não estás totalmente satisfeito? Nesta página explicamos exatamente como devolver uma encomenda à Velora Secrets.",
-      ret_trust_refund: "Reembolso rápido",
-      ret_trust_easy: "Processo simples",
-      ret_h_period: "Prazo de reflexão",
-      ret_p_period: "Tens um prazo de reflexão de 30 dias a partir da receção da tua encomenda para a devolveres sem indicares o motivo.",
-      ret_h_conditions: "Condições para devoluções",
-      ret_p_conditions: "Os produtos só podem ser devolvidos se estiverem por abrir e selados. Por motivos de higiene, produtos abertos ou usados não podem, infelizmente, ser devolvidos ou trocados.",
-      ret_h_howto: "Como devolver um produto",
-      ret_p_howto: "Contacta-nos através do formulário de contacto ou por e-mail, indicando o teu número de encomenda. Enviaremos as instruções de devolução e uma morada de retorno.",
-      ret_h_costs: "Custos de devolução",
-      ret_p_costs: "Os custos de devolução ficam a teu cargo, exceto se o produto estiver com defeito ou tiver sido entregue incorretamente — nesse caso reembolsamos os custos de envio.",
-      ret_h_refund: "Reembolso",
-      ret_p_refund: "Assim que recebermos e verificarmos a tua devolução, receberás o valor total da compra de volta no prazo de 14 dias, na conta com que pagaste.",
-      ret_h_defective: "Produtos com defeito ou incorretos",
-      ret_p_defective: "Recebeste um produto com defeito ou incorreto? Contacta-nos o mais rapidamente possível — resolvemos isto sem custos, com um produto de substituição ou reembolso total.",
-      ret_p_contact: "Tens alguma questão sobre a devolução da tua encomenda? Entra em contacto connosco.",
-
-    },
-    it: {
-      nav_voorhaar: 'Per Lei', nav_voorhem: 'Per Lui', nav_voorkoppels: 'Per Coppie',
-      nav_lingerie: 'Lingerie', nav_bdsm: 'BDSM', nav_wellness: 'Benessere & Massaggio',
-      nav_merken: 'Marchi', nav_sale: 'Saldi',
-      search_placeholder: 'Cosa stai cercando?',
-      hero_title: 'Scopri il tuo nuovo preferito.',
-      hero_subtitle: 'Giocattoli premium, lingerie e BDSM per lui, lei e coppie. Confezione discreta, consegna rapida, sempre qualità top.',
-      hero_cta_shop: 'Acquista ora',
-      hero_cta_ai: 'Chiedi a Velora AI',
-      trust_discreet: 'Confezione discreta', trust_payment: 'Pagamento sicuro',
-      trust_shipping: 'Consegna rapida', trust_ai: 'Consiglio IA',
-      btn_add_to_cart: 'Aggiungi al carrello', btn_view: 'Vedi',
-      account: 'Account', wishlist: 'Preferiti', cart: 'Carrello',
-      disc_nav: 'Note legali', disc_eyebrow: 'Legale', disc_title: 'Note legali',
-      disc_subtitle: 'In questa pagina trovi informazioni importanti sull\'utilizzo del sito web di Velora Secrets, sulla nostra responsabilità e sui diritti relativi ai contenuti di questo sito.',
-      disc_updated: 'Ultimo aggiornamento: 26 luglio 2026',
-      disc_trust_transparent: 'Informazioni trasparenti', disc_trust_legal: 'Informazioni legali',
-      disc_trust_safe: 'Uso sicuro', disc_trust_ip: 'Proprietà intellettuale',
-      disc_h_usage: 'Utilizzo del sito web',
-      disc_p_usage: 'Questo sito web e i suoi contenuti hanno lo scopo di informarti sull\'assortimento di Velora Secrets e di consentirti di acquistare. Utilizzando questo sito web, accetti le presenti note legali. Velora Secrets presta la massima attenzione all\'accuratezza, completezza e attualità di tutte le informazioni presenti su questo sito, ma non può garantirlo in ogni caso.',
-      disc_h_liability: 'Responsabilità',
-      disc_p_liability: 'Velora Secrets non è responsabile per i danni derivanti dall\'utilizzo di questo sito web, da imprecisioni o omissioni nelle informazioni fornite, o dalla temporanea impossibilità di accedere al sito — salvo che tale danno sia conseguenza di dolo o colpa grave di Velora Secrets.',
-      disc_h_ip: 'Proprietà intellettuale',
-      disc_p_ip: 'Tutti i testi, marchi, loghi e altri contenuti presenti su questo sito web sono di proprietà di Velora Secrets o dei suoi licenzianti e sono protetti dal diritto d\'autore e da altri diritti di proprietà intellettuale. Nulla di questo sito web può essere riprodotto o pubblicato senza il previo consenso scritto di Velora Secrets.',
-      disc_h_links: 'Link esterni',
-      disc_p_links: 'Questo sito web può contenere link a siti web di terzi. Velora Secrets non ha alcuna influenza sul contenuto, sulla policy sulla privacy o sulla disponibilità di questi siti esterni e non ne è responsabile.',
-      disc_h_changes: 'Modifiche',
-      disc_p_changes: 'Velora Secrets si riserva il diritto di modificare in qualsiasi momento il contenuto di questo sito web e delle presenti note legali, senza preavviso. La versione più aggiornata è sempre disponibile in questa pagina.',
-      disc_h_contact: 'Contatti',
-      disc_p_contact: 'Hai una domanda su queste note legali? Contattaci.',
-      cook_nav: "Politica sui cookie",
-      cook_title: "Politica sui cookie",
-      cook_subtitle: "In questa pagina spieghiamo quali cookie utilizza Velora Secrets e come puoi gestirli tu stesso.",
-      cook_trust_functional: "Cookie funzionali",
-      cook_trust_privacy: "Rispettoso della privacy",
-      cook_trust_control: "Gestione autonoma",
-      cook_h_functional: "Cookie funzionali",
-      cook_p_functional: "Questi cookie sono necessari per il funzionamento del carrello, della lista dei desideri e delle tue preferenze, e vengono sempre installati.",
-      cook_h_analytics: "Cookie analitici",
-      cook_p_analytics: "Se attivati, utilizziamo cookie analitici rispettosi della privacy per capire come i visitatori utilizzano il nostro sito, così da poterlo migliorare.",
-      cook_h_manage: "Gestire i cookie",
-      cook_p_manage: "Puoi eliminare o bloccare i cookie in qualsiasi momento tramite le impostazioni del tuo browser.",
-      cook_p_contact: "Hai una domanda sulla nostra politica sui cookie? Contattaci.",
-      priv_nav: "Informativa sulla privacy",
-      priv_title: "Informativa sulla privacy",
-      priv_subtitle: "In questa pagina spieghiamo come Velora Secrets tratta i tuoi dati personali con cura e discrezione.",
-      priv_trust_secure: "Conservazione sicura",
-      priv_trust_transparent: "Politica trasparente",
-      priv_trust_noshare: "Mai condivisi",
-      priv_trust_gdpr: "Conforme al GDPR",
-      priv_h_data: "Quali dati raccogliamo",
-      priv_p_data: "Nome, indirizzo, indirizzo e-mail e dati di pagamento necessari per elaborare e consegnare il tuo ordine. Quando visiti il nostro sito, raccogliamo anche dati tecnici come il tipo di dispositivo e la posizione generale (paese/regione).",
-      priv_h_purpose: "Per cosa utilizziamo i tuoi dati",
-      priv_p_purpose: "Esclusivamente per l'elaborazione degli ordini e l'assistenza clienti. Non vendiamo mai i tuoi dati a terzi.",
-      priv_h_shipping: "Spedizione discreta",
-      priv_p_shipping: "Su pacchi e fatture non compare mai una descrizione del prodotto. Sul tuo estratto conto vedrai solo \"Velora Secrets\".",
-      priv_h_retention: "Periodo di conservazione",
-      priv_p_retention: "Non conserviamo i tuoi dati più a lungo di quanto richiesto dalla legge o necessario per lo scopo per cui sono stati raccolti.",
-      priv_h_rights: "I tuoi diritti",
-      priv_p_rights: "Hai il diritto di consultare, correggere o richiedere la cancellazione dei tuoi dati.",
-      priv_h_security: "Sicurezza",
-      priv_p_security: "Adottiamo misure tecniche e organizzative adeguate per proteggere i tuoi dati da perdita o accesso non autorizzato.",
-      priv_p_contact: "Hai una domanda su questa informativa sulla privacy? Contattaci.",
-      ship_nav: "Spedizione e Resi",
-      ship_title: "Spedizione e Resi",
-      ship_subtitle: "In questa pagina trovi tutto su spedizione, consegna, pagamento e resi presso Velora Secrets.",
-      ship_trust_discreet: "Confezione discreta",
-      ship_trust_returns: "Reso entro 30 giorni",
-      ship_h_costs: "Costi di spedizione e tempi di consegna",
-      ship_p_costs: "Gli ordini a partire da 50 € vengono spediti gratuitamente. Al di sotto si applicano costi di spedizione, mostrati al checkout prima del pagamento.",
-      ship_h_methods: "Metodi di spedizione",
-      ship_p_methods: "Puoi scegliere tra spedizione standard ed espressa. Tutti i pacchi vengono spediti in modo discreto, in confezione neutra senza logo né descrizione del prodotto.",
-      ship_h_payment: "Condizioni di pagamento",
-      ship_p_payment: "Il tuo ordine viene elaborato e spedito solo dopo la ricezione del pagamento completo. Accettiamo iDEAL, carta di credito, PayPal, Apple Pay, Google Pay, Bancontact e Klarna (se disponibile). Tutti i pagamenti avvengono tramite connessione sicura e crittografata.",
-      ship_h_delivery: "Condizioni di consegna",
-      ship_p_delivery: "Consegniamo nei Paesi Bassi e in Belgio. Il rischio di danno o smarrimento passa a te al momento della consegna. Se un tentativo di consegna fallisce, riceverai un messaggio dal corriere con un nuovo appuntamento o un punto di ritiro.",
-      ship_h_returns: "Resi",
-      ship_p_returns: "Hai un periodo di recesso di 30 giorni. I prodotti non aperti e sigillati possono essere restituiti gratuitamente — consulta i nostri termini e condizioni per le condizioni complete del diritto di recesso.",
-      ship_terms_link: "termini e condizioni",
-      ship_p_contact: "Hai una domanda sulla tua spedizione? Contattaci.",
-      terms_nav: "Termini e Condizioni",
-      terms_title: "Termini e Condizioni",
-      terms_subtitle: "In questa pagina trovi le condizioni applicabili a ogni ordine effettuato presso Velora Secrets.",
-      terms_trust_clear: "Accordi chiari",
-      terms_h_orders: "Ordini",
-      terms_p_orders: "Il contratto si conclude non appena il tuo ordine viene confermato via e-mail. Ci riserviamo il diritto di rifiutare ordini, ad esempio in caso di sospetta frode.",
-      terms_h_pricing: "Prezzi e pagamento",
-      terms_p_pricing: "Tutti i prezzi sono IVA inclusa ed escludono eventuali costi di spedizione, indicati separatamente al checkout. Il pagamento avviene in modo sicuro e crittografato tramite i metodi di pagamento proposti.",
-      terms_h_delivery: "Consegna",
-      terms_p_delivery: "Ci impegniamo a consegnare gli ordini il più rapidamente possibile, con imballaggio discreto e neutro, senza logo né descrizione del prodotto. I tempi di consegna sono indicativi.",
-      terms_h_returns: "Diritto di recesso e resi",
-      terms_p_returns: "Hai un periodo di recesso di 30 giorni dal ricevimento del tuo ordine. I prodotti non aperti e sigillati possono essere restituiti gratuitamente entro questo termine. Per motivi igienici, i prodotti aperti o usati non possono essere restituiti.",
-      terms_h_warranty: "Garanzia",
-      terms_p_warranty: "Tutti i nostri prodotti sono coperti dalla garanzia legale.",
-      terms_h_complaints: "Reclami",
-      terms_p_complaints: "Puoi segnalarci eventuali reclami sull'esecuzione del contratto. Rispondiamo entro 24 ore.",
-      terms_p_contact: "Hai una domanda su questi termini e condizioni? Contattaci.",
-
-
-
-      age_nav: "Politica sull'età (18+)",
-      age_title: "Politica sull'età (18+)",
-      age_subtitle: "Velora Secrets vende prodotti destinati esclusivamente agli adulti. In questa pagina spieghiamo la nostra politica di verifica dell'età.",
-      age_trust_18plus: "Solo 18+",
-      age_trust_verify: "Verifica accurata",
-      age_h_minimum: "Età minima",
-      age_p_minimum: "I prodotti su questo sito web sono destinati esclusivamente a persone di età pari o superiore a 18 anni. Visitando questo sito web e/o effettuando un ordine, dichiari di avere almeno 18 anni.",
-      age_h_verification: "Verifica dell'età",
-      age_p_verification: "Velora Secrets si riserva il diritto di richiedere una conferma dell'età in caso di dubbio, ad esempio al momento della consegna. Prendiamo questo aspetto sul serio e collaboriamo con corrieri che gestiscono la questione con attenzione.",
-      age_h_responsibility: "Responsabilità di chi ordina",
-      age_p_responsibility: "Se effettui un ordine per conto di, o per, un minore, o consenti a un minore l'accesso ai prodotti ordinati, ne sei tu stesso responsabile. Velora Secrets accetta ordini solo da clienti maggiorenni.",
-      age_h_delivery: "Consegna e ricezione",
-      age_p_delivery: "I pacchi vengono sempre consegnati in modo discreto e con imballaggio neutro. Consigliamo di ritirare gli ordini di persona, soprattutto se in casa sono presenti minori.",
-      age_p_contact: "Hai una domanda sulla nostra politica sull'età? Contattaci.",
-      ret_nav: "Politica di reso",
-      ret_title: "Politica di reso",
-      ret_subtitle: "Non sei del tutto soddisfatto? In questa pagina spieghiamo esattamente come restituire un ordine a Velora Secrets.",
-      ret_trust_refund: "Rimborso rapido",
-      ret_trust_easy: "Procedura semplice",
-      ret_h_period: "Periodo di recesso",
-      ret_p_period: "Hai un periodo di recesso di 30 giorni dal ricevimento del tuo ordine per restituirlo senza dover indicare un motivo.",
-      ret_h_conditions: "Condizioni per la restituzione",
-      ret_p_conditions: "I prodotti possono essere restituiti solo se non aperti e sigillati. Per motivi igienici, i prodotti aperti o utilizzati non possono purtroppo essere restituiti o cambiati.",
-      ret_h_howto: "Come restituire un prodotto",
-      ret_p_howto: "Contattaci tramite il modulo di contatto o via e-mail, indicando il numero d'ordine. Ti invieremo quindi le istruzioni per il reso e un indirizzo di restituzione.",
-      ret_h_costs: "Costi di restituzione",
-      ret_p_costs: "I costi di restituzione sono a tuo carico, a meno che il prodotto non sia difettoso o consegnato erroneamente — in tal caso rimborsiamo le spese di spedizione.",
-      ret_h_refund: "Rimborso",
-      ret_p_refund: "Una volta ricevuto e controllato il tuo reso, riceverai l'intero importo dell'acquisto entro 14 giorni, sul conto con cui hai pagato.",
-      ret_h_defective: "Prodotti difettosi o errati",
-      ret_p_defective: "Hai ricevuto un prodotto difettoso o errato? Contattaci il prima possibile: risolveremo la questione gratuitamente, con un prodotto sostitutivo o un rimborso completo.",
-      ret_p_contact: "Hai una domanda sulla restituzione del tuo ordine? Contattaci.",
-
-    },
-  };
-
-  function detectInitialLanguage() {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored && SUPPORTED.includes(stored)) return stored;
-    } catch (e) { /* localStorage niet beschikbaar, val terug */ }
-    const browserLang = (navigator.language || 'nl').slice(0, 2).toLowerCase();
-    return SUPPORTED.includes(browserLang) ? browserLang : 'nl';
-  }
-
-  function applyLanguage(lang) {
-    const dict = DICT[lang] || DICT.nl;
-    document.querySelectorAll('[data-i18n]').forEach((el) => {
-      const key = el.getAttribute('data-i18n');
-      if (dict[key]) el.textContent = dict[key];
-    });
-    document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
-      const key = el.getAttribute('data-i18n-placeholder');
-      if (dict[key]) el.setAttribute('placeholder', dict[key]);
-    });
-    document.documentElement.setAttribute('lang', lang);
-    const flagEl = document.getElementById('langFlag');
-    if (flagEl) {
-      Object.values(FLAG_CLASSES).forEach((code) => flagEl.classList.remove(`flag-icon--${code}`));
-      flagEl.classList.add(`flag-icon--${FLAG_CLASSES[lang]}`);
-    }
-  }
-
-  /* Publiek: huidige taalcode. */
-  window.veloraGetLang = function () {
-    return document.documentElement.getAttribute('lang') || 'nl';
-  };
-
-  /* Publiek: taal wijzigen (aangeroepen door de taalwisselaar-knoppen). */
-  window.veloraSetLang = function (lang) {
-    if (!SUPPORTED.includes(lang)) return;
-    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) { /* negeren */ }
-    applyLanguage(lang);
-  };
-
-  const initialLang = detectInitialLanguage();
-  applyLanguage(initialLang);
-
-  /* ---------- Taalwisselaar-UI ---------- */
-  const langToggle = document.getElementById('langToggle');
-  const langMenu = document.getElementById('langMenu');
-
-  function markActiveLangButton() {
-    let current = initialLang;
-    try { current = localStorage.getItem(STORAGE_KEY) || initialLang; } catch (e) { /* val terug op initialLang */ }
-    document.querySelectorAll('[data-lang]').forEach((btn) => {
-      btn.classList.toggle('is-active', btn.dataset.lang === current);
-    });
-  }
-  markActiveLangButton();
-
-  langToggle?.addEventListener('click', () => {
-    const isOpen = !langMenu.hidden;
-    langMenu.hidden = isOpen;
-    langToggle.setAttribute('aria-expanded', String(!isOpen));
-    if (!isOpen) markActiveLangButton();
-  });
-  document.querySelectorAll('[data-lang]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      window.veloraSetLang(btn.dataset.lang);
-      markActiveLangButton();
-      langMenu.hidden = true;
-      langToggle?.setAttribute('aria-expanded', 'false');
-    });
-  });
-  document.addEventListener('click', (e) => {
-    if (langMenu && !langMenu.hidden && !e.target.closest('.lang-switcher')) {
-      langMenu.hidden = true;
-      langToggle?.setAttribute('aria-expanded', 'false');
-    }
-  });
-})();
+<!-- AI CHAT — icoon-only, geen auto-popup -->
+<div class="ai-chat-panel" id="aiChatPanel">
+  <div class="ai-chat-header">
+    <div><strong>Velora AI</strong><br><span>Online — altijd bereikbaar</span></div>
+    <button type="button" id="aiChatCloseBtn" aria-label="Chat sluiten">✕</button>
+  </div>
+  <div class="ai-chat-messages" id="aiChatMessages" role="log" aria-live="polite">
+    <div class="ai-msg ai-msg-bot">Welkom bij Velora Secrets. Waar kan ik je vandaag mee helpen?</div>
+  </div>
+  <div class="ai-quick-replies" id="aiQuickReplies"></div>
+  <form class="ai-chat-input-row" id="aiChatForm">
+    <label class="sr-only" for="aiChatInput">Stel een vraag</label>
+    <input type="text" id="aiChatInput" placeholder="Stel een vraag...">
+    <button type="submit" aria-label="Versturen">→</button>
+  </form>
+  <p class="ai-chat-disclaimer">Velora AI — regelgebaseerde assistent, geen doktersadvies.</p>
+</div>
+<button class="ai-chat-bubble" aria-label="Open Velora AI-assistent" id="aiChatBubble" aria-expanded="false"><span class="icon-swap">✦</span></button>
+<script src="js/products.js"></script>
+<script src="js/shopify-cart.js"></script>
+<script src="js/wishlist.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/ai.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
