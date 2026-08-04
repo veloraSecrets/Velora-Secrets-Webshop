@@ -1,7 +1,1 @@
-{
-  "crons": [
-    { "path": "/api/sync/products", "schedule": "0 6,14 * * *" },
-    { "path": "/api/sync/inventory", "schedule": "0 */2 * * *" },
-    { "path": "/api/sync/tracking", "schedule": "0 * * * *" }
-  ]
-}
+{}
