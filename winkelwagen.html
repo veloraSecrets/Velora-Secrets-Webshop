@@ -26,6 +26,7 @@
 </head>
 <body>
 <script src="js/age-verification.js"></script>
+<script src="js/i18n.js"></script>
 <a href="#main" class="skip-link">Ga direct naar de inhoud</a>
 <header class="site-header">
   <div class="header-row">
@@ -37,7 +38,7 @@
     <nav aria-label="Hoofdmenu">
       <ul class="main-nav">
         <li>
-          <a href="shop.html?cat=voor-haar" aria-haspopup="true" aria-expanded="false">Voor Haar</a>
+          <a href="shop.html?cat=voor-haar" aria-haspopup="true" aria-expanded="false" data-i18n="nav.voorHaar">Voor Haar</a>
           <div class="mega-menu">
             <div class="mega-col"><h4>Vibrators</h4><ul>
               <li><a href="shop.html?cat=voor-haar&amp;sub=rabbit-vibrators">Rabbit Vibrators</a></li>
@@ -61,12 +62,12 @@
             </ul></div>
             <div class="mega-feature">
               <span class="eyebrow">Nieuw deze week</span>
-              <a class="tile fill f1" href="shop.html?cat=voor-haar" style="align-items:flex-end;display:flex;padding:12px;">Bekijk collectie</a>
+              <a class="tile fill f1" href="shop.html?cat=voor-haar" style="align-items:flex-end;display:flex;padding:12px;" data-i18n="nav.bekijkCollectie">Bekijk collectie</a>
             </div>
           </div>
         </li>
         <li>
-          <a href="shop.html?cat=voor-hem" aria-haspopup="true" aria-expanded="false">Voor Hem</a>
+          <a href="shop.html?cat=voor-hem" aria-haspopup="true" aria-expanded="false" data-i18n="nav.voorHem">Voor Hem</a>
           <div class="mega-menu">
             <div class="mega-col"><h4>Stimulatie</h4><ul>
               <li><a href="shop.html?cat=voor-hem&amp;sub=masturbators">Masturbators</a></li>
@@ -87,12 +88,12 @@
             </ul></div>
             <div class="mega-feature">
               <span class="eyebrow">Bestsellers</span>
-              <a class="tile fill f2" href="shop.html?cat=voor-hem" style="align-items:flex-end;display:flex;padding:12px;">Bekijk collectie</a>
+              <a class="tile fill f2" href="shop.html?cat=voor-hem" style="align-items:flex-end;display:flex;padding:12px;" data-i18n="nav.bekijkCollectie">Bekijk collectie</a>
             </div>
           </div>
         </li>
         <li>
-          <a href="shop.html?cat=voor-koppels" aria-haspopup="true" aria-expanded="false">Voor Koppels</a>
+          <a href="shop.html?cat=voor-koppels" aria-haspopup="true" aria-expanded="false" data-i18n="nav.voorKoppels">Voor Koppels</a>
           <div class="mega-menu">
             <div class="mega-col"><h4>Samen genieten</h4><ul>
               <li><a href="shop.html?cat=voor-koppels&amp;sub=koppelsvibrators">Koppelsvibrators</a></li>
@@ -111,12 +112,12 @@
             </ul></div>
             <div class="mega-feature">
               <span class="eyebrow">Populaire sets</span>
-              <a class="tile fill f3" href="shop.html?cat=voor-koppels" style="align-items:flex-end;display:flex;padding:12px;">Bekijk collectie</a>
+              <a class="tile fill f3" href="shop.html?cat=voor-koppels" style="align-items:flex-end;display:flex;padding:12px;" data-i18n="nav.bekijkCollectie">Bekijk collectie</a>
             </div>
           </div>
         </li>
         <li>
-          <a href="shop.html?cat=lingerie-bdsm" aria-haspopup="true" aria-expanded="false">Lingerie &amp; BDSM</a>
+          <a href="shop.html?cat=lingerie-bdsm" aria-haspopup="true" aria-expanded="false" data-i18n="nav.lingerieBdsm">Lingerie &amp; BDSM</a>
           <div class="mega-menu">
             <div class="mega-col"><h4>Lingerie</h4><ul>
               <li><a href="shop.html?cat=lingerie-bdsm&amp;sub=kanten-sets">Kanten Sets</a></li>
@@ -137,25 +138,41 @@
             </ul></div>
             <div class="mega-feature">
               <span class="eyebrow">Luxe collectie</span>
-              <a class="tile fill f4" href="shop.html?cat=lingerie-bdsm" style="align-items:flex-end;display:flex;padding:12px;">Bekijk collectie</a>
+              <a class="tile fill f4" href="shop.html?cat=lingerie-bdsm" style="align-items:flex-end;display:flex;padding:12px;" data-i18n="nav.bekijkCollectie">Bekijk collectie</a>
             </div>
           </div>
         </li>
-        <li><a href="wellness-massage.html">Wellness &amp; Massage</a></li>
-        <li><a href="shop.html?filter=sale" class="sale-link">Sale</a></li>
+        <li><a href="wellness-massage.html" data-i18n="nav.wellness">Wellness &amp; Massage</a></li>
+        <li><a href="shop.html?filter=sale" class="sale-link" data-i18n="nav.sale">Sale</a></li>
       </ul>
     </nav>
 
     <div class="header-icons">
-      <button aria-label="Zoeken" id="searchToggleBtn">🔍</button>
-      <button aria-label="Account">👤</button>
-      <button aria-label="Verlanglijst" class="wishlist-btn">♡<span class="cart-count wishlist-count">0</span></button>
-      <button aria-label="Winkelwagen">🛍<span class="cart-count">0</span></button>
-      <button class="menu-toggle" aria-label="Menu">☰</button>
+      <button aria-label="Zoeken" id="searchToggleBtn" data-i18n="header.search" data-i18n-attr="aria-label">🔍</button>
+      <button aria-label="Account" data-i18n="header.account" data-i18n-attr="aria-label">👤</button>
+      <button aria-label="Verlanglijst" class="wishlist-btn" data-i18n="header.wishlist" data-i18n-attr="aria-label">♡<span class="cart-count wishlist-count">0</span></button>
+      <button aria-label="Winkelwagen" data-i18n="header.cart" data-i18n-attr="aria-label">🛍<span class="cart-count">0</span></button>
+      <div class="lang-switcher" id="langSwitcher">
+        <button type="button" class="lang-switcher-toggle" id="langSwitcherToggle" aria-haspopup="true" aria-expanded="false">
+          <span class="lang-flag" id="langCurrentFlag">🇳🇱</span>
+          <span class="lang-name" id="langCurrentName">Nederlands</span>
+          <span class="lang-caret" aria-hidden="true">▾</span>
+        </button>
+        <ul class="lang-dropdown" id="langDropdown" role="menu">
+          <li role="none"><button type="button" role="menuitem" data-lang="nl"><span class="lang-flag">🇳🇱</span> Nederlands</button></li>
+          <li role="none"><button type="button" role="menuitem" data-lang="en"><span class="lang-flag">🇬🇧</span> English</button></li>
+          <li role="none"><button type="button" role="menuitem" data-lang="de"><span class="lang-flag">🇩🇪</span> Deutsch</button></li>
+          <li role="none"><button type="button" role="menuitem" data-lang="fr"><span class="lang-flag">🇫🇷</span> Français</button></li>
+          <li role="none"><button type="button" role="menuitem" data-lang="es"><span class="lang-flag">🇪🇸</span> Español</button></li>
+          <li role="none"><button type="button" role="menuitem" data-lang="it"><span class="lang-flag">🇮🇹</span> Italiano</button></li>
+          <li role="none"><button type="button" role="menuitem" data-lang="pt"><span class="lang-flag">🇵🇹</span> Português</button></li>
+        </ul>
+      </div>
+      <button class="menu-toggle" aria-label="Menu" data-i18n="header.menu" data-i18n-attr="aria-label">☰</button>
     </div>
     <div class="search-panel" id="searchPanel" hidden>
       <div class="search-panel-inner">
-        <input type="search" id="searchInput" placeholder="Zoek in de collectie..." aria-label="Zoek producten">
+        <input type="search" id="searchInput" placeholder="Zoek in de collectie..." aria-label="Zoek producten" data-i18n="search.placeholder" data-i18n-attr="placeholder">
         <button type="button" id="searchCloseBtn" aria-label="Zoeken sluiten">✕</button>
       </div>
       <div id="searchResults" class="search-results"></div>
@@ -165,26 +182,26 @@
 </header>
 
 <div id="main" class="page-title-bar">
-  <h1>Winkelwagen</h1>
+  <h1 data-i18n="cart.title">Winkelwagen</h1>
   <a href="shop.html" style="font-size:13.5px;color:var(--ink-soft);">Verder winkelen</a>
 </div>
 
 <div id="cartEmptyState" class="empty-state" hidden>
   <div class="icon">🛍</div>
-  <h2>Je winkelwagen is leeg.</h2>
-  <p>Ontdek onze collectie en vind iets moois voor jezelf of samen.</p>
-  <a href="shop.html" class="btn btn-dark">Bekijk onze collectie</a>
+  <h2 data-i18n="cart.empty">Je winkelwagen is leeg.</h2>
+  <p data-i18n="cart.emptyText">Ontdek onze collectie en vind iets moois voor jezelf of samen.</p>
+  <a href="shop.html" class="btn btn-dark" data-i18n="nav.bekijkCollectie">Bekijk onze collectie</a>
 </div>
 
 <div id="cartFilledState" class="cart-layout" hidden>
   <div id="cartLines"></div>
   <aside class="cart-summary">
-    <h3>Samenvatting</h3>
-    <div class="cart-summary-row"><span>Subtotaal</span><span id="cartSubtotal">€ 0,00</span></div>
-    <div class="cart-summary-row"><span>Verzending</span><span id="cartShipping">Gratis</span></div>
-    <div class="cart-summary-row total"><span>Totaal</span><span id="cartTotal">€ 0,00</span></div>
-    <button type="button" id="goToCheckoutBtn" class="btn btn-dark">Naar afrekenen</button>
-    <p style="font-size:12px;color:var(--ink-soft);margin-top:14px;text-align:center;">✓ Discreet verpakt · ✓ Veilig betalen</p>
+    <h3 data-i18n="cart.summary">Samenvatting</h3>
+    <div class="cart-summary-row"><span data-i18n="cart.subtotal">Subtotaal</span><span id="cartSubtotal">€ 0,00</span></div>
+    <div class="cart-summary-row"><span data-i18n="cart.shipping">Verzending</span><span id="cartShipping" data-i18n="cart.free">Gratis</span></div>
+    <div class="cart-summary-row total"><span data-i18n="cart.total">Totaal</span><span id="cartTotal">€ 0,00</span></div>
+    <button type="button" id="goToCheckoutBtn" class="btn btn-dark" data-i18n="buttons.goToCheckout">Naar afrekenen</button>
+    <p style="font-size:12px;color:var(--ink-soft);margin-top:14px;text-align:center;"><span data-i18n="topbar.discreet">✓ Discreet verpakt</span> · <span data-i18n="cart.securePay">✓ Veilig betalen</span></p>
   </aside>
 </div>
 
@@ -196,7 +213,7 @@
       <form class="footer-form" id="footerNewsletterForm">
         <label class="sr-only" for="footerEmail">E-mailadres</label>
         <input type="email" id="footerEmail" placeholder="info@velorasecrets.nl" required>
-        <button type="submit" class="btn btn-gold btn-pill-sm">Aanmelden</button>
+        <button type="submit" class="btn btn-gold btn-pill-sm" data-i18n="footer.newsletterBtn">Aanmelden</button>
       </form>
       <div class="footer-social">
         <a href="https://instagram.com/velorasecrets" aria-label="Volg Velora Secrets op Instagram" target="_blank" rel="noopener noreferrer">
@@ -219,34 +236,34 @@
       </div>
     </div>
     <div class="footer-col">
-      <h4>Collectie</h4>
+      <h4 data-i18n="footer.colShop">Collectie</h4>
       <ul>
         <li><a href="shop.html?cat=voor-haar">Voor Haar</a></li>
         <li><a href="shop.html?cat=voor-hem">Voor Hem</a></li>
         <li><a href="shop.html?cat=voor-koppels">Voor Koppels</a></li>
         <li><a href="shop.html?cat=lingerie-bdsm">Lingerie &amp; BDSM</a></li>
-        <li><a href="wellness-massage.html">Wellness &amp; Massage</a></li>
+        <li><a href="wellness-massage.html" data-i18n="nav.wellness">Wellness &amp; Massage</a></li>
         <li><a href="shop.html?filter=sale">Sale</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Klantenservice</h4>
+      <h4 data-i18n="footer.colService">Klantenservice</h4>
       <ul>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="faq.html">Hulp &amp; FAQ</a></li>
-        <li><a href="verzending.html">Verzending &amp; Bezorging</a></li>
-        <li><a href="retourneren.html">Retourneren</a></li>
+        <li><a href="contact.html" data-i18n="footer.linkContact">Contact</a></li>
+        <li><a href="faq.html" data-i18n="footer.linkFaq">Hulp &amp; FAQ</a></li>
+        <li><a href="verzending.html" data-i18n="footer.linkShipping">Verzending &amp; Bezorging</a></li>
+        <li><a href="retourneren.html" data-i18n="footer.linkReturns">Retourneren</a></li>
         <li><a href="mailto:support@velorasecrets.nl">support@velorasecrets.nl</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Informatie</h4>
+      <h4 data-i18n="footer.colInfo">Informatie</h4>
       <ul>
         <li><a href="over-ons.html">Over Velora Secrets</a></li>
-        <li><a href="privacybeleid.html">Privacybeleid</a></li>
-        <li><a href="voorwaarden.html">Algemene Voorwaarden</a></li>
-        <li><a href="cookiebeleid.html">Cookiebeleid</a></li>
-        <li><a href="zakelijk.html">Zakelijk &amp; B2B</a></li>
+        <li><a href="privacybeleid.html" data-i18n="footer.linkPrivacy">Privacybeleid</a></li>
+        <li><a href="voorwaarden.html" data-i18n="footer.linkTerms">Algemene Voorwaarden</a></li>
+        <li><a href="cookiebeleid.html" data-i18n="footer.linkCookies">Cookiebeleid</a></li>
+        <li><a href="zakelijk.html" data-i18n="footer.linkBusiness">Zakelijk &amp; B2B</a></li>
       </ul>
     </div>
   </div>
@@ -270,7 +287,7 @@
   <div class="ai-quick-replies" id="aiQuickReplies"></div>
   <form class="ai-chat-input-row" id="aiChatForm">
     <label class="sr-only" for="aiChatInput">Stel een vraag</label>
-    <input type="text" id="aiChatInput" placeholder="Stel een vraag...">
+    <input type="text" id="aiChatInput" placeholder="Stel een vraag..." data-i18n="ai.placeholder" data-i18n-attr="placeholder">
     <button type="submit" aria-label="Versturen">→</button>
   </form>
   <p class="ai-chat-disclaimer">Velora AI — regelgebaseerde assistent, geen doktersadvies.</p>

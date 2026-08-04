@@ -114,7 +114,7 @@
       // TODO: vervangen door een echte serverside-aanroep naar een e-mailprovider zodra gekozen.
       // Zolang die koppeling er niet is, GEEN valse belofte doen over een bevestigingsmail.
       if (statusEl) {
-        statusEl.textContent = 'De nieuwsbrief-aanmelding is nog niet actief — deze functie volgt binnenkort.';
+        statusEl.textContent = veloraTranslate('messages.newsletterInactive');
       }
       input.value = '';
     });
@@ -327,15 +327,15 @@
       var originalText = addToCartBtn.textContent;
 
       addToCartBtn.disabled = true;
-      addToCartBtn.textContent = 'Bezig...';
+      addToCartBtn.textContent = veloraTranslate('messages.adding');
 
       veloraAddToShopifyCart(variantId, qty).then(function (result) {
         if (result.ok) {
-          addToCartBtn.textContent = 'Toegevoegd ✓';
+          addToCartBtn.textContent = veloraTranslate('messages.addedShort');
         } else if (result.reason === 'no-variant') {
-          addToCartBtn.textContent = 'Nog niet beschikbaar (demo)';
+          addToCartBtn.textContent = veloraTranslate('messages.notAvailableDemo');
         } else {
-          addToCartBtn.textContent = 'Mislukt, probeer opnieuw';
+          addToCartBtn.textContent = veloraTranslate('messages.failedRetry');
         }
         addToCartBtn.disabled = false;
         setTimeout(function () { addToCartBtn.textContent = originalText; }, 2200);
@@ -356,7 +356,7 @@
 
       // Honeypot ingevuld = waarschijnlijk bot: stille succesmelding, geen echte verzending.
       if (honeypot && honeypot.value.trim() !== '') {
-        if (statusEl) statusEl.textContent = 'Bedankt voor je bericht!';
+        if (statusEl) statusEl.textContent = veloraTranslate('messages.thanksMessage');
         contactForm.reset();
         return;
       }
@@ -365,7 +365,7 @@
       var elapsed = Date.now() - loadedAt;
       if (loadedAt && elapsed < 1500) {
         // Te snel ingevuld voor een mens: negeer stil, geen foutmelding aan de gebruiker.
-        if (statusEl) statusEl.textContent = 'Bedankt voor je bericht!';
+        if (statusEl) statusEl.textContent = veloraTranslate('messages.thanksMessage');
         contactForm.reset();
         return;
       }
@@ -373,7 +373,7 @@
       // TODO: vervangen door een echte serverside-aanroep naar een e-mailprovider zodra gekozen.
       // Zolang die koppeling er niet is, GEEN valse belofte doen dat het bericht is "ontvangen"
       // of dat er "binnen 1 werkdag" gereageerd wordt — dat zou een bezoeker misleiden.
-      if (statusEl) statusEl.textContent = 'Het contactformulier is nog niet actief. Mail ons rechtstreeks op support@velorasecrets.nl — dan reageren we zo snel mogelijk.';
+      if (statusEl) statusEl.textContent = veloraTranslate('messages.contactInactive');
       contactForm.reset();
     });
   }
@@ -432,7 +432,7 @@
     var loggedOutEl = document.getElementById('accountLoggedOut');
     if (currentUser) {
       accountLoggedInEl.hidden = false;
-      document.getElementById('accountWelcome').textContent = 'Welkom terug, ' + currentUser.name;
+      document.getElementById('accountWelcome').textContent = veloraTranslate('account.welcomeBack') + ', ' + currentUser.name;
       document.getElementById('accountName').value = currentUser.name;
       document.getElementById('accountEmail').value = currentUser.email;
       document.getElementById('logoutBtn').addEventListener('click', function () {
@@ -489,10 +489,10 @@
           : catLabels[cat];
       }
       if (shopSubline && sub) {
-        shopSubline.textContent = 'Subcategorie binnen ' + catLabels[cat] + '.';
+        shopSubline.textContent = veloraTranslate('messages.subcategoryIn') + ' ' + catLabels[cat] + '.';
       }
     } else if (filter === 'sale') {
-      if (shopHeading) shopHeading.textContent = 'Sale';
+      if (shopHeading) shopHeading.textContent = veloraTranslate('nav.sale');
     }
   }
   /* ---------- Shop-pagina: echte filtering + rendering op basis van VELORA_PRODUCTS ---------- */
@@ -515,7 +515,7 @@
 
     var toolbarCount = document.querySelector('.shop-toolbar span');
     if (toolbarCount) {
-      toolbarCount.textContent = 'Toont ' + results.length + ' van ' + VELORA_PRODUCTS.length + ' producten';
+      toolbarCount.textContent = veloraTranslate('messages.showingProducts') + ' ' + results.length + ' ' + veloraTranslate('messages.of') + ' ' + VELORA_PRODUCTS.length + ' ' + veloraTranslate('messages.products');
     }
   }
 

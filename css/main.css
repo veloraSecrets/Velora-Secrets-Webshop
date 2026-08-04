@@ -608,3 +608,49 @@ ul { list-style: none; margin: 0; padding: 0; }
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
+
+/* ============================================
+   TAALWISSELAAR
+   ============================================ */
+.lang-switcher { position: relative; }
+.lang-switcher-toggle {
+  display: flex; align-items: center; gap: 6px;
+  background: none; border: 1px solid var(--line); border-radius: var(--radius-pill);
+  padding: 6px 12px; font-size: 13px; color: var(--ink); cursor: pointer;
+  transition: border-color .18s ease, background .18s ease;
+}
+.lang-switcher-toggle:hover { border-color: var(--gold); background: var(--cream-deep); }
+.lang-switcher-toggle .lang-flag { font-size: 15px; line-height: 1; }
+.lang-switcher-toggle .lang-caret {
+  font-size: 9px; color: var(--ink-soft); transition: transform .22s cubic-bezier(.34,1.56,.64,1);
+}
+.lang-switcher-toggle[aria-expanded="true"] .lang-caret { transform: rotate(180deg); }
+
+.lang-dropdown {
+  position: absolute; top: calc(100% + 10px); right: 0; z-index: 55;
+  background: var(--white); border: 1px solid var(--line); border-radius: 10px;
+  box-shadow: 0 16px 40px rgba(43,42,40,.16);
+  min-width: 190px; padding: 8px; list-style: none; margin: 0;
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .2s cubic-bezier(.16,1,.3,1), transform .2s cubic-bezier(.16,1,.3,1), visibility 0s linear .2s;
+}
+.lang-dropdown.is-open {
+  opacity: 1; visibility: visible; transform: translateY(0);
+  transition: opacity .2s cubic-bezier(.16,1,.3,1), transform .2s cubic-bezier(.16,1,.3,1), visibility 0s linear 0s;
+}
+.lang-dropdown li { margin: 0; }
+.lang-dropdown button {
+  width: 100%; display: flex; align-items: center; gap: 10px;
+  background: none; border: none; border-radius: 6px;
+  padding: 9px 12px; font-size: 13.5px; color: var(--ink); text-align: left; cursor: pointer;
+  transition: background .15s ease;
+}
+.lang-dropdown button:hover, .lang-dropdown button:focus-visible { background: var(--cream-deep); }
+.lang-dropdown button.is-active { color: var(--accent-orange); font-weight: 600; }
+.lang-dropdown .lang-flag { font-size: 16px; }
+
+@media (max-width: 620px) {
+  .lang-switcher-toggle .lang-name { display: none; }
+  .lang-switcher-toggle { padding: 6px 8px; }
+  .lang-dropdown { right: -8px; }
+}
