@@ -4,7 +4,7 @@
    AUTOMATISCH GEGENEREERD door scripts/generate-catalog.js — NIET handmatig
    bewerken, wijzigingen gaan verloren bij de volgende generatie.
    Actieve bron op moment van genereren: Placeholder-data (nog geen Shopify geconfigureerd)
-   Gegenereerd op: 2026-08-05T13:38:50.632Z
+   Gegenereerd op: 2026-08-05T18:56:23.201Z
 */
 
 var VELORA_PRODUCTS = [

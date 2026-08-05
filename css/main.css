@@ -101,6 +101,16 @@ ul { list-style: none; margin: 0; padding: 0; }
 @media (max-width: 620px) {
   .logo-full-img { display: none; }
   .logo-icon-img { display: block; }
+  .lang-switcher-toggle .lang-name { display: none; }
+  .lang-switcher-toggle { padding: 6px 8px; }
+  .lang-dropdown { right: -8px; }
+  .usp-grid { grid-template-columns: 1fr; }
+  .category-grid { grid-template-columns: 1fr; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-top { grid-template-columns: 1fr; }
+  .newsletter-form { flex-direction: column; }
+  .header-row { padding: 12px 20px; }
+  .section, .hero { padding-left: 20px; padding-right: 20px; }
 }
 
 .main-nav { display: flex; gap: 30px; }
@@ -484,15 +494,6 @@ ul { list-style: none; margin: 0; padding: 0; }
   .mega-feature { width: 100%; }
   .mega-feature .tile { aspect-ratio: 16/6; }
 }
-@media (max-width: 620px) {
-  .usp-grid { grid-template-columns: 1fr; }
-  .category-grid { grid-template-columns: 1fr; }
-  .product-grid { grid-template-columns: repeat(2, 1fr); }
-  .footer-top { grid-template-columns: 1fr; }
-  .newsletter-form { flex-direction: column; }
-  .header-row { padding: 12px 20px; }
-  .section, .hero { padding-left: 20px; padding-right: 20px; }
-}
 
 /* ============================================
    ZOEKPANEEL
@@ -649,8 +650,3 @@ ul { list-style: none; margin: 0; padding: 0; }
 .lang-dropdown button.is-active { color: var(--accent-orange); font-weight: 600; }
 .lang-dropdown .lang-flag { font-size: 16px; }
 
-@media (max-width: 620px) {
-  .lang-switcher-toggle .lang-name { display: none; }
-  .lang-switcher-toggle { padding: 6px 8px; }
-  .lang-dropdown { right: -8px; }
-}
