@@ -76,6 +76,21 @@ function generateSEOProductPages(products) {
         url: `https://velorasecrets.nl/p/${handle}.html`
       }
     };
+    if (p.image) jsonLd.image = p.image;
+    // Stap 2 van het goedgekeurde implementatieplan: uitsluitend toevoegen
+    // waar de brondata het daadwerkelijk levert — nooit een leeg/verzonnen
+    // schema.org-veld invullen.
+    if (p.sku) jsonLd.sku = p.sku;
+    if (p.barcode) jsonLd.gtin13 = p.barcode;
+    if (p.mpn) jsonLd.mpn = p.mpn;
+    if (p.weight) {
+      jsonLd.weight = { '@type': 'QuantitativeValue', value: p.weight, unitCode: 'KGM' };
+    }
+    const additionalProperties = [];
+    if (p.materials) additionalProperties.push({ '@type': 'PropertyValue', name: 'Materiaal', value: p.materials });
+    if (p.sizeMetric) additionalProperties.push({ '@type': 'PropertyValue', name: 'Afmetingen', value: p.sizeMetric });
+    if (p.power) additionalProperties.push({ '@type': 'PropertyValue', name: 'Vermogen', value: p.power });
+    if (additionalProperties.length) jsonLd.additionalProperty = additionalProperties;
 
     const page = `<!DOCTYPE html>
 <html lang="nl">
@@ -107,7 +122,7 @@ ${header.replace(/href="([a-z0-9.\-]+\.html)/gi, 'href="../$1').replace(/src="(c
 </nav>
 <div class="product-detail">
   <div>
-    <div class="product-gallery-main" aria-hidden="true"></div>
+    <div class="product-gallery-main"${p.image ? '' : ' aria-hidden="true"'}>${p.image ? `<img src="${p.image}" alt="${p.name.replace(/"/g, '&quot;')}" loading="lazy" style="width:100%;height:100%;object-fit:cover;">` : ''}</div>
   </div>
   <div>
     <p class="pd-brand">${p.brand}</p>
@@ -152,6 +167,27 @@ function veloraSearchProducts(query) {
   });
 }
 
+// Power-tekst uit de leveranciersfeed is rommelig (42+ net-verschillende
+// schrijfwijzen, bv. "None Required" vs "None required" vs "USB Rechargeable
+// Battery"). Voor een bruikbaar filter groeperen we naar 3 nette categorieën
+// i.p.v. elke rauwe variant apart te tonen.
+function veloraPowerBucket(power) {
+  if (!power) return null;
+  var p = power.toLowerCase();
+  if (p.indexOf('none') !== -1) return 'geen';
+  if (p.indexOf('usb') !== -1 || p.indexOf('rechargeab') !== -1 || p.indexOf('magnetic') !== -1) return 'oplaadbaar';
+  if (p.indexOf('batter') !== -1 || /\d\s*x\s*(aa|aaa|lr44)/i.test(power)) return 'batterijen';
+  return null; // te onduidelijk om betrouwbaar in te delen -> geen filterwaarde
+}
+
+// Gewicht is wél een schoon getal (kg) — bucketten in 3 zinvolle bereiken.
+function veloraWeightBucket(weight) {
+  if (!weight) return null;
+  if (weight < 0.1) return 'licht';
+  if (weight < 0.3) return 'middel';
+  return 'zwaar';
+}
+
 function veloraFilterProducts(opts) {
   opts = opts || {};
   return VELORA_PRODUCTS.filter(function (p) {
@@ -159,6 +195,12 @@ function veloraFilterProducts(opts) {
     if (opts.sub && p.sub !== opts.sub) return false;
     if (opts.sale && !p.salePrice) return false;
     if (opts.featured && !p.featured) return false;
+    if (opts.brand && p.brand !== opts.brand) return false;
+    if (opts.catalogue && p.catalogue !== opts.catalogue) return false;
+    if (opts.range && p.range !== opts.range) return false;
+    if (opts.materials && (!p.materials || p.materials.toLowerCase() !== opts.materials.toLowerCase())) return false;
+    if (opts.powerBucket && veloraPowerBucket(p.power) !== opts.powerBucket) return false;
+    if (opts.weightBucket && veloraWeightBucket(p.weight) !== opts.weightBucket) return false;
     return true;
   });
 }
@@ -175,10 +217,14 @@ function veloraProductCardHTML(p) {
 
   var isFav = (typeof veloraIsInWishlist === 'function') && veloraIsInWishlist(p.id);
 
+  var mediaHTML = p.image
+    ? '<img src="' + p.image + '" alt="' + p.name.replace(/"/g, '&quot;') + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;">'
+    : '';
+
   return (
     '<div class="product-card" style="position:relative;">' +
       '<a href="product.html?id=' + p.id + '" style="display:block;">' +
-        '<div class="product-media">' + tagHTML + '</div>' +
+        '<div class="product-media">' + mediaHTML + tagHTML + '</div>' +
         '<div class="product-info">' +
           '<p class="product-brand">' + p.brand + '</p>' +
           '<p class="product-name">' + p.name + '</p>' +
@@ -214,10 +260,17 @@ async function main() {
   const productLines = products.map(p => {
     const idLiteral = typeof p.id === 'number' ? p.id : `'${String(p.id).replace(/'/g, "\\'")}'`;
     const variantIdLiteral = p.variantId ? `'${String(p.variantId).replace(/'/g, "\\'")}'` : 'null';
+    const imageLiteral = p.image ? JSON.stringify(p.image) : 'null';
+    const strOrNull = (v) => (v === undefined || v === null || v === '') ? 'null' : JSON.stringify(v);
+    const numOrNull = (v) => (v === undefined || v === null || isNaN(v)) ? 'null' : v;
     return `  { id: ${idLiteral}, name: ${JSON.stringify(p.name)}, brand: ${JSON.stringify(p.brand)}, ` +
       `price: ${p.price}, salePrice: ${p.salePrice === null || p.salePrice === undefined ? 'null' : p.salePrice}, ` +
       `cat: ${JSON.stringify(p.cat)}, sub: ${JSON.stringify(p.sub)}, tag: ${p.tag ? JSON.stringify(p.tag) : 'null'}, ` +
-      `featured: ${!!p.featured}, variantId: ${variantIdLiteral} }`;
+      `featured: ${!!p.featured}, variantId: ${variantIdLiteral}, image: ${imageLiteral}, stock: ${p.stock === undefined || p.stock === null ? 'null' : p.stock}, ` +
+      `sku: ${strOrNull(p.sku)}, description: ${strOrNull(p.description)}, ` +
+      `barcode: ${strOrNull(p.barcode)}, materials: ${strOrNull(p.materials)}, sizeImperial: ${strOrNull(p.sizeImperial)}, ` +
+      `sizeMetric: ${strOrNull(p.sizeMetric)}, weight: ${numOrNull(p.weight)}, power: ${strOrNull(p.power)}, mpn: ${strOrNull(p.mpn)}, ` +
+      `catalogue: ${strOrNull(p.catalogue)}, range: ${strOrNull(p.range)} }`;
   });
 
   const jsOutput = `/* ============================================

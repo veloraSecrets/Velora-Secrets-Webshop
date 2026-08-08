@@ -502,11 +502,88 @@
     var activeCat = params2.get('cat');
     var activeSub = params2.get('sub');
     var activeFilter = params2.get('filter');
+    var activeBrand = params2.get('brand');
+    var activeCatalogue = params2.get('catalogue');
+    var activeRange = params2.get('range');
+    var activeMaterial = params2.get('materials');
+    var activePower = params2.get('power');
+    var activeWeight = params2.get('weight');
+
+    // Bouwt een link die het GEKOZEN filter toevoegt/verwijdert, met behoud
+    // van alle andere actieve filters (i.p.v. ze te overschrijven) — nodig
+    // zodra er meerdere filtergroepen tegelijk actief kunnen zijn.
+    function buildFilterUrl(key, value, currentlyActive) {
+      var p = new URLSearchParams(window.location.search);
+      if (currentlyActive) p.delete(key);
+      else p.set(key, value);
+      var qs = p.toString();
+      return 'shop.html' + (qs ? '?' + qs : '');
+    }
+
+    // Eén enkele doorloop over VELORA_PRODUCTS die de tellingen voor ALLE
+    // 6 filtergroepen tegelijk opbouwt — voorheen iterated elke groep apart
+    // over dezelfde 640 producten (6x dezelfde doorloop). Functioneel
+    // identieke uitkomst, alleen efficiënter opgebouwd.
+    var filterFieldGetters = {
+      filterGroupBrand: function (p) { return p.brand; },
+      filterGroupCatalogue: function (p) {
+        var excluded = ['Tiered Pricing', 'Uncategorised', 'Coming Soon'];
+        return (p.catalogue && excluded.indexOf(p.catalogue) === -1) ? p.catalogue : null;
+      },
+      filterGroupRange: function (p) { return p.range; },
+      filterGroupMaterial: function (p) { return p.materials; },
+      filterGroupPower: function (p) { return typeof veloraPowerBucket === 'function' ? veloraPowerBucket(p.power) : null; },
+      filterGroupWeight: function (p) { return typeof veloraWeightBucket === 'function' ? veloraWeightBucket(p.weight) : null; }
+    };
+    var filterCounts = {};
+    Object.keys(filterFieldGetters).forEach(function (groupId) { filterCounts[groupId] = {}; });
+    VELORA_PRODUCTS.forEach(function (p) {
+      Object.keys(filterFieldGetters).forEach(function (groupId) {
+        var v = filterFieldGetters[groupId](p);
+        if (v) filterCounts[groupId][v] = (filterCounts[groupId][v] || 0) + 1;
+      });
+    });
+
+    // Vult één filtergroep uit de al-berekende tellingen: alleen tonen als
+    // er daadwerkelijk waarden zijn (geen placeholder/lege groep), en
+    // optioneel een minimumaantal producten per optie (voorkomt een
+    // onnodig lange, versnipperde lijst).
+    function populateFilterGroup(groupId, paramKey, activeValue, minCount, labelFn) {
+      var el = document.getElementById(groupId);
+      if (!el) return;
+      var counts = filterCounts[groupId];
+      var entries = Object.keys(counts).filter(function (v) { return counts[v] >= (minCount || 1); }).sort();
+      if (!entries.length) return;
+      var ul = el.querySelector('ul');
+      ul.innerHTML = entries.map(function (v) {
+        var isActive = activeValue === v;
+        var label = labelFn ? labelFn(v) : v;
+        return '<li><a href="' + buildFilterUrl(paramKey, v, isActive) + '"' + (isActive ? ' class="is-active" aria-current="true"' : '') + '>' + label + ' <span style="color:var(--ink-soft);">(' + counts[v] + ')</span></a></li>';
+      }).join('');
+      el.hidden = false;
+    }
+
+    populateFilterGroup('filterGroupBrand', 'brand', activeBrand, 1);
+    populateFilterGroup('filterGroupCatalogue', 'catalogue', activeCatalogue, 1);
+    populateFilterGroup('filterGroupRange', 'range', activeRange, 5);
+    populateFilterGroup('filterGroupMaterial', 'materials', activeMaterial, 3);
+    populateFilterGroup('filterGroupPower', 'power', activePower, 1, function (v) {
+      return v === 'geen' ? veloraTranslate('filters.powerNone') : v === 'batterijen' ? veloraTranslate('filters.powerBattery') : veloraTranslate('filters.powerRechargeable');
+    });
+    populateFilterGroup('filterGroupWeight', 'weight', activeWeight, 1, function (v) {
+      return v === 'licht' ? veloraTranslate('filters.weightLight') : v === 'middel' ? veloraTranslate('filters.weightMedium') : veloraTranslate('filters.weightHeavy');
+    });
 
     var results = veloraFilterProducts({
       cat: activeCat || null,
       sub: activeSub || null,
-      sale: activeFilter === 'sale'
+      sale: activeFilter === 'sale',
+      brand: activeBrand || null,
+      catalogue: activeCatalogue || null,
+      range: activeRange || null,
+      materials: activeMaterial || null,
+      powerBucket: activePower || null,
+      weightBucket: activeWeight || null
     });
 
     productGridEl.innerHTML = results.length
@@ -525,6 +602,13 @@
     var favGridEl = document.querySelector('.section .product-grid');
     if (favGridEl) {
       var featured = veloraFilterProducts({ featured: true }).slice(0, 5);
+      // Terugval: als (nog) geen enkel product als "featured" gemarkeerd is
+      // (bv. rechtstreeks na een leveranciers-import, vóór een handmatige
+      // curatie), toon dan gewoon 5 echte producten mét foto — nooit de
+      // oude, foto-loze placeholder-kaarten laten staan.
+      if (!featured.length) {
+        featured = VELORA_PRODUCTS.filter(function (p) { return p.image; }).slice(0, 5);
+      }
       if (featured.length) {
         favGridEl.innerHTML = featured.map(veloraProductCardHTML).join('');
       }
@@ -547,6 +631,49 @@
       : veloraFormatPrice(pdProduct.price);
     var crumbEl = document.querySelector('.breadcrumbs span');
     if (crumbEl) crumbEl.textContent = pdProduct.name;
+
+    var pdGalleryEl = document.querySelector('.product-gallery-main');
+    if (pdGalleryEl && pdProduct.image) {
+      pdGalleryEl.innerHTML = '<img src="' + pdProduct.image + '" alt="' + pdProduct.name.replace(/"/g, '&quot;') + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;">';
+      pdGalleryEl.removeAttribute('aria-hidden');
+    }
+
+    // Stap 1 (implementatieplan): echte beschrijving tonen i.p.v. de statische
+    // placeholdertekst. Brondata kan HTML bevatten (leverancier-export) —
+    // strippen naar platte tekst, nooit als innerHTML invoegen.
+    var pdDescEl = document.querySelector('.pd-desc');
+    if (pdDescEl && pdProduct.description) {
+      var plainDesc = pdProduct.description.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+      if (plainDesc) pdDescEl.textContent = plainDesc;
+    }
+
+    // Specificaties: alleen velden tonen die voor DIT product daadwerkelijk
+    // data hebben — nooit een lege regel of placeholder.
+    var pdSpecsEl = document.getElementById('pdSpecs');
+    if (pdSpecsEl) {
+      var specs = [];
+      if (pdProduct.sku) specs.push([veloraTranslate('product.specSku'), pdProduct.sku]);
+      if (pdProduct.barcode) specs.push([veloraTranslate('product.specEan'), pdProduct.barcode]);
+      if (pdProduct.brand) specs.push([veloraTranslate('product.specBrand'), pdProduct.brand]);
+      if (typeof pdProduct.stock === 'number') {
+        specs.push([veloraTranslate('product.specStock'), pdProduct.stock > 0 ? veloraTranslate('product.stockAvailable') : veloraTranslate('product.stockOut')]);
+      }
+      if (pdProduct.sizeMetric) specs.push([veloraTranslate('product.specDimensions'), pdProduct.sizeMetric]);
+      else if (pdProduct.sizeImperial) specs.push([veloraTranslate('product.specDimensions'), pdProduct.sizeImperial]);
+      if (pdProduct.weight) specs.push([veloraTranslate('product.specWeight'), pdProduct.weight + ' kg']);
+      if (pdProduct.power) specs.push([veloraTranslate('product.specPower'), pdProduct.power]);
+      if (pdProduct.materials) {
+        var matLower = pdProduct.materials.toLowerCase();
+        specs.push([veloraTranslate('product.specMaterial'), matLower === 'see description' ? veloraTranslate('product.specSeeDescription') : pdProduct.materials]);
+      }
+
+      if (specs.length) {
+        pdSpecsEl.innerHTML = specs.map(function (s) {
+          return '<dt>' + s[0] + '</dt><dd>' + String(s[1]).replace(/</g, '&lt;') + '</dd>';
+        }).join('');
+        pdSpecsEl.hidden = false;
+      }
+    }
 
     var relatedGridEl = document.querySelector('.related-section .product-grid');
     if (relatedGridEl) {

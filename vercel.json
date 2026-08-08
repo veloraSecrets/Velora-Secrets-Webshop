@@ -1,7 +1,153 @@
 {
   "crons": [
-    { "path": "/api/sync/products", "schedule": "0 6,14 * * *" },
-    { "path": "/api/sync/inventory", "schedule": "0 */2 * * *" },
-    { "path": "/api/sync/tracking", "schedule": "0 * * * *" }
+    {
+      "path": "/api/sync/products",
+      "schedule": "0 6,14 * * *"
+    },
+    {
+      "path": "/api/sync/inventory",
+      "schedule": "0 */2 * * *"
+    },
+    {
+      "path": "/api/sync/tracking",
+      "schedule": "0 * * * *"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/p/n9317%20ns6479-sliquid-naturals-swirl-flavoured-lubricants-pink-lemonade.html",
+      "destination": "/p/n9317-ns6479-sliquid-naturals-swirl-flavoured-lubricants-pink-lemonade.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n12946%20ns8103-lace-by-lj-fence-net-crop-top-and-bottoms-fuchsia-pink.html",
+      "destination": "/p/n12946-ns8103-lace-by-lj-fence-net-crop-top-and-bottoms-fuchsia-pink.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n12946%20ns8102-lace-by-lj-fence-net-crop-top-and-bottoms-black.html",
+      "destination": "/p/n12946-ns8102-lace-by-lj-fence-net-crop-top-and-bottoms-black.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n7828%20ns5631-earthly-body-edible-massage-oil-8oz-cherry.html",
+      "destination": "/p/n7828-ns5631-earthly-body-edible-massage-oil-8oz-cherry.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n7828%20ns5632-earthly-body-edible-massage-oil-8oz-strawberry.html",
+      "destination": "/p/n7828-ns5632-earthly-body-edible-massage-oil-8oz-strawberry.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n7828%20ns5630-earthly-body-edible-massage-oil-8oz-vanilla.html",
+      "destination": "/p/n7828-ns5630-earthly-body-edible-massage-oil-8oz-vanilla.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n7828%20ns5629-earthly-body-edible-massage-oil-8oz-watermelon.html",
+      "destination": "/p/n7828-ns5629-earthly-body-edible-massage-oil-8oz-watermelon.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n9917%20ns6914-earthly-body-edible-massage-oil-2oz-cherry.html",
+      "destination": "/p/n9917-ns6914-earthly-body-edible-massage-oil-2oz-cherry.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n9917%20ns6916-earthly-body-edible-massage-oil-2oz-strawberry.html",
+      "destination": "/p/n9917-ns6916-earthly-body-edible-massage-oil-2oz-strawberry.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n9917%20ns6915-earthly-body-edible-massage-oil-2oz-vanilla.html",
+      "destination": "/p/n9917-ns6915-earthly-body-edible-massage-oil-2oz-vanilla.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n9917%20ns6917-earthly-body-edible-massage-oil-2oz-watermelon.html",
+      "destination": "/p/n9917-ns6917-earthly-body-edible-massage-oil-2oz-watermelon.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n10125%20ns8108-earthly-body-massage-oil-8oz-guavalava.html",
+      "destination": "/p/n10125-ns8108-earthly-body-massage-oil-8oz-guavalava.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n10125%20ns8109-earthly-body-massage-oil-8oz-naked-in-the-woods.html",
+      "destination": "/p/n10125-ns8109-earthly-body-massage-oil-8oz-naked-in-the-woods.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n10125%20ns8110-earthly-body-massage-oil-8oz-skinny-dip.html",
+      "destination": "/p/n10125-ns8110-earthly-body-massage-oil-8oz-skinny-dip.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n10126%20ns8111-earthly-body-massage-oil-2oz-guavalava.html",
+      "destination": "/p/n10126-ns8111-earthly-body-massage-oil-2oz-guavalava.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n10126%20ns8112-earthly-body-massage-oil-2oz-naked-in-the-woods.html",
+      "destination": "/p/n10126-ns8112-earthly-body-massage-oil-2oz-naked-in-the-woods.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n10126%20ns8113-earthly-body-massage-oil-2oz-skinny-dip.html",
+      "destination": "/p/n10126-ns8113-earthly-body-massage-oil-2oz-skinny-dip.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n10128%20ns8118-earthly-body-heart-3-in-1-edible-massage-candle-4oz-113g-che.html",
+      "destination": "/p/n10128-ns8118-earthly-body-heart-3-in-1-edible-massage-candle-4oz-113g-che.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n10128%20ns8119-earthly-body-heart-3-in-1-edible-massage-candle-4oz-113g-str.html",
+      "destination": "/p/n10128-ns8119-earthly-body-heart-3-in-1-edible-massage-candle-4oz-113g-str.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n10128%20ns8120-earthly-body-heart-3-in-1-edible-massage-candle-4oz-113g-van.html",
+      "destination": "/p/n10128-ns8120-earthly-body-heart-3-in-1-edible-massage-candle-4oz-113g-van.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n12944%20ns8096-lace-by-lj-stay-up-thigh-high-stockings-with-lace-top-black.html",
+      "destination": "/p/n12944-ns8096-lace-by-lj-stay-up-thigh-high-stockings-with-lace-top-black.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n12944%20ns8098-lace-by-lj-stay-up-thigh-high-stockings-with-lace-top-red.html",
+      "destination": "/p/n12944-ns8098-lace-by-lj-stay-up-thigh-high-stockings-with-lace-top-red.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n12944%20ns8099-lace-by-lj-stay-up-thigh-high-stockings-with-lace-top-white.html",
+      "destination": "/p/n12944-ns8099-lace-by-lj-stay-up-thigh-high-stockings-with-lace-top-white.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n12945%20ns8100-lace-by-lj-thigh-high-stockings-with-bow-black.html",
+      "destination": "/p/n12945-ns8100-lace-by-lj-thigh-high-stockings-with-bow-black.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n12945%20ns8101-lace-by-lj-thigh-high-stockings-with-bow-white.html",
+      "destination": "/p/n12945-ns8101-lace-by-lj-thigh-high-stockings-with-bow-white.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n12912%20ns18119-lace-by-lj-fishnet-thigh-high-stockings-with-rhinestones-bla.html",
+      "destination": "/p/n12912-ns18119-lace-by-lj-fishnet-thigh-high-stockings-with-rhinestones-bla.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/n12912%20ns18120-lace-by-lj-fishnet-thigh-high-stockings-with-rhinestones-red.html",
+      "destination": "/p/n12912-ns18120-lace-by-lj-fishnet-thigh-high-stockings-with-rhinestones-red.html",
+      "permanent": true
+    }
   ]
 }

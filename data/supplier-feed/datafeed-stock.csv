@@ -1,0 +1,867 @@
+SKU,Stock,StockLevel,Price
+N8481,Discontinued,0,11
+N8440,"In Stock",82,2.80
+N8442,"In Stock",102,2.80
+NS3442,"In Stock",118,1.67
+N4378,Discontinued,0,16.98
+N7988,"Out Stock",0,6.38
+N6829,Discontinued,0,4.21
+N6659,"In Stock",1480,1.00
+N4372,"Out Stock",0,4.91
+N1549,"Out Stock",0,4.3
+N0858,"Out Stock",0,4.90
+N8389,"In Stock",52,5.85
+N8390,"In Stock",190,5.85
+N8391,"In Stock",99,5.85
+N9080,"In Stock",58,8.87
+N8238,"In Stock",36,2.52
+N7893,"Out Stock",0,7.04
+NS0815,Discontinued,0,7.8
+NS0816,Discontinued,0,10.68
+NS0813,Discontinued,0,7.8
+NS0814,Discontinued,0,8.31
+N0982,Discontinued,0,4.46
+N0981,Discontinued,0,2.53
+N0975,Discontinued,0,4.46
+N0974,Discontinued,0,2.53
+N0972,Discontinued,0,3.05
+N9079,"Out Stock",0,7.21
+N8590,"In Stock",94,7.21
+N8048,"Out Stock",0,4.57
+N7894,Discontinued,0,5.20
+NS0817,Discontinued,0,7.8
+NS0818,Discontinued,0,10.68
+N8964,Discontinued,0.000000,8.96
+N8966,Discontinued,0,5.49
+N8591,"Out Stock",0,7.21
+N8254,"In Stock",53,6.27
+N8255,"In Stock",9,6.27
+N8049,Discontinued,0,4.57
+N8050,Discontinued,0,4.57
+N0973,Discontinued,0,3.05
+N8333,Discontinued,0,2.6
+N2238,"Out Stock",0,7.66
+N2284,Discontinued,0,8.22
+N7985,Discontinued,0,18.48
+N6128,Discontinued,0,8
+N8968,"In Stock",36,5.88
+N8969,"In Stock",47,5.88
+N4920,Discontinued,0,11.16
+N7519,"In Stock",1,17.02
+N6522,Discontinued,0,17.02
+N6684,Discontinued,0,14.67
+N6134,Discontinued,0,8
+N6123,Discontinued,0,11.16
+N6133,"In Stock",36,17.02
+N10957,"Out Stock",0,9.00
+N6140,Discontinued,0,3
+N8970,Discontinued,0,2.80
+N9591,Discontinued,0.000000,9.08
+N9584,Discontinued,0,3.45
+N9583,Discontinued,0,4.31
+N9580,Discontinued,0,6.27
+N9579,Discontinued,0,9.66
+N9573,Discontinued,0.000000,14.65
+N9571,Discontinued,0,14.68
+N9570,Discontinued,0,9.08
+N9569,Discontinued,0,14.7
+N9567,Discontinued,0,16.96
+N9565,Discontinued,0,7.72
+N9563,Discontinued,0,9.45
+N9562,Discontinued,0,15.75
+N9561,Discontinued,0.000000,8.3
+N9560,Discontinued,0.000000,7.51
+N9558,Discontinued,0,8.3
+N9557,Discontinued,0,7.88
+N9556,Discontinued,0,33.29
+N9555,Discontinued,0.000000,14.18
+N9552,Discontinued,0,7.35
+N9551,Discontinued,0.000000,14.81
+N9549,Discontinued,0.000000,12.08
+NS6615,Discontinued,0,3.95
+N9381,"In Stock",12,5.60
+N9380,"In Stock",22,6.72
+N9379,"In Stock",4,6.72
+N9378,"In Stock",30,6.72
+N9375,"In Stock",1,3.36
+NS6550,"In Stock",67,5.37
+NS6551,"In Stock",80,5.37
+NS6548,Discontinued,0,5.34
+NS6546,Discontinued,0,20.9
+NS6539,"In Stock",22,32
+NS6503,"In Stock",23,6.8
+NS6488,"Out Stock",0,7
+NS6486,"In Stock",163,7.09
+NS6487,"In Stock",32,10.88
+NS6485,Discontinued,0,11.5
+NS6482,"In Stock",17,7.09
+NS6472,"In Stock",48,14.35
+NS6473,"In Stock",20,19.88
+NS6470,"In Stock",148,6.8
+NS6468,"In Stock",258,6.62
+NS6465,"In Stock",45,6.80
+NS6463,"In Stock",63,6.15
+NS6464,"Out Stock",0,9.46
+NS6461,"In Stock",158,6.15
+NS6462,"In Stock",99,9.46
+NS6479,"In Stock",22,4.30
+N6525,Discontinued,0,2.24
+N9701,Discontinued,0,39.9
+N9700,Discontinued,0,16.8
+N9820,"In Stock",1649,2.76
+NS6480,"In Stock",141,7.09
+NS6481,"In Stock",8,10.88
+N9886,"Out Stock",0,1.70
+N9954,Discontinued,0,3.57
+N9955,Discontinued,0,3.76
+N9956,Discontinued,0,7.98
+N9957,Discontinued,0,6.83
+N9958,Discontinued,0,11.03
+N9960,Discontinued,0,8.93
+N9962,Discontinued,0,5.88
+N10092,Discontinued,0,10.75
+N10095,"In Stock",5,24.44
+N10096,"In Stock",3,22.00
+N10097,"In Stock",6,12.00
+N10098,"In Stock",10,12.00
+N10099,"In Stock",14,10.18
+N10100,"Out Stock",0,10.18
+N10101,"In Stock",3,12.00
+N10102,"Out Stock",0,5.86
+N10103,"In Stock",1,10.18
+N10116,"In Stock",6,10.18
+NS7003,"In Stock",63,4.5
+NS7004,"In Stock",53,4.50
+NS7007,"In Stock",16,7.90
+NS7013,"In Stock",121,6.15
+N10202,"In Stock",423,4.00
+NS7100,"Out Stock",0,4.63
+NS7101,"In Stock",93,7.81
+NS7102,"Out Stock",0,4.63
+NS7103,"Out Stock",0,7.81
+N10232,Discontinued,0,10.79
+NS7104,Discontinued,0,7.34
+NS7105,Discontinued,0,11.26
+NS7106,Discontinued,0,17.11
+N11237,Discontinued,0,4.48
+N11238,Discontinued,0,5.38
+N11239,Discontinued,0,6.27
+N10241,Discontinued,0,44.1
+N10242,Discontinued,0,42
+N10250,Discontinued,0.000000,8.72
+N10251,Discontinued,0,5.57
+N10252,Discontinued,0,8.93
+N10348,"In Stock",30,20
+N10349,"Out Stock",0,20
+N10351,"In Stock",78,22
+NS7167,"In Stock",76,6.71
+NS7168,"In Stock",42,6.71
+N10357,"In Stock",34,4.00
+N10371,Discontinued,0,22.4
+N10422,"In Stock",3,11.2
+N10423,"In Stock",11,8.96
+N10424,"In Stock",14,15.68
+N10432,"In Stock",30,6.72
+N10434,"Out Stock",0,8.96
+N10437,"In Stock",171,6.72
+N10438,"Out Stock",0,8.96
+N10447,"In Stock",12,8.96
+N10449,"In Stock",44,11.2
+N10451,"In Stock",9,7.62
+N10452,"In Stock",7,5.82
+N10456,"In Stock",45,5.82
+N10457,"In Stock",49,4.48
+N10459,Discontinued,0,6.72
+N10461,"In Stock",22,6.72
+N10462,"In Stock",44,6.72
+N10463,"Out Stock",0,6.72
+N10479,"Out Stock",0,3.58
+N10511,Discontinued,0,4.48
+N10528,"In Stock",3,13.44
+N10529,"In Stock",2,14.78
+N10530,Discontinued,0,11.2
+N10531,"In Stock",41,5.82
+N10534,Discontinued,0,21.95
+N10536,Discontinued,0,31.5
+N10541,Discontinued,0,48.09
+N10546,Discontinued,0,9.5
+N10627,Discontinued,0,2.15
+N10642,Discontinued,0,20.16
+N10700,Discontinued,0,22.40
+NS7246,Discontinued,0,6.15
+N10725,"In Stock",135,5.82
+N10726,"Out Stock",0,7.62
+N10780,"In Stock",46,3.50
+N10781,"In Stock",5,20
+N10782,"In Stock",1,10.18
+N10783,"In Stock",2,15.64
+N10785,"In Stock",4,12.00
+N10796,"In Stock",94,5.82
+N10818,"In Stock",1,6.72
+N10833,"In Stock",3,11.2
+N10880,"Out Stock",0,15.68
+N10885,"In Stock",42,7.62
+N10919,"In Stock",2,22.00
+N10924,"In Stock",2,6.72
+N10925,Discontinued,0,5.82
+N10931,Discontinued,0,4.48
+N10938,Discontinued,0,40.32
+N10953,"In Stock",185,3.58
+N10963,"In Stock",12,6.72
+N10994,Discontinued,0,23.61
+N10995,"Out Stock",0,16
+N11023,Discontinued,0,12.88
+N11024,"In Stock",65,15.68
+N11032,"In Stock",11,7.28
+N11033,Discontinued,0,6.16
+N11034,"In Stock",12,6.16
+N11035,Discontinued,0,8.96
+N11073,Discontinued,0,22.4
+N11080,"In Stock",7,4.48
+N11108,"Out Stock",0,1.58
+N11109,"In Stock",95,1.58
+N11134,"In Stock",81,11.2
+N11135,Discontinued,0,9.60
+N11136,"In Stock",6,24.64
+N11161,"In Stock",24,15.68
+N11188,Discontinued,0,9.19
+N11189,Discontinued,0.000000,10.13
+N11190,Discontinued,0,10.13
+N11191,Discontinued,0,13.23
+N11192,Discontinued,0,8.06
+N11193,Discontinued,0,19.71
+N11194,Discontinued,0,18.9
+N11195,Discontinued,0,19.71
+N11196,Discontinued,0,31.5
+N11197,Discontinued,0,48.83
+N11200,Discontinued,0.000000,38.85
+N11201,Discontinued,0,38.85
+N11202,Discontinued,0,38.85
+N11204,Discontinued,0,23.1
+N11205,Discontinued,0,23.1
+N11212,"Out Stock",0,25.43
+N11213,"Out Stock",0,6.39
+N11219,"Out Stock",0,4.60
+N11223,Discontinued,0,4.5
+N11224,Discontinued,0.000000,4.5
+N11225,Discontinued,0,4.50
+N11226,"In Stock",31,4.5
+N11227,"In Stock",15,5.35
+N11228,"In Stock",23,5.35
+N11229,Discontinued,0,5.35
+N11230,"In Stock",59,5.35
+N11271,"In Stock",2,3.58
+N11272,"In Stock",8,3.58
+N11273,"In Stock",71,3.58
+N11291,Discontinued,0,7.24
+N11292,Discontinued,0,6.80
+N11294,"Out Stock",0,1.68
+N11295,"Out Stock",0,3.33
+N11296,"In Stock",114,3.36
+N11314,Discontinued,0,9.00
+N11315,Discontinued,0,29.12
+N11316,Discontinued,0,8
+N11317,Discontinued,0,21.28
+N11318,Discontinued,0,8
+N11326,Discontinued,0,55.65
+N11397,Discontinued,0,13.44
+N11398,"Out Stock",0,13.44
+N11399,"Out Stock",0,3.58
+N11400,"In Stock",73,3.58
+N11401,"In Stock",91,4.48
+N11402,Discontinued,0,5.60
+N11403,Discontinued,0,12.54
+N11404,Discontinued,0,6.72
+N11405,"In Stock",81,8.96
+N11406,"In Stock",82,10.75
+N11407,Discontinued,0,10.75
+N11408,Discontinued,0,4.7
+N11409,Discontinued,0,6.72
+N11410,"In Stock",44,4.48
+N11411,"Out Stock",0,4.48
+N11412,"In Stock",49,4.03
+N11413,Discontinued,0,8.96
+N11414,Discontinued,0,12.99
+N11415,Discontinued,0,17.02
+N11421,Discontinued,0,4.48
+N11422,Discontinued,0,4.48
+N11423,Discontinued,0,3.14
+N11430,"Out Stock",0,23.8
+N11432,Discontinued,0,6.72
+N11433,Discontinued,0,6.72
+N11434,Discontinued,0,8.51
+N11435,"In Stock",40,4.48
+N11436,"In Stock",57,4.48
+N11437,Discontinued,0,6.72
+N11438,"In Stock",40,6.72
+N11439,"In Stock",30,7.62
+N11441,"In Stock",7,10.75
+N11442,"In Stock",96,2.69
+N11443,"In Stock",3,8.96
+N11444,"In Stock",48,2.24
+N11445,"In Stock",24,3.58
+N11446,Discontinued,0,3.58
+N11448,"In Stock",13,1.50
+N11470,Discontinued,0,6
+N11506,"In Stock",114,8.96
+N11545,"Out Stock",0,1.39
+N9582,Discontinued,0,3.14
+N9566,Discontinued,0.000000,14.12
+N9697,Discontinued,0,49.35
+N10094,"In Stock",23,22.00
+N10350,"In Stock",19,20
+N11429,"Out Stock",0,9
+N11466,Discontinued,0,5.50
+N11526,Discontinued,0,24.64
+N11544,"In Stock",144,6.80
+N11551,Discontinued,0,2.24
+N11552,Discontinued,0,2.24
+N11553,Discontinued,0,2.24
+N11554,Discontinued,0,1.20
+N11555,Discontinued,0,2.24
+N11556,"In Stock",99,2.24
+N11557,Discontinued,0,8.96
+N11588,"In Stock",26,15.68
+N11589,Discontinued,0,15.68
+N11610,"In Stock",159,8.96
+N11614,"In Stock",1,4.03
+N11615,"In Stock",20,4.03
+N11616,"In Stock",17,4.48
+N11617,"In Stock",50,8.06
+N11618,"Out Stock",0,8.06
+N11619,"Out Stock",0,2.69
+N11621,Discontinued,0,4.48
+N11622,"Out Stock",0,3.14
+N11447,Discontinued,0,3.60
+N11450,Discontinued,0,8.96
+N11463,"In Stock",13,10.3
+N11464,"In Stock",33,10.3
+N11465,"Out Stock",0,10.3
+N11473,"In Stock",48,3.13
+N11474,"Out Stock",0,10.75
+N11475,"In Stock",17,13.44
+N11510,"In Stock",40,5.82
+N11511,"In Stock",42,8.06
+N11536,"In Stock",24,8.96
+N11537,"In Stock",14,8.96
+N11538,Discontinued,0,7.80
+N11539,"In Stock",6,7.80
+N11540,Discontinued,0,1.20
+N11541,Discontinued,0,10.94
+N11542,Discontinued,0,7.50
+N11543,Discontinued,0,12.88
+N11550,Discontinued,0,28.56
+N11558,Discontinued,0.000000,59.33
+N11561,Discontinued,0,44.8
+N11562,Discontinued,0,44.8
+N11566,Discontinued,0,10.75
+N11567,Discontinued,0,15.5
+N11568,Discontinued,0,26.4
+N11569,Discontinued,0,26.4
+N11570,Discontinued,0,15.5
+N11571,Discontinued,0,33
+N11572,Discontinued,0,10.5
+N11573,Discontinued,0,17.02
+N11574,Discontinued,0,8.51
+N11575,Discontinued,0,15.23
+N11576,Discontinued,0,12.54
+N11559,"In Stock",75,8.96
+N10485,Discontinued,0,5.74
+N11672,Discontinued,0,22
+N11678,Discontinued,0,44.90
+N11679,Discontinued,0,14.90
+N11680,Discontinued,0,12.32
+N11682,"Out Stock",0,15.40
+N11681,"In Stock",59,13.20
+NS6492,Discontinued,0,6.62
+NS6475,Discontinued,0,6.15
+N11708,"Out Stock",0,4.48
+N11709,"In Stock",37,2.20
+N11710,"In Stock",244,0.75
+N11711,"In Stock",10,2.20
+N11712,"In Stock",99,3.40
+N11713,"In Stock",83,3.40
+N11714,"In Stock",197,3.40
+N11715,"In Stock",26,6.80
+N11716,"In Stock",99,6.80
+N11717,"In Stock",130,10.40
+N11765,"In Stock",26,10.21
+N11766,"In Stock",7,10.21
+N11776,"In Stock",24,8.96
+N11785,"In Stock",10,29.12
+N11798,Discontinued,0,11.20
+N11799,"In Stock",69,11.20
+N11800,"In Stock",12,13.44
+N11801,"In Stock",18,12.54
+N11777,"In Stock",42,5.20
+N11778,"In Stock",14,6.80
+N11779,"In Stock",22,6
+N11780,"In Stock",184,4.40
+N11781,Discontinued,0,6.80
+N11782,"In Stock",23,3.74
+N11783,"Out Stock",0,6.8
+N11821,"In Stock",98,6.80
+N11823,Discontinued,0,7.70
+N11822,Discontinued,0,8.50
+N11767,"In Stock",2,13
+N11768,Discontinued,0,27.37
+N11769,Discontinued,0,27.37
+N11770,Discontinued,0,35.78
+N11771,"In Stock",2,15
+N11772,Discontinued,0,24.44
+N11773,"In Stock",1,10
+N11774,"In Stock",7,15
+NS6476,Discontinued,0,6.15
+N11884,"Out Stock",0,17.20
+N11885,"In Stock",26,18.80
+N11853,"In Stock",45,1.50
+N11854,"Out Stock",0,1.50
+N11855,"In Stock",1,1.60
+N11856,"Out Stock",0,0.80
+N11857,"In Stock",107,0.82
+N11858,"Out Stock",0,6.00
+N11878,"In Stock",35,8.96
+N11948,"Out Stock",0,15.2
+N12024,"In Stock",90,20
+N12023,"In Stock",19,20
+N12022,"In Stock",69,20
+N12029,"In Stock",50,4.00
+N12027,"In Stock",19,11.2
+N12028,"Out Stock",0,11.2
+N12026,"In Stock",5,11.2
+N12033,"In Stock",18,14
+N12031,"In Stock",2,14
+N12032,"In Stock",17,14
+N12030,"Out Stock",0,14
+N12035,"In Stock",20,20
+N11903,"Out Stock",0,16
+N11950,"In Stock",15,11.6
+N11951,"In Stock",71,6
+N11952,"In Stock",16,6
+N11949,"In Stock",16,11.6
+N11943,"Out Stock",0,4.61
+N11944,"Out Stock",0,3.38
+N11930,"Out Stock",0,9.2
+N12034,"In Stock",22,20
+N11937,"In Stock",17,5.6
+N11938,"In Stock",45,5.6
+N11929,"In Stock",22,5.6
+N11932,"In Stock",111,4.8
+N11933,"In Stock",64,4.8
+N11934,"In Stock",75,5.6
+N11935,"In Stock",49,2.50
+N11936,"In Stock",11,4.4
+N11852,"In Stock",18,9.2
+N11641,Discontinued,0,6.67
+N11642,Discontinued,0,6.67
+N12010,Discontinued,0,4.4
+N12006,Discontinued,0,2.49
+N12017,Discontinued,0,3
+N12008,Discontinued,0,2.49
+N12007,Discontinued,0,2.2
+N12003,"Out Stock",0,4.4
+N12004,Discontinued,0,2.2
+N12009,Discontinued,0,2.49
+N12013,Discontinued,0,2.67
+N12019,Discontinued,0,4.6
+N12015,Discontinued,0,3.91
+N12016,Discontinued,0,5.4
+N12160,Discontinued,0,3.6
+N12151,"Out Stock",0,1.50
+N12152,"Out Stock",0,2.80
+N12153,"In Stock",48,1.90
+N12165,"Out Stock",0,9.2
+N12198,Discontinued,0,35.84
+N12199,Discontinued,0,10.00
+N12171,"In Stock",18,6.40
+N12144,"In Stock",95,6.40
+N12143,"In Stock",97,6.40
+N12142,"In Stock",95,6.40
+N12141,"Out Stock",0,2.80
+N12140,"In Stock",8,4.40
+N12139,"In Stock",95,4.40
+N12138,"In Stock",69,5.20
+N11851,"In Stock",50,5.20
+N11850,"In Stock",123,5.20
+N12201,"Out Stock",0,5.20
+N12191,"In Stock",14,18.80
+N12190,"In Stock",5,14.00
+N12189,"In Stock",2,14.40
+N12188,"In Stock",31,12.00
+N12187,"In Stock",36,8
+N12186,"Out Stock",0,6.40
+N12185,"Out Stock",0,12.00
+N12184,"Out Stock",0,8.00
+N12183,"In Stock",43,6.4
+N12265,"In Stock",4,22.40
+N12266,"In Stock",7,24.89
+N12267,"In Stock",1,22.40
+N12268,"In Stock",12,12.44
+N12269,"In Stock",3,10.94
+N12270,"In Stock",2,12.44
+N12271,"In Stock",6,10.94
+N12272,"Out Stock",0,12.44
+N12244,"In Stock",77,16.00
+N12245,"Out Stock",0,15.20
+N12158,"In Stock",137,5.5
+N12159,Discontinued,0,20
+N12192,"In Stock",44,3.58
+N12193,"In Stock",28,6.72
+N12194,"In Stock",147,6.72
+N12195,"In Stock",36,5.82
+N12157,"In Stock",96,9.88
+N12240,"In Stock",39,9.5
+N12241,"In Stock",59,6.6
+N12242,"In Stock",79,8.15
+N12243,"In Stock",101,7.35
+N12249,"In Stock",120,15.68
+N12250,"In Stock",35,15.68
+N12251,"In Stock",10,14.78
+N12252,"In Stock",86,15.68
+N12156,"In Stock",21,7.36
+N12264,"Out Stock",0,9.20
+N12302,"In Stock",40,5.82
+N12303,"Out Stock",0,5.82
+N12304,"Out Stock",0,5.82
+N12305,"In Stock",3,6.72
+N12306,"In Stock",46,6.72
+N12307,"Out Stock",0,5.38
+N12308,"Out Stock",0,5.38
+N12309,"In Stock",47,8.51
+N12310,"In Stock",22,8.51
+N12311,"Out Stock",0,6.72
+N12312,"Out Stock",0,6.72
+N12314,"In Stock",9,11.20
+N12315,"In Stock",5,8.96
+N12316,"In Stock",18,3.58
+N12279,"In Stock",119,17.92
+N12280,"In Stock",20,15.68
+N12281,"In Stock",17,15.67
+N9382,"Out Stock",0,3.58
+N12283,"Out Stock",0,5.82
+N12284,"In Stock",31,5.82
+N12285,"In Stock",34,5.82
+N12277,"In Stock",3,29.12
+N12278,"In Stock",68,31.36
+N11982,"In Stock",11,72.68
+NS6297,Discontinued,0,57.45
+N11981,"In Stock",1,71.07
+N8513,Discontinued,0,77.44
+N11979,"In Stock",8,63.55
+N12344,"Out Stock",0,47.06
+N12342,"In Stock",17,101.37
+N11613,"In Stock",2,97.24
+N12379,Discontinued,0,42.00
+N12398,"In Stock",55,7.20
+N12399,"In Stock",20,7.2
+N12400,"Out Stock",0,8
+N12401,"In Stock",5,8
+N12402,"In Stock",40,10
+N12403,"In Stock",26,10
+N12480,"In Stock",27,5.50
+NS6484,"In Stock",22,7.09
+N12483,"In Stock",2,81.71
+N12484,"In Stock",6,29.47
+N12253,"Out Stock",0,22
+N12254,"Out Stock",0,22
+N12255,"Out Stock",0,24.00
+N12256,"Out Stock",0,22
+N12257,"Out Stock",0,20
+N12378,"In Stock",106,19.2
+N12508,"In Stock",2,63.06
+N12435,"Out Stock",0,2.40
+N12436,"Out Stock",0,2.40
+N12437,"Out Stock",0,2.40
+N12439,"Out Stock",0,2.40
+N12462,"In Stock",7,3.20
+N12173,"In Stock",182,2.00
+N12497,"In Stock",11,9.5
+N12318,"In Stock",40,4.93
+N12319,"In Stock",18,5.91
+N12320,"Out Stock",0,5.91
+N12321,"In Stock",62,5
+N12458,"Out Stock",0,16.80
+N12459,"Out Stock",0,16.80
+N12460,"Out Stock",0,16.8
+N12463,"In Stock",41,14
+N12509,"In Stock",139,5.20
+N12516,"Out Stock",0,3.40
+N12517,Discontinued,0,3.40
+N12518,Discontinued,0,3.40
+N12530,"In Stock",40,44
+N12531,"In Stock",35,36
+N12538,"In Stock",16,14
+N12536,"In Stock",15,14
+N12537,"In Stock",17,14
+N12559,"In Stock",103,22
+N12562,"In Stock",35,26
+N12561,"In Stock",37,26
+N12560,"In Stock",95,26
+N12438,"Out Stock",0,2.40
+N12510,"Out Stock",0,2.24
+N12745,"In Stock",2,42.00
+N12425,"In Stock",149,10.80
+N12426,"In Stock",63,10.80
+N12427,"In Stock",149,7.2
+N12428,"In Stock",62,9.60
+N12447,"In Stock",188,2
+N12448,"In Stock",10,4
+N12449,"Out Stock",0,6
+N12455,"In Stock",2,6
+N12727,"In Stock",82,6
+N12369,"In Stock",55,12.8
+N12371,"In Stock",57,11.60
+N12370,"In Stock",16,10
+N12467,"In Stock",19,21.60
+N12468,"Out Stock",0,25.20
+N12469,"In Stock",21,28
+N12600,"Out Stock",0,6
+N12688,"In Stock",29,12
+N12684,"In Stock",156,3.6
+N12685,"In Stock",58,4.80
+N12683,"In Stock",131,1.6
+N12624,"In Stock",12,6.72
+N12625,"In Stock",26,8.00
+N12626,"In Stock",17,12
+N12627,"Out Stock",0,5.30
+N12628,"In Stock",37,6.40
+N12629,"Out Stock",0,8
+N12630,"Out Stock",0,12.00
+N12631,"In Stock",18,14.78
+N12634,"In Stock",55,12
+N12635,"In Stock",124,17.2
+N12636,"In Stock",104,17.2
+N12637,"In Stock",86,17.2
+N12686,"Out Stock",0,3.6
+N12731,"In Stock",61,3.6
+N12733,"In Stock",96,3.6
+N12734,"Out Stock",0,2.4
+N12687,"Out Stock",0,4
+N12700,"In Stock",1,16.00
+N12704,"In Stock",26,16
+N12706,"In Stock",20,16
+N12705,"Out Stock",0,16
+N12732,"In Stock",46,3.6
+N11294-B,"Out Stock",0,15.12
+N12788,"In Stock",17,4.75
+N12789,"In Stock",18,5.05
+N12790,"In Stock",6,4.14
+N12791,"Out Stock",0,4.14
+N12792,"In Stock",20,9.05
+N12794,"In Stock",5,9.05
+N12795,"In Stock",6,9.05
+N12796,Discontinued,0,8.28
+N12797,"In Stock",2,6.90
+N12798,"In Stock",11,6.90
+N12799,"In Stock",7,8.18
+N12800,"In Stock",14,8.18
+N12803,"In Stock",50,18
+N12804,"In Stock",68,22
+N12805,"Out Stock",0,4
+N12808,"In Stock",39,4
+N12809,"Out Stock",0,5.2
+N12810,"In Stock",55,6
+N12811,"In Stock",34,4
+N12812,"In Stock",34,5.2
+N12813,"In Stock",18,6
+N12814,"Out Stock",0,4
+N12815,"In Stock",17,5.2
+N12816,"In Stock",14,6
+N12817,"Out Stock",0,4.8
+N12818,"In Stock",2,6
+N12819,"In Stock",17,7.2
+N12820,"In Stock",47,4
+N12821,"Out Stock",0,5.2
+N12822,"In Stock",2,6
+N12823,"Out Stock",0,4.8
+N12825,"In Stock",15,7.2
+N12826,"In Stock",5,4
+N12827,"Out Stock",0,5.2
+N12828,"Out Stock",0,6
+N12829,"Out Stock",0,4.8
+N12830,"Out Stock",0,6
+N12831,"In Stock",27,7.2
+N12832,"In Stock",12,4
+N12833,"In Stock",12,4.8
+N12835,"Out Stock",0,4.8
+N12836,"In Stock",4,6.80
+N12837,"In Stock",16,7.6
+N12838,"In Stock",56,12
+N12839,"In Stock",29,16
+N12840,"In Stock",48,12
+N12841,"In Stock",17,12
+N12842,"In Stock",44,12
+N12743,"In Stock",19,19.2
+N12744,"In Stock",43,19.2
+N12728,"In Stock",39,7.60
+N12729,"In Stock",46,7.60
+N12730,"Out Stock",0,7.6
+N12771,"In Stock",40,14.80
+N12772,"In Stock",13,14.80
+N12773,"In Stock",38,14.80
+N12780,"In Stock",84,8.80
+N12785,"In Stock",35,26
+N12786,"In Stock",11,26
+N12787,"In Stock",18,26
+N12801,"In Stock",15,15.60
+N12870,"In Stock",15,18
+N12872,"In Stock",9,20
+N12871,"In Stock",18,20
+N12873,"In Stock",19,20
+N12774,"In Stock",18,2
+N12775,"In Stock",16,3.90
+N12994,"In Stock",54,3.58
+N12995,"Out Stock",0,5.82
+N12622,"Out Stock",0,6.80
+N12897,"In Stock",99,18
+N12953,"In Stock",78,22
+N12941,"In Stock",75,16
+N12952,"In Stock",50,26
+N12898,"In Stock",26,6
+N12900,"In Stock",26,6
+N12901,"In Stock",8,6
+N12899,"In Stock",21,6.8
+N12902,"In Stock",49,4
+N12903,"Out Stock",0,6
+N12906,"In Stock",49,3.6
+N12917,"Out Stock",0,5.2
+N12919,"In Stock",27,9.2
+N12920,"In Stock",26,10
+N12907,"In Stock",49,6
+N12909,"In Stock",49,4
+N12908,"In Stock",9,6
+N12933,"In Stock",47,5.2
+N12910,"In Stock",49,5.2
+N12916,"In Stock",14,6
+N12923,"In Stock",50,7.6
+N12922,"In Stock",60,6
+N12918,"In Stock",5,7.6
+N12924,"In Stock",13,6
+N12947,"In Stock",11,6
+N12921,"In Stock",6,5.2
+N12925,"In Stock",50,6
+N12934,"In Stock",2,6
+N12927,"In Stock",28,6
+N12928,"In Stock",3,7.6
+N12929,"In Stock",30,6
+N12926,"In Stock",23,6
+N12930,"In Stock",10,6
+N12931,"In Stock",11,6
+N12983,"In Stock",28,7.2
+N12939,"In Stock",27,7.2
+N12937,"In Stock",31,6.00
+N12935,"Out Stock",0,7.2
+N12936,"In Stock",42,6.00
+N12938,"In Stock",45,6.00
+N12942,"In Stock",135,10
+N12943,"Out Stock",0,20
+N12932,"In Stock",12,6
+NS8103,"In Stock",29,6
+NS8102,"In Stock",26,6
+N9964,"Out Stock",0,7.95
+NS5631,"In Stock",24,7.50
+NS5632,"In Stock",23,7.50
+NS5630,"In Stock",24,7.50
+NS5629,"In Stock",24,7.50
+NS6914,"In Stock",27,3.20
+NS6916,"In Stock",27,3.20
+NS6915,"In Stock",30,3.20
+NS6917,"In Stock",30,3.20
+NS8108,"Out Stock",0,
+NS8109,"Out Stock",0,
+NS8110,"Out Stock",0,
+NS8111,"Out Stock",0,
+NS8112,"Out Stock",0,
+NS8113,"Out Stock",0,
+NS8114,"Out Stock",0,
+NS8115,"Out Stock",0,
+NS8116,"Out Stock",0,
+NS8117,"Out Stock",0,
+NS8118,"In Stock",24,7.50
+NS8119,"In Stock",23,7.50
+NS8120,"In Stock",24,7.50
+N10129,"In Stock",8,5.09
+N10130,"In Stock",8,5.09
+N10131,"In Stock",6,15.00
+N10132,"In Stock",10,5.09
+N10133,"In Stock",24,3.42
+N10136,"Out Stock",0,1.71
+N10137,"In Stock",3,1.71
+N10138,"In Stock",19,1.96
+N10139,"In Stock",22,1.96
+N10140,"In Stock",11,35.00
+N10141,"In Stock",9,16.00
+N12967,"In Stock",23,4.14
+N12968,"In Stock",7,4.30
+N12969,"In Stock",17,4.14
+N12971,"Out Stock",0,2.02
+N12972,"In Stock",98,2.02
+N12975,"In Stock",15,10.50
+N12976,"In Stock",16,10.50
+N12977,"In Stock",16,12.50
+N12978,"In Stock",15,12.50
+N12970,"Out Stock",0,4.14
+N13002,"In Stock",10,13.30
+N13016,"In Stock",10,13.30
+NS8122,"In Stock",7,8.34
+N11961,"In Stock",28,11.75
+N13024,"In Stock",11,13.75
+N12955,"Out Stock",0,44.80
+N12956,"In Stock",12,44.80
+N12990,"In Stock",102,4.48
+N12991,"In Stock",105,4.48
+N12992,"In Stock",114,4.48
+N12993,"In Stock",114,4.48
+N13025,"In Stock",83,24.64
+N13032,"In Stock",18,10.8
+N13033,"In Stock",28,7.60
+N13034,"In Stock",26,7.40
+N13036,"In Stock",31,7.60
+N13017,"In Stock",2,63.06
+N13018,"In Stock",6,63.06
+N13019,"In Stock",4,63.55
+N12291,"In Stock",14,2.53
+N12292,"In Stock",18,2.53
+N12293,"Out Stock",0,3.42
+N10030,"Out Stock",0,3.42
+N10031,"In Stock",2,33.00
+N10032,"In Stock",3,33.00
+N10033,"In Stock",4,33.00
+N10034,"In Stock",4,12.00
+N10035,"In Stock",6,12.00
+N10036,"In Stock",1,15.00
+N10037,"In Stock",3,15.00
+N10038,"In Stock",5,30.00
+N10039,"In Stock",5,2.56
+N10040,"In Stock",3,2.56
+N10041,"In Stock",12,8.54
+N10042,"In Stock",12,8.54
+N10043,"In Stock",12,8.54
+N10044,"In Stock",11,8.54
+N10045,"In Stock",11,8.54
+N10046,"Out Stock",0,5.00
+N10047,"Out Stock",0,10.00
+N10049,"In Stock",11,10.00
+N10051,"In Stock",16,2.05
+N10052,"In Stock",10,2.05
+NS8096,"Out Stock",0,3.60
+NS8098,"Out Stock",0,3.60
+NS8099,"Out Stock",0,3.60
+NS8100,"Out Stock",0,4.80
+NS8101,"Out Stock",0,4.80
+NS18119,"Out Stock",0,5.20
+NS18120,"Out Stock",0,
+N13094,"In Stock",30,1.75
+N13095,"In Stock",24,15.50
+N13096,"Out Stock",0,1.80
+N13097,"Out Stock",0,15.50
+N13098,"In Stock",58,1.80
+N13099,"In Stock",24,15.50
+N13100,"In Stock",3,2.02
+N13101,"In Stock",12,15.90
+N13109,"In Stock",3,37.95
+N13110,"In Stock",5,32.45
+N13111,"Out Stock",0,26.95
+N13112,"In Stock",3,26.95
+N13114,"In Stock",4,26.95
+N13115,"In Stock",4,21.45

@@ -54,7 +54,7 @@ async function veloraAddToShopifyCart(variantId, quantity) {
   if (!variantId) {
     // Gebeurt bij placeholder-productdata (nog geen echte Shopify-koppeling) —
     // zie lib/legacy-placeholder-products.js: variantId is daar bewust null.
-    return { ok: false, reason: 'no-variant', message: 'Dit product is nog niet gekoppeld aan een echte Shopify-variant (demomodus).' };
+    return { ok: false, reason: 'no-variant', message: 'Dit product kan op dit moment nog niet aan de winkelwagen worden toegevoegd.' };
   }
   quantity = parseInt(quantity, 10);
   if (!Number.isInteger(quantity) || quantity <= 0) {

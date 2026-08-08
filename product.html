@@ -197,6 +197,12 @@
     <p class="pd-price">€ 00,00</p>
     <p class="pd-desc">Korte, eerlijke productomschrijving komt hier — materiaal, gebruiksdoel en belangrijkste kenmerken. Vervang deze placeholdertekst zodra de echte productdata beschikbaar is.</p>
 
+    <!-- Wordt door main.js gevuld met alleen de specificaties die voor DIT
+         product daadwerkelijk data hebben (SKU/EAN/fabrikant/voorraadstatus/
+         afmetingen/gewicht/vermogen/materiaal). Blijft leeg/verborgen als een
+         veld geen data heeft — nooit een placeholder of lege regel. -->
+    <dl class="pd-specs" id="pdSpecs" hidden></dl>
+
     <!-- Kleur-/variantselectie bewust nog niet aanwezig: dit product heeft nu
          maar 1 Shopify-variant (zie lib/catalog-source.js). Een selector die
          niet naar echte varianten mapt zou de klant misleiden ("Roze" kiezen
@@ -315,7 +321,7 @@
         <li><a href="faq.html" data-i18n="footer.linkFaq">Hulp &amp; FAQ</a></li>
         <li><a href="verzending.html" data-i18n="footer.linkShipping">Verzending &amp; Bezorging</a></li>
         <li><a href="retourneren.html" data-i18n="footer.linkReturns">Retourneren</a></li>
-        <li><a href="mailto:support@velorasecrets.nl">support@velorasecrets.nl</a></li>
+        <li><a href="mailto:info@velorasecrets.nl">info@velorasecrets.nl</a></li>
       </ul>
     </div>
     <div class="footer-col">

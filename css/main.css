@@ -335,7 +335,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   overflow: hidden;
 }
 .product-media {
-  aspect-ratio: 1; position: relative;
+  aspect-ratio: 1; position: relative; overflow: hidden;
   background: linear-gradient(150deg, var(--cream-deep), #E9DECE);
 }
 .product-tag {

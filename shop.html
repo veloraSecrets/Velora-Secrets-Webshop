@@ -211,6 +211,35 @@
         <li><a href="#">€100+</a></li>
       </ul>
     </div>
+    <!-- Stap 3 (implementatieplan): filters op basis van leveranciersdata.
+         Deze groepen blijven leeg/hidden totdat main.js ze vult — de opties
+         zelf zijn productdata-afhankelijk (verandert bij elke import), dus
+         nooit hardcoded, precies zoals de rest van de site nooit
+         placeholder-content toont. -->
+    <div class="filter-group" id="filterGroupBrand" hidden>
+      <h4 data-i18n="filters.brand">Fabrikant</h4>
+      <ul></ul>
+    </div>
+    <div class="filter-group" id="filterGroupCatalogue" hidden>
+      <h4 data-i18n="filters.catalogue">Collectie</h4>
+      <ul></ul>
+    </div>
+    <div class="filter-group" id="filterGroupRange" hidden>
+      <h4 data-i18n="filters.range">Type</h4>
+      <ul></ul>
+    </div>
+    <div class="filter-group" id="filterGroupMaterial" hidden>
+      <h4 data-i18n="filters.material">Materiaal</h4>
+      <ul></ul>
+    </div>
+    <div class="filter-group" id="filterGroupPower" hidden>
+      <h4 data-i18n="filters.power">Vermogen</h4>
+      <ul></ul>
+    </div>
+    <div class="filter-group" id="filterGroupWeight" hidden>
+      <h4 data-i18n="filters.weight">Gewicht</h4>
+      <ul></ul>
+    </div>
   </aside>
   <div>
     <div class="shop-toolbar">
@@ -314,7 +343,7 @@
         <li><a href="faq.html" data-i18n="footer.linkFaq">Hulp &amp; FAQ</a></li>
         <li><a href="verzending.html" data-i18n="footer.linkShipping">Verzending &amp; Bezorging</a></li>
         <li><a href="retourneren.html" data-i18n="footer.linkReturns">Retourneren</a></li>
-        <li><a href="mailto:support@velorasecrets.nl">support@velorasecrets.nl</a></li>
+        <li><a href="mailto:info@velorasecrets.nl">info@velorasecrets.nl</a></li>
       </ul>
     </div>
     <div class="footer-col">

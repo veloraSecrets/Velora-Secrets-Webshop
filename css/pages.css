@@ -156,7 +156,7 @@
   display: grid; grid-template-columns: 1fr 1fr; gap: 56px;
 }
 .product-gallery-main {
-  aspect-ratio: 1; border-radius: 8px;
+  aspect-ratio: 1; border-radius: 8px; overflow: hidden;
   background: linear-gradient(150deg, var(--cream-deep), #E9DECE);
   margin-bottom: 12px;
 }
@@ -179,6 +179,16 @@
 .pd-actions { display: flex; gap: 12px; margin-bottom: 24px; }
 .pd-actions .btn-dark { flex: 1; }
 .pd-trust { display: flex; flex-direction: column; gap: 10px; font-size: 13px; color: var(--ink-soft); padding-top: 20px; border-top: 1px solid var(--line); }
+.pd-specs {
+  display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px;
+  font-size: 13.5px; margin: 22px 0 0; padding-top: 20px; border-top: 1px solid var(--line);
+}
+.pd-specs dt { color: var(--ink-soft); font-weight: 500; }
+.pd-specs dd { margin: 0; color: var(--ink); }
+@media (max-width: 480px) {
+  .pd-specs { grid-template-columns: 1fr; gap: 2px 0; }
+  .pd-specs dt { margin-top: 8px; }
+}
 .pd-accordion { border-top: 1px solid var(--line); }
 .pd-accordion details { border-bottom: 1px solid var(--line); padding: 16px 0; }
 .pd-accordion summary { font-weight: 600; font-size: 14px; cursor: pointer; }
