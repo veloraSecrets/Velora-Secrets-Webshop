@@ -52,8 +52,8 @@ async function veloraCartRequest(payload) {
 // als er nog geen cart-ID bekend is, anders wordt aan de bestaande cart toegevoegd.
 async function veloraAddToShopifyCart(variantId, quantity) {
   if (!variantId) {
-    // Gebeurt bij placeholder-productdata (nog geen echte Shopify-koppeling) —
-    // zie lib/legacy-placeholder-products.js: variantId is daar bewust null.
+    // Gebeurt zolang er geen Shopify-koppeling actief is (SHOPIFY_STORE_DOMAIN
+    // + SHOPIFY_STOREFRONT_TOKEN nog niet ingesteld) — zie lib/catalog-source.js.
     return { ok: false, reason: 'no-variant', message: 'Dit product kan op dit moment nog niet aan de winkelwagen worden toegevoegd.' };
   }
   quantity = parseInt(quantity, 10);
